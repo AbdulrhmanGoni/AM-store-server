@@ -15,8 +15,8 @@ const user_regist = async (req, res) => {
             const hashedPassword = await bcryptjs.hashSync(newUser.userPassword);
             newUser.userPassword = hashedPassword;
             await newUser.save();
-            const token = jwt.sign({ id: userData._id, role: "user" }, process.env.JWT_SECRET_KEY)
-            res.status(200).json(newUser);
+            const token = jwt.sign({ id: newUser._id, role: "user" }, process.env.JWT_SECRET_KEY)
+            res.status(200).json({ userData: newUser, token });
         }
     } catch (error) {
         console.log(error);

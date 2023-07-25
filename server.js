@@ -27,9 +27,6 @@ import adminRouter from "./routes/adminRouter.js";
 import statisticsRouter from "./routes/statisticsRouter.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
 
-
-// midelwheres
-// import auth from "./midelwheres/auth.js";
 app.use([json()]);
 
 import cookieParser from 'cookie-parser';
@@ -40,13 +37,6 @@ app.use(cors({
     origin: corsWhitelist,
     credentials: true
 }));
-
-// app.use(session({
-//     secret: 'albrnawe10',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: true }
-// }));
 
 app.use("/users", userAuth, [
     userDataRouter,
