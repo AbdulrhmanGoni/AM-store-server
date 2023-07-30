@@ -10,7 +10,7 @@ router.route("/log-in").post(user_logIn);
 router.route("/log-in/:userId").get(user_Logged);
 router.route("/sing-up").post(user_regist);
 router.route("/mails").post(sendFeedback);
-// });
+
 
 
 export default router;

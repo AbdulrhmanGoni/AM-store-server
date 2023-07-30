@@ -1,5 +1,6 @@
 const userDataTypes = {
     basic: { userEmail: true, avatar: true, userName: true },
+    avatar: { avatar: true, _id: false },
     initial: { userEmail: true, avatar: true, userName: true, userFavorites: true, userShoppingCart: true },
     _id: { _id: true },
     comment: { avatar: true, userName: true, _id: false },
