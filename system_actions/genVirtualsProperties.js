@@ -10,10 +10,6 @@ const products = {
     }
 }
 
-function name(params) {
-
-}
-
 export {
     products
 }

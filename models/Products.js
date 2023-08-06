@@ -1,4 +1,4 @@
-import { Schema, model, get } from "mongoose";
+import { Schema, model } from "mongoose";
 import { products } from "../system_actions/genVirtualsProperties.js";
 
 const ProductSchema = new Schema({
@@ -13,7 +13,8 @@ const ProductSchema = new Schema({
     sold: { type: Number },
     rate: { type: Object },
     series: { type: String },
-    comments: { type: Array }
+    comments: { type: Array },
+    discount: { type: Object },
 },
     {
         timestamps: true,

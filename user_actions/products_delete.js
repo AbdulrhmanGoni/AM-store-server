@@ -1,6 +1,6 @@
 import ProductsModule from "../models/Products.js";
 
-const products_deleteMany = async (req, res) => {
+const products_delete = async (req, res) => {
     const { productId } = req.params;
     try {
         const respond = await ProductsModule.deleteOne({ _id: productId });
@@ -8,4 +8,4 @@ const products_deleteMany = async (req, res) => {
     } catch { res.status(400).json(null) }
 }
 
-export default products_deleteMany;
+export default products_delete;
