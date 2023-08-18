@@ -4,6 +4,7 @@ const userDataTypes = {
     initial: { userEmail: true, avatar: true, userName: true, userFavorites: true, userShoppingCart: true },
     _id: { _id: true },
     comment: { avatar: true, userName: true, _id: false },
+    comments: { comments: true, _id: false },
     password: { userPassword: true, _id: false },
     userShoppingCart: { userShoppingCart: true, _id: false },
     userName: { userName: true, _id: false },

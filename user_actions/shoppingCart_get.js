@@ -1,5 +1,5 @@
 import UserModel from "../models/Users.js";
-import { userDataTypes, productDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/dataTypes.js";
 import shoppingCart_getProductsData from "./shoppingCart_getProductsData.js";
 
 const shoppingCart_get = async (req, res) => {
