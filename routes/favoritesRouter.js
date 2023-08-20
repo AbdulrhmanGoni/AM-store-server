@@ -4,6 +4,9 @@ const router = Router();
 import favorites_get from "../user_actions/favorites_get.js";
 import favorites_set from "../user_actions/favorites_set.js";
 import favorites_clear from "../user_actions/favorites_clear.js";
+import authenticate from "../midelwheres/authenticate.js";
+
+router.use("/:userId", authenticate)
 
 router.route("/:userId/favorites")
     .get(favorites_get)

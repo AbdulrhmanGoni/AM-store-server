@@ -3,8 +3,12 @@ import userData_get from "../user_actions/userData_get.js";
 import userData_set from "../user_actions/userData_set.js";
 import userData_uploadAvatar from "../user_actions/userData_uploadAvatar.js";
 import passwordChecker from "../user_actions/passwordChecker.js";
+import authenticate from "../midelwheres/authenticate.js";
+import adminAuth from "../midelwheres/adminAuth.js";
 
 const router = Router();
+
+router.use("/:userId", authenticate)
 
 router.route("/:userId")
     .get(userData_get)

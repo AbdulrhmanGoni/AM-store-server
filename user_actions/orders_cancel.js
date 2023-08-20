@@ -1,21 +1,18 @@
 import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import OrdersModule from "../models/Orders.js";
 import UserModel from "../models/Users.js";
 
 const orders_cancel = async (req, res) => {
     try {
-        const filter = { _id: req.params.userId };
         const { orderId, type } = req.body;
+        const { userId } = req.params;
         if (type === "cancel") {
-            const { userOrders } = await UserModel.findOne(filter, userDataTypes.userOrders);
-            userOrders = userOrders.map((order) => {
-                if (order.id === orderId) {
-                    order.state = "Canceled"
-                    order.deliveryDate = "Canceled"
-                    return order;
-                } else return order
-            });
-            await UserModel.updateOne(filter, { $set: { userOrders } })
-            res.status(200).json(true);
+            const { modifiedCount, matchedCount } = await OrdersModule.updateOne(
+                { _id: orderId, userId },
+                { $set: { state: "canceled", deliveryDate: "canceled" } }
+            );
+            if (modifiedCount && matchedCount) res.status(200).json(true);
+            else res.status(400).json(false);
         } else return res.status(400).json(false);
     } catch (error) {
         console.log(error);

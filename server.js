@@ -7,6 +7,7 @@ import shoppingCartRouter from "./routes/shoppingCartRouter.js";
 import favoritesRouter from "./routes/favoritesRouter.js";
 import locationsRouter from "./routes/locationsRouter.js";
 import paymentMethodsRouter from "./routes/paymentMethodsRouter.js";
+import userOrdersRoute from "./routes/userOrdersRoute.js";
 import ordersRouter from "./routes/ordersRouter.js";
 import constantsRouter from "./routes/constantsRouter.js";
 import directRouter from "./routes/directRouter.js";
@@ -15,9 +16,9 @@ import statisticsRouter from "./routes/statisticsRouter.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import userAuth from "./midelwheres/userAuth.js";
 import bodyParser from 'body-parser';
 import multer from 'multer';
+import adminAuth from "./midelwheres/adminAuth.js";
 
 
 // the App
@@ -43,18 +44,19 @@ app.use(multer().any());
 
 
 // Routers
-app.use("/users", userAuth, [
+app.use("/users", [
     userDataRouter,
     shoppingCartRouter,
     favoritesRouter,
     locationsRouter,
+    userOrdersRoute,
     paymentMethodsRouter
 ]);
 app.use("/products", productsRouter);
 app.use("/", directRouter);
 app.use("/orders", ordersRouter);
-app.use("/admin", adminRouter);
-app.use("/statistics", statisticsRouter);
+app.use("/admin", adminAuth, adminRouter);
+app.use("/statistics", adminAuth, statisticsRouter);
 app.use("/constants", constantsRouter);
 
 

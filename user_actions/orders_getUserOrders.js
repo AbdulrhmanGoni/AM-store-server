@@ -2,7 +2,8 @@ import Orders from "../models/Orders.js";
 
 const orders_getUserOrders = async (req, res) => {
     try {
-        const { userId, state } = req.query;
+        const { state } = req.query;
+        const { userId } = req.params;
         const orders = await Orders.find({ userId, state }).sort({ "createdAt": -1 });
         res.status(200).json(orders);
     } catch (error) {
