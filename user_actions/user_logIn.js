@@ -1,17 +1,19 @@
 import jwt from "jsonwebtoken";
 import UserModel from "../models/Users.js";
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcrypt";
 
 const user_logIn = async (req, res) => {
     try {
         const { userEmail, userPassword } = req.body;
         const userData = await UserModel.findOne({ userEmail }, { userPassword: true });
-        const pass = await bcryptjs.compare(userPassword, userData.userPassword);
-        if (pass) {
-            const token = jwt.sign({ userId: userData._id, role: "user" }, process.env.JWT_SECRET_KEY)
-            res.status(200).json({ userId: userData._id, accessToken: token });
+        if (userData) {
+            const pass = bcrypt.compareSync(userPassword, userData.userPassword);
+            if (pass) {
+                const token = jwt.sign({ userId: userData._id, role: "user" }, process.env.JWT_SECRET_KEY)
+                return res.status(200).json({ userId: userData._id, accessToken: token });
+            }
         }
-        else res.status(400).json(false);
+        return res.status(200).json(false);
     } catch (error) {
         console.log(error);
         res.status(400).json(null);

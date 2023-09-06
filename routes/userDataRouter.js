@@ -5,8 +5,12 @@ import userData_uploadAvatar from "../user_actions/userData_uploadAvatar.js";
 import passwordChecker from "../user_actions/passwordChecker.js";
 import authenticate from "../midelwheres/authenticate.js";
 import adminAuth from "../midelwheres/adminAuth.js";
+import searchForUsers from "../admin_actions/searchForUsers.js";
+
 
 const router = Router();
+
+router.route("/").get([adminAuth, searchForUsers])
 
 router.use("/:userId", authenticate)
 

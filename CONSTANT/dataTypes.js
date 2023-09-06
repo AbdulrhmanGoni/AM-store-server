@@ -20,7 +20,7 @@ const productDataTypes = {
     comment: { avatar: true, userName: true, _id: false },
     images: { images: true },
     rating: { rate: true, _id: false },
-    summary: { title: true, avatar: true, series: true, images: true, description: true },
+    summary: { title: true, avatar: true, series: true, images: true, description: true, price: true, category: true },
     title: { title: true },
     id: { _id: true }
 }

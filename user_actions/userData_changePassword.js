@@ -1,8 +1,8 @@
 import { userDataTypes } from "../CONSTANT/dataTypes.js";
 import UserModel from "../models/Users.js";
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcrypt";
 
-const { compare, hashSync } = bcryptjs;
+const { compare, hashSync } = bcrypt;
 
 const userData_changePassword = async (req, res) => {
     try {
