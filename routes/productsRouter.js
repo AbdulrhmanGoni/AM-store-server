@@ -10,17 +10,17 @@ import comments_set from "../user_actions/comment_set.js";
 import rating_get from "../user_actions/rating_get.js";
 import rating_set from "../user_actions/rating_set.js";
 import products_pagination from "../user_actions/products_pagination.js";
-import products_pagination_length from "../user_actions/products_pagination_length.js";
+import products_length from "../user_actions/products_length.js";
 
 router.route("/")
     .get(products_search)
     .post(products_getByIds)
 
+router.route("/length")
+    .get(products_length)
+
 router.route("/pagination")
     .get(products_pagination)
-
-router.route("/pagination/length")
-    .get(products_pagination_length)
 
 router.route("/:productId")
     .get(products_getById)

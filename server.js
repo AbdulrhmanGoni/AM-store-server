@@ -7,7 +7,7 @@ import shoppingCartRouter from "./routes/shoppingCartRouter.js";
 import favoritesRouter from "./routes/favoritesRouter.js";
 import locationsRouter from "./routes/locationsRouter.js";
 import paymentMethodsRouter from "./routes/paymentMethodsRouter.js";
-import userOrdersRoute from "./routes/userOrdersRoute.js";
+import usersOrdersRoute from "./routes/usersOrdersRoute.js";
 import ordersRouter from "./routes/ordersRouter.js";
 import constantsRouter from "./routes/constantsRouter.js";
 import directRouter from "./routes/directRouter.js";
@@ -49,7 +49,7 @@ app.use("/users", [
     shoppingCartRouter,
     favoritesRouter,
     locationsRouter,
-    userOrdersRoute,
+    usersOrdersRoute,
     paymentMethodsRouter
 ]);
 app.use("/products", productsRouter);
