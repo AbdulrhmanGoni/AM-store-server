@@ -1,5 +1,5 @@
 
-import NotificationsModel from "../../../models/Notifications.js"
+import NotificationsModel from "../models/Notifications.js"
 
 async function notificationsSetter(notification) {
     try {

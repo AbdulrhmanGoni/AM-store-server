@@ -1,9 +1,9 @@
 import { Router } from "express";
-import ordersPagenation from '../system_actions/orders_pagination.js'
+import ordersPagination from '../system_actions/orders_pagination.js'
 
 const router = Router();
 
-router.route("/").get(ordersPagenation)
+router.route("/pagenation").get(ordersPagination)
 
 
 export default router;

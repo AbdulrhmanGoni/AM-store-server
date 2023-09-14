@@ -1,4 +1,3 @@
-import sendEmail from "../functions/sendEmail.js";
 import OrdersModule from "../models/Orders.js";
 import UserModel from "../models/Users.js";
 import orders_setStatistics from "../system_actions/orders_setStatistics.js";

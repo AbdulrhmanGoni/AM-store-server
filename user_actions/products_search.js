@@ -1,5 +1,4 @@
 import { productDataTypes } from "../CONSTANT/dataTypes.js";
-import createProjection from "../functions/createProjection.js";
 import searchForProducts from "../functions/searchForProducts.js";
 
 const products_search = async (req, res) => {
@@ -8,7 +7,8 @@ const products_search = async (req, res) => {
             queries: req.query,
             projection: productDataTypes[req.query.type ?? "basic"]
         });
-        res.status(200).json(products);
+        !!products.length && res.status(200).json(products);
+        !products.length && res.status(404).json(false);
     } catch {
         res.status(400).json(null);
     }

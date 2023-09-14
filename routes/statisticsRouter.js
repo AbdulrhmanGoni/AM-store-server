@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import statistics_history from "../system_actions/statistics_history.js";
 import categories_earnings from "../system_actions/categories_earnings.js";
 import products_topSales from "../system_actions/products_topSales.js";
