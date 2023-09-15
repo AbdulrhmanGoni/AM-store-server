@@ -3,7 +3,7 @@ import createProjection from "../functions/createProjection.js";
 import ProductsStatisticsModel from "../models/ProductsStatistics.js";
 import { CATEGORIES } from "../CONSTANT/PRODUCTS_CATEGORIES.js";
 
-async function getProductsStatistics(req, res) {
+async function getCategoriesStatistics(req, res) {
     const { targetYear = new Date().getFullYear() } = req.query;
     const yearRange = { date: new RegExp(targetYear) };
     const projection = createProjection(req.query.return, { withId: false });
@@ -14,7 +14,7 @@ async function getProductsStatistics(req, res) {
         CATEGORIES.forEach(CAT => {
             categories_statistics[CAT] = MONTHES.map(month => {
                 return statistics.find(doc => doc.date.match(new RegExp(month)) && doc.category === CAT)
-                    ?? { ...emptyDoc, date: `${targetYear}/${month}`, category: CAT }
+                    ?? { date: `${targetYear}/${month}`, ...emptyDoc, category: CAT }
             })
         })
         res.status(200).json(categories_statistics);
@@ -23,4 +23,4 @@ async function getProductsStatistics(req, res) {
     }
 }
 
-export default getProductsStatistics;
+export default getCategoriesStatistics;
