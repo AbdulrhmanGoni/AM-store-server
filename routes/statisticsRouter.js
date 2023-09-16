@@ -1,5 +1,5 @@
 import { Router } from "express";
-import statistics_history from "../system_actions/statistics_history.js";
+import monthly_statistics from "../system_actions/monthly_statistics.js";
 import categories_statistics from "../system_actions/categories_statistics.js";
 import products_topSales from "../system_actions/products_topSales.js";
 import products_topEarnings from "../system_actions/products_topEarnings.js";
@@ -14,8 +14,8 @@ router.get("/", async (req, res) => {
             categories_statistics(req, res);
             break;
 
-        case "statistics-history":
-            statistics_history(req, res);
+        case "monthly-statistics":
+            monthly_statistics(req, res);
             break;
 
         case "products-top-sales":
@@ -36,4 +36,4 @@ router.get("/", async (req, res) => {
     }
 });
 
-export default router
+export default router;
