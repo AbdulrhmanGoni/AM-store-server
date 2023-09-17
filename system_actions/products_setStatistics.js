@@ -1,13 +1,11 @@
 import ProductsModel from "../models/Products.js";
 import idHandler from "../functions/idHandler.js";
 import YearlyStatisticsModel from "../models/YearlyStatistics.js";
-import moment from "moment";
+import getCurrentDate from "../functions/getCurrentDate.js";
 
 export default async function products_setStatistics(products) {
     const
-        year = new Date().getFullYear(),
-        currentMonth = moment().month(),
-        month = moment().month(currentMonth).format("MMM"),
+        { year, month } = getCurrentDate(),
         createFliter = (category) => {
             return {
                 year,
