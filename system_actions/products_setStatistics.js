@@ -1,38 +1,62 @@
-import ProductsStatisticsModel from "../models/ProductsStatistics.js";
 import ProductsModel from "../models/Products.js";
 import idHandler from "../functions/idHandler.js";
-import getCurrentDate from "../functions/getCurrentDate.js";
+import YearlyStatisticsModel from "../models/YearlyStatistics.js";
+import moment from "moment";
 
-async function products_setStatistics(products) {
-    for (let i = 0; i < products.length; i++) {
-        const product = products[i];
-        let
-            productId = idHandler(product).id,
-            productCount = idHandler(product).count,
-            productCategory = idHandler(product).category,
-            productPrice = idHandler(product).price * productCount
-
-        try {
-            await ProductsModel.updateOne({ _id: productId },
-                { $inc: { amount: -productCount, sold: productCount, earnings: productPrice } }
-            );
-        } catch (error) { console.log(productId, "(fieled to update its data)") }
-        try {
-            const currentDoc = await ProductsStatisticsModel.findOneAndUpdate(
-                { category: productCategory, date: getCurrentDate() },
-                { $inc: { productsSold: productCount, totalEarnings: productPrice } }
-            );
-            if (!currentDoc) {
-                const newDoc = new ProductsStatisticsModel({
-                    date: getCurrentDate(),
-                    category: productCategory,
-                    productsSold: productCount,
-                    totalEarnings: productPrice
-                });
-                await newDoc.save();
+export default async function products_setStatistics(products) {
+    const
+        year = new Date().getFullYear(),
+        currentMonth = moment().month(),
+        month = moment().month(currentMonth).format("MMM"),
+        createFliter = (category) => {
+            return {
+                year,
+                statisticsType: "products-categories",
+                [`categories.${category}.month`]: month
             }
-        } catch (error) { console.log(productId, "(fieled to include its statistics)") }
-    }
-}
+        },
+        createUpdate = (category, productsCount, totalPrice) => {
+            return {
+                $inc: {
+                    [`categories.${category}.$.productsSold`]: productsCount,
+                    [`categories.${category}.$.totalEarnings`]: totalPrice,
+                }
+            }
+        }
 
-export default products_setStatistics;
+    let
+        categories = {},
+        response = true;
+    for (let i = 0; i < products.length; i++) {
+        try {
+            const { count, category, price, id: _id } = idHandler(products[i]);
+            const earnings = price * count;
+            if (categories[category]) {
+                categories[category].earnings += earnings
+                categories[category].count += count
+            } else {
+                Object.defineProperty(categories, category, { value: { earnings, count }, enumerable: true })
+            }
+            await ProductsModel.updateOne({ _id }, { $inc: { amount: -count, sold: count, earnings } });
+        } catch (error) {
+            console.log(error, _id, "(fieled to update its data)")
+            response = false
+        }
+    }
+
+    for (const cat in categories) {
+        try {
+            if (!!categories[cat]) {
+                const { count, earnings } = categories[cat];
+                await YearlyStatisticsModel.updateOne(
+                    createFliter(cat),
+                    createUpdate(cat, count, earnings)
+                );
+            }
+        } catch (error) {
+            console.log(error, _id, "(fieled to set its statistics)")
+            response = false
+        }
+    }
+    return response;
+}

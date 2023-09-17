@@ -12,9 +12,10 @@ const orders_addNewOrder = async (req, res) => {
         await UserModel.updateOne({ _id: theOrder.userId },
             { $set: { userShoppingCart: [] }, $push: { userOrders: id } }
         );
-        await orders_setStatistics(theOrder);
-        await products_setStatistics(products);
-        res.status(200).json({ ok: true });
+        const ordersDone = await orders_setStatistics(theOrder);
+        const productsDone = await products_setStatistics(products);
+        if (ordersDone && productsDone) res.status(200).json({ ok: true });
+        else res.status(200).json({ ok: false });
     } catch (error) {
         console.log(error);
         res.status(400).json(false);
