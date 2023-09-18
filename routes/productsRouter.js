@@ -1,6 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
+import adminAuth from "../midelwheres/adminAuth.js";
 import products_search from "../user_actions/products_search.js";
 import products_getById from "../user_actions/products_getById.js";
 import products_getByIds from "../user_actions/products_getByIds.js";
@@ -11,6 +12,7 @@ import rating_get from "../user_actions/rating_get.js";
 import rating_set from "../user_actions/rating_set.js";
 import products_pagination from "../user_actions/products_pagination.js";
 import products_length from "../user_actions/products_length.js";
+import products_in_stock from "../user_actions/products_in_stock.js";
 
 router.route("/")
     .get(products_search)
@@ -19,8 +21,11 @@ router.route("/")
 router.route("/length")
     .get(products_length)
 
+router.route("/in-stock")
+    .get([adminAuth, products_in_stock])
+
 router.route("/pagination")
-    .get(products_pagination)
+    .get([adminAuth, products_pagination])
 
 router.route("/:productId")
     .get(products_getById)

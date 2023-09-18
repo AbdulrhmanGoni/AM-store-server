@@ -1,39 +1,26 @@
 import { Router } from "express";
 import monthly_statistics from "../system_actions/monthly_statistics.js";
 import categories_statistics from "../system_actions/categories_statistics.js";
-import products_topSales from "../system_actions/products_topSales.js";
-import products_topEarnings from "../system_actions/products_topEarnings.js";
+import products_topProducts from "../system_actions/products_topProducts.js";
 import orders_getLatest from "../system_actions/orders_getLatest.js";
 
 const router = Router();
 
+const statisticsQueriesControler = {
+    "categories-statistics": categories_statistics,
+    "monthly-statistics": monthly_statistics,
+    "top-products": products_topProducts,
+    "orders-get-latest": orders_getLatest,
+    "total-products-sold": orders_getLatest,
+    "products-totals": orders_getLatest
+}
+
 router.get("/", async (req, res) => {
-
-    switch (req.query.get) {
-        case "categories-statistics":
-            categories_statistics(req, res);
-            break;
-
-        case "monthly-statistics":
-            monthly_statistics(req, res);
-            break;
-
-        case "products-top-sales":
-            products_topSales(req, res);
-            break;
-
-        case "products-top-earnings":
-            products_topEarnings(req, res);
-            break;
-
-        case "orders-get-latest":
-            orders_getLatest(req, res);
-            break;
-
-        default:
-            res.status(400).json({ message: "you have to specify query" })
-            break;
-    }
+    let { get } = req.query;
+    const query = statisticsQueriesControler[get];
+    if (!!query) { query(req, res) }
+    else if (get) { res.status(400).json({ message: "you specify unknown query" }) }
+    else { res.status(400).json({ message: "you have to specify query" }) }
 });
 
 export default router;
