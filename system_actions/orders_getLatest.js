@@ -5,7 +5,7 @@ import UsersModel from "../models/Users.js";
 async function orders_getLatest(req, res) {
     try {
         const latestOrders = await OrdersModel.find(
-            {}, {}, { sort: { "createdAt": -1 }, limit: req.query.limit }
+            {}, {}, { sort: { createdAt: -1 }, limit: req.query.limit }
         );
         for (let i = 0; i !== latestOrders.length; i++) {
             const userData = await UsersModel.findById(latestOrders[i].userId, userDataTypes.basic);
