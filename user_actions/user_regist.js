@@ -12,7 +12,7 @@ const user_regist = async (req, res) => {
             res.status(200).json(false);
         } else {
             const newUser = new UserModel(req.body);
-            const hashedPassword = bcrypt.hashSync(newUser.userPassword, process.env.HASHING_SALT_ROUNDS);
+            const hashedPassword = bcrypt.hashSync(newUser.userPassword, +process.env.HASHING_SALT_ROUNDS);
             newUser.userPassword = hashedPassword;
             !(await newUser.save().then(() => {
                 const userId = newUser._id;

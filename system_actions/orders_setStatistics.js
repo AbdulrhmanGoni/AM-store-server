@@ -3,7 +3,7 @@ import YearlyStatisticsModel from "../models/YearlyStatistics.js";
 import getCurrentDate from "../functions/getCurrentDate.js";
 
 
-const orders_setStatistics = async (theOrder) => {
+const orders_setStatistics = async (theOrder, session) => {
 
     const
         { year, month } = getCurrentDate(),
@@ -17,8 +17,9 @@ const orders_setStatistics = async (theOrder) => {
                 'monthes.$.totalOrders': 1
             }
         }
+
     try {
-        const { matchedCount, modifiedCount } = await YearlyStatisticsModel.updateOne(filter, update);
+        const { matchedCount, modifiedCount } = await YearlyStatisticsModel.updateOne(filter, update, { session });
         return (matchedCount && modifiedCount);
     } catch (error) {
         console.log(error);

@@ -3,7 +3,7 @@ import idHandler from "../functions/idHandler.js";
 import YearlyStatisticsModel from "../models/YearlyStatistics.js";
 import getCurrentDate from "../functions/getCurrentDate.js";
 
-export default async function products_setStatistics(products) {
+export default async function products_setStatistics(products, session) {
     const
         { year, month } = getCurrentDate(),
         createFliter = (category) => {
@@ -35,7 +35,7 @@ export default async function products_setStatistics(products) {
             } else {
                 Object.defineProperty(categories, category, { value: { earnings, count }, enumerable: true })
             }
-            await ProductsModel.updateOne({ _id }, { $inc: { amount: -count, sold: count, earnings } });
+            await ProductsModel.updateOne({ _id }, { $inc: { amount: -count, sold: count, earnings } }, { session });
         } catch (error) {
             console.log(error, _id, "(fieled to update its data)")
             response = false
@@ -48,7 +48,8 @@ export default async function products_setStatistics(products) {
                 const { count, earnings } = categories[cat];
                 await YearlyStatisticsModel.updateOne(
                     createFliter(cat),
-                    createUpdate(cat, count, earnings)
+                    createUpdate(cat, count, earnings),
+                    {session}
                 );
             }
         } catch (error) {
