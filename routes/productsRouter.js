@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
-import adminAuth from "../midelwheres/adminAuth.js";
+import adminAuth from "../middleware/adminAuth.js";
 import products_search from "../user_actions/products_search.js";
 import products_getById from "../user_actions/products_getById.js";
 import products_getByIds from "../user_actions/products_getByIds.js";

@@ -4,7 +4,7 @@ const router = Router();
 import paymentMethods_get from "../user_actions/paymentMethods_get.js";
 import paymentMethods_set from "../user_actions/paymentMethods_set.js";
 import paymentMethods_delete from "../user_actions/paymentMethods_delete.js";
-import authenticate from "../midelwheres/authenticate.js";
+import authenticate from "../middleware/authenticate.js";
 
 router.use("/:userId", authenticate)
 
