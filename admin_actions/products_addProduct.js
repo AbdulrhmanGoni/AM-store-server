@@ -2,7 +2,7 @@ import ProductsModule from "../models/Products.js";
 
 async function products_addProduct(req, res) {
     try {
-        const newProduct = new ProductsModule({ ...req.body, sold: 0, images: [req.body.ImageUrl] });
+        const newProduct = new ProductsModule(req.body);
         await newProduct.save();
         res.status(200).json(true);
     } catch (error) {

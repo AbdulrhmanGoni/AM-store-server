@@ -1,6 +1,6 @@
 import ProductsModule from "../models/Products.js";
 
-async function products_updateProduct(req, res) {
+async function products_updateField(req, res) {
     try {
         const { productId, change: { field, newValue } } = req.body;
         await ProductsModule.updateOne({ _id: productId }, { $set: { [field]: newValue } });
@@ -10,4 +10,4 @@ async function products_updateProduct(req, res) {
     }
 }
 
-export default products_updateProduct;
+export default products_updateField;

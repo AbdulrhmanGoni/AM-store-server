@@ -16,9 +16,8 @@ import statisticsRouter from "./routes/statisticsRouter.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import bodyParser from 'body-parser';
-import multer from 'multer';
 import adminAuth from "./midelwheres/adminAuth.js";
+import testLab from "./testLab.js";
 
 
 // the App
@@ -38,10 +37,8 @@ app.use(cors({
     credentials: true
 }));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer().any());
-
+// testing using postman
+app.get("/test", testLab);
 
 // Routers
 app.use("/users", [

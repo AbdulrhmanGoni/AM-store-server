@@ -1,7 +1,7 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 const OrderSchema = new Schema({
-    userId: { type: String },
+    userId: { type: Types.ObjectId },
     userData: { type: Object },
     location: { type: Object },
     totalPrice: { type: Object },

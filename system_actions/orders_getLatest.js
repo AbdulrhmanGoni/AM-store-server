@@ -1,16 +1,32 @@
 import { userDataTypes } from "../CONSTANT/dataTypes.js";
 import OrdersModel from "../models/Orders.js";
-import UsersModel from "../models/Users.js";
 
 async function orders_getLatest(req, res) {
     try {
-        const latestOrders = await OrdersModel.find(
-            {}, {}, { sort: { createdAt: -1 }, limit: req.query.limit }
-        );
-        for (let i = 0; i !== latestOrders.length; i++) {
-            const userData = await UsersModel.findById(latestOrders[i].userId, userDataTypes.basic);
-            latestOrders[i].userData = userData;
-        }
+        const latestOrders = await OrdersModel.aggregate([
+            { $sort: { createdAt: -1 } },
+            { $limit: +req.query.limit ?? 5 },
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "userId",
+                    foreignField: "_id",
+                    as: "user",
+                    pipeline: [{ $project: userDataTypes.basic }]
+                }
+            },
+            {
+                $project: {
+                    totalPrice: "$totalPrice",
+                    products: "$products",
+                    state: "$state",
+                    deliveryDate: "$deliveryDate",
+                    deliveryPrice: "$deliveryPrice",
+                    createdAt: "$createdAt",
+                    userData: { $arrayElemAt: ["$user", 0] }
+                }
+            }
+        ]);
         res.status(200).json(latestOrders);
     } catch (error) {
         console.log(error);

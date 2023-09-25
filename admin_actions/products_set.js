@@ -1,5 +1,5 @@
 import products_addProduct from "./products_addProduct.js";
-import products_updateProduct from "./products_updateProduct.js";
+import products_updateField from "./products_updateField.js";
 
 async function products_set(req, res) {
 
@@ -8,8 +8,8 @@ async function products_set(req, res) {
             products_addProduct(req, res);
             break;
 
-        case "update-product":
-            products_updateProduct(req, res);
+        case "update-field":
+            products_updateField(req, res);
             break;
 
         default:
