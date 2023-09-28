@@ -1,5 +1,5 @@
 import ProductsModule from "../models/Products.js";
-import { productDataTypes } from "../CONSTANT/dataTypes.js";
+import { productDataTypes } from "../CONSTANT/projections.js";
 import createProjection from "../functions/createProjection.js";
 
 const products_getById = async (req, res) => {

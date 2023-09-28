@@ -1,4 +1,4 @@
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 import OrdersModule from "../models/Orders.js";
 import UserModel from "../models/Users.js";
 

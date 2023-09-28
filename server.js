@@ -32,10 +32,7 @@ connect(MONGO_DB_LINK)
 // midelwheres
 app.use([json()]);
 app.use(cookieParser());
-app.use(cors({
-    origin: corsWhitelist,
-    credentials: true
-}));
+app.use(cors({ origin: corsWhitelist, credentials: true }));
 
 // testing using postman
 app.get("/test", testLab);

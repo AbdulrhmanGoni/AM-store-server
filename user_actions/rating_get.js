@@ -1,4 +1,4 @@
-import { productDataTypes } from "../CONSTANT/dataTypes.js";
+import { productDataTypes } from "../CONSTANT/projections.js";
 import ProductsModule from "../models/Products.js";
 async function rating_get(req, res) {
     try {

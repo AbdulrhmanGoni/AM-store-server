@@ -1,9 +1,21 @@
 import { Schema, model } from "mongoose";
 
 const UserSchema = new Schema({
-    userName: { type: String },
-    userEmail: { type: String },
-    userPassword: { type: String },
+    userName: {
+        type: String,
+        required: true,
+        minLength: 2,
+        maxLength: 50
+    },
+    userEmail: { 
+        type: String, 
+        required: true 
+    },
+    userPassword: { 
+        type: String, 
+        required: true,
+        minLength: 6
+    },
     avatar: { type: String },
     userShoppingCart: { type: Array },
     userAddress: {

@@ -1,4 +1,4 @@
-import { productDataTypes } from "../CONSTANT/dataTypes.js";
+import { productDataTypes } from "../CONSTANT/projections.js";
 import ProductsModel from "../models/Products.js";
 import products_getSortedBy from "../user_actions/products_getSortedBy.js";
 

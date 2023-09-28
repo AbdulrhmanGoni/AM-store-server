@@ -1,7 +1,7 @@
 import CommentsModule from "../models/Comments.js";
 import UserModel from "../models/Users.js";
 import timeAgo from "../functions/timeAgo.js";
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 
 
 const comments_getReplies = async (req, res) => {

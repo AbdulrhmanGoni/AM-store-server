@@ -1,7 +1,7 @@
 import idHandler from "../functions/idHandler.js";
 import createCustomType from "../functions/createProjection.js";
 import ProductsModule from "../models/Products.js";
-import { productDataTypes } from "../CONSTANT/dataTypes.js";
+import { productDataTypes } from "../CONSTANT/projections.js";
 
 const products_getByIds = async (req, res) => {
     const { productsIds, withCount, withPrice } = req.body;

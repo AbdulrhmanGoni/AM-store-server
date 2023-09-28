@@ -1,5 +1,5 @@
 import createProjection from "../functions/createProjection.js";
-import { productDataTypes } from "../CONSTANT/dataTypes.js";
+import { productDataTypes } from "../CONSTANT/projections.js";
 import searchForProducts from "../functions/searchForProducts.js";
 
 async function products_search(req, res) {

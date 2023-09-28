@@ -1,4 +1,4 @@
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 import UserModel from "../models/Users.js";
 import jwt from "jsonwebtoken";
 

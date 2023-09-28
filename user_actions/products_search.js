@@ -1,4 +1,4 @@
-import { productDataTypes } from "../CONSTANT/dataTypes.js";
+import { productDataTypes } from "../CONSTANT/projections.js";
 import searchForProducts from "../functions/searchForProducts.js";
 
 const products_search = async (req, res) => {

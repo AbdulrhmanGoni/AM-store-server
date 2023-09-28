@@ -1,4 +1,4 @@
-import { productDataTypes } from '../CONSTANT/dataTypes.js';
+import { productDataTypes } from '../CONSTANT/projections.js';
 import idHandler from '../functions/idHandler.js';
 import ProductsModule from "../models/Products.js";
 

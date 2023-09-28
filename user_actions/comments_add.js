@@ -1,4 +1,4 @@
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 import CommentsModule from "../models/Comments.js";
 import UserModel from "../models/Users.js";
 

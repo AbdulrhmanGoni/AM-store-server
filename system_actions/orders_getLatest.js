@@ -1,4 +1,4 @@
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 import OrdersModel from "../models/Orders.js";
 
 async function orders_getLatest(req, res) {

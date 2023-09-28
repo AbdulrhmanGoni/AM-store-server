@@ -1,5 +1,5 @@
 import UserModel from "../models/Users.js";
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 
 const userData_changeName = async (req, res) => {
     try {

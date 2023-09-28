@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt"
 import UserModel from "../models/Users.js";
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 
 export default async function passwordChecker(req, res) {
     try {

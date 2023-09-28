@@ -1,5 +1,5 @@
 import UserModel from "../models/Users.js";
-import { userDataTypes } from "../CONSTANT/dataTypes.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
 
 const favorites_get = async (req, res) => {
     try {
