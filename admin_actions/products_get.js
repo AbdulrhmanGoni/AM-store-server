@@ -6,8 +6,14 @@ import ProductsModule from "../models/Products.js";
 async function products_get(req, res) {
     const { type, returnType } = req.query;
     const projection = returnType ? createProjection(returnType) : productDataTypes[type];
-    try { res.status(200).json(await ProductsModule.findById(req.params.productId, projection)) }
-    catch { res.status(400).json(null); }
+    try {
+        res.status(200).json(await ProductsModule.findById(req.params.productId, projection))
+    }
+    catch (err) {
+        if (new Error(err).message.match("CastError")) {
+            res.status(200).json(false)
+        } else res.status(400).json(null);
+    }
 }
 
 export default products_get;

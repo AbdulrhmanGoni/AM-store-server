@@ -8,7 +8,7 @@ const products_search = async (req, res) => {
             projection: productDataTypes[req.query.type ?? "basic"]
         });
         !!products.length && res.status(200).json(products);
-        !products.length && res.status(404).json(false);
+        !products.length && res.status(404).json([]);
     } catch {
         res.status(400).json(null);
     }
