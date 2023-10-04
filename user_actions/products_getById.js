@@ -8,15 +8,8 @@ const products_getById = async (req, res) => {
     const projection = returnType ? createProjection(returnType) : productDataTypes[type ?? "basic"]
     try { res.status(200).json(await ProductsModule.findById(productId, projection)) }
     catch (err) {
-        switch (err.name) {
-            case "CastError":
-                res.status(500).json(false)
-                break;
-
-            default:
-                res.status(400).json(null)
-                break;
-        }
+        if (err.name == "CastError") res.status(404).json()
+        else res.status(400).json()
     }
 }
 
