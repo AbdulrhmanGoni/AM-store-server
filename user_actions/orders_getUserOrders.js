@@ -1,11 +1,11 @@
-import Orders from "../models/Orders.js";
+import getOrders from "../system_actions/getOrders.js";
 
 const orders_getUserOrders = async (req, res) => {
+    const { orderId, userId } = req.params;
     try {
-        const { state } = req.query;
-        const { userId } = req.params;
-        const orders = await Orders.find({ userId, state }).sort({ "createdAt": -1 });
-        res.status(200).json(orders);
+        const orders = await getOrders({ orderId, userId }, req.query)
+        orders && res.status(200).json(orders)
+        !orders && res.status(404).json(null)
     } catch (error) {
         res.status(400).json(null);
     }

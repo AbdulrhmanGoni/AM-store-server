@@ -1,10 +1,12 @@
-import Orders from "../models/Orders.js";
+import getOrders from "../system_actions/getOrders.js";
+
 
 const orders_getById = async (req, res) => {
     const { orderId, userId } = req.params;
     try {
-        const theOrder = await Orders.findOne({ _id: orderId, userId });
-        res.status(200).json(theOrder);
+        const orders = await getOrders({ orderId, userId }, req.query)
+        if (orders?.length) res.status(200).json(orders[0])
+        else res.status(404).json(null)
     } catch {
         res.status(400).json(null);
     }

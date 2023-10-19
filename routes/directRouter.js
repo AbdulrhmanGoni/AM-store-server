@@ -24,5 +24,6 @@ router.route("/admin-log-in/google-auth").post(admin_logIn_withGoogle);
 router.route("/admin-log-in/:adminId").get([adminAuth, admin_Logged]);
 router.route("/admin-log-in").post(admin_logIn);
 router.route("/mails").post([authenticate, sendFeedback]);
+router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
 
 export default router;

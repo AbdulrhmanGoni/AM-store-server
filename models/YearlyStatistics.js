@@ -4,7 +4,15 @@ const YearlyStatisticsSchema = new Schema({
     year: { type: Number },
     statisticsType: { type: String },
     categories: { type: Object },
-    monthes: { type: Array },
+    monthes: [
+        {
+            month: String,
+            totalEarnings: Number,
+            productsSold: Number,
+            totalOrders: Number,
+            earningsTarget: Number
+        }
+    ]
 })
 
 const YearlyStatisticsModel = model("yearly-statistics", YearlyStatisticsSchema)
