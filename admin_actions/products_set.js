@@ -5,7 +5,7 @@ async function products_set(req, res) {
 
     switch (req.query.type) {
         case "add-new-product": products_addProduct(req, res); break;
-        case "update-field": products_updateField(req, res); break;
+        case "update-filed": products_updateField(req, res); break;
         default: res.status(400).json(null); break;
     }
 }
