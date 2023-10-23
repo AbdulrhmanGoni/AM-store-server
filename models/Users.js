@@ -45,7 +45,10 @@ const UserSchema = new Schema({
     },
     userFavorites: [Types.ObjectId],
     userOrders: [Types.ObjectId],
-    emailIsVerified: Boolean
+    emailIsVerified: {
+        type: Boolean,
+        default: false
+    }
 },
     { timestamps: true }
 );
