@@ -1,17 +1,33 @@
 import { Schema, Types, model } from "mongoose";
+import { LocationSchema, PaymentMethodSchema } from "./Users.js";
 
-const OrderSchema = new Schema({
-    userId: { type: Types.ObjectId },
-    userData: { type: Object },
-    location: { type: Object },
-    totalPrice: { type: Object },
-    products: { type: Array },
-    paymentMethod: { type: Object },
-    state: { type: String },
-    deliveryDate: { type: String },
-    deliveryPrice: { type: Object },
-    discountCobone: { type: Object },
-}, { timestamps: true } 
+const OrderSchema = new Schema(
+    {
+        userId: Types.ObjectId,
+        userData: {
+            _id: Types.ObjectId,
+            userName: String,
+            userEmail: String,
+            avatar: String
+        },
+        location: LocationSchema,
+        totalPrice: Number,
+        products: [String],
+        paymentMethod: PaymentMethodSchema,
+        state: {
+            type: String,
+            enum: ["Completed", "Pending", "Canceled"],
+            default: "Pending"
+        },
+        deliveryDate: String,
+        expectedDeliveryDate: String,
+        deliveryPrice: {
+            type: Number,
+            default: 0
+        },
+        discountCobone: { name: String, value: Number }
+    },
+    { timestamps: true }
 )
 
 const OrdersModule = model("orders", OrderSchema);

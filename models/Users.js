@@ -1,4 +1,21 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
+
+export const LocationSchema = new Schema({
+    theName: String,
+    phone: String,
+    country: String,
+    city: String,
+    street: String,
+    moreDetails: String,
+    type: String,
+    id: String
+});
+
+export const PaymentMethodSchema = new Schema({
+    theName: String,
+    number: Number,
+    expired: String
+});
 
 const UserSchema = new Schema({
     userName: {
@@ -7,28 +24,30 @@ const UserSchema = new Schema({
         minLength: 2,
         maxLength: 50
     },
-    userEmail: { 
-        type: String, 
-        required: true 
+    userEmail: {
+        type: String,
+        required: true
     },
-    userPassword: { 
-        type: String, 
+    userPassword: {
+        type: String,
         required: true,
         minLength: 6
     },
-    avatar: { type: String },
-    userShoppingCart: { type: Array },
+    avatar: String,
+    userShoppingCart: { type: [String] },
     userAddress: {
-        selectedLocation: { type: Object },
-        locationsList: { type: Array },
+        selectedLocation: LocationSchema,
+        locationsList: [LocationSchema],
     },
     userPaymentMethodes: {
-        cardsList: { type: Array },
-        choosedMethod: { type: Object },
+        cardsList: [PaymentMethodSchema],
+        choosedMethod: PaymentMethodSchema,
     },
-    userFavorites: { type: Array },
-    userOrders: { type: Array }
-}, { timestamps: true }
+    userFavorites: [Types.ObjectId],
+    userOrders: [Types.ObjectId],
+    emailIsVerified: Boolean
+},
+    { timestamps: true }
 );
 
 const UserModel = model("users", UserSchema);

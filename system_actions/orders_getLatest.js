@@ -20,7 +20,7 @@ async function orders_getLatest(req, res) {
                     totalPrice: "$totalPrice",
                     products: "$products",
                     state: "$state",
-                    deliveryDate: "$deliveryDate",
+                    expectedDeliveryDate: "$expectedDeliveryDate",
                     deliveryPrice: "$deliveryPrice",
                     createdAt: "$createdAt",
                     userData: { $arrayElemAt: ["$user", 0] }
