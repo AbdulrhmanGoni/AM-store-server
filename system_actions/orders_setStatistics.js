@@ -7,7 +7,7 @@ const orders_setStatistics = async (theOrder, session) => {
 
     const
         { year, month } = getCurrentDate(),
-        { products, totalPrice: { after: totalPrice } } = theOrder,
+        { products, totalPrice } = theOrder,
         filter = { year, statisticsType: "monthly-statistics", "monthes.month": month },
         productsCount = products.reduce((acc, curr) => acc + idHandler(curr).count, 0),
         update = {

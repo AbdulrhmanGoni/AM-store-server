@@ -1,20 +1,50 @@
 import { Schema, model } from "mongoose";
 import { products } from "../system_actions/genVirtualsProperties.js";
+import { DiscoutCobone } from "./StoreVariables.js";
 
 const ProductSchema = new Schema({
-    title: { type: String },
-    price: { type: Number },
-    images: { type: Array },
-    category: { type: String },
-    description: { type: String },
-    amount: { type: Number },
-    count: { type: Number },
-    earnings: { type: Number },
-    sold: { type: Number },
+    title: {
+        type: String,
+        required: true,
+        minLingth: 6
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    images: {
+        type: [String],
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    series: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true,
+        minLingth: 12
+    },
+    amount: {
+        type: Number,
+        required: true
+    },
+    count: Number,
+    earnings: {
+        type: Number,
+        default: 0
+    },
+    sold: {
+        type: Number,
+        default: 0
+    },
     rate: { type: Object },
-    series: { type: String },
+    discount: DiscoutCobone,
     comments: { type: Array },
-    discount: { type: Object },
 },
     {
         timestamps: true,

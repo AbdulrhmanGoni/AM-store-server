@@ -1,8 +1,8 @@
-import ConstantsModule from "../models/Constants.js";
+import StoreVariablesModule from "../models/StoreVariables.js";
 
 async function cobones_get(req, res) {
     try {
-        const { cobones } = await ConstantsModule.findOne({ name: "cobonesData" });
+        const { cobones } = await StoreVariablesModule.findOne({ varName: "discountCobones" });
         res.status(200).json(cobones);
     } catch (error) {
         console.log(error)
