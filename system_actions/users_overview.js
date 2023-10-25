@@ -1,8 +1,17 @@
 import UserModel from '../models/Users.js';
 
-export default async function users_statistics(req, res) {
+export default async function users_overview(req, res) {
+
+    const { page, limit: pageSize } = req.query;
+
     try {
         const users = await UserModel.aggregate([
+            {
+                $skip: (+page - 1) * +pageSize
+            },
+            {
+                $limit: +pageSize + 1
+            },
             {
                 $project: {
                     userName: 1,
@@ -12,7 +21,10 @@ export default async function users_statistics(req, res) {
                 }
             }
         ])
-        res.status(200).json(users);
+        res.status(200).json({ 
+            users: users.slice(0, +pageSize),
+            isThereNextPage: !!users[+pageSize] 
+        });
     } catch (error) {
         console.log(error)
         res.status(400).json(null)
