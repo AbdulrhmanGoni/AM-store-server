@@ -6,6 +6,7 @@ import orders_getLatest from "../system_actions/orders_getLatest.js";
 import mostPopularSerieses from "../system_actions/mostPopularSerieses.js";
 import products_statistics from "../system_actions/products_statistics.js";
 import users_overview from "../system_actions/users_overview.js";
+import users_topCustomers from "../system_actions/users_topCustomers.js";
 
 const router = Router();
 
@@ -17,6 +18,7 @@ const statisticsQueriesControler = {
     "top-serieses": mostPopularSerieses,
     "products-statistics": products_statistics,
     "users-overview": users_overview,
+    "top-customers": users_topCustomers,
 }
 
 router.get("/", async (req, res) => {
