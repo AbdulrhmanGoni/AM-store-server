@@ -1,6 +1,6 @@
 import { createTransport } from 'nodemailer';
 
-function sendEmail(targetEmail, subject, body) {
+export default async function sendEmail(targetEmail, subject, body) {
 
     const transporter = createTransport({
         service: 'gmail',
@@ -22,5 +22,3 @@ function sendEmail(targetEmail, subject, body) {
         else { console.log('Email sent:', info.response) }
     });
 }
-
-export default sendEmail

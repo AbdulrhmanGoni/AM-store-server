@@ -1,27 +1,26 @@
-import { userDataTypes } from "../CONSTANT/projections.js";
 import UserModel from "../models/Users.js";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import checkEmailExistance from "../functions/checkEmailExistance.js";
+import users_signUpUser from "./users_signUpUser.js";
 
 
 const user_regist = async (req, res) => {
     try {
         const { userEmail } = req.body;
-        const isExist = await UserModel.findOne({ userEmail }, userDataTypes.userEmail);
+        const isExist = await UserModel.findOne({ userEmail }, { _id: 1 });
         if (isExist) {
-            res.status(200).json(false);
-        } else {
-            const newUser = new UserModel(req.body);
-            const hashedPassword = bcrypt.hashSync(newUser.userPassword, +process.env.HASHING_SALT_ROUNDS);
-            newUser.userPassword = hashedPassword;
-            !(await newUser.save().then(() => {
-                const userId = newUser._id;
-                const token = jwt.sign({ userId, role: "user" }, process.env.JWT_SECRET_KEY)
-                const { userName, avatar } = newUser;
-                res.status(200).json({ userData: { _id: userId, userEmail, userName, avatar }, token });
-                return true
-            })) && res.status(400).json(null)
+            res.status(200).json({ ok: false, message: "This email already registred" });
+            return
         }
+        const isExistEmail = await checkEmailExistance(userEmail)
+        if (!isExistEmail) {
+            res.status(200).json({ ok: false, message: "This email is not active" });
+            return
+        }
+        const userSignedCompletely = await users_signUpUser(req.body);
+        res.status(userSignedCompletely ? 200 : 400).json({
+            payload: userSignedCompletely,
+            ok: true
+        })
     } catch (error) {
         console.log(error);
         res.status(400).json(null);
