@@ -16,7 +16,7 @@ import statisticsRouter from "./routes/statisticsRouter.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import adminAuth from "./middleware/adminAuth.js";
+import adminAuth from "./auth/adminAuth.js";
 import testLab from "./testLab.js";
 
 
