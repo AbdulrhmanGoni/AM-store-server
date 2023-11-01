@@ -36,6 +36,7 @@ app.use(cors({ origin: corsWhitelist, credentials: true }));
 
 // testing using postman
 app.get("/test", testLab);
+app.post("/test", testLab);
 
 // Routers
 app.use("/users", [

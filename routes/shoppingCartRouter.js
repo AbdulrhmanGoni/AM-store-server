@@ -4,7 +4,7 @@ const router = Router();
 import shoppingCart_get from "../user_actions/shoppingCart_get.js";
 import shoppingCart_set from "../user_actions/shoppingCart_set.js";
 import shoppingCart_remove from "../user_actions/shoppingCart_remove.js";
-import authenticate from "../middleware/authenticate.js";
+import authenticate from "../auth/authenticate.js";
 
 router.use("/:userId", authenticate)
 
