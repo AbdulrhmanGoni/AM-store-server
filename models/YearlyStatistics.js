@@ -4,13 +4,23 @@ import { MONTHES } from "../CONSTANT/MONTHES.js";
 const YearlyStatisticsSchema = new Schema({
     year: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
-    statisticsType: {
-        type: String,
-        required: true
-    },
-    categories: { type: Object },
+    categories: [
+        {
+            category: String,
+            monthlyStatistics: [
+                {
+                    month: String,
+                    totalEarnings: Number,
+                    productsSold: Number,
+                    _id: false
+                }
+            ],
+            _id: false
+        }
+    ],
     monthes: {
         type: [
             {
@@ -18,7 +28,8 @@ const YearlyStatisticsSchema = new Schema({
                 totalEarnings: Number,
                 productsSold: Number,
                 totalOrders: Number,
-                earningsTarget: Number
+                earningsTarget: Number,
+                _id: false
             }
         ],
         default: MONTHES.map((month) => {

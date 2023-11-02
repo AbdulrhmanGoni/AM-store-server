@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { products } from "../system_actions/genVirtualsProperties.js";
-import { DiscoutCobone } from "./StoreVariables.js";
+import { DiscoutCobone } from "./Settings.js";
 
 const ProductSchema = new Schema({
     title: {

@@ -1,6 +1,6 @@
 import { Schema, Types, model } from "mongoose";
 
-export const LocationSchema = new Schema({
+export const LocationSchema = {
     theName: String,
     phone: String,
     country: String,
@@ -8,14 +8,17 @@ export const LocationSchema = new Schema({
     street: String,
     moreDetails: String,
     type: String,
-    id: String
-});
+    id: String,
+    _id: false
 
-export const PaymentMethodSchema = new Schema({
+};
+
+export const PaymentMethodSchema = {
     theName: String,
     number: Number,
-    expired: String
-});
+    expired: String,
+    _id: false
+}
 
 const UserSchema = new Schema({
     userName: {

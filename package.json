@@ -1,15 +1,22 @@
 {
-  "name": "back_end",
+  "name": "am-store-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "The API of AM-Store project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "env-cmd -f dev.env nodemon server",
     "dev": "env-cmd -f dev.env nodemon server"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "AM",
+    "AM-Store",
+    "store",
+    "api",
+    "API",
+    "server"
+  ],
+  "author": "Abdulrhman Goni",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
@@ -21,7 +28,6 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.1",
-    "moment": "^2.29.4",
     "mongoose": "^7.0.4",
     "nodemailer": "^6.9.2"
   },

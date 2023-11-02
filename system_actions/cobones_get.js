@@ -1,8 +1,8 @@
-import StoreVariablesModule from "../models/StoreVariables.js";
+import SettingsModule from "../models/Settings.js";
 
 async function cobones_get(req, res) {
     try {
-        const { cobones } = await StoreVariablesModule.findOne({ varName: "discountCobones" });
+        const [{ cobones }] = await SettingsModule.find();
         const cobonesObject = {}
         for (let i = 0; i < cobones.length; i++) {
             cobonesObject[cobones[i].name] = cobones[i].value
