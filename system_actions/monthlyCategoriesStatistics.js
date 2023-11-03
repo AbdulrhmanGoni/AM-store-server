@@ -1,6 +1,6 @@
 import YearlyStatisticsModel from "../models/YearlyStatistics.js";
 
-export default async function categories_statistics(req, res) {
+export default async function monthlyCategoriesStatistics(req, res) {
     const { targetYear: year = new Date().getFullYear() } = req.query;
     try {
         const { categories } = await YearlyStatisticsModel.findOne({ year }, { _id: 0, categories: 1 });

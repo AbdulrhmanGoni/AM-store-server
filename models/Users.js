@@ -1,6 +1,6 @@
 import { Schema, Types, model } from "mongoose";
 
-export const LocationSchema = {
+export const LocationSchema = new Schema({
     theName: String,
     phone: String,
     country: String,
@@ -10,15 +10,14 @@ export const LocationSchema = {
     type: String,
     id: String,
     _id: false
+});
 
-};
-
-export const PaymentMethodSchema = {
+export const PaymentMethodSchema = new Schema({
     theName: String,
     number: Number,
     expired: String,
     _id: false
-}
+});
 
 const UserSchema = new Schema({
     userName: {
@@ -40,10 +39,16 @@ const UserSchema = new Schema({
     userShoppingCart: { type: [String] },
     userAddress: {
         selectedLocation: LocationSchema,
-        locationsList: [LocationSchema],
+        locationsList: {
+            type: [LocationSchema],
+            default: []
+        },
     },
     userPaymentMethodes: {
-        cardsList: [PaymentMethodSchema],
+        cardsList: {
+            type: [PaymentMethodSchema],
+            default: []
+        },
         choosedMethod: PaymentMethodSchema,
     },
     userFavorites: [Types.ObjectId],

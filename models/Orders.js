@@ -10,10 +10,10 @@ const OrderSchema = new Schema(
             userEmail: String,
             avatar: String
         },
-        location: LocationSchema,
+        location: { type: LocationSchema },
         totalPrice: Number,
         products: [String],
-        paymentMethod: PaymentMethodSchema,
+        paymentMethod: { type: PaymentMethodSchema },
         state: {
             type: String,
             enum: ["Completed", "Pending", "Canceled"],

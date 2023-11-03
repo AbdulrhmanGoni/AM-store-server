@@ -1,6 +1,6 @@
 import YearlyStatisticsModel from "../models/YearlyStatistics.js";
 
-async function monthly_statistics(req, res) {
+export default async function monthlySalesStatistics(req, res) {
     const { targetYear: year = new Date().getFullYear() } = req.query;
     try {
         const { monthes } = await YearlyStatisticsModel.findOne({ year }, { _id: 0, monthes: 1 });
@@ -10,5 +10,3 @@ async function monthly_statistics(req, res) {
         res.status(400).json(null);
     }
 }
-
-export default monthly_statistics;

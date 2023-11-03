@@ -1,11 +1,12 @@
 import ProductsModel from "../models/Products.js";
 
-export default async function products_statistics(req, res) {
+export default async function categoriesStatistics(req, res) {
     try {
         const categories = await ProductsModel.aggregate([
             {
                 $group: {
                     _id: "$category",
+                    category: { $first: "$category" },
                     productsCount: { $count: {} },
                     totalEarnings: { $sum: "$earnings" },
                     productsSold: { $sum: "$sold" },

@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-export const DiscoutCobone = {
+export const DiscoutCobone = new Schema({
     name: {
         type: String,
         required: true
@@ -9,7 +9,7 @@ export const DiscoutCobone = {
         type: Number,
         required: true
     }
-}
+});
 
 const SettingsSchema = new Schema({
     cobones: [DiscoutCobone],
