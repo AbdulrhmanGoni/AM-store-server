@@ -10,7 +10,17 @@ export default async function categoriesStatistics(req, res) {
                     productsCount: { $count: {} },
                     totalEarnings: { $sum: "$earnings" },
                     productsSold: { $sum: "$sold" },
-                    inStock: { $sum: "$amount" }
+                    inStock: { $sum: "$amount" },
+                    outOfStock: {
+                        $sum: {
+                            $cond: {
+                                if: { $eq: ["$amount", 0] },
+                                then: { $sum: 1 },
+                                else: { $sum: 0 }
+                            }
+                        }
+                    },
+                    serieses: { $addToSet: "$series" }
                 }
             }
         ])

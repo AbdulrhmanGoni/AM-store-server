@@ -17,13 +17,14 @@ export default async function users_overview(req, res) {
                     userName: 1,
                     userEmail: 1,
                     avatar: 1,
-                    userOrders: { $size: "$userOrders" }
+                    hisEmailVerified: 1,
+                    userOrders: { $size: "$userOrders" },
                 }
             }
         ])
-        res.status(200).json({ 
+        res.status(200).json({
             users: users.slice(0, +pageSize),
-            isThereNextPage: !!users[+pageSize] 
+            isThereNextPage: !!users[+pageSize]
         });
     } catch (error) {
         console.log(error)

@@ -53,7 +53,7 @@ const UserSchema = new Schema({
     },
     userFavorites: [Types.ObjectId],
     userOrders: [Types.ObjectId],
-    emailIsVerified: {
+    hisEmailVerified: {
         type: Boolean,
         default: false
     }
