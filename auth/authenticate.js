@@ -6,9 +6,9 @@ export default async function authenticate(req, res, next) {
     const tokenId = req.headers["token-id"];
     if (accessToken) {
         try {
-            const token = await jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
+            const token = jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
             if (token && (tokenId === token.userId)) {
-                req.tokenId = token.userId; next();
+                req.userId = token.userId; next();
             } else { res.status(401).json({ message: "There is problem in your credentials" }) }
         } catch {
             res.status(401).json(unAuthorizedMsg)

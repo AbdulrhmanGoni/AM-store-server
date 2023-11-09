@@ -11,13 +11,17 @@ export default async function users_signUpUser(userData) {
         const done = await newUser.save()
             .then(() => {
                 const userId = newUser._id;
-                const token = jwt.sign({ userId, role: "user" }, process.env.JWT_SECRET_KEY)
+                const token = jwt.sign(
+                    { userId, role: "user" },
+                    process.env.JWT_SECRET_KEY,
+                    { expiresIn: "30d" }
+                )
                 const { userName, avatar, userEmail } = newUser;
                 return { userData: { _id: userId, userEmail, userName, avatar }, token }
             })
-            .catch((err) => { 
+            .catch((err) => {
                 console.log(err)
-                return false  
+                return false
             })
         return done
     } catch (error) {

@@ -6,7 +6,7 @@ export default async function adminAuth(req, res, next) {
     const tokenId = req.headers["token-id"];
     if (accessToken && tokenId) {
         try {
-            const token = await jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
+            const token = jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
             if (token.role === "admin" && tokenId === token.adminId) {
                 req.adminId = token.adminId; next();
             } else if (token.role === "user") {
