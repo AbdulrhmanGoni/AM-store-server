@@ -8,6 +8,7 @@ import monthlyCategoriesStatistics from "../system_actions/monthlyCategoriesStat
 import categoriesStatistics from "../system_actions/categoriesStatistics.js";
 import topCustomers from "../system_actions/topCustomers.js";
 import users_statistics from "../system_actions/users_statistics.js";
+import orders_statistics from "../system_actions/orders_statistics.js";
 
 const router = Router();
 
@@ -17,6 +18,7 @@ const statisticsQueriesControler = {
     "categories-statistics": categoriesStatistics,
     "top-products": products_topProducts,
     "orders-get-latest": orders_getLatest,
+    "orders-statistics": orders_statistics,
     "top-serieses": mostPopularSerieses,
     "users-overview": users_overview,
     "users-statistics": users_statistics,

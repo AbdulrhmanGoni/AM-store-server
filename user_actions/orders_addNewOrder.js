@@ -4,6 +4,8 @@ import UserModel from "../models/Users.js";
 import orders_setStatistics from "../system_actions/orders_setStatistics.js";
 import products_setStatistics from "../system_actions/products_setStatistics.js";
 import getYearStatisticsDocument from "../system_actions/getYearStatisticsDocument.js";
+import { userDataTypes } from "../CONSTANT/projections.js";
+import sendOrderCreatedSuccessfully from "../functions/sendOrderCreatedSuccessfully.js";
 
 
 export default async function orders_addNewOrder(req, res) {
@@ -16,10 +18,10 @@ export default async function orders_addNewOrder(req, res) {
         const { products, totalPrice } = theOrder;
 
         const { id } = await new OrdersModule(theOrder).save({ session })
-        await UserModel.updateOne(
+        const userData = await UserModel.findOneAndUpdate(
             { _id: theOrder.userId },
             { $set: { userShoppingCart: [] }, $push: { userOrders: id } },
-            { session }
+            { session, projection: userDataTypes.basic }
         );
 
         // Bring the document that contains the statistics of current year
@@ -39,10 +41,17 @@ export default async function orders_addNewOrder(req, res) {
 
         if (addingOrderStatisticsDone && addingProductsStatisticsDone) {
             await currentYearStatistics.save({ session })
+            await sendOrderCreatedSuccessfully(userData)
+
+            // if all processes above done successfully, the changes will saved in the database
             await session.commitTransaction();
             res.status(200).json({ ok: true });
         }
         else {
+            /*
+                if one of the processes above failed, 
+                `session.abortTransaction` function will undo all changes
+            */
             res.status(200).json({ ok: false });
             await session.abortTransaction();
         }
