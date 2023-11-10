@@ -6,13 +6,13 @@ import OrdersModel from "../models/Orders.js";
 export default async function getOrders({ orderId, userId }, query = {}) {
 
     const { productsReturnType: type, ordersReturnType, state } = query;
-    const productsProjection = type ? productDataTypes[type] ?? createProjection(type) : productDataTypes.basic
-    const ordersProjection = ordersReturnType ? createProjection(ordersReturnType) : { __v: 0 }
-    const filter = {}
+    const productsProjection = type ? productDataTypes[type] ?? createProjection(type) : productDataTypes.basic;
+    const ordersProjection = ordersReturnType ? createProjection(ordersReturnType) : { __v: 0 };
+    const filter = {};
 
-    orderId && Object.assign(filter, { _id: new Types.ObjectId(orderId) })
-    userId && Object.assign(filter, { userId: new Types.ObjectId(userId) })
-    state && Object.assign(filter, { state })
+    orderId && Object.assign(filter, { _id: new Types.ObjectId(orderId) });
+    userId && Object.assign(filter, { userId: new Types.ObjectId(userId) });
+    state && Object.assign(filter, { state });
 
     try {
         const orders = await OrdersModel.aggregate([
@@ -26,19 +26,31 @@ export default async function getOrders({ orderId, userId }, query = {}) {
                         {
                             $match: {
                                 $expr: {
-                                    $in: [
-                                        { $toString: "$_id" },
+                                    $gt: [
                                         {
-                                            $map: {
+                                            $reduce: {
                                                 input: "$$products",
-                                                as: "productId",
-                                                in: { $substr: ["$$productId", 0, 24] }
+                                                initialValue: 0,
+                                                in: {
+                                                    $sum: [
+                                                        {
+                                                            $cond: {
+                                                                if: { $eq: [{ $substrBytes: ["$$this", 0, 24] }, { $toString: "$_id" }] },
+                                                                then: 1,
+                                                                else: 0
+                                                            }
+                                                        },
+                                                        "$$value"
+                                                    ]
+                                                }
                                             }
-                                        }
+                                        },
+                                        0
                                     ]
                                 }
                             }
                         },
+                        { $project: productsProjection },
                         {
                             $addFields: {
                                 count: {
@@ -69,8 +81,7 @@ export default async function getOrders({ orderId, userId }, query = {}) {
                                     }
                                 }
                             }
-                        },
-                        { $project: productsProjection }
+                        }
                     ]
                 }
             },
