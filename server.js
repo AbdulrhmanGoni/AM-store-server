@@ -9,7 +9,7 @@ import locationsRouter from "./routes/locationsRouter.js";
 import paymentMethodsRouter from "./routes/paymentMethodsRouter.js";
 import usersOrdersRoute from "./routes/usersOrdersRoute.js";
 import ordersRouter from "./routes/ordersRouter.js";
-import variablesRouter from "./routes/variablesRouter.js";
+import settingsRouter from "./routes/settingsRouter.js";
 import directRouter from "./routes/directRouter.js";
 import adminRouter from "./routes/adminRouter.js";
 import statisticsRouter from "./routes/statisticsRouter.js";
@@ -52,7 +52,7 @@ app.use("/", directRouter);
 app.use("/orders", ordersRouter);
 app.use("/admin", adminAuth, adminRouter);
 app.use("/statistics", adminAuth, statisticsRouter);
-app.use("/variables", variablesRouter);
+app.use("/settings", settingsRouter);
 
 
 // listenig

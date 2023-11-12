@@ -1,13 +1,13 @@
 import jwt from "jsonwebtoken";
 import UserModel from "../models/Users.js";
-import bcrypt from "bcrypt";
+import { compareSync } from "bcrypt";
 
 const user_logIn = async (req, res) => {
     try {
         const { userEmail, userPassword } = req.body;
         const userData = await UserModel.findOne({ userEmail }, { userPassword: true });
         if (userData) {
-            const pass = bcrypt.compareSync(userPassword, userData.userPassword);
+            const pass = compareSync(userPassword, userData.userPassword);
             if (pass) {
                 const token = jwt.sign(
                     { userId: userData._id, role: "user" },

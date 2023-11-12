@@ -55,8 +55,8 @@ export default function emailHtmlTemplate({ userName }, verificationCode) {
             Here is your verification code, copy it and go back to verification page on AM Store and paste the code in the specified field
         </p>
         <button 
-            class="verifiction-link"
-            onclick="() => { navigator.clipboard.writeText(${verificationCode}) }"
+            class="verifiction-code"
+            onclick="navigator.clipboard.writeText('${verificationCode}')"
         >
             ${verificationCode}
         </button>
