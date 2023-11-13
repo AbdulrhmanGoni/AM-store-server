@@ -1,6 +1,6 @@
 import UserModel from "../models/Users.js";
 
-export let emailToVerify = {};
+export const emailToVerify = {};
 
 export default async function verifyUserEmail(req, res) {
     try {

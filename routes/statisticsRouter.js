@@ -9,13 +9,13 @@ import categoriesStatistics from "../system_actions/categoriesStatistics.js";
 import topCustomers from "../system_actions/topCustomers.js";
 import users_statistics from "../system_actions/users_statistics.js";
 import orders_statistics from "../system_actions/orders_statistics.js";
-
-const router = Router();
+import productsStatistics from "../system_actions/productsStatistics.js";
 
 const statisticsQueriesControler = {
     "monthly-sales-statistics": monthlySalesStatistics,
     "monthly-categories-statistics": monthlyCategoriesStatistics,
     "categories-statistics": categoriesStatistics,
+    "products-statistics": productsStatistics,
     "top-products": products_topProducts,
     "orders-get-latest": orders_getLatest,
     "orders-statistics": orders_statistics,
@@ -24,6 +24,8 @@ const statisticsQueriesControler = {
     "users-statistics": users_statistics,
     "top-customers": topCustomers
 }
+
+const router = Router();
 
 router.get("/", async (req, res) => {
     let { get } = req.query;

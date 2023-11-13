@@ -11,13 +11,13 @@ export default async function userEmailVerification(req, res) {
             const { userEmail, userName, hisEmailVerified } = user;
             
             if (hisEmailVerified) {
-                res.status(200).json({ ok: false, message: "Your email is already verifyed!" })
+                res.status(200).json({ ok: false, message: "Your email is already verifyed!" });
             } else {
                 const verificationCode = getRandomInt(100000, 999999);
                 emailToVerify[userEmail] = {};
                 emailToVerify[userEmail].code = verificationCode;
                 emailToVerify[userEmail].tries = 1;
-                const response = await sendVerificationEmailMail({ userEmail, userName }, verificationCode)
+                const response = await sendVerificationEmailMail({ userEmail, userName }, verificationCode);
                 response && res.status(200).json({ ok: true });
                 !response && res.status(400).json();
             }

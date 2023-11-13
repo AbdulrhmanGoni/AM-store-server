@@ -1,24 +1,17 @@
-import getCurrentDate from "../functions/getCurrentDate.js";
 import OrdersModel from "../models/Orders.js";
 
 
-export default async function orders_statistics(_, res) {
+export default async function orders_statistics(req, res) {
     try {
-        const { year } = getCurrentDate()
+        const { year = new Date().getFullYear() } = req.query
         const [statistics] = await OrdersModel.aggregate([
+            {
+                $match: { $expr: { $eq: [{ $year: "$createdAt" }, +year] } }
+            },
             {
                 $group: {
                     _id: "orders",
-                    ordersCount: { $count: {} },
-                    currentYearOrders: {
-                        $sum: {
-                            $cond: {
-                                if: { $eq: [{ $year: "$createdAt" }, year] },
-                                then: 1,
-                                else: 0,
-                            }
-                        }
-                    },
+                    totalOrders: { $count: {} },
                     completedOrders: condition("Completed"),
                     pendingOrders: condition("Pending"),
                     canceledOrders: condition("Canceled")
