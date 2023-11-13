@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import { products } from "../system_actions/genVirtualsProperties.js";
 import { DiscoutCobone } from "./Settings.js";
 
 const ProductSchema = new Schema({
@@ -46,12 +45,7 @@ const ProductSchema = new Schema({
     discount: DiscoutCobone,
     comments: { type: Array },
 },
-    {
-        timestamps: true,
-        virtuals: {
-            'rate.avrage': { get: products.rate.avrage }
-        }
-    }
+    { timestamps: true }
 )
 
 const ProductsModel = model("products", ProductSchema);
