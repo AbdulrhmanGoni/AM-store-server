@@ -1,10 +1,9 @@
-import UserModel from "../../../models/Users.js";
+import UserModel from "../../models/Users";
 
-const favorites_toggle = async (req, res) => {
+
+export default async function toggleFavorites(userId, productId) {
     try {
-        let isToggled = false
-        const { userId } = req.params;
-        const { productId } = req.body;
+        let isToggled = false;
         const filter = { _id: userId, userFavorites: { $in: [productId] } };
         const updateQuery = { userFavorites: productId };
         const { matchedCount } = await UserModel.updateOne(filter, { $pull: updateQuery });
@@ -14,13 +13,10 @@ const favorites_toggle = async (req, res) => {
             if (matchedCount) isToggled = true;
             else isToggled = false;
         }
-        if (isToggled) res.status(200).json(productId);
-        else res.status(200).json(false)
+
+        return isToggled
     } catch (error) {
-        console.log(error);
-        res.status(400).json(null);
+        console.log(error)
+        return null;
     }
 }
-
-
-export default favorites_toggle;

@@ -9,7 +9,7 @@ import products_updateProduct from "../admin_actions/products_updateProduct.js";
 const router = Router();
 
 router.route("/products")
-    .get(products_search)
+    .get(products_get)
     .post(products_set)
     .delete(products_deleteMany)
 
