@@ -1,17 +1,17 @@
 import { Router } from "express";
+import authenticate from "../auth/authenticate.js";
+import user_shoppingCart_get from "../routes/users_routes/user_shoppingCart_get.js";
+import user_shoppingCart_post from "../routes/users_routes/user_shoppingCart_post.js";
+import user_shoppingCart_delete from "../routes/users_routes/user_shoppingCart_delete.js";
+
 const router = Router();
 
-import shoppingCart_get from "../user_actions/shoppingCart_get.js";
-import shoppingCart_set from "../user_actions/shoppingCart_set.js";
-import shoppingCart_remove from "../user_actions/shoppingCart_remove.js";
-import authenticate from "../auth/authenticate.js";
-
-router.use("/:userId", authenticate)
+router.use("/:userId", authenticate);
 
 router.route("/:userId/shopping-cart")
-    .get(shoppingCart_get)
-    .post(shoppingCart_set)
-    .delete([shoppingCart_remove, shoppingCart_get])
+    .get(user_shoppingCart_get)
+    .post(user_shoppingCart_post)
+    .delete(user_shoppingCart_delete)
 
 
 export default router

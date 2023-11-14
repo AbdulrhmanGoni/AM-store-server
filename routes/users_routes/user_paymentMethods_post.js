@@ -1,4 +1,4 @@
-import UsersController from "../../controllers/users-controllers/UsersController";
+import UsersController from '../../controllers/users-controllers/UsersController.js';
 
 export default async function user_paymentMethods_post(req, res) {
     try {

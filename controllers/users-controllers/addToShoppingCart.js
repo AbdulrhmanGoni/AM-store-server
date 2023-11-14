@@ -1,11 +1,10 @@
-import UserModel from "../../models/Users.js";
-import { userDataTypes, productDataTypes } from "../../CONSTANT/projections.js";
-import ProductsModule from "../../models/Products.js";
+import UserModel from '../../models/Users.js';
+import ProductsModule from '../../models/Products.js';
+import { productDataTypes, userDataTypes } from '../../CONSTANT/projections.js';
 
-const shoppingCart_addProduct = async (req, res, next) => {
+export default async function addToShoppingCart(userId, { productId, count }) {
     try {
-        const filter = { _id: req.params.userId };
-        const { productId, count } = req.body;
+        const filter = { _id: userId };
         const { modifiedCount } = await UserModel.updateOne(
             { ...filter, userShoppingCart: new RegExp(productId) },
             { $set: { "userShoppingCart.$": `${productId}-${count}` } },
@@ -16,12 +15,9 @@ const shoppingCart_addProduct = async (req, res, next) => {
         }
         const product = await ProductsModule.findById(productId, productDataTypes.basic);
         product.count = count ?? 1
-        res.status(200).json(product)
+        return product;
     } catch (error) {
         console.log(error);
-        res.status(400).json(null);
+        return null;
     }
 }
-
-
-export default shoppingCart_addProduct;
