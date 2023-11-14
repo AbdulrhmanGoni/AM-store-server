@@ -1,13 +1,13 @@
-import UserModel from "../../../models/Users.js";
-import mainPathesInDataBase from "../../../CONSTANT/shortCutsPathesInDataBase.js";
+import UserModel from "../../models/Users.js";
+import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
+
 const {
     userAddressPathes: { selectedLocation: selectedPath, locationsList }
-} = mainPathesInDataBase;
+} = shortCutsPathesInDataBase;
 
-const locations_delete = async (req, res, next) => {
+export default async function deleteLocation(userId, locationId) {
     try {
-        const filter = { _id: req.params.userId };
-        const { locationId } = req.body;
+        const filter = { _id: userId };
         const { userAddress: { selectedLocation } } = await UserModel.findOneAndUpdate(
             filter, { $pull: { [locationsList]: { id: locationId } } }
         );
@@ -19,10 +19,10 @@ const locations_delete = async (req, res, next) => {
                 );
             }
         }
-        next();
+
+        return true;
     } catch (error) {
-        res.status(400).json(null);
+        console.log(error)
+        return null;
     }
 }
-
-export default locations_delete;
