@@ -1,11 +1,11 @@
 import { userDataTypes } from "../../CONSTANT/projections.js";
 import OrdersModel from "../../models/Orders.js";
 
-async function orders_getLatest(req, res) {
+export default async function getLatestOrders(limit = 10) {
     try {
         const latestOrders = await OrdersModel.aggregate([
             { $sort: { createdAt: -1 } },
-            { $limit: +req.query.limit ?? 5 },
+            { $limit: +limit },
             {
                 $lookup: {
                     from: "users",
@@ -27,11 +27,9 @@ async function orders_getLatest(req, res) {
                 }
             }
         ]);
-        res.status(200).json(latestOrders);
+        return latestOrders;
     } catch (error) {
         console.log(error);
-        res.status(400).json([]);
+        return [];
     }
 }
-
-export default orders_getLatest

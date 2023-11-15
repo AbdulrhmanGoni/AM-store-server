@@ -1,5 +1,4 @@
 import { Router } from "express";
-const router = Router();
 
 import user_logIn from "../user_actions/user_logIn.js";
 import user_Logged from "../user_actions/user_Logged.js";
@@ -13,6 +12,8 @@ import user_register_withGoogle from "../user_actions/user_register_withGoogle.j
 import user_logIn_withGoogle from "../user_actions/user_logIn_withGoogle.js";
 import userEmailVerification from "../system_actions/userEmailVerification.js";
 import verifyUserEmail from "../system_actions/verifyUserEmail.js";
+
+const router = Router();
 
 router.route("/log-in/google-auth").post(user_logIn_withGoogle);
 router.route("/log-in/:userId").get([authenticate, user_Logged]);

@@ -8,13 +8,12 @@ import { userDataTypes } from "../../CONSTANT/projections.js";
 import sendOrderCreatedSuccessfully from "../../functions/sendOrderCreatedSuccessfully.js";
 
 
-export default async function orders_addNewOrder(req, res) {
-
-    const session = await mongoose.startSession();
-    session.startTransaction();
+export default async function addNewOrder(theOrder) {
 
     try {
-        const { theOrder } = req.body;
+        const session = await mongoose.startSession();
+        session.startTransaction();
+
         const { products, totalPrice } = theOrder;
 
         const { id } = await new OrdersModule(theOrder).save({ session })

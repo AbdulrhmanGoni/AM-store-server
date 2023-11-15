@@ -1,7 +1,7 @@
 import { Router } from "express";
-const router = Router();
+import cobones_get from "../routes/settings_routes/cobones_get.js";
 
-import cobones_get from "../system_actions/cobones_get.js";
+const router = Router();
 
 router.route("/cobones").get(cobones_get)
 

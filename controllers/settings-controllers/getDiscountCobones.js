@@ -1,18 +1,17 @@
-import SettingsModule from "../../models/Settings.js";
+import SettingsModule from "../../models/Settings";
 
-async function cobones_get(_, res) {
+
+export default async function getDiscountCobones() {
     try {
         const [{ cobones }] = await SettingsModule.find();
-        const cobonesObject = {}
+        const cobonesObject = {};
         for (let i = 0; i < cobones.length; i++) {
             cobonesObject[cobones[i].name] = cobones[i].value
         }
 
-        res.status(200).json(cobonesObject);
+        return cobonesObject
     } catch (error) {
         console.log(error)
-        res.status(400).json(null);
+        return null
     }
 }
-
-export default cobones_get
