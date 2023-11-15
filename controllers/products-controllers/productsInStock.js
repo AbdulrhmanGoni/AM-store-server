@@ -1,7 +1,6 @@
-import ProductsModel from "../../models/Products.js";
+import ProductsModel from "../../models/Products";
 
-
-export default async function products_in_stock(req, res) {
+export default async function productsInStock() {
     try {
         const inStock = await ProductsModel.aggregate([
             {
@@ -11,9 +10,9 @@ export default async function products_in_stock(req, res) {
                 }
             }
         ])
-        res.status(200).json(inStock);
+        return inStock;
     } catch (error) {
         console.log(error)
-        res.status(400).json(null)
+        return null;
     }
 }

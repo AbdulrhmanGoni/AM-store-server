@@ -1,45 +1,29 @@
 import { Router } from "express";
-const router = Router();
 
 import adminAuth from "../auth/adminAuth.js";
-import products_search from "../user_actions/products_search.js";
-import products_getById from "../user_actions/products_getById.js";
-import products_getByIds from "../user_actions/products_getByIds.js";
-import comments_get from "../user_actions/comments_get.js";
-import comments_delete from "../user_actions/comments_delete.js";
-import comments_set from "../user_actions/comment_set.js";
-import rating_get from "../user_actions/rating_get.js";
-import rating_set from "../user_actions/rating_set.js";
-import products_pagination from "../user_actions/products_pagination.js";
-import products_length from "../user_actions/products_length.js";
-import products_in_stock from "../user_actions/products_in_stock.js";
+import products_length_get from "../routes/products_routes/products_length_get.js";
+import products_pagination_get from "../routes/products_routes/products_pagination_get.js";
+import products_inStock_get from "../routes/products_routes/products_inStock_get.js";
+import products_searchByIds from "../routes/admin_routes/products_searchByIds.js";
+import product_get from "../routes/products_routes/product_get.js";
+import products_userSearch_get from "../routes/products_routes/products_userSearch_get.js";
+
+const router = Router();
 
 router.route("/")
-    .get(products_search)
-    .post(products_getByIds)
+    .get(products_userSearch_get)
+    .post(products_searchByIds)
 
 router.route("/length")
-    .get(products_length)
+    .get(products_length_get)
 
 router.route("/in-stock")
-    .get([adminAuth, products_in_stock])
+    .get([adminAuth, products_inStock_get])
 
 router.route("/pagination")
-    .get([adminAuth, products_pagination])
+    .get([adminAuth, products_pagination_get])
 
 router.route("/:productId")
-    .get(products_getById)
-
-router.route("/:productId/comments")
-    .get(comments_get)
-    .post(comments_set)
-    .delete(comments_delete)
-
-router.route("/:productId/rating")
-    .get(rating_get)
-    .post(rating_set)
-
-
-
+    .get(product_get)
 
 export default router;

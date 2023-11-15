@@ -1,21 +1,21 @@
 import { Router } from "express";
-import products_get from "../admin_actions/products_get.js";
-import products_search from "../admin_actions/products_search.js";
-import products_set from "../admin_actions/products_set.js";
-import products_delete from "../user_actions/products_delete.js";
-import products_deleteMany from "../user_actions/products_deleteMany.js";
-import products_updateProduct from "../admin_actions/products_updateProduct.js";
+
+import products_post from "../routes/admin_routes/products_post.js";
+import products_delete from "../routes/admin_routes/products_delete.js";
+import product_post from "../routes/admin_routes/product_post.js";
+import product_get from "../routes/products_routes/product_get.js";
+import products_search_get from "../routes/admin_routes/products_search_get.js";
 
 const router = Router();
 
 router.route("/products")
-    .get(products_get)
-    .post(products_set)
-    .delete(products_deleteMany)
+    .get(products_search_get)
+    .post(products_post)
+    .delete(products_delete)
 
 router.route("/products/:productId")
-    .get(products_get)
-    .post(products_updateProduct)
+    .get(product_get)
+    .post(product_post)
     .delete(products_delete)
 
 export default router;

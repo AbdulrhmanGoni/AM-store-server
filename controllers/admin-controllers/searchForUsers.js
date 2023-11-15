@@ -10,6 +10,6 @@ export default async function searchForUsers(query) {
 
         return await UserModel.find({ userEmail: emailReg, userName: userReg }, projection, { limit })
     } catch {
-        return null
+        return null;
     }
 }

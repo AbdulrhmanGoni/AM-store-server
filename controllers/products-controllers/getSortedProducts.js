@@ -1,6 +1,6 @@
 import ProductsModel from "../../models/Products.js";
 
-async function products_getSortedBy({ sortBy, projection, limit }) {
+export default async function getSortedProducts({ sortBy, projection, limit }) {
     try {
         return await ProductsModel.find(
             {},
@@ -12,5 +12,3 @@ async function products_getSortedBy({ sortBy, projection, limit }) {
         return null;
     }
 }
-
-export default products_getSortedBy
