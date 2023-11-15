@@ -1,4 +1,4 @@
-import UserModel from "../../models/Users";
+import UserModel from "../../models/Users.js";
 
 
 export default async function toggleFavorites(userId, productId) {
@@ -14,7 +14,7 @@ export default async function toggleFavorites(userId, productId) {
             else isToggled = false;
         }
 
-        return isToggled
+        return isToggled;
     } catch (error) {
         console.log(error)
         return null;

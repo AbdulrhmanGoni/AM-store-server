@@ -1,6 +1,6 @@
-import UserModel from '../../models/Users';
-import shortCutsPathesInDataBase from '../../CONSTANT/shortCutsPathesInDataBase';
-import { userDataTypes } from '../../CONSTANT/projections';
+import UserModel from '../../models/Users.js';
+import shortCutsPathesInDataBase from '../../CONSTANT/shortCutsPathesInDataBase.js';
+import { userDataTypes } from '../../CONSTANT/projections.js';
 
 export default async function setChoosedPaymentMethod(userId, theCard) {
     const { choosedMethodPath } = shortCutsPathesInDataBase.paymentMethodesPathes;

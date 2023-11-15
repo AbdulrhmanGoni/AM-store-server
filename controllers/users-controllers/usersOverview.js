@@ -1,17 +1,13 @@
 import UserModel from '../../models/Users.js';
 
-export default async function users_overview(req, res) {
+export default async function usersOverview(req, res) {
 
     const { page, limit: pageSize } = req.query;
 
     try {
         const users = await UserModel.aggregate([
-            {
-                $skip: (+page - 1) * +pageSize
-            },
-            {
-                $limit: +pageSize + 1
-            },
+            { $skip: (+page - 1) * +pageSize },
+            { $limit: +pageSize + 1 },
             {
                 $project: {
                     userName: 1,

@@ -6,7 +6,6 @@ const {
 } = shortCutsPathesInDataBase;
 
 export default async function setSelectedLocation() {
-
     try {
         const { modifiedCount } = await UserModel.updateOne(filter, { $set: { [selectedLocation]: theLocation } });
         return !!modifiedCount;
@@ -14,5 +13,4 @@ export default async function setSelectedLocation() {
         console.log(error)
         return null;
     }
-
 }

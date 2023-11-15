@@ -1,5 +1,5 @@
-import { userDataTypes } from "../../CONSTANT/projections";
-import UserModel from "../../models/Users";
+import { userDataTypes } from "../../CONSTANT/projections.js";
+import UserModel from "../../models/Users.js";
 
 
 export default async function getPaymentMethods(userId) {
