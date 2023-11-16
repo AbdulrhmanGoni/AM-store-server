@@ -1,0 +1,40 @@
+import { userDataTypes } from "../../CONSTANT/projections.js";
+import OrdersModule from "../../models/Orders.js";
+
+
+export default async function topCustomers(limit = 5) {
+    try {
+        const customers = await OrdersModule.aggregate([
+            {
+                $group: {
+                    _id: "$userId",
+                    totalSpending: { $sum: "$totalPrice" },
+                    totalOrders: { $count: {} }
+                }
+            },
+            { $sort: { totalSpending: -1, totalOrders: -1 } },
+            { $limit: +limit },
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "_id",
+                    foreignField: "_id",
+                    as: "userData",
+                    pipeline: [{ $project: { ...userDataTypes.basic, _id: 0 } }]
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    totalSpending: 1,
+                    totalOrders: 1,
+                    userData: { $first: "$userData" }
+                }
+            }
+        ])
+        return customers;
+    } catch (error) {
+        console.log(error)
+        return null;
+    }
+}
