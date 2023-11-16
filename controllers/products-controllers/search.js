@@ -1,4 +1,4 @@
-import ProductsModel from "../../models/Products";
+import ProductsModel from "../../models/Products.js";
 
 export default async function search({ queries, projection }) {
     try {

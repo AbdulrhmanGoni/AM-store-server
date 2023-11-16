@@ -1,7 +1,7 @@
 import ProductsModel from "../../models/Products.js";
 
 
-export default async function productsStatistics(req, res) {
+export default async function productsStatistics() {
     try {
         const [productsStatistics] = await ProductsModel.aggregate([
             {
@@ -30,9 +30,8 @@ export default async function productsStatistics(req, res) {
                 }
             }
         ])
-        res.status(200).json(productsStatistics);
+        return productsStatistics;
     } catch (error) {
-        console.log(error)
-        res.status(400).json(null)
+        return null;
     }
 }

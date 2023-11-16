@@ -2,10 +2,10 @@ import { Types } from "mongoose";
 import { productDataTypes } from "../../CONSTANT/projections.js";
 import UserModel from "../../models/Users.js";
 
-export default async function user_Logged(req, res) {
+export default async function loggedUser(userId) {
     try {
         const [initialUserData] = await UserModel.aggregate([
-            { $match: { _id: new Types.ObjectId(req.params.userId) } },
+            { $match: { _id: new Types.ObjectId(userId) } },
             {
                 $project: {
                     userData: {
@@ -80,10 +80,10 @@ export default async function user_Logged(req, res) {
             },
             { $project: { userShoppingCart: 0, _id: 0 } }
         ]);
-        res.status(200).json(initialUserData);
+        return initialUserData;
     } catch (error) {
-        console.log(error);
-        res.status(400).json(null);
+        console.log(error)
+        return null;
     }
 }
 

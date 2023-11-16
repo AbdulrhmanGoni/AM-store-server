@@ -1,6 +1,6 @@
 import UserModel from "../../models/Users.js";
 
-export default async function users_statistics(req, res) {
+export default async function usersStatistics() {
     try {
         const [statistics] = await UserModel.aggregate([
             {
@@ -28,9 +28,9 @@ export default async function users_statistics(req, res) {
                 }
             }
         ])
-        res.status(200).json(statistics);
+        return statistics;
     } catch (error) {
         console.log(error)
-        res.status(400).json(null)
+        return null;
     }
 }

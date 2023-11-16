@@ -1,9 +1,9 @@
 import ProductsModel from "../../models/Products.js";
 import idHandler from "../../functions/idHandler.js";
-import products_setCategoriesStatistics from "./products_setCategoriesStatistics.js";
+import registerCategoriesStatistics from "./registerCategoriesStatistics.js";
 
 
-export default async function products_setStatistics(products, currentYearStatistics, session) {
+export default async function registerProductsStatistics(products, currentYearStatistics, session) {
     try {
         let categories = {};
 
@@ -21,7 +21,7 @@ export default async function products_setStatistics(products, currentYearStatis
             await ProductsModel.updateOne({ _id }, { $inc: { amount: -count, sold: count, earnings } }, { session });
         }
 
-        return products_setCategoriesStatistics(categories, currentYearStatistics);
+        return registerCategoriesStatistics(categories, currentYearStatistics);
     } catch (error) {
         console.log(error)
         return false

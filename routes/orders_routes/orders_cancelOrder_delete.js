@@ -1,4 +1,4 @@
-import OrdersControllers from "../../controllers/orders-controllers/OrdersControllers";
+import OrdersControllers from "../../controllers/orders-controllers/OrdersControllers.js";
 
 
 export default async function orders_cancelOrder_delete(req, res) {

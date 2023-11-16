@@ -1,4 +1,4 @@
-import SettingsModule from "../../models/Settings";
+import SettingsModule from "../../models/Settings.js";
 
 
 export default async function getDiscountCobones() {

@@ -1,6 +1,6 @@
-import { productDataTypes } from "../../CONSTANT/projections";
-import ProductsController from "../../controllers/products-controllers/ProductsController";
-import createProjection from "../../functions/createProjection";
+import { productDataTypes } from "../../CONSTANT/projections.js";
+import ProductsController from "../../controllers/products-controllers/ProductsController.js";
+import createProjection from "../../functions/createProjection.js";
 
 
 export default async function products_search_get(req, res) {

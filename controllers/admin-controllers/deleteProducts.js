@@ -5,6 +5,6 @@ export default async function deleteProducts(...productsIds) {
         const { deletedCount } = await ProductsModule.deleteOne({ _id: { $in: productsIds } });
         return !!deletedCount;
     } catch {
-        return null
+        return null;
     }
 }

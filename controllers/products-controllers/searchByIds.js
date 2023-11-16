@@ -1,5 +1,5 @@
-import idHandler from "../../functions/idHandler";
-import ProductsModel from "../../models/Products";
+import idHandler from "../../functions/idHandler.js";
+import ProductsModel from "../../models/Products.js";
 
 export default async function searchByIds(productsIds, projection, options) {
     try {

@@ -1,4 +1,4 @@
-export default function getRandomInt(min, max) {
+export default function getRandomNumber(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;

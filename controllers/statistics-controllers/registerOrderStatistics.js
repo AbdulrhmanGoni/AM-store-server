@@ -1,7 +1,7 @@
 import idHandler from "../../functions/idHandler.js";
 import getCurrentDate from "../../functions/getCurrentDate.js";
 
-export default function orders_setStatistics({ products, totalPrice }, currentYearStatistics) {
+export default function registerOrderStatistics({ products, totalPrice }, currentYearStatistics) {
     try {
         const
             { monthIndex } = getCurrentDate(),

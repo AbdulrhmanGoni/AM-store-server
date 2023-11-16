@@ -1,4 +1,4 @@
-import ProductsController from '../../controllers/products-controllers/ProductsController'
+import ProductsController from '../../controllers/products-controllers/ProductsController.js'
 
 export default async function products_pagination_get(req, res) {
     try {

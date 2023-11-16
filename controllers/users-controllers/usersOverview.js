@@ -1,8 +1,6 @@
 import UserModel from '../../models/Users.js';
 
-export default async function usersOverview(req, res) {
-
-    const { page, limit: pageSize } = req.query;
+export default async function usersOverview(page, pageSize) {
 
     try {
         const users = await UserModel.aggregate([
@@ -18,12 +16,12 @@ export default async function usersOverview(req, res) {
                 }
             }
         ])
-        res.status(200).json({
+        return {
             users: users.slice(0, +pageSize),
             isThereNextPage: !!users[+pageSize]
-        });
+        }
     } catch (error) {
         console.log(error)
-        res.status(400).json(null)
+        return;
     }
 }

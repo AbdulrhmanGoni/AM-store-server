@@ -1,4 +1,4 @@
-import OrdersControllers from "../../controllers/orders-controllers/OrdersControllers";
+import OrdersControllers from "../../controllers/orders-controllers/OrdersControllers.js";
 
 export default async function orders_getUserOrders_get(req, res) {
     const { userId } = req.params;

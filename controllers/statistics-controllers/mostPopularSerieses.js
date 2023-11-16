@@ -1,10 +1,9 @@
 import ProductsModel from "../../models/Products.js";
 
 
-export default async function mostPopularSerieses(req, res) {
-    let limit = { $limit: +req.query.limit }
+export default async function mostPopularSerieses(limit = 5) {
     try {
-        let [products] = await ProductsModel.aggregate([
+        const [products] = await ProductsModel.aggregate([
             {
                 $facet: {
                     topSold: [
@@ -16,7 +15,7 @@ export default async function mostPopularSerieses(req, res) {
                         },
                         { $project: { series: "$_id", value: 1, _id: 0 } },
                         { $sort: { value: -1 } },
-                        limit
+                        { $limit: +limit }
                     ],
                     topEarnings: [
                         {
@@ -27,19 +26,14 @@ export default async function mostPopularSerieses(req, res) {
                         },
                         { $project: { series: "$_id", value: 1, _id: 0 } },
                         { $sort: { value: -1 } },
-                        limit
-                    ],
-                    seriesesCount: [
-                        { $group: { _id: "$series" } },
-                        { $count: "count" }
+                        { $limit: +limit }
                     ]
                 }
             }
         ])
-        products.seriesesCount = products.seriesesCount[0].count
-        res.status(200).json(products);
+        return products;
     } catch (error) {
         console.log(error)
-        res.status(400).json(null)
+        return null;
     }
 }

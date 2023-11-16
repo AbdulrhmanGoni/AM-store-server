@@ -2,13 +2,15 @@ import UserModel from "../../models/Users.js";
 import { hashSync } from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export default async function users_signUpUser(userData) {
+export default async function users_signUpUser(userData, hashingPassword = true) {
 
     try {
         const { HASHING_SALT_ROUNDS, JWT_SECRET_KEY } = process.env;
         const newUser = new UserModel(userData);
-        const hashedPassword = hashSync(newUser.userPassword, +HASHING_SALT_ROUNDS);
-        newUser.userPassword = hashedPassword;
+        if (hashingPassword) {
+            const hashedPassword = hashSync(newUser.userPassword, +HASHING_SALT_ROUNDS);
+            newUser.userPassword = hashedPassword;
+        }
         const done = await newUser.save()
             .then(() => {
                 const userId = newUser._id;

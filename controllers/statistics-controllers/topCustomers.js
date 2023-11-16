@@ -2,7 +2,7 @@ import { userDataTypes } from "../../CONSTANT/projections.js";
 import OrdersModule from "../../models/Orders.js";
 
 
-export default async function topCustomers(req, res) {
+export default async function topCustomers(limit = 5) {
     try {
         const customers = await OrdersModule.aggregate([
             {
@@ -13,7 +13,7 @@ export default async function topCustomers(req, res) {
                 }
             },
             { $sort: { totalSpending: -1, totalOrders: -1 } },
-            { $limit: +req.query?.limit ?? 5 },
+            { $limit: +limit },
             {
                 $lookup: {
                     from: "users",
@@ -32,9 +32,9 @@ export default async function topCustomers(req, res) {
                 }
             }
         ])
-        res.status(200).json(customers);
+        return customers;
     } catch (error) {
         console.log(error)
-        res.status(400).json(null);
+        return null;
     }
 }

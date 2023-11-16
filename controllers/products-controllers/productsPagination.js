@@ -1,4 +1,6 @@
-import ProductsModel from "../../models/Products";
+import { productDataTypes } from "../../CONSTANT/projections.js";
+import createProjection from "../../functions/createProjection.js";
+import ProductsModel from "../../models/Products.js";
 
 
 export default async function productsPagination(query) {

@@ -1,9 +1,8 @@
 import OrdersModel from "../../models/Orders.js";
 
 
-export default async function orders_statistics(req, res) {
+export default async function ordersStatistics(year = new Date().getFullYear()) {
     try {
-        const { year = new Date().getFullYear() } = req.query
         const [statistics] = await OrdersModel.aggregate([
             {
                 $match: { $expr: { $eq: [{ $year: "$createdAt" }, +year] } }
@@ -18,10 +17,9 @@ export default async function orders_statistics(req, res) {
                 }
             }
         ]);
-        res.status(200).json(statistics);
+        return statistics
     } catch (error) {
-        console.log(error);
-        res.status(400).json([]);
+        return []
     }
 }
 

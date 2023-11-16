@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 import OrdersModule from "../../models/Orders.js";
 import UserModel from "../../models/Users.js";
-import orders_setStatistics from "../system_actions/orders_setStatistics.js";
-import products_setStatistics from "../system_actions/products_setStatistics.js";
-import getYearStatisticsDocument from "../system_actions/getYearStatisticsDocument.js";
 import { userDataTypes } from "../../CONSTANT/projections.js";
 import sendOrderCreatedSuccessfully from "../../functions/sendOrderCreatedSuccessfully.js";
+import getYearStatisticsDocument from "../statistics-controllers/getYearStatisticsDocument.js";
+import registerProductsStatistics from "../statistics-controllers/registerProductsStatistics.js";
+import registerOrderStatistics from "../statistics-controllers/registerOrderStatistics.js";
 
 
 export default async function addNewOrder(theOrder) {
@@ -28,7 +28,7 @@ export default async function addNewOrder(theOrder) {
 
         // Add order's total price to the total earnings of current month.
         // And Sum order's products count with the total of the sold products in current month.
-        const addingOrderStatisticsDone = orders_setStatistics({ products, totalPrice }, currentYearStatistics);
+        const addingOrderStatisticsDone = registerOrderStatistics({ products, totalPrice }, currentYearStatistics);
 
         /*
             Update order's products: 
@@ -36,7 +36,7 @@ export default async function addNewOrder(theOrder) {
             - incrementing how many times the product sold. 
             ect...
         */
-        const addingProductsStatisticsDone = await products_setStatistics(products, currentYearStatistics, session);
+        const addingProductsStatisticsDone = await registerProductsStatistics(products, currentYearStatistics, session);
 
         if (addingOrderStatisticsDone && addingProductsStatisticsDone) {
             await currentYearStatistics.save({ session })

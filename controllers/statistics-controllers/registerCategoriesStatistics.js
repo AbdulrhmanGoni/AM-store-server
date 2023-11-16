@@ -1,6 +1,6 @@
 import getCurrentDate from "../../functions/getCurrentDate.js";
 
-export default function products_setCategoriesStatistics(categories, currentYearStatistics) {
+export default function registerCategoriesStatistics(categories, currentYearStatistics) {
     try {
         const { monthIndex } = getCurrentDate();
         for (const cat in categories) {
