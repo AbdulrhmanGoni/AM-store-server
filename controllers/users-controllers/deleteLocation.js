@@ -1,26 +1,29 @@
 import UserModel from "../../models/Users.js";
 import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
 
-const {
-    userAddressPathes: { selectedLocation: selectedPath, locationsList }
-} = shortCutsPathesInDataBase;
 
 export default async function deleteLocation(userId, locationId) {
     try {
+        const { selectedLocation, locationsList } = shortCutsPathesInDataBase.userAddressPathes;
         const filter = { _id: userId };
-        const { userAddress: { selectedLocation } } = await UserModel.findOneAndUpdate(
-            filter, { $pull: { [locationsList]: { id: locationId } } }
-        );
-        if (selectedLocation) {
-            if (selectedLocation.id === locationId) {
-                await UserModel.updateOne(
+        const { modifiedCount } = await UserModel.bulkWrite([
+            {
+                updateOne: {
                     filter,
-                    { $set: { [selectedPath]: null } }
-                );
+                    update: { $pull: { [locationsList]: { id: locationId } } }
+                },
+            },
+            {
+                updateOne: {
+                    filter: {
+                        ...filter,
+                        [selectedLocation + ".id"]: locationId
+                    },
+                    update: { $set: { [selectedLocation]: null } }
+                },
             }
-        }
-
-        return true;
+        ])
+        return !!modifiedCount;
     } catch (error) {
         console.log(error)
         return null;

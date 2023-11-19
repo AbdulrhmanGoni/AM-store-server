@@ -5,13 +5,12 @@ export default async function user_locations_post(req, res) {
     const { userId } = req.params;
     const { theLocation, type } = req.body;
     try {
-        if (type === "addNewLocation") {
-            const respond = await addLocation(userId, theLocation);
-            const respond2 = await setSelectedLocation(userId, theLocation);
-            res.status(200).json(!!(respond && respond2));
-        } else {
+        if (type === "newSelected") {
             const respond = await setSelectedLocation(userId, theLocation);
-            res.status(200).json(respond);
+            res.status(respond ? 200 : 400).json(respond);
+        } else {
+            const respond = await addLocation(userId, theLocation);
+            res.status(respond ? 200 : 400).json(respond);
         }
     } catch (error) {
         console.log(error);

@@ -10,9 +10,10 @@ import registerOrderStatistics from "../statistics-controllers/registerOrderStat
 
 export default async function addNewOrder(theOrder) {
 
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
     try {
-        const session = await mongoose.startSession();
-        session.startTransaction();
 
         const { products, totalPrice } = theOrder;
 
@@ -44,20 +45,20 @@ export default async function addNewOrder(theOrder) {
 
             // if all processes above done successfully, the changes will saved in the database
             await session.commitTransaction();
-            res.status(200).json({ ok: true });
+            return { ok: true };
         }
         else {
             /*
                 if one of the processes above failed, 
                 `session.abortTransaction` function will undo all changes
             */
-            res.status(200).json({ ok: false });
             await session.abortTransaction();
+            return { ok: false };
         }
     } catch (error) {
         console.log(error?.message);
         await session.abortTransaction();
-        res.status(400).json(false);
+        return false
     } finally {
         await session.endSession();
     }

@@ -6,7 +6,7 @@ export default async function user_shoppingCart_post(req, res) {
 
     switch (req.body.type) {
         case "add_Item": {
-            const response = await addToShoppingCart(req.userId, res.body);
+            const response = await addToShoppingCart(req.userId, req.body);
             res.status(200).json(response);
             break;
         }
