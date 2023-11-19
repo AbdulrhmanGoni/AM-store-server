@@ -8,7 +8,7 @@ export default async function products_userSearch_get(req, res) {
             queries: req.query,
             projection: productDataTypes[req.query.type ?? "basic"]
         });
-        if (!!products.length) res.status(200).json(products);
+        if (!!products?.length) res.status(200).json(products);
         else res.status(404).json([]);
     } catch (err) {
         console.log(err);

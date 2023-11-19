@@ -1,4 +1,3 @@
-import { userDataTypes } from "../../CONSTANT/projections.js";
 import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
 import UserModel from "../../models/Users.js";
 
@@ -6,20 +5,27 @@ import UserModel from "../../models/Users.js";
 export default async function deletePaymentMethod(userId, cardNumber) {
     try {
         const { cardsListPath, choosedMethodPath } = shortCutsPathesInDataBase.paymentMethodesPathes;
-        const response = await UserModel.findByIdAndUpdate(userId,
-            { $pull: { [cardsListPath]: { number: cardNumber } } }
-        );
-
-        if (response.userPaymentMethodes.choosedMethod) {
-            if (response.userPaymentMethodes.choosedMethod.number === cardNumber) {
-                await UserModel.findByIdAndUpdate({ _id: userId },
-                    { $set: { [choosedMethodPath]: null } }
-                );
+        const filter = { _id: userId };
+        const { modifiedCount } = await UserModel.bulkWrite([
+            {
+                updateOne: {
+                    filter,
+                    update: { $pull: { [cardsListPath]: { number: cardNumber } } }
+                },
+            },
+            {
+                updateOne: {
+                    filter: {
+                        ...filter,
+                        [choosedMethodPath + ".number"]: cardNumber
+                    },
+                    update: { $set: { [choosedMethodPath]: null } }
+                },
             }
-        }
-        return true;
+        ])
+        return !!modifiedCount
     } catch (error) {
         console.log(error)
-        return null
+        return null;
     }
 }
