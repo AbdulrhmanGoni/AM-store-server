@@ -10,7 +10,7 @@ import paymentMethodsRouter from "./routers/paymentMethodsRouter.js";
 import usersOrdersRoute from "./routers/usersOrdersRoute.js";
 import ordersRouter from "./routers/ordersRouter.js";
 import settingsRouter from "./routers/settingsRouter.js";
-import directRouter from "./routers/directRouter.js";
+import rootRouter from "./routers/rootRouter.js";
 import adminRouter from "./routers/adminRouter.js";
 import statisticsRouter from "./routers/statisticsRouter.js";
 import adminAuth from "./auth/adminAuth.js";
@@ -48,7 +48,7 @@ app.use("/users", [
     paymentMethodsRouter
 ]);
 app.use("/products", productsRouter);
-app.use("/", directRouter);
+app.use("/", rootRouter);
 app.use("/orders", ordersRouter);
 app.use("/admin", adminAuth, adminRouter);
 app.use("/statistics", adminAuth, statisticsRouter);

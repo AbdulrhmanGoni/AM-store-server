@@ -12,6 +12,7 @@ import logIn_loggedUser_get from "../routes/root_routes/logIn_loggedUser_get.js"
 import logIn_loggedAdmin_get from "../routes/root_routes/logIn_loggedAdmin_get.js";
 import emailVerification_get from "../routes/root_routes/emailVerification_get.js";
 import emailVerification_post from "../routes/root_routes/emailVerification_post.js";
+import emailVerificationLimit from "../middlewares/emailVerificationLimit.js";
 
 const router = Router();
 
@@ -28,7 +29,7 @@ router.route("/admin-log-in").post(logIn_admin_post);
 
 router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
 router.route("/email-verification")
-    .get([authenticate, emailVerification_get])
+    .get([emailVerificationLimit, authenticate, emailVerification_get])
     .post([authenticate, emailVerification_post]);
 
 export default router;

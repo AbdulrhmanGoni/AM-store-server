@@ -5,22 +5,32 @@ import { emailsToVerify } from "../../controllers/system-controller/sendVerifict
 export default async function emailVerification_post(req, res) {
     try {
         const { verificationCode, userEmail } = req.body;
-        if (verificationCode === emailsToVerify[userEmail].code) {
+        const EVConfig = emailsToVerify[userEmail];
+
+        if (!EVConfig) {
+            res.status(408).json({ message: "Verification Code expired, Refrech the page and try again" });
+        }
+        else if (verificationCode === EVConfig.code) {
             const verifyingRespond = await SystemController.verifyUserEmail(req.userId, userEmail)
             if (verifyingRespond) {
+                clearImmediate(EVConfig.timeoutId);
                 delete emailsToVerify[userEmail];
                 res.status(200).json({ ok: true });
             }
             else res.status(200).json({ ok: false, message: "Unexpected error" });
         }
-        else if (emailsToVerify[userEmail].tries >= 3) {
+        else if (EVConfig.tries >= 3) {
+            delete emailsToVerify[userEmail];
+            clearImmediate(EVConfig.timeoutId);
             res.status(400).json({ message: "Verification failed, You entered too invalid codes" });
         }
         else {
-            ++emailsToVerify[userEmail].tries;
+            ++EVConfig.tries;
             res.status(200).json({ ok: false, message: "Invalid verification code !" });
         }
+
     } catch (error) {
-        res.status(400).json();
+        console.log(error)
+        res.status(400).json({ message: "Sending verification code failed for unexpected error" });
     }
-}
+};
