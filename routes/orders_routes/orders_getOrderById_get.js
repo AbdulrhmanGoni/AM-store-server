@@ -1,7 +1,8 @@
 import OrdersControllers from "../../controllers/orders-controllers/OrdersControllers.js";
 
 export default async function orders_getOrderById_get(req, res) {
-    const { orderId, userId } = req.params;
+    const { orderId } = req.params;
+    const { userId } = req;
     try {
         const orders = await OrdersControllers.getOrders({ orderId, userId }, req.query)
         if (orders?.length) res.status(200).json(orders[0])

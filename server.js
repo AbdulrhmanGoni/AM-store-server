@@ -43,8 +43,8 @@ app.use("/users", [
     userDataRouter,
     shoppingCartRouter,
     favoritesRouter,
-    locationsRouter,
     usersOrdersRoute,
+    locationsRouter,
     paymentMethodsRouter
 ]);
 app.use("/products", productsRouter);

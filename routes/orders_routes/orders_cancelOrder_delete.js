@@ -3,8 +3,9 @@ import OrdersControllers from "../../controllers/orders-controllers/OrdersContro
 
 export default async function orders_cancelOrder_delete(req, res) {
     try {
-        const { orderId, type } = req.body;
-        const { userId } = req.params;
+        const { type } = req.query;
+        const { orderId } = req.params;
+        const { userId } = req;
         if (type === "cancel") {
             const response = await OrdersControllers.cancelOrder(orderId, userId);
             if (response) res.status(200).json(response);
