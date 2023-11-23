@@ -7,6 +7,9 @@ import products_inStock_get from "../routes/products_routes/products_inStock_get
 import products_searchByIds from "../routes/admin_routes/products_searchByIds.js";
 import product_get from "../routes/products_routes/product_get.js";
 import products_userSearch_get from "../routes/products_routes/products_userSearch_get.js";
+import product_comments_get from "../routes/products_routes/product_comments_get.js";
+import product_comments_delete from "../routes/products_routes/product_comments_delete.js";
+import product_comments_post from "../routes/products_routes/product_comments_post.js";
 
 const router = Router();
 
@@ -25,5 +28,10 @@ router.route("/pagination")
 
 router.route("/:productId")
     .get(product_get)
+
+router.route("/:productId/comments")
+    .get(product_comments_get)
+    .post(product_comments_post)
+    .delete(product_comments_delete)
 
 export default router;

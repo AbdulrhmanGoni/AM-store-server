@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import { DiscoutCobone } from "./Settings.js";
 
 const ProductSchema = new Schema({
@@ -42,8 +42,7 @@ const ProductSchema = new Schema({
         default: 0
     },
     rate: { type: Object },
-    discount: DiscoutCobone,
-    comments: { type: Array },
+    discount: DiscoutCobone
 },
     { timestamps: true }
 )

@@ -27,7 +27,8 @@
     "express-rate-limit": "^7.1.4",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.0.4",
-    "nodemailer": "^6.9.2"
+    "nodemailer": "^6.9.2",
+    "uuid": "^9.0.1"
   },
   "type": "module"
 }
