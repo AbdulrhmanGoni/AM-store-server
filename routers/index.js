@@ -1,0 +1,12 @@
+export { default as userDataRouter } from "./userDataRouter.js";
+export { default as productsRouter } from "./productsRouter.js";
+export { default as shoppingCartRouter } from "./shoppingCartRouter.js";
+export { default as favoritesRouter } from "./favoritesRouter.js";
+export { default as locationsRouter } from "./locationsRouter.js";
+export { default as paymentMethodsRouter } from "./paymentMethodsRouter.js";
+export { default as usersOrdersRoute } from "./usersOrdersRoute.js";
+export { default as ordersRouter } from "./ordersRouter.js";
+export { default as settingsRouter } from "./settingsRouter.js";
+export { default as rootRouter } from "./rootRouter.js";
+export { default as adminRouter } from "./adminRouter.js";
+export { default as statisticsRouter } from "./statisticsRouter.js";
