@@ -48,4 +48,10 @@ app.use("/admin", adminAuth, adminRouter);
 app.use("/statistics", adminAuth, statisticsRouter);
 app.use("/settings", settingsRouter);
 
+app.use((_, res) => {
+    res.status(404).json({
+        message: "Sorry, the content you're looking for doesn't exist."
+    });
+});
+
 export default app;
