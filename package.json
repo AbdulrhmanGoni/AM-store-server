@@ -5,8 +5,9 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env-cmd -f dev.env node src/server.js",
-    "dev": "env-cmd -f dev.env nodemon src/server.js"
+    "start": "node src/server.js",
+    "dev": "env-cmd -f dev.env nodemon src/server.js",
+    "docker-dev": "nodemon src/server.js"
   },
   "keywords": [
     "AM",
@@ -31,7 +32,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    
+    "nodemon": "3.0.1"
   },
   "type": "module"
 }

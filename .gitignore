@@ -2,3 +2,4 @@
 node_modules
 testLab.js
 /ignore
+docker-compose*

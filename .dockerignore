@@ -1,4 +1,5 @@
 /node_modules
 Dockerfile
+docker-compose*
 package-lock.json
-# dev.env
+dev.env
