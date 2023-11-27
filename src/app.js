@@ -18,23 +18,22 @@ import {
 } from "./routers/index.js";
 import adminAuth from "./auth/adminAuth.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
-// a midelwheres to prevent noSQL injection
-import sanitizer from "express-mongo-sanitize";
-// a midelwheres protect against HTTP Parameter Pollution attacks
-import hpp from "hpp";
+import sanitizer from "express-mongo-sanitize"; // a midelwheres prevents noSQL injection.
+import { xss } from "express-xss-sanitizer"; // a middleware prevents Cross Site Scripting (XSS) attack.
+import hpp from "hpp"; // a midelwheres protect against HTTP Parameter Pollution attacks.
 import testLab from "./testLab.js";
 
-// the App
 const app = express();
 
 // midelwheres
 app.use([
     sanitizer(),
     json({ limit: "2mb" }),
-    hpp()
+    hpp(),
+    xss(),
+    cookieParser(),
+    cors({ origin: corsWhitelist, credentials: true })
 ]);
-app.use(cookieParser());
-app.use(cors({ origin: corsWhitelist, credentials: true }));
 
 // testing using postman
 app.get("/test", testLab);
