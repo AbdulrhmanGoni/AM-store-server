@@ -18,13 +18,21 @@ import {
 } from "./routers/index.js";
 import adminAuth from "./auth/adminAuth.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
+// a midelwheres to prevent noSQL injection
+import sanitizer from "express-mongo-sanitize";
+// a midelwheres protect against HTTP Parameter Pollution attacks
+import hpp from "hpp";
 import testLab from "./testLab.js";
 
 // the App
 const app = express();
 
 // midelwheres
-app.use([json()]);
+app.use([
+    sanitizer(),
+    json({ limit: "2mb" }),
+    hpp()
+]);
 app.use(cookieParser());
 app.use(cors({ origin: corsWhitelist, credentials: true }));
 
