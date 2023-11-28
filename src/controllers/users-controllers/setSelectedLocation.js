@@ -1,5 +1,5 @@
 import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 
 const {
     userAddressPathes: { selectedLocation }
@@ -7,7 +7,7 @@ const {
 
 export default async function setSelectedLocation(userId, theLocation) {
     try {
-        const { modifiedCount } = await UserModel.updateOne({ _id: userId }, { $set: { [selectedLocation]: theLocation } });
+        const { modifiedCount } = await UsersModel.updateOne({ _id: userId }, { $set: { [selectedLocation]: theLocation } });
         return !!modifiedCount;
     } catch (error) {
         console.log(error)

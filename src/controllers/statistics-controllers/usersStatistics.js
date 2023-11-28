@@ -1,8 +1,8 @@
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 
 export default async function usersStatistics() {
     try {
-        const [statistics] = await UserModel.aggregate([
+        const [statistics] = await UsersModel.aggregate([
             {
                 $group: {
                     _id: "users",

@@ -1,10 +1,10 @@
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 import { productDataTypes } from "../../CONSTANT/projections.js";
 
 
 export default async function getShoppingCart(userId) {
     try {
-        const [{ products }] = await UserModel.aggregate([
+        const [{ products }] = await UsersModel.aggregate([
             { $match: { _id: new Types.ObjectId(userId) } },
             {
                 $lookup: {

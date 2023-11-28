@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 import { compareSync } from "bcrypt";
 
 
 export default async function logInUser({ userEmail, userPassword }) {
     try {
-        const userData = await UserModel.findOne({ userEmail }, { userPassword: true });
+        const userData = await UsersModel.findOne({ userEmail }, { userPassword: true });
         if (userData) {
             const pass = compareSync(userPassword, userData.userPassword);
             if (pass) {

@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 
 export default async function logInUserWithGoogle({ userEmail }) {
     try {
-        const userData = await UserModel.findOne({ userEmail }, { userPassword: true });
+        const userData = await UsersModel.findOne({ userEmail }, { userPassword: true });
         if (userData) {
             if (userData?.userPassword === "Signed up with Google") {
                 const userId = userData._id;

@@ -1,11 +1,11 @@
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 import checkEmailExistance from "../../functions/checkEmailExistance.js";
 import signUpUser from "./signUpUser.js";
 
 export default async function registerUser(userData) {
     try {
         const { userEmail } = userData;
-        const isExist = await UserModel.findOne({ userEmail }, { _id: 1 });
+        const isExist = await UsersModel.findOne({ userEmail }, { _id: 1 });
         if (isExist) {
             return { ok: false, message: "This email is already registred" };
         }

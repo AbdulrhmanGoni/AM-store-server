@@ -1,4 +1,4 @@
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
 
 
@@ -6,7 +6,7 @@ export default async function deleteLocation(userId, locationId) {
     try {
         const { selectedLocation, locationsList } = shortCutsPathesInDataBase.userAddressPathes;
         const filter = { _id: userId };
-        const { modifiedCount } = await UserModel.bulkWrite([
+        const { modifiedCount } = await UsersModel.bulkWrite([
             {
                 updateOne: {
                     filter,

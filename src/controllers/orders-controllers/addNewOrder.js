@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import OrdersModule from "../../models/Orders.js";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 import { userDataTypes } from "../../CONSTANT/projections.js";
 import sendOrderCreatedSuccessfully from "../../functions/sendOrderCreatedSuccessfully.js";
 import getYearStatisticsDocument from "../statistics-controllers/getYearStatisticsDocument.js";
@@ -18,7 +18,7 @@ export default async function addNewOrder(theOrder) {
         const { products, totalPrice } = theOrder;
 
         const { id } = await new OrdersModule(theOrder).save({ session })
-        const userData = await UserModel.findOneAndUpdate(
+        const userData = await UsersModel.findOneAndUpdate(
             { _id: theOrder.userId },
             { $set: { userShoppingCart: [] }, $push: { userOrders: id } },
             { session, projection: userDataTypes.basic }

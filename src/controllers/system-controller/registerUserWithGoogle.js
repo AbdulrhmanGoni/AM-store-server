@@ -1,11 +1,11 @@
 import { userDataTypes } from "../../CONSTANT/projections.js";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 import signUpUser from "./signUpUser.js";
 
 
 export default async function registerUserWithGoogle(userData) {
     try {
-        const isExist = await UserModel.findOne({ userEmail: userData.userEmail }, userDataTypes.userEmail);
+        const isExist = await UsersModel.findOne({ userEmail: userData.userEmail }, userDataTypes.userEmail);
         if (isExist) return false;
         else {
             const newUser = userData;

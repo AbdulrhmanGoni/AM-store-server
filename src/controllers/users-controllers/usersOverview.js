@@ -1,9 +1,9 @@
-import UserModel from '../../models/Users.js';
+import UsersModel from '../../models/Users.js';
 
 export default async function usersOverview(page, pageSize) {
 
     try {
-        const users = await UserModel.aggregate([
+        const users = await UsersModel.aggregate([
             { $skip: (+page - 1) * +pageSize },
             { $limit: +pageSize + 1 },
             {

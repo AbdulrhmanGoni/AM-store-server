@@ -1,14 +1,14 @@
 import { userDataTypes } from "../../CONSTANT/projections.js";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 import { compareSync, hashSync } from "bcrypt";
 
 const changePassword = async (_id, { currentPassword, newPassword }) => {
     try {
-        const { userPassword } = await UserModel.findById(_id, userDataTypes.password);
+        const { userPassword } = await UsersModel.findById(_id, userDataTypes.password);
         const result = compareSync(currentPassword, userPassword);
         if (result) {
             const newPasswordHashed = hashSync(newPassword, +process.env.HASHING_SALT_ROUNDS);
-            const { modifiedCount } = await UserModel.updateOne({ _id, userPassword },
+            const { modifiedCount } = await UsersModel.updateOne({ _id, userPassword },
                 { $set: { userPassword: newPasswordHashed } }
             );
             return !!modifiedCount;

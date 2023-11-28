@@ -1,10 +1,10 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 
 
 export default async function emailVerification_get(req, res) {
     try {
-        const user = await UserModel.findById(req.userId);
+        const user = await UsersModel.findById(req.userId);
         if (user) {
             const { userEmail, userName, hisEmailVerified } = user;
 

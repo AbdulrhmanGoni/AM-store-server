@@ -1,12 +1,12 @@
 import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 
 
 export default async function deletePaymentMethod(userId, cardNumber) {
     try {
         const { cardsListPath, choosedMethodPath } = shortCutsPathesInDataBase.paymentMethodesPathes;
         const filter = { _id: userId };
-        const { modifiedCount } = await UserModel.bulkWrite([
+        const { modifiedCount } = await UsersModel.bulkWrite([
             {
                 updateOne: {
                     filter,

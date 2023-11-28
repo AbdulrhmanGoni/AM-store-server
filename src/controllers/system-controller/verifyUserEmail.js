@@ -1,8 +1,8 @@
-import UserModel from "../../models/Users.js";
+import UsersModel from "../../models/Users.js";
 
 export default async function verifyUserEmail(userId, userEmail) {
     try {
-        const { modifiedCount } = await UserModel.updateOne({ _id: userId, userEmail }, { hisEmailVerified: true });
+        const { modifiedCount } = await UsersModel.updateOne({ _id: userId, userEmail }, { hisEmailVerified: true });
         return !!modifiedCount;
     } catch (error) {
         console.log(error)
