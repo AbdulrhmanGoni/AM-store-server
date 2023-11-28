@@ -28,7 +28,7 @@ const app = express();
 // midelwheres
 app.use([
     sanitizer(),
-    json({ limit: "2mb" }),
+    json({ limit: "5kb" }),
     hpp(),
     xss(),
     cookieParser(),
