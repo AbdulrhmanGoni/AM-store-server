@@ -1,9 +1,9 @@
-import OrdersModule from "../../models/Orders.js";
+import OrdersModel from "../../models/Orders.js";
 
 
 export default async function cancelOrder(userId, orderId) {
     try {
-        const { modifiedCount } = await OrdersModule.updateOne(
+        const { modifiedCount } = await OrdersModel.updateOne(
             { _id: orderId, userId },
             { $set: { state: "Canceled", deliveryDate: "Canceled" } }
         );

@@ -1,10 +1,10 @@
 import { userDataTypes } from "../../CONSTANT/projections.js";
-import OrdersModule from "../../models/Orders.js";
+import OrdersModel from "../../models/Orders.js";
 
 
 export default async function topCustomers(limit = 5) {
     try {
-        const customers = await OrdersModule.aggregate([
+        const customers = await OrdersModel.aggregate([
             {
                 $group: {
                     _id: "$userId",

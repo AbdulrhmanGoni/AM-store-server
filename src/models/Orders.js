@@ -30,6 +30,6 @@ const OrderSchema = new Schema(
     { timestamps: true }
 )
 
-const OrdersModule = model("orders", OrderSchema);
+const OrdersModel = model("orders", OrderSchema);
 
-export default OrdersModule;
+export default OrdersModel;
