@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import OrdersModule from "../../models/Orders.js";
 import UsersModel from "../../models/Users.js";
 import { userDataTypes } from "../../CONSTANT/projections.js";
-import sendOrderCreatedSuccessfully from "../../functions/sendOrderCreatedSuccessfully.js";
+import sendOrderCreatedSuccessfully from "../../utilities/sendOrderCreatedSuccessfully.js";
 import getYearStatisticsDocument from "../statistics-controllers/getYearStatisticsDocument.js";
 import registerProductsStatistics from "../statistics-controllers/registerProductsStatistics.js";
 import registerOrderStatistics from "../statistics-controllers/registerOrderStatistics.js";

@@ -1,5 +1,5 @@
 import { productDataTypes } from "../../CONSTANT/projections.js";
-import createProjection from "../../functions/createProjection.js";
+import createProjection from "../../utilities/createProjection.js";
 import ProductsModel from "../../models/Products.js";
 
 

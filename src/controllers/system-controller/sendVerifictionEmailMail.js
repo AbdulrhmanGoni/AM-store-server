@@ -1,6 +1,6 @@
-import sendEmail from '../../functions/sendEmail.js'
-import emailHtmlTemplate from '../../functions/emailHtmlTemplate.js'
-import getRandomNumber from '../../functions/getRandomNumber.js';
+import sendEmail from '../../utilities/sendEmail.js'
+import emailHtmlTemplate from '../../utilities/emailHtmlTemplate.js'
+import getRandomNumber from '../../utilities/getRandomNumber.js';
 
 export const emailsToVerify = {};
 
@@ -17,11 +17,11 @@ export default async function sendVerificationEmailMail({ userName, userEmail })
             emailsToVerify[userEmail] = {};
             emailsToVerify[userEmail].code = verificationCode;
             emailsToVerify[userEmail].tries = 1;
-            
+
             const timeoutId = setTimeout(() => {
                 delete emailsToVerify[userEmail];
             }, 60000 * 5);
-            
+
             emailsToVerify[userEmail].timeoutId = timeoutId;
 
             const subject = "AM Store Email Verification";

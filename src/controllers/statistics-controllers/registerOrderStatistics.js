@@ -1,5 +1,5 @@
-import idHandler from "../../functions/idHandler.js";
-import getCurrentDate from "../../functions/getCurrentDate.js";
+import idHandler from "../../utilities/idHandler.js";
+import getCurrentDate from "../../utilities/getCurrentDate.js";
 
 export default function registerOrderStatistics({ products, totalPrice }, currentYearStatistics) {
     try {

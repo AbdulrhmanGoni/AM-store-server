@@ -1,5 +1,5 @@
 import UsersModel from "../../models/Users.js";
-import checkEmailExistance from "../../functions/checkEmailExistance.js";
+import checkEmailExistance from "../../utilities/checkEmailExistance.js";
 import signUpUser from "./signUpUser.js";
 
 export default async function registerUser(userData) {

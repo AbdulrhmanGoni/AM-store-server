@@ -1,6 +1,6 @@
 import { productDataTypes } from "../../CONSTANT/projections.js";
 import ProductsController from "../../controllers/products-controllers/ProductsController.js";
-import createProjection from "../../functions/createProjection.js";
+import createProjection from "../../utilities/createProjection.js";
 
 export default async function products_searchByIds(req, res) {
     const { productsIds, withCount, withPrice } = req.body;

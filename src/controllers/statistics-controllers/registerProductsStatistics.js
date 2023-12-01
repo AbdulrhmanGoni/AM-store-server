@@ -1,5 +1,5 @@
 import ProductsModel from "../../models/Products.js";
-import idHandler from "../../functions/idHandler.js";
+import idHandler from "../../utilities/idHandler.js";
 import registerCategoriesStatistics from "./registerCategoriesStatistics.js";
 
 

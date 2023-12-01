@@ -1,4 +1,4 @@
-import getCurrentDate from "../../functions/getCurrentDate.js";
+import getCurrentDate from "../../utilities/getCurrentDate.js";
 
 export default function registerCategoriesStatistics(categories, currentYearStatistics) {
     try {

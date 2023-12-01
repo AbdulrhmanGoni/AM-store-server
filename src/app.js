@@ -1,5 +1,5 @@
 import express, { json } from "express";
-import "./functions/databaseConnetions.js";
+import "./utilities/databaseConnetions.js";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import {
@@ -18,19 +18,21 @@ import {
 } from "./routers/index.js";
 import adminAuth from "./auth/adminAuth.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
-import sanitizer from "express-mongo-sanitize"; // a midelwheres prevents noSQL injection.
-import { xss } from "express-xss-sanitizer"; // a middleware prevents Cross Site Scripting (XSS) attack.
-import hpp from "hpp"; // a midelwheres protect against HTTP Parameter Pollution attacks.
+import sanitizer from "express-mongo-sanitize";
+import { xss } from "express-xss-sanitizer";
+import hpp from "hpp";
 import testLab from "./testLab.js";
+import ErrorGenerator from "./utilities/ErrorGenerator.js";
+import errorsHandler from "./middlewares/errorsHandler.js";
 
 const app = express();
 
 // midelwheres
 app.use([
-    sanitizer(),
+    sanitizer(), // a midelwheres prevents noSQL injection.
     json({ limit: "5kb" }),
-    hpp(),
-    xss(),
+    hpp(), // a midelwheres protect against HTTP Parameter Pollution attacks.
+    xss(),// a middleware prevents Cross Site Scripting (XSS) attack.
     cookieParser(),
     cors({ origin: corsWhitelist, credentials: true })
 ]);
@@ -55,10 +57,12 @@ app.use("/admin", adminAuth, adminRouter);
 app.use("/statistics", adminAuth, statisticsRouter);
 app.use("/settings", settingsRouter);
 
-app.use((_, res) => {
-    res.status(404).json({
-        message: "Sorry, the content you're looking for doesn't exist."
-    });
+app.use("*", (_req, _res, next) => {
+    const message = "Sorry, the content you're looking for doesn't exist.";
+    const error = new ErrorGenerator(message, 404);
+    next(error);
 });
+
+app.use(errorsHandler);
 
 export default app;

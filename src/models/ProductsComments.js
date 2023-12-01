@@ -1,5 +1,5 @@
 import { model, Schema, Types } from "mongoose";
-import timeAgo from "../functions/timeAgo.js";
+import timeAgo from "../utilities/timeAgo.js";
 
 
 const CommentsSchema = new Schema(

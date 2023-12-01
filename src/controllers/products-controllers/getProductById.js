@@ -1,6 +1,6 @@
 import ProductsModel from "../../models/Products.js";
 import { productDataTypes } from "../../CONSTANT/projections.js";
-import createProjection from "../../functions/createProjection.js";
+import createProjection from "../../utilities/createProjection.js";
 
 export default async function getProductById(productId, query) {
     const { type, returnType } = query;
