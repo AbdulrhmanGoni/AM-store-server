@@ -9,14 +9,14 @@ export default async function product_comments_post(req, res) {
         } = ProductsController;
         const { productId } = req.params;
 
-        switch (req.body.type) {
+        switch (req.query.type) {
             case "newComment": {
                 const response = await addCommentToProduct(productId, req.body.comment);
                 return res.status(response ? 200 : 400).json(response);
             }
 
-            case "like||dislike": {
-                const { action: { commentId, userId, actionType, undo } } = req.body;
+            case "like-dislike": {
+                const { commentId, userId, actionType, undo } = req.body;
                 switch (actionType) {
                     case "like": {
                         const response = await likeProductComment({ productId, commentId, userId, undo });
