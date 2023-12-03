@@ -1,6 +1,7 @@
 import getUserData from "./getUserData.js";
 import usersOverview from "./usersOverview.js";
 import updateUserName from "./updateUserName.js";
+import passwordChecker from "./passwordChecker.js";
 import changePassword from "./changePassword.js";
 import usersCount from "./usersCount.js";
 import getShoppingCart from "./getShoppingCart.js";
@@ -29,6 +30,7 @@ export default Object.assign(UsersController.prototype, {
     getUserData,
     usersOverview,
     updateUserName,
+    passwordChecker,
     changePassword,
     usersCount,
     getShoppingCart,
