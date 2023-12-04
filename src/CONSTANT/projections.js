@@ -12,7 +12,6 @@ const userDataTypes = {
     _id: { _id: 1 },
     comment: { avatar: 1, userName: 1, _id: 0 },
     comments: { comments: 1, _id: 0 },
-    password: { userPassword: 1, _id: 0 },
     userShoppingCart: { userShoppingCart: 1, _id: 0 },
     userName: { userName: 1, _id: 0 },
     userEmail: { userEmail: 1, _id: 0 },

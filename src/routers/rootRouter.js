@@ -29,7 +29,7 @@ router.route("/admin-log-in").post(logIn_admin_post);
 
 router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
 router.route("/email-verification")
-    .get([emailVerificationLimit, authenticate, emailVerification_get])
+    .get([emailVerificationLimit(), authenticate, emailVerification_get])
     .post([authenticate, emailVerification_post]);
 
 export default router;

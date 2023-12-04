@@ -36,7 +36,10 @@ const UserSchema = new Schema({
         minLength: 6
     },
     avatar: String,
-    userShoppingCart: { type: [String] },
+    userShoppingCart: {
+        type: [String],
+        default: []
+    },
     userAddress: {
         selectedLocation: LocationSchema,
         locationsList: {
@@ -51,11 +54,21 @@ const UserSchema = new Schema({
         },
         choosedMethod: PaymentMethodSchema,
     },
-    userFavorites: [Types.ObjectId],
-    userOrders: [Types.ObjectId],
+    userFavorites: {
+        type: [Types.ObjectId],
+        default: []
+    },
+    userOrders: {
+        type: [Types.ObjectId],
+        default: []
+    },
     hisEmailVerified: {
         type: Boolean,
         default: false
+    },
+    lastPasswordChange: {
+        type: Date,
+        default: null
     }
 },
     { timestamps: true }

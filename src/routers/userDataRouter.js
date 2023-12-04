@@ -5,6 +5,7 @@ import user_uploadAvatar_post from "../routes/users_routes/user_uploadAvatar_pos
 import user_checkPassword_post from "../routes/users_routes/user_checkPassword_post.js";
 import user_changePassword_post from "../routes/users_routes/user_changePassword_post.js";
 import user_updateUserName_post from "../routes/users_routes/user_updateUserName_post.js";
+import checkingUserPasswordLimit from "../middlewares/checkingUserPasswordLimit.js";
 
 
 const router = Router();
@@ -17,11 +18,11 @@ router.route("/:userId")
 router.route("/:userId/upload-avatar")
     .post(user_uploadAvatar_post)
 
-router.route("/:userId/check-password")
-    .post(user_checkPassword_post)
-
 router.route("/:userId/update-user-name")
     .post(user_updateUserName_post)
+
+router.route("/:userId/check-password")
+    .post([checkingUserPasswordLimit(), user_checkPassword_post])
 
 router.route("/:userId/change-password")
     .post(user_changePassword_post)
