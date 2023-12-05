@@ -4,8 +4,8 @@ export default async function product_get(req, res) {
     try {
         const response = await ProductsController.getProductById(req.params.productId, req.query);
         response && res.status(200).json(response);
-        response == null && res.status(404).json(null);
-        response == false && res.status(400).json(false);
+        response === null && res.status(404).json(null);
+        response === false && res.status(400).json(false);
     } catch (error) {
         console.log(error)
         res.status(400).json(false);

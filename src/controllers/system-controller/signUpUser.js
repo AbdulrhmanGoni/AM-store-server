@@ -2,7 +2,7 @@ import UsersModel from "../../models/Users.js";
 import { hashSync } from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export default async function users_signUpUser(userData, hashingPassword = true) {
+export default async function signUpUser(userData, hashingPassword = true) {
 
     try {
         const { HASHING_SALT_ROUNDS, JWT_SECRET_KEY } = process.env;
@@ -11,7 +11,7 @@ export default async function users_signUpUser(userData, hashingPassword = true)
             const hashedPassword = hashSync(newUser.userPassword, +HASHING_SALT_ROUNDS);
             newUser.userPassword = hashedPassword;
         }
-        const done = await newUser.save()
+        const result = await newUser.save()
             .then(() => {
                 const userId = newUser._id;
                 const token = jwt.sign({ userId, role: "user" }, JWT_SECRET_KEY, { expiresIn: "30d" })
@@ -29,11 +29,11 @@ export default async function users_signUpUser(userData, hashingPassword = true)
             })
             .catch((err) => {
                 console.log(err)
-                return false
+                return;
             })
-        return done;
+        return result;
     } catch (error) {
         console.log(error);
-        return false;
+        return;
     }
 };

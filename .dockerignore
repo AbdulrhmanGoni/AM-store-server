@@ -4,3 +4,4 @@ docker-compose*
 package-lock.json
 *.env
 *.env.*
+testLab.js

@@ -8,9 +8,9 @@ export default async function user_checkPassword_post(req, res) {
         if (result) res.status(200).json(errorResponse);
         else {
             res.status(400).json({
-                message: result == null ?
+                message: result === null ?
                     notAllowedMessage
-                    : result == false ?
+                    : result === false ?
                         "Wrong password !, Try again"
                         : errorResponse.message
             })

@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import authenticate from "../auth/authenticate.js";
 import adminAuth from "../auth/adminAuth.js";
 import logIn_user_post from "../routes/root_routes/logIn_user_post.js";

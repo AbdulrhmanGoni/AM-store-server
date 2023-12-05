@@ -69,6 +69,10 @@ const UserSchema = new Schema({
     lastPasswordChange: {
         type: Date,
         default: null
+    },
+    signingMethod: {
+        type: String,
+        default: "Email and Password"
     }
 },
     { timestamps: true }

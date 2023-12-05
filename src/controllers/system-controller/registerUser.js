@@ -7,7 +7,7 @@ export default async function registerUser(userData) {
         const { userEmail } = userData;
         const isExist = await UsersModel.findOne({ userEmail }, { _id: 1 });
         if (isExist) {
-            return { ok: false, message: "This email is already registred" };
+            return { ok: false, message: "Your email already signed up with up, Just log in" };
         }
 
         const isExistEmail = await checkEmailExistance(userEmail);
@@ -23,7 +23,7 @@ export default async function registerUser(userData) {
         }
     } catch (error) {
         console.log(error)
-        return null;
+        return;
     }
 
 }

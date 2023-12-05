@@ -3,10 +3,9 @@ import SystemController from "../../controllers/system-controller/SystemControll
 
 export default async function register_user_withGoogle_post(req, res) {
     try {
-        const response = await SystemController.registerUserWithGoogle(req.body);
-        response && res.status(201).json({ ok: true, payload: response });
-        response == false && res.status(200).json(false);
-        !response && res.status(400).json();
+        const { googleUserAccessToken } = req.body;
+        const response = await SystemController.registerUserWithGoogle(googleUserAccessToken);
+        res.status(response ? 200 : 400).json(response);
     } catch (error) {
         console.log(error);
         res.status(400).json();

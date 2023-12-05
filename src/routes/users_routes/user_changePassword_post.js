@@ -7,7 +7,7 @@ export default async function user_changePassword_post(req, res, next) {
         if (respond) {
             res.status(200).json(respond);
         } else {
-            const message = respond == null
+            const message = respond === null
                 ? "You have changed your password since less than a month, You can't change it again, Try again after a month since last change"
                 : "Unexpected Error!"
             next(new ErrorGenerator(message, 400));

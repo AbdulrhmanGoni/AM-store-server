@@ -13,7 +13,11 @@ const AdminSchema = new Schema({
         type: String,
         required: true
     },
-    avatar: String
+    avatar: String,
+    signingMethod: {
+        type: String,
+        default: "Email and Password"
+    }
 },
     { timestamps: true }
 );
