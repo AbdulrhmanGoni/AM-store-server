@@ -1,5 +1,5 @@
 import sendEmail from '../../utilities/sendEmail.js'
-import emailHtmlTemplate from '../../utilities/emailHtmlTemplate.js'
+import htmlEmailTemplate from '../../utilities/htmlEmailTemplate.js'
 import getRandomNumber from '../../utilities/getRandomNumber.js';
 
 export const emailsToVerify = {};
@@ -26,7 +26,7 @@ export default async function sendVerificationEmailMail({ userName, userEmail })
 
             const subject = "AM Store Email Verification";
             const body = `Wellcome to AM Store ${userName}, Here is your verification code '${verificationCode}', copy it and go back to AM Store and paste the code there`;
-            const htmlTemplate = emailHtmlTemplate({ userName }, verificationCode);
+            const htmlTemplate = htmlEmailTemplate({ userName }, verificationCode);
 
             return await sendEmail(userEmail, subject, body, htmlTemplate);
         } else return false;

@@ -1,4 +1,4 @@
-export default function emailHtmlTemplate({ userName }, verificationCode) {
+export default function htmlEmailTemplate({ userName }, verificationCode) {
     return `
 <!DOCTYPE html>
 <html lang="en">
