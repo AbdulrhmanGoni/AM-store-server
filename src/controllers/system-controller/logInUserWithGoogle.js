@@ -4,6 +4,8 @@ import googleAccountGetter from "../../utilities/googleAccountGetter.js";
 
 export default async function logInUserWithGoogle(googleUserAccessToken) {
     try {
+        const notFoundResponse = { message: "This email did not signed up with us before, Go to Sign up page" };
+        const unexpectedError = { message: "There is unexpected error happened" };
         const response = await googleAccountGetter(googleUserAccessToken);
         if (response) {
             const projection = { userPassword: 1, signingMethod: 1 }
@@ -16,15 +18,16 @@ export default async function logInUserWithGoogle(googleUserAccessToken) {
                         process.env.JWT_SECRET_KEY,
                         { expiresIn: "30d" }
                     )
-                    return { userId, accessToken: token };
+                    return { status: true, userId, accessToken: token };
                 }
-                else return false;
+                else return { message: "This email signed up with another sign up method" }
             }
-            else return null;
+            else return notFoundResponse
         }
-        return response;
+        else if (response === null) return notFoundResponse
+        else return unexpectedError
     } catch (error) {
         console.log(error);
-        return;
+        return unexpectedError
     }
 }

@@ -1,5 +1,6 @@
 import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
 import UsersModel from "../../models/Users.js";
+import { v4 as uuidv4 } from 'uuid';
 
 const {
     userAddressPathes: { locationsList, selectedLocation }
@@ -7,6 +8,7 @@ const {
 
 export default async function addLocation(userId, theLocation) {
     try {
+        theLocation.id = uuidv4();
         const { modifiedCount } = await UsersModel.updateOne(
             { _id: userId },
             {

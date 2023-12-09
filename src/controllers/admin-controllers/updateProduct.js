@@ -8,7 +8,7 @@ import ProductsModel from "../../models/Products.js";
 * is an object `keys` = the filed to update, `values` = the new value of the filed
 * 
 * @return { Promise<boolean | null> } `true` if the product was updated successfully, else `false`.
-* if an unexpected error happend `null` will returned.
+* if an unexpected Error happened `null` will returned.
 */
 export default async function updateProduct(productId, changes) {
     try {

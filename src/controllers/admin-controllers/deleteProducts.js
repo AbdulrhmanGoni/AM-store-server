@@ -7,7 +7,7 @@ import ProductsModel from "../../models/Products.js";
 * @param { string[] } productsIds - an array of products identifiers (products to delete).
 * 
 * @return { Promise<boolean | null> } `true` if the products deleted successfully, else `false`. 
-* if an unexpected error happend `null` will returned.
+* if an unexpected Error happened `null` will returned.
 */
 export default async function deleteProducts(productsIds) {
     try {

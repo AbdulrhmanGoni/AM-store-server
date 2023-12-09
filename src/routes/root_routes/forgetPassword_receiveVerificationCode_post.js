@@ -6,7 +6,11 @@ export default async function forgetPassword_receiveVerificationCode_post(req, r
     try {
         const { status, response } = await verificationEmailsCodesHandler(req.body);
         if (response.ok) {
-            const changePasswordToken = jwt.sign({ userEmail: req.body.userEmail }, process.env.JWT_SECRET_KEY);
+            const changePasswordToken = jwt.sign(
+                { userEmail: req.body.userEmail },
+                process.env.JWT_SECRET_KEY,
+                { expiresIn: "4m" }
+            );
             response.changePasswordToken = changePasswordToken;
         }
         res.status(status).json(response);

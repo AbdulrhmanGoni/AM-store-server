@@ -1,5 +1,5 @@
 import express, { json } from "express";
-import "./utilities/databaseConnetions.js";
+import "./utilities/databaseConnections.js";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import {

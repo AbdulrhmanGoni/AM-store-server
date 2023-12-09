@@ -7,7 +7,7 @@ export default async function logInAdmin({ adminEmail, adminPassword }) {
     try {
         const adminData = await AdminModel.findOne({ adminEmail }, { createdAt: 0, updatedAt: 0 });
         if (adminData) {
-            if (adminData.adminPassword === "Signed up with Google") {
+            if (adminData.signingMethod === "Google auth") {
                 return false;
             } else {
                 const pass = bcrypt.compareSync(adminPassword, adminData.adminPassword);
