@@ -1,5 +1,5 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
-import { emailsToVerify } from "../../controllers/system-controller/sendVerifictionEmailMail.js";
+import { emailsToVerify } from "../../controllers/system-controller/sendVerificationCodeToEmail.js";
 
 
 export default async function emailVerification_post(req, res) {

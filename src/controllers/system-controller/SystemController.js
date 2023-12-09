@@ -6,8 +6,10 @@ import logInUserWithGoogle from "./logInUserWithGoogle.js";
 import logInAdminWithGoogle from "./logInAdminWithGoogle.js";
 import registerUserWithGoogle from "./registerUserWithGoogle.js";
 import registerUser from "./registerUser.js";
-import sendVerificationEmailMail from "./sendVerifictionEmailMail.js";
+import sendVerificationCodeToEmail from "./sendVerificationCodeToEmail.js";
+import verificationEmailsCodesHandler from "./verificationEmailsCodesHandler.js";
 import verifyUserEmail from "./verifyUserEmail.js";
+import changeUserPassword from "./changeUserPassword.js";
 
 class SystemController {
     constructor() { }
@@ -22,6 +24,8 @@ export default Object.assign(SystemController.prototype, {
     logInAdminWithGoogle,
     registerUserWithGoogle,
     registerUser,
-    sendVerificationEmailMail,
-    verifyUserEmail
+    sendVerificationCodeToEmail,
+    verifyUserEmail,
+    verificationEmailsCodesHandler,
+    changeUserPassword
 })

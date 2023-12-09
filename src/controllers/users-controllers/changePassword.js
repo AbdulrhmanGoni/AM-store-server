@@ -1,26 +1,19 @@
 import UsersModel from "../../models/Users.js";
-import { compareSync, hashSync } from "bcrypt";
-import isUserAllowedToChangehisPassword from "./isUserAllowedToChangehisPassword.js";
+import { compareSync } from "bcrypt";
+import isUserAllowedToChangeHisPassword from "./isUserAllowedToChangeHisPassword.js";
+import SystemController from "../system-controller/SystemController.js";
 
 export default async function changePassword(userId, { currentPassword, newPassword }) {
     try {
         const projection = { userPassword: 1, lastPasswordChange: 1 };
         const { userPassword, lastPasswordChange } = await UsersModel.findById(userId, projection);
 
-        if (isUserAllowedToChangehisPassword(lastPasswordChange)) {
+        if (isUserAllowedToChangeHisPassword(lastPasswordChange)) {
             const result = compareSync(currentPassword, userPassword);
             if (result) {
-                const newPasswordHashed = hashSync(newPassword, +process.env.HASHING_SALT_ROUNDS);
-                const { modifiedCount } = await UsersModel.updateOne({ _id: userId, userPassword },
-                    {
-                        $set: {
-                            userPassword: newPasswordHashed,
-                            lastPasswordChange: new Date().toISOString()
-                        }
-                    }
-                );
-                return !!modifiedCount;
-            } else return false;
+                return await SystemController.changeUserPassword({ userId }, newPassword)
+            }
+            else return false;
         }
         else return null
     } catch (error) {

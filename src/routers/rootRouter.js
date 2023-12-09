@@ -12,6 +12,7 @@ import logIn_loggedAdmin_get from "../routes/root_routes/logIn_loggedAdmin_get.j
 import emailVerification_get from "../routes/root_routes/emailVerification_get.js";
 import emailVerification_post from "../routes/root_routes/emailVerification_post.js";
 import emailVerificationLimit from "../middlewares/emailVerificationLimit.js";
+import forgetPassword_post from "../routes/root_routes/forgetPassword_post.js";
 
 const router = Router();
 
@@ -30,5 +31,8 @@ router.route("/check-user-state").get([authenticate, (_, res) => { res.status(20
 router.route("/email-verification")
     .get([emailVerificationLimit(), authenticate, emailVerification_get])
     .post([authenticate, emailVerification_post]);
+
+router.route("/forget-password")
+    .post(forgetPassword_post)
 
 export default router;

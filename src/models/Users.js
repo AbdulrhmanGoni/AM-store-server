@@ -72,7 +72,7 @@ const UserSchema = new Schema({
     },
     signingMethod: {
         type: String,
-        default: "Email and Password"
+        default: "Email & Password"
     }
 },
     { timestamps: true }
