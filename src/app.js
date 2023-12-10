@@ -27,11 +27,11 @@ import errorsHandler from "./middlewares/errorsHandler.js";
 
 const app = express();
 
-// midelwheres
+// middleware
 app.use([
-    sanitizer(), // a midelwheres prevents noSQL injection.
+    sanitizer(), // a middleware prevents noSQL injection.
     json({ limit: "5kb" }),
-    hpp(), // a midelwheres protect against HTTP Parameter Pollution attacks.
+    hpp(), // a middleware protect against HTTP Parameter Pollution attacks.
     xss(),// a middleware prevents Cross Site Scripting (XSS) attack.
     cookieParser(),
     cors({ origin: corsWhitelist, credentials: true })

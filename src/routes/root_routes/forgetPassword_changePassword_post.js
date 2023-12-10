@@ -12,7 +12,15 @@ export default async function forgetPassword_changePassword_post(req, res) {
             res.status(400).json();
         }
     } catch (error) {
-        console.log(error)
-        res.status(400).json();
+        if (error.name == "TokenExpiredError" || error.message == "jwt expired") {
+            console.log(error.name)
+            res.status(400).json({
+                message: "Your changing password token expired",
+                changingPasswordTokenExpired: true
+            });
+        } else {
+            console.log(error)
+            res.status(400).json();
+        }
     }
 }
