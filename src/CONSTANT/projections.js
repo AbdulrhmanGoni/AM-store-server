@@ -1,11 +1,11 @@
 const userDataTypes = {
     basic: { userEmail: 1, avatar: 1, userName: 1 },
     avatar: { avatar: 1, _id: 0 },
-    initial: { 
-        userEmail: 1, 
-        avatar: 1, 
-        userName: 1, 
-        userFavorites: 1, 
+    initial: {
+        userEmail: 1,
+        avatar: 1,
+        userName: 1,
+        userFavorites: 1,
         userShoppingCart: 1,
         hisEmailVerified: 1
     },
@@ -26,10 +26,9 @@ const productDataTypes = {
     comment: { avatar: 1, userName: 1, _id: 0 },
     images: { images: 1 },
     rating: { rate: 1, _id: 0 },
-    summary: { title: 1, series: 1, images: 1, description: 1, price: 1, category: 1 },
+    summary: { title: 1, series: 1, images: 1, description: 1, price: 1, category: 1, discount: 1 },
     title: { title: 1 },
     id: { _id: 1 }
 }
-
 
 export { userDataTypes, productDataTypes };

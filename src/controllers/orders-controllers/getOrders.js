@@ -87,7 +87,7 @@ export default async function getOrders({ orderId, userId }, query = {}) {
                                                 $sum: [
                                                     "$$value",
                                                     {
-                                                        $toInt: {
+                                                        $toDouble: {
                                                             $arrayElemAt: [{ $split: ["$$this", "-"] }, 1]
                                                         }
                                                     }

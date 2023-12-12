@@ -17,7 +17,7 @@ export default async function getShoppingCart(userId) {
                                 as: "id",
                                 in: {
                                     productId: { $substrBytes: ["$$id", 0, 24] },
-                                    count: { $toInt: { $substrBytes: ["$$id", 25, -1] } }
+                                    count: { $toDouble: { $substrBytes: ["$$id", 25, -1] } }
                                 }
                             }
                         }
