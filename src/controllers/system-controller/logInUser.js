@@ -19,7 +19,7 @@ export default async function logInUser({ userEmail, userPassword }) {
                     );
                     return { status: true, userId: userData._id, accessToken: token };
                 }
-                else return { message: "Wrong password" };
+                else return { message: "There is error in Email or Password" };
             }
         } else return { message: "This email did not signed up with us before, Go to Sign up page" };
     } catch (error) {

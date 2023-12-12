@@ -64,7 +64,7 @@ export default async function loggedUser(userId) {
                                                 {
                                                     $cond: {
                                                         if: { $eq: [{ $substrBytes: ["$$this", 0, 24] }, { $toString: "$_id" }] },
-                                                        then: { $toInt: { $substrBytes: ["$$this", 25, -1] } },
+                                                        then: { $toDouble: { $substrBytes: ["$$this", 25, -1] } },
                                                         else: 0
                                                     }
                                                 },
