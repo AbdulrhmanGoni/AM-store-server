@@ -1,5 +1,5 @@
 import ProductsModel from "../../models/Products.js";
-import idHandler from "../../utilities/idHandler.js";
+import idParser from "../../utilities/idParser.js";
 import registerCategoriesStatistics from "./registerCategoriesStatistics.js";
 
 
@@ -8,7 +8,7 @@ export default async function registerProductsStatistics(products, currentYearSt
         let categories = {};
 
         for (let i = 0; i < products.length; i++) {
-            const { count, category, price, id: _id } = idHandler(products[i]);
+            const { count, category, price, id: _id } = idParser(products[i]);
             const earnings = price * count;
 
             if (!categories[category]) {

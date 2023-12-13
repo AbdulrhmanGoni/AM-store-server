@@ -1,11 +1,11 @@
-import idHandler from "../../utilities/idHandler.js";
+import idParser from "../../utilities/idParser.js";
 import getCurrentDate from "../../utilities/getCurrentDate.js";
 
 export default function registerOrderStatistics({ products, totalPrice }, currentYearStatistics) {
     try {
         const
             { monthIndex } = getCurrentDate(),
-            productsCount = products.reduce((acc, curr) => acc + idHandler(curr).count, 0)
+            productsCount = products.reduce((acc, curr) => acc + idParser(curr).count, 0)
 
         currentYearStatistics.monthes[monthIndex].totalOrders++
         currentYearStatistics.monthes[monthIndex].totalEarnings += totalPrice

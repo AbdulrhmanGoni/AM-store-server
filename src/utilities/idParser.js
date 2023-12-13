@@ -1,4 +1,4 @@
-function idHandler(identifir, changeCount) {
+function idParser(identifir, changeCount) {
     let [id, count, price, category] = identifir.split("-");
     count = +count;
     price = price ? +price : undefined;
@@ -6,4 +6,4 @@ function idHandler(identifir, changeCount) {
     else return { id, count, price, category };
 }
 
-export default idHandler;
+export default idParser;
