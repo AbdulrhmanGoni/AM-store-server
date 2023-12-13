@@ -1,6 +1,5 @@
 import AdminController from "../../controllers/admin-controllers/AdminController.js";
 
-
 export default async function products_addDiscount_post(req, res) {
     try {
         const { productsIds, discount } = req;
