@@ -15,7 +15,7 @@ export default async function registerUser(userData) {
             return { ok: false, message: "This email is not active email" };
         }
 
-        const signingUserResponse = await signUpUser(req.body);
+        const signingUserResponse = await signUpUser(userData);
         if (signingUserResponse) {
             return { payload: signingUserResponse, ok: true };
         } else {

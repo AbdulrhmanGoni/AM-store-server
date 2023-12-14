@@ -1,16 +1,18 @@
 import { model, Schema } from "mongoose";
 
 const SettingsSchema = new Schema({
-    cobones: {
-        name: {
-            type: String,
-            required: true
-        },
-        value: {
-            type: Number,
-            required: true
+    discountCobones: [
+        {
+            name: {
+                type: String,
+                required: true
+            },
+            value: {
+                type: Number,
+                required: true
+            }
         }
-    },
+    ],
     productsCategories: [String]
 })
 
