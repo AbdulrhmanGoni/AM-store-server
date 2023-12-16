@@ -16,6 +16,6 @@ const SettingsSchema = new Schema({
     productsCategories: [String]
 })
 
-const SettingsModule = model("settings", SettingsSchema);
+const SettingsModel = model("settings", SettingsSchema);
 
-export default SettingsModule
+export default SettingsModel
