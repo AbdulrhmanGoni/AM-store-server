@@ -1,5 +1,6 @@
 import getDiscountCobones from "./getDiscountCobones.js"
 import addDiscountCobone from "./addDiscountCobone.js"
+import deleteDiscountCobone from "./deleteDiscountCobone.js"
 
 class SettingsController {
     constructor() { }
@@ -7,5 +8,6 @@ class SettingsController {
 
 export default Object.assign(SettingsController.prototype, {
     getDiscountCobones,
-    addDiscountCobone
+    addDiscountCobone,
+    deleteDiscountCobone
 })
