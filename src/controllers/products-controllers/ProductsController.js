@@ -1,6 +1,8 @@
+
 import getProductById from "./getProductById.js"
 import search from "./search.js"
 import searchByIds from "./searchByIds.js"
+import getTopProducts from "./getTopProducts.js"
 import productsPagination from "./productsPagination.js"
 import productsCount from "./productsCount.js"
 import areUserCanComment from "./areUserCanComment.js"
@@ -18,6 +20,7 @@ class ProductsController {
 export default Object.assign(ProductsController.prototype, {
     getProductById,
     search,
+    getTopProducts,
     searchByIds,
     productsPagination,
     productsCount,
