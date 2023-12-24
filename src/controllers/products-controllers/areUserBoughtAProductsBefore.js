@@ -14,26 +14,22 @@ import OrdersModel from "../../models/Orders.js";
 export default async function areUserBoughtAProductsBefore(productId, userId) {
     try {
         const result = await OrdersModel.aggregate([
+            { $match: { userId: new Types.ObjectId(userId), state: "Completed" } },
             {
                 $match: {
-                    $and: [
-                        { userId: new Types.ObjectId(userId) },
-                        {
-                            $expr: {
-                                $reduce: {
-                                    input: "$products",
-                                    initialValue: 0,
-                                    in: {
-                                        $cond: {
-                                            if: { $eq: [{ $substrBytes: ["$$this", 0, 24] }, productId] },
-                                            then: 1,
-                                            else: 0
-                                        }
-                                    }
+                    $expr: {
+                        $reduce: {
+                            input: "$products",
+                            initialValue: 0,
+                            in: {
+                                $cond: {
+                                    if: { $eq: [{ $substrBytes: ["$$this", 0, 24] }, productId] },
+                                    then: { $add: ["$$value", 1] },
+                                    else: { $add: ["$$value", 0] }
                                 }
                             }
                         }
-                    ]
+                    }
                 }
             },
             { $limit: 1 },
