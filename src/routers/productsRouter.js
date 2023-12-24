@@ -7,6 +7,8 @@ import products_pagination_get from "../routes/products_routes/products_paginati
 import products_searchByIds from "../routes/admin_routes/products_searchByIds.js";
 import product_get from "../routes/products_routes/product_get.js";
 import products_userSearch_get from "../routes/products_routes/products_userSearch_get.js";
+import product_addRatingToProduct_post from "../routes/products_routes/product_addRatingToProduct_post.js";
+import product_getProductRating_get from "../routes/products_routes/product_getProductRating_get.js";
 import product_comments_get from "../routes/products_routes/product_comments_get.js";
 import product_comments_delete from "../routes/products_routes/product_comments_delete.js";
 import product_comments_post from "../routes/products_routes/product_comments_post.js";
@@ -33,6 +35,10 @@ router.route("/:productId")
 
 router.route("/:productId/are-user-bought-the-product-before")
     .get([authenticate, product_areUserBoughtAProductsBefore_get])
+
+router.route("/:productId/rating")
+    .get([authenticate, product_getProductRating_get])
+    .post([authenticate, product_addRatingToProduct_post])
 
 router.route("/:productId/comments")
     .get(product_comments_get)

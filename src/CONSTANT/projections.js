@@ -25,10 +25,8 @@ const productDataTypes = {
     basic: { earnings: 0, updatedAt: 0, sold: 0 },
     comment: { avatar: 1, userName: 1, _id: 0 },
     images: { images: 1 },
-    rating: { rate: 1, _id: 0 },
     summary: { title: 1, series: 1, images: 1, description: 1, price: 1, category: 1, discount: 1 },
-    title: { title: 1 },
-    id: { _id: 1 }
+    title: { title: 1 }
 }
 
 export { userDataTypes, productDataTypes };

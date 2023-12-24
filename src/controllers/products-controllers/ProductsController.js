@@ -10,6 +10,8 @@ import addCommentToProduct from "./addCommentToProduct.js"
 import deleteCommentFromProduct from "./deleteCommentFromProduct.js"
 import likeProductComment from "./likeProductComment.js"
 import disLikeProductComment from "./disLikeProductComment.js"
+import getProductRating from "./getProductRating.js"
+import addRatingToProduct from "./addRatingToProduct.js"
 
 class ProductsController {
     constructor() { }
@@ -27,5 +29,7 @@ export default Object.assign(ProductsController.prototype, {
     addCommentToProduct,
     likeProductComment,
     disLikeProductComment,
-    deleteCommentFromProduct
+    deleteCommentFromProduct,
+    getProductRating,
+    addRatingToProduct,
 })
