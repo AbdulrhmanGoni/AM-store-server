@@ -4,12 +4,10 @@ import SystemController from "../../controllers/system-controller/SystemControll
 export default async function logIn_admin_post(req, res) {
     try {
         const { adminEmail, adminPassword } = req.body;
-        const response = await SystemController.logInAdmin({ adminEmail, adminPassword });
-        response && res.status(200).json(response);
-        response === false && res.status(200).json(false);
-        response === null && res.status(200).json(null);
+        const { status, response } = await SystemController.logInAdmin({ adminEmail, adminPassword });
+        res.status(status).json(response);
     } catch (error) {
         console.log(error);
-        res.status(400).json(null);
+        res.status(400).json({ message: "Unexpected Error" });
     }
 }
