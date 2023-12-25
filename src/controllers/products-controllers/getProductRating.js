@@ -4,7 +4,7 @@ import ProductsModel from "../../models/Products.js";
 export default async function getProductRating(productId, userId) {
     try {
         productId = new Types.ObjectId(productId);
-        userId = new Types.ObjectId(userId);
+        userId = userId?.length === 24 ? new Types.ObjectId(userId) : userId;
 
         const [result] = await ProductsModel.aggregate([
             { $match: { _id: productId } },

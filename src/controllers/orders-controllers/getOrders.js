@@ -2,6 +2,7 @@ import { Types } from "mongoose";
 import { productDataTypes } from "../../CONSTANT/projections.js";
 import createProjection from "../../utilities/createProjection.js";
 import OrdersModel from "../../models/Orders.js";
+import productRatingPreparingStages from "../../utilities/productRatingPreparingStages.js";
 
 export default async function getOrders({ orderId, userId }, query = {}) {
 
@@ -99,7 +100,8 @@ export default async function getOrders({ orderId, userId }, query = {}) {
                                 }
                             }
                         }
-                    }
+                    },
+                    ...productRatingPreparingStages()
                 ]
             }
         },

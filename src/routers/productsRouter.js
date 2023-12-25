@@ -37,7 +37,7 @@ router.route("/:productId/are-user-bought-the-product-before")
     .get([authenticate, product_areUserBoughtAProductsBefore_get])
 
 router.route("/:productId/rating")
-    .get([authenticate, product_getProductRating_get])
+    .get(product_getProductRating_get)
     .post([authenticate, product_addRatingToProduct_post])
 
 router.route("/:productId/comments")

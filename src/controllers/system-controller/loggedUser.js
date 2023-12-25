@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 import { productDataTypes } from "../../CONSTANT/projections.js";
 import UsersModel from "../../models/Users.js";
+import productRatingPreparingStages from "../../utilities/productRatingPreparingStages.js";
 
 export default async function loggedUser(userId) {
     try {
@@ -74,7 +75,8 @@ export default async function loggedUser(userId) {
                                     }
                                 },
                             }
-                        }
+                        },
+                        ...productRatingPreparingStages()
                     ]
                 }
             },

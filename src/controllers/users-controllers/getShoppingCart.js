@@ -1,5 +1,7 @@
 import UsersModel from "../../models/Users.js";
 import { productDataTypes } from "../../CONSTANT/projections.js";
+import { Types } from "mongoose";
+import productRatingPreparingStages from "../../utilities/productRatingPreparingStages.js";
 
 
 export default async function getShoppingCart(userId) {
@@ -50,7 +52,8 @@ export default async function getShoppingCart(userId) {
                                 }
                             }
                         },
-                        { $project: productDataTypes.basic }
+                        { $project: productDataTypes.basic },
+                        ...productRatingPreparingStages()
                     ]
                 }
             },
