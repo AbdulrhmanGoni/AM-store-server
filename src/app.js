@@ -2,7 +2,7 @@ import express, { json } from "express";
 import "./utilities/databaseConnections.js";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import API_Router from "./routers/index.js";
+import mainRouter from "./routers/index.js";
 import corsWhitelist from "./CONSTANT/corsWhitelist.js";
 import sanitizer from "express-mongo-sanitize";
 import { xss } from "express-xss-sanitizer";
@@ -23,7 +23,7 @@ app.use([
 ]);
 
 // Main Routers
-app.use("/api", API_Router)
+app.use("/api", mainRouter)
 
 app.use("*", (_req, _res, next) => {
     const message = "Sorry, the content you're looking for doesn't exist.";
