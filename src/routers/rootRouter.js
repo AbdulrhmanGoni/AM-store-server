@@ -9,6 +9,7 @@ import logIn_admin_post from "../routes/root_routes/logIn_admin_post.js";
 import logIn_admin_withGoogle_post from "../routes/root_routes/logIn_admin_withGoogle_post.js";
 import logIn_loggedUser_get from "../routes/root_routes/logIn_loggedUser_get.js";
 import logIn_loggedAdmin_get from "../routes/root_routes/logIn_loggedAdmin_get.js";
+import notifications_get from "../routes/root_routes/notifications_get.js";
 import emailVerification_get from "../routes/root_routes/emailVerification_get.js";
 import emailVerification_post from "../routes/root_routes/emailVerification_post.js";
 import emailVerificationLimit from "../middlewares/emailVerificationLimit.js";
@@ -26,6 +27,9 @@ router.route("/sign-up").post(register_user_post);
 router.route("/admin-log-in/google-auth").post(logIn_admin_withGoogle_post);
 router.route("/admin-log-in/:adminId").get([adminAuth, logIn_loggedAdmin_get]);
 router.route("/admin-log-in").post(logIn_admin_post);
+
+router.route("/notifications")
+    .get([adminAuth, notifications_get])
 
 router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
 router.route("/email-verification")
