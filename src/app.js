@@ -34,5 +34,4 @@ app.use("*", (_req, _res, next) => {
 // For catching unhandled rejections from express.js
 app.use(errorsHandler);
 
-
 export default app;

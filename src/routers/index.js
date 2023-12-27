@@ -15,13 +15,13 @@ import statisticsRouter from "./statisticsRouter.js";
 import adminAuth from "../auth/adminAuth.js";
 import testLab from "../testLab.js";
 
-const API_Router = Router()
+const mainRouter = Router()
 
 // testing using postman
-API_Router.get("/test", testLab);
-API_Router.post("/test", testLab);
+mainRouter.get("/test", testLab);
+mainRouter.post("/test", testLab);
 
-API_Router.use("/users", [
+mainRouter.use("/users", [
     userDataRouter,
     shoppingCartRouter,
     favoritesRouter,
@@ -29,11 +29,11 @@ API_Router.use("/users", [
     locationsRouter,
     paymentMethodsRouter
 ]);
-API_Router.use("/products", productsRouter);
-API_Router.use("/", rootRouter);
-API_Router.use("/orders", ordersRouter);
-API_Router.use("/admin", adminAuth, adminRouter);
-API_Router.use("/statistics", adminAuth, statisticsRouter);
-API_Router.use("/settings", settingsRouter);
+mainRouter.use("/products", productsRouter);
+mainRouter.use("/", rootRouter);
+mainRouter.use("/orders", ordersRouter);
+mainRouter.use("/admin", adminAuth, adminRouter);
+mainRouter.use("/statistics", adminAuth, statisticsRouter);
+mainRouter.use("/settings", settingsRouter);
 
-export default API_Router
+export default mainRouter
