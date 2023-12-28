@@ -10,6 +10,7 @@ import sendVerificationCodeToEmail from "./sendVerificationCodeToEmail.js";
 import verificationEmailsCodesHandler from "./verificationEmailsCodesHandler.js";
 import verifyUserEmail from "./verifyUserEmail.js";
 import changeUserPassword from "./changeUserPassword.js";
+import getNotifications from "./getNotifications.js";
 
 class SystemController {
     constructor() { }
@@ -27,5 +28,6 @@ export default Object.assign(SystemController.prototype, {
     sendVerificationCodeToEmail,
     verifyUserEmail,
     verificationEmailsCodesHandler,
-    changeUserPassword
+    changeUserPassword,
+    getNotifications
 })

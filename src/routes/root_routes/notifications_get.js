@@ -1,7 +1,15 @@
-import NotificationsModel from "../../models/Notifications.js";
+import SystemController from "../../controllers/system-controller/SystemController.js";
 import eventEmiter from "../../utilities/eventEmiter.js";
 
-export default async function notifications_get(_req, res) {
+const connectedAdmins = {};
+
+eventEmiter.on("notification", (notification) => {
+    for (const id in connectedAdmins) {
+        connectedAdmins[id]?.(notification)
+    }
+})
+
+export default async function notifications_get(req, res) {
     try {
         res.writeHead(200, {
             'Content-Type': 'text/event-stream',
@@ -9,12 +17,12 @@ export default async function notifications_get(_req, res) {
             'Connection': 'keep-alive'
         });
 
-        const notifications = await NotificationsModel.find({});
+        const notifications = await SystemController.getNotifications(req.adminId);
         res.write(`data: ${JSON.stringify(notifications)}\n\n`);
 
-        eventEmiter.on("notification", (notification) => {
-            res.write(`data: ${JSON.stringify(notification)}\n\n`);
-        })
+        connectedAdmins[req.adminId] = (notification) => {
+            res.write(`data: ${JSON.stringify(notification)}\n\n`)
+        };
 
     } catch (error) {
         console.log(error)
