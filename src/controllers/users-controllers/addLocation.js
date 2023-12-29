@@ -1,6 +1,6 @@
 import shortCutsPathesInDataBase from "../../CONSTANT/shortCutsPathesInDataBase.js";
 import UsersModel from "../../models/Users.js";
-import { v4 as uuidv4 } from 'uuid';
+import crypto from "crypto";
 
 const {
     userAddressPathes: { locationsList, selectedLocation }
@@ -8,7 +8,7 @@ const {
 
 export default async function addLocation(userId, theLocation) {
     try {
-        theLocation.id = uuidv4();
+        theLocation.id = crypto.randomUUID();
         const { modifiedCount } = await UsersModel.updateOne(
             { _id: userId },
             {

@@ -1,9 +1,9 @@
 import SettingsModel from "../../models/Settings.js";
-import { v4 as uuidv4 } from 'uuid';
+import crypto from "crypto";
 
 export default async function addDiscountCobone(cobone) {
     try {
-        const coboneId = uuidv4();
+        const coboneId = crypto.randomUUID();
         const updateQuery = {
             $addToSet: {
                 discountCobones: { id: coboneId, ...cobone }
