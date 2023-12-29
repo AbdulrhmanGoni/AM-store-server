@@ -14,6 +14,7 @@ import emailVerification_get from "../routes/root_routes/emailVerification_get.j
 import emailVerification_post from "../routes/root_routes/emailVerification_post.js";
 import emailVerificationLimit from "../middlewares/emailVerificationLimit.js";
 import forgetPassword_post from "../routes/root_routes/forgetPassword_post.js";
+import notifications_post from "../routes/root_routes/notifications_post.js";
 
 const router = Router();
 
@@ -30,6 +31,7 @@ router.route("/admin-log-in").post(logIn_admin_post);
 
 router.route("/notifications")
     .get([adminAuth, notifications_get])
+    .post([adminAuth, notifications_post])
 
 router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
 router.route("/email-verification")
