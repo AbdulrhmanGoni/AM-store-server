@@ -1,12 +1,12 @@
-import { Types } from "mongoose";
 import { productDataTypes } from "../../CONSTANT/projections.js";
 import UsersModel from "../../models/Users.js";
 import productRatingPreparingStages from "../../utilities/productRatingPreparingStages.js";
+import toObjectId from "../../utilities/toObjectId.js";
 
 export default async function loggedUser(userId) {
     try {
         const [initialUserData] = await UsersModel.aggregate([
-            { $match: { _id: new Types.ObjectId(userId) } },
+            { $match: { _id: toObjectId(userId) } },
             {
                 $project: {
                     userData: {

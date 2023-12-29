@@ -1,12 +1,12 @@
 import idParser from "../../utilities/idParser.js";
 import ProductsModel from "../../models/Products.js";
-import { Types } from "mongoose";
 import productRatingPreparingStages from "../../utilities/productRatingPreparingStages.js";
+import toObjectId from "../../utilities/toObjectId.js";
 
 export default async function searchByIds(productsIds, projection, options) {
     try {
         const { withCount, withPrice } = options;
-        const ids = productsIds.map((product => new Types.ObjectId(idParser(product).id)))
+        const ids = productsIds.map((product => toObjectId(idParser(product).id)))
         const pipeline = [
             { $match: { _id: { $in: ids } } },
             { $project: projection },

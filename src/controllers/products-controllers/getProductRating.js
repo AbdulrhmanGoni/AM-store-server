@@ -1,10 +1,10 @@
-import { Types } from "mongoose";
 import ProductsModel from "../../models/Products.js";
+import toObjectId from "../../utilities/toObjectId.js";
 
 export default async function getProductRating(productId, userId) {
     try {
-        productId = new Types.ObjectId(productId);
-        userId = userId?.length === 24 ? new Types.ObjectId(userId) : userId;
+        productId = toObjectId(productId);
+        userId = userId?.length === 24 ? toObjectId(userId) : userId;
 
         const [result] = await ProductsModel.aggregate([
             { $match: { _id: productId } },

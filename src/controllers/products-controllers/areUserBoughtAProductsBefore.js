@@ -1,5 +1,5 @@
-import { Types } from "mongoose";
 import OrdersModel from "../../models/Orders.js";
+import toObjectId from "../../utilities/toObjectId.js";
 
 /**
 * Checks if the user bought the product brfore
@@ -14,7 +14,7 @@ import OrdersModel from "../../models/Orders.js";
 export default async function areUserBoughtAProductsBefore(productId, userId) {
     try {
         const result = await OrdersModel.aggregate([
-            { $match: { userId: new Types.ObjectId(userId), state: "Completed" } },
+            { $match: { userId: toObjectId(userId), state: "Completed" } },
             {
                 $match: {
                     $expr: {

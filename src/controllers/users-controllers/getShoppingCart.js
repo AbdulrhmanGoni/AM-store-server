@@ -1,13 +1,13 @@
 import UsersModel from "../../models/Users.js";
 import { productDataTypes } from "../../CONSTANT/projections.js";
-import { Types } from "mongoose";
 import productRatingPreparingStages from "../../utilities/productRatingPreparingStages.js";
+import toObjectId from "../../utilities/toObjectId.js";
 
 
 export default async function getShoppingCart(userId) {
     try {
         const [{ products }] = await UsersModel.aggregate([
-            { $match: { _id: new Types.ObjectId(userId) } },
+            { $match: { _id: toObjectId(userId) } },
             {
                 $lookup: {
                     from: "products",

@@ -1,8 +1,8 @@
-import { Types } from "mongoose";
 import { productDataTypes } from "../../CONSTANT/projections.js";
 import createProjection from "../../utilities/createProjection.js";
 import OrdersModel from "../../models/Orders.js";
 import productRatingPreparingStages from "../../utilities/productRatingPreparingStages.js";
+import toObjectId from "../../utilities/toObjectId.js";
 
 export default async function getOrders({ orderId, userId }, query = {}) {
 
@@ -19,8 +19,8 @@ export default async function getOrders({ orderId, userId }, query = {}) {
     const ordersProjection = ordersReturnType ? createProjection(ordersReturnType) : { __v: 0 };
     const filter = {};
 
-    orderId && Object.assign(filter, { _id: new Types.ObjectId(orderId) });
-    userId && Object.assign(filter, { userId: new Types.ObjectId(userId) });
+    orderId && Object.assign(filter, { _id: toObjectId(orderId) });
+    userId && Object.assign(filter, { userId: toObjectId(userId) });
     state && Object.assign(filter, { state });
 
     const pipeline = [

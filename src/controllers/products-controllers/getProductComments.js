@@ -1,5 +1,5 @@
-import { Types } from "mongoose";
 import ProductsCommentsModel from "../../models/ProductsComments.js";
+import toObjectId from "../../utilities/toObjectId.js";
 
 
 export default async function getProductComments(productId, options) {
@@ -9,7 +9,7 @@ export default async function getProductComments(productId, options) {
         const startSlice = sliceNumber * sliceSize;
 
         const results = await ProductsCommentsModel.aggregate([
-            { $match: { productId: new Types.ObjectId(productId) } },
+            { $match: { productId: toObjectId(productId) } },
             { $unwind: '$comments' },
             { $replaceRoot: { newRoot: '$comments' } },
             { $skip: startSlice },
