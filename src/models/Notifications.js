@@ -3,7 +3,11 @@ import getTheDateAfterNDays from "../utilities/getTheDateAfterNDays.js";
 
 const NotificationsSchema = new Schema(
     {
-        type: String,
+        type: {
+            type: String,
+            enum: ["success", "error", "info", "warning"],
+            required: true
+        },
         title: {
             type: String,
             required: true

@@ -1,21 +1,54 @@
 import { Schema, Types, model } from "mongoose";
 
 export const LocationSchema = new Schema({
-    theName: String,
-    phone: String,
-    country: String,
-    city: String,
-    street: String,
-    moreDetails: String,
-    type: String,
-    id: String,
+    theName: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    street: {
+        type: String,
+        required: true
+    },
+    moreDetails: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    id: {
+        type: String,
+        required: true
+    },
     _id: false
 });
 
 export const PaymentMethodSchema = new Schema({
-    theName: String,
-    number: Number,
-    expired: String,
+    theName: {
+        type: String,
+        required: true
+    },
+    number: {
+        type: Number,
+        required: true
+    },
+    expired: {
+        type: String,
+        required: true
+    },
     _id: false
 });
 

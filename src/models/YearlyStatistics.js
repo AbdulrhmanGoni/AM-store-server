@@ -1,37 +1,64 @@
 import { model, Schema } from "mongoose";
 import { MONTHES } from "../CONSTANT/MONTHES.js";
 
+const MonthStatistics = new Schema({
+    month: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    totalEarnings: {
+        type: Number,
+        default: 0
+    },
+    productsSold: {
+        type: Number,
+        default: 0
+    },
+    totalOrders: {
+        type: Number,
+        default: 0
+    },
+    earningsTarget: {
+        type: Number,
+        default: 0
+    },
+    _id: false
+})
+
 const YearlyStatisticsSchema = new Schema({
     year: {
         type: Number,
         required: true,
         unique: true
     },
-    categories: [
-        {
-            category: String,
-            monthlyStatistics: [
-                {
-                    month: String,
-                    totalEarnings: Number,
-                    productsSold: Number,
-                    _id: false
-                }
-            ],
-            _id: false
-        }
-    ],
-    monthes: {
+    categories: {
         type: [
             {
-                month: String,
-                totalEarnings: Number,
-                productsSold: Number,
-                totalOrders: Number,
-                earningsTarget: Number,
+                category: String,
+                monthlyStatistics: [{
+                    month: {
+                        type: String,
+                        required: true,
+                        unique: true
+                    },
+                    totalEarnings: {
+                        type: Number,
+                        default: 0
+                    },
+                    productsSold: {
+                        type: Number,
+                        default: 0
+                    },
+                    _id: false
+                }],
                 _id: false
             }
         ],
+        default: []
+    },
+    monthes: {
+        type: [MonthStatistics],
         default: MONTHES.map((month) => {
             return {
                 month,
@@ -44,5 +71,5 @@ const YearlyStatisticsSchema = new Schema({
     }
 })
 
-const YearlyStatisticsModel = model("yearly-statistics", YearlyStatisticsSchema)
+const YearlyStatisticsModel = model("yearly-statistics", YearlyStatisticsSchema);
 export default YearlyStatisticsModel;

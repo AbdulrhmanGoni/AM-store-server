@@ -3,7 +3,10 @@ import { LocationSchema, PaymentMethodSchema } from "./Users.js";
 
 const OrderSchema = new Schema(
     {
-        userId: Types.ObjectId,
+        userId: {
+            type: Types.ObjectId,
+            required: true
+        },
         userData: {
             _id: Types.ObjectId,
             userName: String,
@@ -11,15 +14,24 @@ const OrderSchema = new Schema(
             avatar: String
         },
         location: { type: LocationSchema },
-        totalPrice: Number,
-        products: [String],
+        totalPrice: {
+            type: Number,
+            required: true
+        },
+        products: {
+            type: [String],
+            required: true
+        },
         paymentMethod: { type: PaymentMethodSchema },
         state: {
             type: String,
             enum: ["Completed", "Pending", "Canceled"],
             default: "Pending"
         },
-        deliveryDate: String,
+        deliveryDate: {
+            type: String,
+            required: true
+        },
         expectedDeliveryDate: String,
         deliveryPrice: {
             type: Number,
