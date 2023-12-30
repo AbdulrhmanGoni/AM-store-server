@@ -1,12 +1,12 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
 import eventEmiter from "../../utilities/eventEmiter.js";
 
-const connectedAdmins = {};
+const notificationsReceivers = [];
 
 eventEmiter.on("notification", (notification) => {
-    for (const id in connectedAdmins) {
-        connectedAdmins[id]?.(notification)
-    }
+    notificationsReceivers.forEach((notificationsReceiver) => {
+        notificationsReceiver.sendNotification(notification)
+    })
 })
 
 export default async function notifications_get(req, res) {
@@ -20,9 +20,16 @@ export default async function notifications_get(req, res) {
         const notifications = await SystemController.getNotifications(req.adminId);
         res.write(`data: ${JSON.stringify(notifications)}\n\n`);
 
-        connectedAdmins[req.adminId] = (notification) => {
-            res.write(`data: ${JSON.stringify(notification)}\n\n`)
-        };
+        const lastIndex = notificationsReceivers.length
+        notificationsReceivers.push({
+            sendNotification(notification) {
+                res.write(`data: ${JSON.stringify(notification)}\n\n`)
+            }
+        })
+
+        res.on("close", () => {
+            delete notificationsReceivers[lastIndex]
+        })
 
     } catch (error) {
         console.log(error)
