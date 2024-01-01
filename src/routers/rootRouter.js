@@ -13,6 +13,7 @@ import notifications_get from "../routes/root_routes/notifications_get.js";
 import emailVerification_get from "../routes/root_routes/emailVerification_get.js";
 import emailVerification_post from "../routes/root_routes/emailVerification_post.js";
 import emailVerificationLimit from "../middlewares/emailVerificationLimit.js";
+import feedbacks_get from "../routes/root_routes/feedbacks_get.js";
 import feedbacks_post from "../routes/root_routes/feedbacks_post.js";
 import forgetPassword_post from "../routes/root_routes/forgetPassword_post.js";
 import notifications_post from "../routes/root_routes/notifications_post.js";
@@ -35,6 +36,7 @@ router.route("/notifications")
     .post([adminAuth, notifications_post])
 
 router.route("/feedbacks")
+    .get([adminAuth, feedbacks_get])
     .post(feedbacks_post)
 
 router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
