@@ -12,6 +12,7 @@ import verifyUserEmail from "./verifyUserEmail.js";
 import changeUserPassword from "./changeUserPassword.js";
 import getNotifications from "./getNotifications.js";
 import setNotificationsAsRead from "./setNotificationsAsRead.js";
+import addFeedback from "./addFeedback.js";
 
 class SystemController {
     constructor() { }
@@ -31,5 +32,6 @@ export default Object.assign(SystemController.prototype, {
     verificationEmailsCodesHandler,
     changeUserPassword,
     getNotifications,
-    setNotificationsAsRead
+    setNotificationsAsRead,
+    addFeedback
 })
