@@ -7,7 +7,7 @@ export default async function feedbacks_get(req, res) {
             sliceNumber: +sliceNumber - 1,
             sliceSize: +sliceSize
         }
-        const { status, response } = await SystemController.getFeedbacks(options)
+        const { status, response } = await SystemController.getUsersFeedback(options)
         res.status(status).json(response);
     } catch (error) {
         res.status(500).json();

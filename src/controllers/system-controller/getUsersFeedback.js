@@ -1,7 +1,7 @@
 import FeedbacksModel from "../../models/Feedbacks.js";
 import messageResponse from "../../utilities/messageResponse.js";
 
-export default async function getFeedback({ sliceNumber, sliceSize } = {}) {
+export default async function getUsersFeedback({ sliceNumber, sliceSize } = {}) {
     try {
         const limit = +sliceSize + 1
         const skip = sliceNumber * sliceSize
