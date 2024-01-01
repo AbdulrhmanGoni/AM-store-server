@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import UsersModel from "../../models/Users.js";
 import googleAccountGetter from "../../utilities/googleAccountGetter.js";
-import { errorResponse } from "./logInAdmin.js";
+import messageResponse from "../../utilities/messageResponse.js";
 
 export default async function logInUserWithGoogle(googleUserAccessToken) {
     try {
@@ -20,13 +20,13 @@ export default async function logInUserWithGoogle(googleUserAccessToken) {
                     )
                     return { status: 200, response: { ok: true, userId, accessToken: token } };
                 }
-                else return errorResponse("This email signed up with another sign up method")
+                else return messageResponse("This email signed up with another sign up method")
             }
-            else return errorResponse("This email did not signed up with us before, Go to Sign up page")
+            else return messageResponse("This email did not signed up with us before, Go to Sign up page")
         }
         else return googleResponse
     } catch (error) {
         console.log(error);
-        return errorResponse("There is unexpected error happened")
+        return messageResponse("There is unexpected error happened")
     }
 }

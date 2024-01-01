@@ -1,8 +1,7 @@
 import AdminModel from "../../models/Admins.js";
 import jwt from "jsonwebtoken";
 import googleAccountGetter from "../../utilities/googleAccountGetter.js";
-import { errorResponse } from "./logInAdmin.js";
-
+import messageResponse from "../../utilities/messageResponse.js";
 
 export default async function logInAdminWithGoogle(googleUserCredentials) {
     try {
@@ -19,13 +18,13 @@ export default async function logInAdminWithGoogle(googleUserCredentials) {
                     adminData.adminPassword = undefined;
                     return { status: 200, response: { adminData, accessToken: token, ok: true } };
                 }
-                else return errorResponse("Your email registred by another signing up method", 200);
+                else return messageResponse("Your email registred by another signing up method", 200);
             }
-            else return errorResponse("You didn't have registered with us before");
+            else return messageResponse("You didn't have registered with us before");
         }
         else return googleResponse
     } catch (error) {
         console.log(error);
-        return errorResponse("Unexpected Error !");
+        return messageResponse("Unexpected Error !");
     }
 }

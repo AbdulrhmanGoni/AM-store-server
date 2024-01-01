@@ -1,4 +1,4 @@
-import { errorResponse } from "../controllers/system-controller/logInAdmin.js";
+import messageResponse from "./messageResponse.js";
 
 export default async function googleAccountGetter(googleUserCredentials = {}) {
     const GOOGLE_API = "https://www.googleapis.com/oauth2/v3/userinfo";
@@ -7,9 +7,9 @@ export default async function googleAccountGetter(googleUserCredentials = {}) {
         const headers = { Authorization: `${token_type} ${access_token}` };
         const userinfo = await fetch(GOOGLE_API, { headers }).then(res => res.json());
         const success = userinfo?.name && userinfo?.email
-        return success ? { ok: true, googleResponse: userinfo } : errorResponse("Not found google account");
+        return success ? { ok: true, googleResponse: userinfo } : messageResponse("Not found google account");
     } catch (error) {
         console.log(error)
-        return { googleResponse: errorResponse(error.error) }
+        return { googleResponse: messageResponse(error.error) }
     }
 }
