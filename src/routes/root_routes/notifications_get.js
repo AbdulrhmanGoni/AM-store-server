@@ -4,8 +4,8 @@ import eventEmiter from "../../utilities/eventEmiter.js";
 const notificationsReceivers = [];
 
 eventEmiter.on("notification", (notification) => {
-    notificationsReceivers.forEach((notificationsReceiver) => {
-        notificationsReceiver.sendNotification(notification)
+    notificationsReceivers.forEach((receiver) => {
+        receiver(notification)
     })
 })
 
@@ -20,15 +20,13 @@ export default async function notifications_get(req, res) {
         const notifications = await SystemController.getNotifications(req.adminId);
         res.write(`data: ${JSON.stringify(notifications)}\n\n`);
 
-        const lastIndex = notificationsReceivers.length
-        notificationsReceivers.push({
-            sendNotification(notification) {
-                res.write(`data: ${JSON.stringify(notification)}\n\n`)
-            }
+        const receiverIndex = notificationsReceivers.length
+        notificationsReceivers.push((notification) => {
+            res.write(`data: ${JSON.stringify(notification)}\n\n`)
         })
 
         res.on("close", () => {
-            delete notificationsReceivers[lastIndex]
+            delete notificationsReceivers[receiverIndex]
         })
 
     } catch (error) {
