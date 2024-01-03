@@ -13,5 +13,5 @@ export default async function authenticate(req, res, next) {
         } catch {
             res.status(401).json(unAuthorizedMsg)
         }
-    } else res.status(400).json(unAuthorizedMsg)
+    } else res.status(401).json(unAuthorizedMsg)
 };

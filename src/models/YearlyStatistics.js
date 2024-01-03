@@ -4,8 +4,7 @@ import { MONTHES } from "../CONSTANT/MONTHES.js";
 const MonthStatistics = new Schema({
     month: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     totalEarnings: {
         type: Number,
@@ -30,7 +29,8 @@ const YearlyStatisticsSchema = new Schema({
     year: {
         type: Number,
         required: true,
-        unique: true
+        unique: true,
+        min: 2023
     },
     categories: {
         type: [
@@ -39,8 +39,7 @@ const YearlyStatisticsSchema = new Schema({
                 monthlyStatistics: [{
                     month: {
                         type: String,
-                        required: true,
-                        unique: true
+                        required: true
                     },
                     totalEarnings: {
                         type: Number,
@@ -72,4 +71,5 @@ const YearlyStatisticsSchema = new Schema({
 })
 
 const YearlyStatisticsModel = model("yearly-statistics", YearlyStatisticsSchema);
+
 export default YearlyStatisticsModel;
