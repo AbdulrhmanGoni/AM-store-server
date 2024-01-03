@@ -1,6 +1,6 @@
 import UsersModel from '../../models/Users.js';
 
-export default async function usersOverview(page, pageSize) {
+export default async function usersOverview(page = 1, pageSize = 5) {
 
     try {
         const users = await UsersModel.aggregate([
