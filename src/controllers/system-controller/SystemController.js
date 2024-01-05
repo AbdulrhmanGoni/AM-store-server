@@ -13,6 +13,7 @@ import changeUserPassword from "./changeUserPassword.js";
 import getNotifications from "./getNotifications.js";
 import setNotificationsAsRead from "./setNotificationsAsRead.js";
 import addFeedback from "./addFeedback.js";
+import deleteFeedback from "./deleteFeedback.js";
 import getUsersFeedback from "./getUsersFeedback.js";
 
 class SystemController {
@@ -35,5 +36,6 @@ export default Object.assign(SystemController.prototype, {
     getNotifications,
     setNotificationsAsRead,
     getUsersFeedback,
-    addFeedback
+    addFeedback,
+    deleteFeedback
 })

@@ -16,6 +16,7 @@ import emailVerificationLimit from "../middlewares/emailVerificationLimit.js";
 import feedbacks_SSE_get from "../routes/root_routes/feedbacks_SSE_get.js";
 import feedbacks_get from "../routes/root_routes/feedbacks_get.js";
 import feedbacks_post from "../routes/root_routes/feedbacks_post.js";
+import feedbacks_delete from "../routes/root_routes/feedbacks_delete.js";
 import forgetPassword_post from "../routes/root_routes/forgetPassword_post.js";
 import notifications_post from "../routes/root_routes/notifications_post.js";
 
@@ -42,6 +43,7 @@ router.route("/feedbacks/receive-sse")
 router.route("/feedbacks")
     .get([adminAuth, feedbacks_get])
     .post(feedbacks_post)
+    .delete(feedbacks_delete)
 
 router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
 router.route("/email-verification")

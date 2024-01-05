@@ -2,7 +2,7 @@ import OrdersModel from "../../models/Orders.js";
 
 export default async function ordersStatistics(year = new Date().getFullYear()) {
     try {
-        const statistics = await OrdersModel.aggregate([
+        const result = await OrdersModel.aggregate([
             { $match: { $expr: { $eq: [{ $year: "$createdAt" }, +year] } } },
             {
                 $group: {
@@ -15,11 +15,14 @@ export default async function ordersStatistics(year = new Date().getFullYear()) 
             }
         ]);
 
-        return statistics.length ? statistics[0] : {
-            totalOrders: 0,
-            completedOrders: 0,
-            pendingOrders: 0,
-            canceledOrders: 0
+        return result.length ? { year, statistics: result[0] } : {
+            year,
+            statistics: {
+                totalOrders: 0,
+                completedOrders: 0,
+                pendingOrders: 0,
+                canceledOrders: 0
+            }
         }
     } catch (error) {
         console.log(error)

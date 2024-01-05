@@ -37,10 +37,12 @@ export default async function salesGrowth() {
             {
                 $set: {
                     lastMonth: {
+                        year: lastMonthYear,
                         month: MONTHES[lastMonthIndex],
                         earnings: "$lastMonthEarnings.totalEarnings",
                     },
                     beforeLastMonth: {
+                        year: beforeLastMonthYear,
                         month: MONTHES[beforeLastMonthIndex],
                         earnings: "$beforeLastMonthEarnings.totalEarnings"
                     }
