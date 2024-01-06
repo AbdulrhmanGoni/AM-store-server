@@ -1,4 +1,5 @@
 import ProductsController from "../../controllers/products-controllers/ProductsController.js"
+import toObjectId from "../../utilities/toObjectId.js";
 
 export default async function product_comments_post(req, res) {
     try {
@@ -16,15 +17,17 @@ export default async function product_comments_post(req, res) {
             }
 
             case "like-dislike": {
-                const { commentId, userId, actionType, undo } = req.body;
+                const { commentId, actionType, undo } = req.body;
+                const userId = toObjectId(req.body.userId);
+                const actionDetails = { productId, commentId, userId, undo }
                 switch (actionType) {
                     case "like": {
-                        const response = await likeProductComment({ productId, commentId, userId, undo });
+                        const response = await likeProductComment(actionDetails);
                         return res.status(response ? 200 : 400).json(response);
                     }
 
                     case "dislike": {
-                        const response = await disLikeProductComment({ productId, commentId, userId, undo });
+                        const response = await disLikeProductComment(actionDetails);
                         return res.status(response ? 200 : 400).json(response);
                     }
 
@@ -36,6 +39,6 @@ export default async function product_comments_post(req, res) {
         }
     } catch (error) {
         console.log(error);
-        res.status(400).json();
+        res.status(500).json();
     }
 }

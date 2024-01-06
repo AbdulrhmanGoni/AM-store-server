@@ -3,9 +3,9 @@ import ProductsController from '../../controllers/products-controllers/ProductsC
 export default async function products_pagination_get(req, res) {
     try {
         const products = await ProductsController.productsPagination(req.query);
-        res.status(200).json(products);
+        res.status(products ? 200 : 400).json(products);
     } catch (error) {
         console.log(error)
-        res.status(400).json();
+        res.status(500).json();
     }
 }

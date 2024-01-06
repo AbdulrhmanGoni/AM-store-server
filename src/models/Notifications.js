@@ -1,5 +1,6 @@
-import { Schema, Types, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import getTheDateAfterNDays from "../utilities/getTheDateAfterNDays.js";
+import { ArrayOfObjectIds, RequiredString } from "../utilities/schemaTypesOptions.js";
 
 const NotificationsSchema = new Schema(
     {
@@ -8,15 +9,12 @@ const NotificationsSchema = new Schema(
             enum: ["success", "error", "info", "warning"],
             required: true
         },
-        title: {
+        title: RequiredString({ maxLength: 100 }),
+        diecription: {
             type: String,
-            required: true
+            maxLength: 200
         },
-        diecription: String,
-        readBy: {
-            type: [Types.ObjectId],
-            default: []
-        },
+        readBy: ArrayOfObjectIds(),
         expiresAt: {
             type: Date,
             default: getTheDateAfterNDays(15).toISOString(),

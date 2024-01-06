@@ -1,54 +1,26 @@
 import { model, Schema } from "mongoose";
 import { MONTHES } from "../CONSTANT/MONTHES.js";
+import { ANumber, RequiredNumber, RequiredString } from "../utilities/schemaTypesOptions.js";
 
 const MonthStatistics = new Schema({
-    month: {
-        type: String,
-        required: true
-    },
-    totalEarnings: {
-        type: Number,
-        default: 0
-    },
-    productsSold: {
-        type: Number,
-        default: 0
-    },
-    totalOrders: {
-        type: Number,
-        default: 0
-    },
-    earningsTarget: {
-        type: Number,
-        default: 0
-    },
+    month: RequiredString(),
+    totalEarnings: ANumber(),
+    productsSold: ANumber(),
+    totalOrders: ANumber(),
+    earningsTarget: ANumber(),
     _id: false
 })
 
 const YearlyStatisticsSchema = new Schema({
-    year: {
-        type: Number,
-        required: true,
-        unique: true,
-        min: 2023
-    },
+    year: RequiredNumber({ unique: true, min: 2023 }),
     categories: {
         type: [
             {
                 category: String,
                 monthlyStatistics: [{
-                    month: {
-                        type: String,
-                        required: true
-                    },
-                    totalEarnings: {
-                        type: Number,
-                        default: 0
-                    },
-                    productsSold: {
-                        type: Number,
-                        default: 0
-                    },
+                    month: RequiredString(),
+                    totalEarnings: ANumber(),
+                    productsSold: ANumber(),
                     _id: false
                 }],
                 _id: false

@@ -1,44 +1,25 @@
-import { model, Schema, Types } from "mongoose";
+import { model, Schema } from "mongoose";
+import { ArrayOfObjectIds, RequiredString, ObjectId, RequiredObjectId } from "../utilities/schemaTypesOptions.js";
 
 const CommentsSchema = new Schema(
     {
         _id: false,
-        id: {
-            type: String,
-            required: true,
-        },
-        commenterId: {
-            type: Types.ObjectId,
-            required: true,
-        },
+        id: RequiredString(),
+        commenterId: RequiredObjectId(),
         commenterData: {
-            type: {
-                id: Types.ObjectId,
-                userName: String,
-                avatar: String
-            }
+            id: ObjectId,
+            userName: String,
+            avatar: String
         },
-        text: {
-            type: String,
-            required: true
-        },
-        likes: {
-            type: [Types.ObjectId],
-            default: []
-        },
-        dislikes: {
-            type: [Types.ObjectId],
-            default: []
-        }
+        text: RequiredString({ maxLength: 300, minLength: 1 }),
+        likes: ArrayOfObjectIds(),
+        dislikes: ArrayOfObjectIds()
     },
     { timestamps: true }
 );
 
 const ProductCommentSchema = new Schema({
-    productId: {
-        type: Types.ObjectId,
-        required: true
-    },
+    productId: RequiredObjectId(),
     comments: {
         type: [CommentsSchema],
         default: []

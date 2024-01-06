@@ -1,11 +1,9 @@
-import { Schema, Types, model } from "mongoose";
+import { Schema, model } from "mongoose";
+import { RequiredNumber, RequiredString, RequiredObjectId, ANumber } from "../utilities/schemaTypesOptions.js";
 
 const RatingSchema = new Schema({
     _id: false,
-    raterId: {
-        type: Types.ObjectId,
-        required: true
-    },
+    raterId: RequiredObjectId(),
     rating: {
         type: Number,
         required: true,
@@ -15,45 +13,19 @@ const RatingSchema = new Schema({
 })
 
 const ProductSchema = new Schema({
-    title: {
-        type: String,
-        required: true,
-        minLingth: 6
-    },
-    price: {
-        type: Number,
-        required: true
-    },
+    title: RequiredString({ minLingth: 6 }),
+    price: RequiredNumber(),
     images: {
         type: [String],
         required: true
     },
-    category: {
-        type: String,
-        required: true
-    },
-    series: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true,
-        minLingth: 12
-    },
-    amount: {
-        type: Number,
-        required: true
-    },
+    category: RequiredString(),
+    series: RequiredString(),
+    description: RequiredString({ minLingth: 12, maxLingth: 300 }),
+    amount: RequiredNumber(),
     count: Number,
-    earnings: {
-        type: Number,
-        default: 0
-    },
-    sold: {
-        type: Number,
-        default: 0
-    },
+    earnings: ANumber(),
+    sold: ANumber(),
     ratings: {
         type: [RatingSchema],
         default: []

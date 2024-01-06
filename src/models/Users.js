@@ -1,73 +1,33 @@
-import { Schema, Types, model } from "mongoose";
+import { Schema, model } from "mongoose";
+import { ArrayOfObjectIds, Email, Password, PersonName, RequiredNumber, RequiredString } from "../utilities/schemaTypesOptions.js";
 
 export const LocationSchema = new Schema({
-    theName: {
-        type: String,
-        required: true
-    },
-    phone: {
-        type: String,
-        required: true
-    },
-    country: {
-        type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    street: {
-        type: String,
-        required: true
-    },
-    moreDetails: {
-        type: String,
-        required: true
-    },
-    type: {
-        type: String,
-        required: true
-    },
-    id: {
-        type: String,
-        required: true
-    },
+    theName: PersonName(),
+    phone: RequiredString(),
+    country: RequiredString(),
+    city: RequiredString(),
+    street: RequiredString(),
+    moreDetails: RequiredString({ maxLength: 400 }),
+    type: RequiredString({ default: "Home" }),
+    id: RequiredString(),
     _id: false
 });
 
 export const PaymentMethodSchema = new Schema({
-    theName: {
-        type: String,
-        required: true
-    },
-    number: {
-        type: Number,
-        required: true
-    },
+    theName: PersonName(),
+    number: RequiredNumber(),
     expired: {
-        type: String,
-        required: true
+        type: Date,
+        required: true,
+        min: new Date().toISOString()
     },
     _id: false
 });
 
 const UserSchema = new Schema({
-    userName: {
-        type: String,
-        required: true,
-        minLength: 2,
-        maxLength: 50
-    },
-    userEmail: {
-        type: String,
-        required: true
-    },
-    userPassword: {
-        type: String,
-        required: true,
-        minLength: 6
-    },
+    userName: PersonName(),
+    userEmail: Email(),
+    userPassword: Password(),
     avatar: String,
     userShoppingCart: {
         type: [String],
@@ -87,14 +47,8 @@ const UserSchema = new Schema({
         },
         choosedMethod: PaymentMethodSchema,
     },
-    userFavorites: {
-        type: [Types.ObjectId],
-        default: []
-    },
-    userOrders: {
-        type: [Types.ObjectId],
-        default: []
-    },
+    userFavorites: ArrayOfObjectIds(),
+    userOrders: ArrayOfObjectIds(),
     hisEmailVerified: {
         type: Boolean,
         default: false

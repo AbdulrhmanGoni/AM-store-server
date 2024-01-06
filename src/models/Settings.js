@@ -1,20 +1,12 @@
 import { model, Schema } from "mongoose";
+import { RequiredNumber, RequiredString } from "../utilities/schemaTypesOptions.js";
 
 const SettingsSchema = new Schema({
     discountCobones: [
         {
-            id: {
-                type: String,
-                required: true
-            },
-            name: {
-                type: String,
-                required: true
-            },
-            value: {
-                type: Number,
-                required: true
-            },
+            id: RequiredString(),
+            name: RequiredString(),
+            value: RequiredNumber({ min: 0.01, max: 1 }),
             _id: false
         }
     ],

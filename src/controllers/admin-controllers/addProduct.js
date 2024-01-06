@@ -11,9 +11,14 @@ import ProductsModel from "../../models/Products.js";
 export default async function addProduct(theProducts) {
     try {
         const newProduct = new ProductsModel(theProducts);
-        let addedSuccessfully = false
-        await newProduct.save().then(() => { addedSuccessfully = true })
-        return addedSuccessfully;
+        const response = await newProduct.save()
+            .then(() => true)
+            .catch((error) => {
+                console.log(error)
+                return false
+            })
+
+        return response;
     } catch (error) {
         console.log(error)
         return null;

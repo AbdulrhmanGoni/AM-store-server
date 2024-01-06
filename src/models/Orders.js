@@ -1,23 +1,18 @@
-import { Schema, Types, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import { LocationSchema, PaymentMethodSchema } from "./Users.js";
+import { RequiredNumber, ObjectId, RequiredObjectId, ANumber, RequiredString } from "../utilities/schemaTypesOptions.js";
 
 const OrderSchema = new Schema(
     {
-        userId: {
-            type: Types.ObjectId,
-            required: true
-        },
+        userId: RequiredObjectId(),
         userData: {
-            _id: Types.ObjectId,
+            _id: ObjectId,
             userName: String,
             userEmail: String,
             avatar: String
         },
         location: { type: LocationSchema },
-        totalPrice: {
-            type: Number,
-            required: true
-        },
+        totalPrice: RequiredNumber(),
         products: {
             type: [String],
             required: true
@@ -29,15 +24,15 @@ const OrderSchema = new Schema(
             default: "Pending"
         },
         deliveryDate: {
-            type: String,
+            type: Date,
             required: true
         },
-        expectedDeliveryDate: String,
-        deliveryPrice: {
-            type: Number,
-            default: 0
-        },
-        discountCobone: { name: String, value: Number }
+        expectedDeliveryDate: Date,
+        deliveryPrice: ANumber(),
+        discountCobone: {
+            name: RequiredString(),
+            value: RequiredNumber({ min: 0.01, max: 1 })
+        }
     },
     { timestamps: true }
 )

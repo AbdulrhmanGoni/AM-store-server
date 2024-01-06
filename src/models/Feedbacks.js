@@ -1,15 +1,10 @@
-import { model, Schema, Types } from "mongoose";
+import { model, Schema } from "mongoose";
+import { RequiredString, ObjectId } from "../utilities/schemaTypesOptions.js";
 
 const FeedbacksSchema = new Schema({
-    subject: {
-        type: String,
-        required: true
-    },
-    body: {
-        type: String,
-        required: true
-    },
-    userId: Types.ObjectId
+    subject: RequiredString({ maxLength: 100 }),
+    body: RequiredString({ maxLength: 500 }),
+    userId: ObjectId
 }, { timestamps: true })
 
 const FeedbacksModel = model("feedbacks", FeedbacksSchema);
