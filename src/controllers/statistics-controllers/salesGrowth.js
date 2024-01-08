@@ -35,14 +35,12 @@ export default async function salesGrowth() {
                 }
             },
             {
-                $set: {
+                $project: {
                     lastMonth: {
-                        year: lastMonthYear,
                         month: MONTHES[lastMonthIndex],
                         earnings: "$lastMonthEarnings.totalEarnings",
                     },
                     beforeLastMonth: {
-                        year: beforeLastMonthYear,
                         month: MONTHES[beforeLastMonthIndex],
                         earnings: "$beforeLastMonthEarnings.totalEarnings"
                     }
@@ -52,9 +50,13 @@ export default async function salesGrowth() {
 
         if (salesGrowthData) {
             const { lastMonth, beforeLastMonth } = salesGrowthData
+            lastMonth.year = lastMonthYear
+            beforeLastMonth.year = beforeLastMonthYear
+            const growthRete = (lastMonth?.earnings - beforeLastMonth?.earnings) / beforeLastMonth?.earnings * 100
             return {
-                ...salesGrowthData,
-                growthRete: (lastMonth?.earnings - beforeLastMonth?.earnings) / beforeLastMonth?.earnings,
+                lastMonth,
+                beforeLastMonth,
+                growthRete: +(growthRete.toFixed(2))
             }
         } else {
             return null
