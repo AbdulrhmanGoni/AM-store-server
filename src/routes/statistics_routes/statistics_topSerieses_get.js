@@ -1,10 +1,9 @@
 import StatisticsController from "../../controllers/statistics-controllers/StatisticsController.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
-export default async function statistics_topSerieses_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function statistics_topSerieses_get(req, res) {
         const results = await StatisticsController.mostPopularSerieses(req.query.limit);
         res.status(results ? 200 : 400).json(results);
-    } catch (error) {
-        res.status(500).json();
     }
-}
+)

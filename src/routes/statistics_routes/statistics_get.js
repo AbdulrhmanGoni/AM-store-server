@@ -9,6 +9,7 @@ import statistics_users_get from "./statistics_users_get.js";
 import statistics_topCustomers_get from "./statistics_topCustomers_get.js";
 import statistics_orders_get from "./statistics_orders_get.js";
 import statistics_usersOverview_get from "./statistics_usersOverview_get.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
 const handlers = {
     "monthly-sales-statistics": statistics_monthlySalesStatistics_get,
@@ -24,8 +25,8 @@ const handlers = {
     "users-overview": statistics_usersOverview_get
 }
 
-export default async function statistics_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function statistics_get(req, res) {
         const { queryKey } = req.query;
         if (queryKey) {
             if (handlers[queryKey]) handlers[queryKey](req, res)
@@ -33,8 +34,5 @@ export default async function statistics_get(req, res) {
         } else {
             res.status(400).json({ message: "you have to specify query queryKey" })
         }
-    } catch (error) {
-        console.log(error)
-        res.status(500).json()
     }
-}
+)

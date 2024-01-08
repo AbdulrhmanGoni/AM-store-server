@@ -1,4 +1,5 @@
 import OrdersControllers from "../../controllers/orders-controllers/OrdersControllers.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
 export default asyncRouteHandler(
     async function orders_getOrderById_get(req, res) {

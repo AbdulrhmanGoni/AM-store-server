@@ -1,11 +1,10 @@
 import StatisticsController from "../../controllers/statistics-controllers/StatisticsController.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
-export default async function statistics_usersOverview_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function statistics_usersOverview_get(req, res) {
         const { page, pageSize } = req.query;
         const results = await StatisticsController.usersOverview(page, pageSize);
         res.status(results ? 200 : 400).json(results);
-    } catch (error) {
-        res.status(500).json();
     }
-}
+)
