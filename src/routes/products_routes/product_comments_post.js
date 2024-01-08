@@ -1,8 +1,9 @@
 import ProductsController from "../../controllers/products-controllers/ProductsController.js"
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 import toObjectId from "../../utilities/toObjectId.js";
 
-export default async function product_comments_post(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function product_comments_post(req, res) {
         const {
             addCommentToProduct,
             likeProductComment,
@@ -37,8 +38,5 @@ export default async function product_comments_post(req, res) {
 
             default: return res.status(405).json(null);
         }
-    } catch (error) {
-        console.log(error);
-        res.status(500).json();
     }
-}
+)

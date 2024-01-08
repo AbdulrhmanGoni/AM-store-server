@@ -1,11 +1,9 @@
 import ProductsController from '../../controllers/products-controllers/ProductsController.js'
+import asyncRouteHandler from '../../utilities/asyncRouteHandler.js';
 
-export default async function products_pagination_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function products_pagination_get(req, res) {
         const products = await ProductsController.productsPagination(req.query);
         res.status(products ? 200 : 400).json(products);
-    } catch (error) {
-        console.log(error)
-        res.status(500).json();
     }
-}
+)

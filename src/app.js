@@ -25,7 +25,7 @@ app.use([
 // Main Routers
 app.use("/api", mainRouter)
 
-app.use("*", (_req, _res, next) => {
+app.all("*", (_req, _res, next) => {
     const message = "Sorry, the content you're looking for doesn't exist.";
     const error = new ErrorGenerator(message, 404);
     next(error);
