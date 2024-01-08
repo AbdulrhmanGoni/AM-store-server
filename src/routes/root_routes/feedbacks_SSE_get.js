@@ -1,3 +1,4 @@
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 import eventEmiter from "../../utilities/eventEmiter.js";
 
 const feedbacksReceivers = []
@@ -8,8 +9,8 @@ eventEmiter.on("feedback", (feedback) => {
     })
 })
 
-export default async function feedbacks_SSE_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function feedbacks_SSE_get(req, res) {
         res.writeHead(200, {
             'Content-Type': 'text/event-stream',
             'Cache-Control': 'no-cache',
@@ -24,8 +25,5 @@ export default async function feedbacks_SSE_get(req, res) {
         res.on("close", () => {
             delete feedbacksReceivers[receiverIndex]
         })
-
-    } catch (error) {
-        res.status(500).json();
     }
-}
+)

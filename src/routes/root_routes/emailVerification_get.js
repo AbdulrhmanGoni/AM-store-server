@@ -1,11 +1,12 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
 import UsersModel from "../../models/Users.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 import emailVerificationHtmlTemplate from "../../utilities/emailVerificationHtmlTemplate.js";
 import genRandomNumber from '../../utilities/genRandomNumber.js';
 
 
-export default async function emailVerification_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function emailVerification_get(req, res) {
         const user = await UsersModel.findById(req.userId);
         if (user) {
             const { userEmail, userName, hisEmailVerified } = user;
@@ -26,8 +27,5 @@ export default async function emailVerification_get(req, res) {
                 !response && res.status(400).json();
             }
         } else res.status(400).json();
-    } catch (error) {
-        console.log(error)
-        res.status(400).json();
     }
-}
+)

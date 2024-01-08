@@ -1,9 +1,11 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
 import { emailsToVerify } from "../../controllers/system-controller/sendVerificationCodeToEmail.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
 
-export default async function emailVerification_post(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function emailVerification_post(req, res) {
+
         const { verificationCode, userEmail } = req.body;
         const EVConfig = emailsToVerify[userEmail];
 
@@ -28,9 +30,5 @@ export default async function emailVerification_post(req, res) {
             ++EVConfig.tries;
             res.status(200).json({ ok: false, message: "Invalid verification code !" });
         }
-
-    } catch (error) {
-        console.log(error)
-        res.status(400).json({ message: "Sending verification code failed for unexpected error" });
     }
-};
+)

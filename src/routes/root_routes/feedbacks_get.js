@@ -1,7 +1,8 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
-export default async function feedbacks_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function feedbacks_get(req, res) {
         let { sliceNumber, sliceSize } = req.query;
         const options = {
             sliceNumber: +sliceNumber - 1,
@@ -9,7 +10,5 @@ export default async function feedbacks_get(req, res) {
         }
         const { status, response } = await SystemController.getUsersFeedback(options)
         res.status(status).json(response);
-    } catch (error) {
-        res.status(500).json();
     }
-}
+)

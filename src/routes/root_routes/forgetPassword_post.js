@@ -1,9 +1,10 @@
 import forgetPassword_sendVerificationCode_post from "./forgetPassword_sendVerificationCode_post.js";
 import forgetPassword_receiveVerificationCode_post from "./forgetPassword_receiveVerificationCode_post.js";
 import forgetPassword_changePassword_post from "./forgetPassword_changePassword_post.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
-export default async function forgetPassword_post(req, res, next) {
-    try {
+export default asyncRouteHandler(
+    async function forgetPassword_post(req, res, next) {
         switch (req.query.type) {
             case "changing-password-request": {
                 forgetPassword_sendVerificationCode_post(req, res, next);
@@ -19,8 +20,5 @@ export default async function forgetPassword_post(req, res, next) {
             }
             default: res.status(400).json(); break;
         }
-    } catch (error) {
-        console.log(error)
-        res.status(400).json();
     }
-}
+)

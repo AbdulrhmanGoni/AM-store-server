@@ -1,4 +1,5 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
+import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 import eventEmiter from "../../utilities/eventEmiter.js";
 
 const notificationsReceivers = [];
@@ -9,8 +10,8 @@ eventEmiter.on("notification", (notification) => {
     })
 })
 
-export default async function notifications_get(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function notifications_get(req, res) {
         res.writeHead(200, {
             'Content-Type': 'text/event-stream',
             'Cache-Control': 'no-cache',
@@ -28,9 +29,5 @@ export default async function notifications_get(req, res) {
         res.on("close", () => {
             delete notificationsReceivers[receiverIndex]
         })
-
-    } catch (error) {
-        console.log(error)
-        res.status(500).json()
     }
-}
+)
