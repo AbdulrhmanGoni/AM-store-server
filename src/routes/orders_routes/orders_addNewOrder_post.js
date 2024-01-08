@@ -1,13 +1,10 @@
-
 import OrdersControllers from '../../controllers/orders-controllers/OrdersControllers.js'
+import asyncRouteHandler from '../../utilities/asyncRouteHandler.js';
 
-export default async function orders_addNewOrder_post(req, res) {
-    try {
+export default asyncRouteHandler(
+    async function orders_addNewOrder_post(req, res) {
         const response = await OrdersControllers.addNewOrder(req.body.theOrder);
         response && res.status(200).json(response);
         !response && res.status(400).json(response);
-    } catch (error) {
-        console.log(error)
-        res.status(400).json(null);
     }
-}
+)
