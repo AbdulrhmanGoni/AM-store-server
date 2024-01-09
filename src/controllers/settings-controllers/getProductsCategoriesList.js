@@ -1,5 +1,5 @@
 import { readFileSync, writeFile, existsSync } from "fs";
-import SettingsModel from "../models/Settings.js";
+import SettingsModel from "../../models/Settings.js";
 
 export default async function getProductsCategoriesList() {
     try {
@@ -10,9 +10,7 @@ export default async function getProductsCategoriesList() {
         } else {
             const [data] = await SettingsModel.find({}, "productsCategories");
             if (data?.productsCategories) {
-                writeFile(cachePath, JSON.stringify(data.productsCategories), (ee) => {
-                    console.log(ee)
-                })
+                writeFile(cachePath, JSON.stringify(data.productsCategories), () => { })
                 return data.productsCategories
             } else null
         }

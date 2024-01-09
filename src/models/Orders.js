@@ -23,15 +23,11 @@ const OrderSchema = new Schema(
             enum: ["Completed", "Pending", "Canceled"],
             default: "Pending"
         },
-        deliveryDate: {
-            type: Date,
-            required: true
-        },
         expectedDeliveryDate: Date,
         deliveryPrice: ANumber(),
         discountCobone: {
-            name: RequiredString(),
-            value: RequiredNumber({ min: 0.01, max: 1 })
+            name: String,
+            value: ANumber({ min: 0, max: 1 })
         }
     },
     { timestamps: true }
