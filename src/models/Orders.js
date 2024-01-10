@@ -23,7 +23,7 @@ const OrderSchema = new Schema(
             enum: ["Completed", "Pending", "Canceled"],
             default: "Pending"
         },
-        expectedDeliveryDate: Date,
+        expectedDeliveryDate: String,
         deliveryPrice: ANumber(),
         discountCobone: {
             name: String,
