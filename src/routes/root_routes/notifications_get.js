@@ -19,7 +19,7 @@ export default asyncRouteHandler(
         });
 
         const notifications = await SystemController.getNotifications(req.adminId);
-        res.write(`data: ${JSON.stringify(notifications)}\n\n`);
+        notifications?.length && res.write(`data: ${JSON.stringify(notifications)}\n\n`);
 
         const receiverIndex = notificationsReceivers.length
         notificationsReceivers.push((notification) => {

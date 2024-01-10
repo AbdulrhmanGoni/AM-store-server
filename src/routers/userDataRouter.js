@@ -1,10 +1,10 @@
 import { Router } from "express";
 import authenticate from "../auth/authenticate.js";
 import user_get from "../routes/users_routes/user_get.js";
-import user_uploadAvatar_post from "../routes/users_routes/user_uploadAvatar_post.js";
+import user_uploadAvatar_put from "../routes/users_routes/user_uploadAvatar_put.js";
 import user_checkPassword_post from "../routes/users_routes/user_checkPassword_post.js";
 import user_changePassword_post from "../routes/users_routes/user_changePassword_post.js";
-import user_updateUserName_post from "../routes/users_routes/user_updateUserName_post.js";
+import user_updateUserName_patch from "../routes/users_routes/user_updateUserName_patch.js";
 import checkingUserPasswordLimit from "../middlewares/checkingUserPasswordLimit.js";
 
 
@@ -16,10 +16,10 @@ router.route("/:userId")
     .get(user_get)
 
 router.route("/:userId/upload-avatar")
-    .post(user_uploadAvatar_post)
+    .put(user_uploadAvatar_put)
 
 router.route("/:userId/update-user-name")
-    .post(user_updateUserName_post)
+    .patch(user_updateUserName_patch)
 
 router.route("/:userId/check-password")
     .post([checkingUserPasswordLimit(), user_checkPassword_post])

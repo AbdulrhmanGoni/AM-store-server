@@ -2,7 +2,7 @@ import UsersController from '../../controllers/users-controllers/UsersController
 import asyncRouteHandler from '../../utilities/asyncRouteHandler.js';
 
 export default asyncRouteHandler(
-    async function user_updateUserName_post(req, res) {
+    async function user_updateUserName_patch(req, res) {
         const respond = await UsersController.updateUserName(req.userId, req.body.newName);
         res.status(respond ? 200 : 400).json(respond);
     }

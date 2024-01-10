@@ -20,6 +20,8 @@ const mainRouter = Router()
 // testing using postman
 mainRouter.get("/test", testLab);
 mainRouter.post("/test", testLab);
+mainRouter.put("/test", testLab);
+mainRouter.patch("/test", testLab);
 
 mainRouter.use("/users", [
     userDataRouter,

@@ -10,7 +10,7 @@ eventEmiter.on("feedback", (feedback) => {
 })
 
 export default asyncRouteHandler(
-    async function feedbacks_SSE_get(req, res) {
+    async function feedbacks_SSE_get(_req, res) {
         res.writeHead(200, {
             'Content-Type': 'text/event-stream',
             'Cache-Control': 'no-cache',
