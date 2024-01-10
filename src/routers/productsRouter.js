@@ -14,6 +14,7 @@ import product_comments_delete from "../routes/products_routes/product_comments_
 import product_comments_post from "../routes/products_routes/product_comments_post.js";
 import product_areUserBoughtAProductsBefore_get from "../routes/products_routes/product_areUserBoughtAProductsBefore_get.js";
 import authenticate from "../auth/authenticate.js";
+import product_comments_put from "../routes/products_routes/product_comments_put.js";
 
 const router = Router();
 
@@ -43,6 +44,7 @@ router.route("/:productId/rating")
 router.route("/:productId/comments")
     .get(product_comments_get)
     .post(product_comments_post)
+    .put(product_comments_put)
     .delete(product_comments_delete)
 
 export default router;
