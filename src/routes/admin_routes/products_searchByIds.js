@@ -8,11 +8,7 @@ export default asyncRouteHandler(
         const { productsIds, withCount, withPrice } = req.body;
         const { type, custom } = req.query;
         const projection = custom ? createProjection(custom) : productDataTypes[type ?? "basic"];
-        try {
-            const response = await ProductsController.searchByIds(productsIds, projection, { withCount, withPrice });
-            res.status(200).json(response);
-        } catch {
-            res.status(400).json(null);
-        }
+        const response = await ProductsController.searchByIds(productsIds, projection, { withCount, withPrice });
+        res.status(200).json(response);
     }
 )
