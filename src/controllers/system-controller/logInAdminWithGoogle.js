@@ -1,7 +1,7 @@
 import AdminModel from "../../models/Admins.js";
-import jwt from "jsonwebtoken";
 import googleAccountGetter from "../../utilities/googleAccountGetter.js";
 import messageResponse from "../../utilities/messageResponse.js";
+import { generateJWTToken } from "../../utilities/jwtUtilities.js";
 
 export default async function logInAdminWithGoogle(googleUserCredentials) {
     try {
@@ -10,11 +10,7 @@ export default async function logInAdminWithGoogle(googleUserCredentials) {
             const adminData = await AdminModel.findOne({ adminEmail: googleResponse.email }, { createdAt: 0, updatedAt: 0 });
             if (adminData) {
                 if (adminData.signingMethod === "Google auth") {
-                    const token = jwt.sign(
-                        { adminId: adminData._id, role: "admin" },
-                        process.env.JWT_SECRET_KEY,
-                        { expiresIn: "30d" }
-                    )
+                    const token = generateJWTToken({ adminId: adminData._id, role: "admin" })
                     adminData.adminPassword = undefined;
                     return { status: 200, response: { adminData, accessToken: token, ok: true } };
                 }

@@ -1,6 +1,6 @@
 import UsersModel from "../../models/Users.js";
 import { hashSync } from "bcrypt";
-import jwt from "jsonwebtoken";
+import { generateJWTToken } from "../../utilities/jwtUtilities.js";
 
 export default async function signUpUser(userData, hashingPassword = true) {
 
@@ -14,7 +14,7 @@ export default async function signUpUser(userData, hashingPassword = true) {
         const result = await newUser.save()
             .then(() => {
                 const userId = newUser._id;
-                const token = jwt.sign({ userId, role: "user" }, JWT_SECRET_KEY, { expiresIn: "30d" })
+                const token = generateJWTToken({ userId, role: "user" });
                 const { userName, avatar, userEmail, hisEmailVerified } = newUser;
                 return {
                     userData: {

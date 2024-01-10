@@ -1,7 +1,7 @@
 import AdminModel from "../../models/Admins.js";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import messageResponse from "../../utilities/messageResponse.js";
+import { generateJWTToken } from "../../utilities/jwtUtilities.js";
 
 export default async function logInAdmin({ adminEmail, adminPassword }) {
     try {
@@ -12,11 +12,7 @@ export default async function logInAdmin({ adminEmail, adminPassword }) {
             } else {
                 const pass = bcrypt.compareSync(adminPassword, adminData.adminPassword);
                 if (pass) {
-                    const token = jwt.sign(
-                        { adminId: adminData._id, role: "admin" },
-                        process.env.JWT_SECRET_KEY,
-                        { expiresIn: "30d" }
-                    )
+                    const token = generateJWTToken({ adminId: adminData._id, role: "admin" });
                     adminData.adminPassword = undefined;
                     return { status: 200, response: { adminData, accessToken: token, ok: true } };
                 }

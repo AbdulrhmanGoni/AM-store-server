@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken"
+import { verifyJWTToken } from "../utilities/jwtUtilities.js";
 
 export default async function adminAuth(req, res, next) {
     const unAuthorizedMsg = { message: "You need some credentials first to access this api" };
@@ -6,7 +6,7 @@ export default async function adminAuth(req, res, next) {
     const tokenId = req.headers["token-id"];
     if (accessToken && tokenId) {
         try {
-            const token = jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
+            const token = verifyJWTToken(accessToken)
             if (token.role === "admin" && tokenId === token.adminId) {
                 req.adminId = token.adminId; next();
             } else if (token.role === "user") {

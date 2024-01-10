@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken";
 import UsersModel from "../../models/Users.js";
 import { compareSync } from "bcrypt";
+import { generateJWTToken } from "../../utilities/jwtUtilities.js";
 
 
 export default async function logInUser({ userEmail, userPassword }) {
@@ -12,11 +12,7 @@ export default async function logInUser({ userEmail, userPassword }) {
             } else {
                 const pass = compareSync(userPassword, userData.userPassword);
                 if (pass) {
-                    const token = jwt.sign(
-                        { userId: userData._id, role: "user" },
-                        process.env.JWT_SECRET_KEY,
-                        { expiresIn: "30d" }
-                    );
+                    const token = generateJWTToken({ userId: userData._id, role: "user" })
                     return { status: true, userId: userData._id, accessToken: token };
                 }
                 else return { message: "There is error in Email or Password" };

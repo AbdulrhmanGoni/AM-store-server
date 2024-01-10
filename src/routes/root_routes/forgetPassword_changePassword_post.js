@@ -1,10 +1,10 @@
 import SystemController from "../../controllers/system-controller/SystemController.js";
-import jwt from "jsonwebtoken";
+import { verifyJWTToken } from "../../utilities/jwtUtilities.js";
 
 export default async function forgetPassword_changePassword_post(req, res) {
     try {
         const { userEmail, changePasswordToken, newPassword } = req.body;
-        const result = jwt.verify(changePasswordToken, process.env.JWT_SECRET_KEY);
+        const result = verifyJWTToken(changePasswordToken)
         if (result && result?.userEmail === userEmail) {
             const response = await SystemController.changeUserPassword({ userEmail }, newPassword)
             res.status(200).json(response);
