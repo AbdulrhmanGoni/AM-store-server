@@ -1,6 +1,6 @@
 import UsersModel from "../../models/Users.js";
 import { compareSync } from "bcrypt";
-import { generateJWTToken } from "../../utilities/jwtUtilities.js";
+import { generateJWT } from "../../utilities/jwtUtilities.js";
 
 
 export default async function logInUser({ userEmail, userPassword }) {
@@ -12,7 +12,7 @@ export default async function logInUser({ userEmail, userPassword }) {
             } else {
                 const pass = compareSync(userPassword, userData.userPassword);
                 if (pass) {
-                    const token = generateJWTToken({ userId: userData._id, role: "user" })
+                    const token = generateJWT({ userId: userData._id, role: "user" })
                     return { status: true, userId: userData._id, accessToken: token };
                 }
                 else return { message: "There is error in Email or Password" };

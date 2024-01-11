@@ -1,7 +1,7 @@
 import UsersModel from "../../models/Users.js";
 import googleAccountGetter from "../../utilities/googleAccountGetter.js";
 import messageResponse from "../../utilities/messageResponse.js";
-import { generateJWTToken } from "../../utilities/jwtUtilities.js";
+import { generateJWT } from "../../utilities/jwtUtilities.js";
 
 export default async function logInUserWithGoogle(googleUserAccessToken) {
     try {
@@ -13,7 +13,7 @@ export default async function logInUserWithGoogle(googleUserAccessToken) {
             if (userData) {
                 if (userData.signingMethod === "Google auth") {
                     const userId = userData._id;
-                    const token = generateJWTToken({ userId, role: "user" })
+                    const token = generateJWT({ userId, role: "user" })
                     return { status: 200, response: { ok: true, userId, accessToken: token } };
                 }
                 else return messageResponse("This email signed up with another sign up method")
