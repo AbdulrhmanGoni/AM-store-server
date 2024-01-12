@@ -5,7 +5,7 @@ import { generateJWT } from "../../utilities/jwtUtilities.js";
 export default async function signUpUser(userData, hashingPassword = true) {
 
     try {
-        const { HASHING_SALT_ROUNDS, JWT_SECRET_KEY } = process.env;
+        const { HASHING_SALT_ROUNDS } = process.env;
         const newUser = new UsersModel(userData);
         if (hashingPassword) {
             const hashedPassword = hashSync(newUser.userPassword, +HASHING_SALT_ROUNDS);
