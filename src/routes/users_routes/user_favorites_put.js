@@ -2,10 +2,10 @@ import UsersController from "../../controllers/users-controllers/UsersController
 import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
 export default asyncRouteHandler(
-    async function user_favorites_post(req, res) {
+    async function user_favorites_put(req, res) {
         const { userId } = req.params;
-        const { productId } = req.body;
-        const response = await UsersController.toggleFavorites(userId, productId);
+        const { favorites } = req.body;
+        const response = await UsersController.setFavorites(userId, favorites);
         res.status(200).json(response);
     }
 )

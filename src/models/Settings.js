@@ -10,7 +10,14 @@ const SettingsSchema = new Schema({
             _id: false
         }
     ],
-    productsCategories: [String]
+    productsCategories: [String],
+    allowUsersChangePasswordEveryNDays: Number,
+    deliveryPrice: {
+        type: {
+            value: Number,
+            limit: Number
+        }
+    }
 })
 
 const SettingsModel = model("settings", SettingsSchema);

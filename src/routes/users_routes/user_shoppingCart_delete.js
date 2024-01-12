@@ -5,9 +5,9 @@ export default asyncRouteHandler(
     async function user_shoppingCart_delete(req, res) {
 
         const { clearShoppingCart, removeFromShoppingCart } = UsersController;
-        const { productId, type } = req.body;
+        const { productId, actionType } = req.body;
 
-        if (type === "clear") {
+        if (actionType === "clear") {
             const respons = await clearShoppingCart(req.params.userId);
             res.status(200).json(respons);
         } else {

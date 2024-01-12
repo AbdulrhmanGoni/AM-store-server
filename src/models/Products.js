@@ -37,15 +37,19 @@ const ProductSchema = new Schema({
         virtuals: {
             rating: {
                 get() {
-                    const reviews = this.ratings.length || 0;
-                    const costomersRatings = this.ratings.reduce((acc, current) => acc + current.rating, 0)
-                    return {
-                        reviews,
-                        ratingAverage: +(costomersRatings / reviews).toFixed(1) || 0
+                    if (this.ratings) {
+                        const reviews = this.ratings?.length || 0;
+                        const costomersRatings = this.ratings?.reduce((acc, current) => acc + current.rating, 0)
+                        return {
+                            reviews,
+                            ratingAverage: +(costomersRatings / reviews).toFixed(1) || 0
+                        }
                     }
+                    return;
                 }
             }
         },
+        id: false,
         toJSON: {
             virtuals: true,
             transform(_doc, ret) {

@@ -17,10 +17,10 @@ export default async function addNewOrder(theOrder) {
 
         const { products, totalPrice } = theOrder;
 
-        const { id } = await new OrdersModel(theOrder).save({ session })
+        const { _id } = await new OrdersModel(theOrder).save({ session })
         const userData = await UsersModel.findOneAndUpdate(
             { _id: theOrder.userId },
-            { $set: { userShoppingCart: [] }, $push: { userOrders: id } },
+            { $set: { userShoppingCart: [] }, $push: { userOrders: _id } },
             { session, projection: userDataTypes.basic }
         );
 
