@@ -2,8 +2,9 @@ import AdminController from "../../controllers/admin-controllers/AdminController
 import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
 export default asyncRouteHandler(
-    async function products_put(req, res) {
-        const response = await AdminController.addProduct(req.body);
+    async function products_addDiscount_post(req, res) {
+        const { productsIds, discount } = req.body;
+        const response = await AdminController.addDiscountToProducts(productsIds, discount);
         res.status(response ? 200 : 400).json(response);
     }
 )

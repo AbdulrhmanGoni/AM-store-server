@@ -45,7 +45,6 @@ router.route("/feedbacks")
     .post(feedbacks_post)
     .delete(feedbacks_delete)
 
-router.route("/check-user-state").get([authenticate, (_, res) => { res.status(200).json(true) }]);
 router.route("/email-verification")
     .get([emailVerificationLimit(), authenticate, emailVerification_get])
     .post([authenticate, emailVerification_post]);
