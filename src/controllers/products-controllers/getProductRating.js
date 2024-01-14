@@ -37,7 +37,20 @@ export default async function getProductRating(productId, userId) {
                 }
             }
         ])
-        return result;
+        if (result) {
+            return result;
+        } else {
+            return {
+                reviews: 0,
+                oneStar: { count: 0, percentage: 0 },
+                twoStars: { count: 0, percentage: 0 },
+                threeStars: { count: 0, percentage: 0 },
+                fuorStars: { count: 0, percentage: 0 },
+                fiveStars: { count: 0, percentage: 0 },
+                currentUserRateing: 0,
+                ratingAverage: 0
+            }
+        }
     } catch (error) {
         console.log(error)
         return null

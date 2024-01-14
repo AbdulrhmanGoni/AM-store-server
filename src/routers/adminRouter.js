@@ -21,6 +21,6 @@ router.route("/products/discounts")
 
 router.route("/products/:productId")
     .get(product_get)
-    .put(product_patch)
+    .patch(product_patch)
 
 export default router;

@@ -17,10 +17,10 @@ export default async function addNewOrder(theOrder) {
 
         const { products, totalPrice } = theOrder;
 
-        const { _id } = await new OrdersModel(theOrder).save({ session })
+        const newOrder = await new OrdersModel(theOrder).save({ session })
         const userData = await UsersModel.findOneAndUpdate(
             { _id: theOrder.userId },
-            { $set: { userShoppingCart: [] }, $push: { userOrders: _id } },
+            { $set: { userShoppingCart: [] }, $push: { userOrders: newOrder._id } },
             { session, projection: userDataTypes.basic }
         );
 
@@ -45,7 +45,7 @@ export default async function addNewOrder(theOrder) {
 
             // if all processes above done successfully, the changes will saved in the database
             await session.commitTransaction();
-            return { ok: true };
+            return { ok: true, newOrder };
         }
         else {
             /*
@@ -58,7 +58,7 @@ export default async function addNewOrder(theOrder) {
     } catch (error) {
         console.log(error?.message);
         await session.abortTransaction();
-        return false
+        return { ok: false }
     } finally {
         await session.endSession();
     }

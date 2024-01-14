@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import { LocationSchema, PaymentMethodSchema } from "./Users.js";
 import { RequiredNumber, ObjectId, RequiredObjectId, ANumber } from "../utilities/schemaTypesOptions.js";
-import newOrdersObserver from "../utilities/newOrdersObserver.js";
 
 const OrderSchema = new Schema(
     {
@@ -35,7 +34,5 @@ const OrderSchema = new Schema(
 )
 
 const OrdersModel = model("orders", OrderSchema);
-
-newOrdersObserver(OrdersModel);
 
 export default OrdersModel;
