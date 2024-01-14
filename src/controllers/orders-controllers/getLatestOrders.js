@@ -1,4 +1,3 @@
-import { userDataTypes } from "../../CONSTANT/projections.js";
 import OrdersModel from "../../models/Orders.js";
 
 export default async function getLatestOrders(limit = 10) {
@@ -12,7 +11,7 @@ export default async function getLatestOrders(limit = 10) {
                     localField: "userId",
                     foreignField: "_id",
                     as: "user",
-                    pipeline: [{ $project: userDataTypes.basic }]
+                    pipeline: [{ $project: { userEmail: 1, avatar: 1 } }]
                 }
             },
             {

@@ -2,7 +2,7 @@ import SystemController from "../../controllers/system-controller/SystemControll
 import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 import eventEmiter from "../../utilities/eventEmiter.js";
 
-const notificationsReceivers = [];
+let notificationsReceivers = [];
 
 eventEmiter.on("notification", (notification) => {
     notificationsReceivers.forEach((receiver) => {
@@ -27,7 +27,7 @@ export default asyncRouteHandler(
         })
 
         res.on("close", () => {
-            delete notificationsReceivers[receiverIndex]
+            notificationsReceivers = notificationsReceivers.filter((_, index) => index !== receiverIndex)
         })
     }
 )
