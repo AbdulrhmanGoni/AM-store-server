@@ -19,7 +19,7 @@ export default async function sendEmail(targetEmail, subject, body, html) {
         };
 
         const { accepted } = await transporter.sendMail(mailOptions);
-        return accepted.some(e => e === targetEmail);
+        return accepted.some(email => email === targetEmail);
     } catch (error) {
         console.log(error)
         return false;

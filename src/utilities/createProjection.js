@@ -1,12 +1,10 @@
-export default function createProjection(customParams, { withId = true, customValue, except = [] } = {}) {
+export default function createProjection(customParams) {
     let kyesArray = customParams?.split(",");
-    const returnType = withId === null ? {} : { _id: withId };
+    const returnType = { _id: true };
     if (kyesArray) {
         for (const key of kyesArray) {
             let rejected = key[0] === "_";
-            if (!except.includes(key)) {
-                returnType[rejected ? key.slice(1) : key] = customValue ?? !rejected;
-            }
+            returnType[rejected ? key.slice(1) : key] = !rejected;
         }
     }
     return returnType;
