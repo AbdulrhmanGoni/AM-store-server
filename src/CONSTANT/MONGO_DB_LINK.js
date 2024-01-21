@@ -1,8 +1,11 @@
 const
     userName = process.env.DB_USERNAME,
     password = process.env.DB_PASSWORD,
-    database = process.env.DB_NAME
+    databaseName = process.env.DB_NAME,
+    atlas_cluster = process.env.ATLAS_CLUSTER
 
-const MONGO_DB_LINK = `mongodb+srv://${userName}:${password}@am-store.v4hcite.mongodb.net/${database}?retryWrites=true&w=majority`;
+const mongodbLink = `mongodb+srv://${userName}:${password}@${atlas_cluster}.mongodb.net/${databaseName}?retryWrites=true&w=majority`;
 
-export default MONGO_DB_LINK;
+const localMongodbLink = "mongodb://abdulrhman:testing10@localhost:27017"
+
+export default process.env.NODE_ENV === "jest-testing" ? localMongodbLink : mongodbLink;

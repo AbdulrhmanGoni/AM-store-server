@@ -1,5 +1,5 @@
 {
-  "Createa controller function": {
+  "Create a controller function": {
     "scope": "javascript,typescript",
     "prefix": "cf",
     "body": [
@@ -14,7 +14,7 @@
     ],
     "description": "Createa a controller function exported as default and has a ready try catch block"
   },
-  "Createa route handler function": {
+  "Create a route handler function": {
     "scope": "javascript,typescript",
     "prefix": "rhf",
     "body": [
@@ -26,5 +26,26 @@
       ")"
     ],
     "description": "Createa a route handler function exported as default, takes (req, res) parameters and has a ready try catch block"
+  },
+  "Prepare a jest test file": {
+    "scope": "javascript,typescript",
+    "prefix": "jtf",
+    "body": [
+      "import request from \"supertest\"",
+      "import mongoose from \"mongoose\"",
+      "import server from \"../../../src/server.js\"\n",
+      "afterAll(async () => {",
+      "    await mongoose.disconnect()",
+      "    server.close()",
+      "})\n",
+      "const route = \"/api/\"\n",
+      "descripe(\"Test '${TM_FILENAME_BASE}' route handler\", () => {",
+      "    it(\"Should returns \", async () => {",
+      "        const response = await request(server).GET(\"/api/\")",
+      "        expect(response.statusCode).toBe(200)",
+      "    })",
+      "})"
+    ],
+    "description": "Prepare the main jest functions structure for starting test a specific route"
   }
 }
