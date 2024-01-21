@@ -1,0 +1,133 @@
+[
+  {
+    "_id": "64468f99b5701d2948e81c72",
+    "title": "Uzumaki Naruto's figure",
+    "images": [
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695830580/am-store-products/naruto-7th_ivqo74.jpg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695830581/am-store-products/naruto1-7th_mel38l.jpg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695830583/am-store-products/naruto3-7th_yfu5xy.jpg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695830582/am-store-products/naruto2-7th_smx7d6.jpg"
+    ],
+    "price": 49.99,
+    "category": "figures",
+    "series": "Naruto",
+    "description": "Figure of Uzumaki Naruto wears the cloak of his father Minato (4th hokage), from anime Naruto, 7th hokage, hero of the anime, the stronger character in the anime and one of the most popelur characters in the world.",
+    "sold": 71,
+    "amount": 20,
+    "earnings": 3018.7994999999955,
+    "discount": 0.2
+  },
+  {
+    "_id": "6447bb5c1429dbe9a674ef22",
+    "title": "Monky .d Luffy's figure",
+    "images": [
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695840887/am-store-products/luffy-0_qqcfah.svg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695840937/am-store-products/luffy-1_y0oo3m.svg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695840968/am-store-products/luffy-2_vx5h4p.svg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695840993/am-store-products/luffy-3_fforra.svg"
+    ],
+    "price": 45,
+    "category": "figures",
+    "series": "One Piece",
+    "description": "Monkey D. Luffy from anime One piece, 5th yonku, hero of the anime and the most popelur character",
+    "sold": 67,
+    "amount": 12,
+    "earnings": 2789.0999999999967,
+    "discount": 0.19
+  },
+  {
+    "_id": "6448df88eb113c2a5e7bb638",
+    "title": "Levi Akarman figure",
+    "images": [
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695826000/am-store-products/levi_a6vb7g.jpg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695826058/am-store-products/levi-1_rveka1.jpg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695826059/am-store-products/levi-2_yqf1h9.jpg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695826060/am-store-products/levi-3_eciw3p.jpg"
+    ],
+    "price": 40,
+    "category": "figures",
+    "series": "Attack On Titan",
+    "description": "Levi Akarman Attack on Titan, best character in the anime, any girl lovs hem, the stronger character in the anime and one of the most popelur character in the world",
+    "sold": 53,
+    "amount": 15,
+    "earnings": 1854.6499999999992,
+    "discount": 0.21
+  },
+  {
+    "_id": "64494154eb113c2a5e7bb63d",
+    "title": "Levi and Mikasa in fight clothes",
+    "images": [
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695848894/am-store-products/mikasa-levi_jkpjnm.svg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695848904/am-store-products/mikasa-levi-3_ccbu3d.svg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695848912/am-store-products/mikasa-levi-1_sxwhhi.svg",
+      "http://res.cloudinary.com/da8txs4co/image/upload/v1695848918/am-store-products/mikasa-levi-2_wv94ib.svg"
+    ],
+    "price": 75,
+    "category": "figures",
+    "series": "Attack On Titan",
+    "description": "Two figures for Levi Akarman and Mikasa Akarman from anime Attack on Titan with fight clothes, the stronger characters in the anime and one of the most popelur characters in the world",
+    "amount": 23,
+    "sold": 63,
+    "earnings": 3865,
+    "discount": 0.35
+  },
+  {
+    "_id": "64495134eb113c2a5e7bb63e",
+    "title": "T-shirt with the logo of anime One Piece",
+    "images": [
+      "https://live.staticflickr.com/65535/52736451960_0fa099d931_c.png"
+    ],
+    "price": 15,
+    "category": "clothes",
+    "series": "One Piece",
+    "description": "T-shirt with One piece's logo with several colors and sizes",
+    "amount": 5,
+    "sold": 31,
+    "earnings": 433.19999999999993,
+    "discount": 0.22,
+    "ratings": null
+  },
+  {
+    "_id": "644952d3eb113c2a5e7bb63f",
+    "title": "Shinichi Kudo figure",
+    "images": [
+      "https://live.staticflickr.com/65535/52735515532_63f3b50dd2_c.png"
+    ],
+    "price": 49,
+    "category": "figures",
+    "series": "Detective Conan",
+    "description": "Hero of anime Detective Conan, best and smarter Detective in the world and dose't have haters",
+    "amount": 7,
+    "sold": 36,
+    "earnings": 1615.1400000000003,
+    "discount": 0.22
+  },
+  {
+    "_id": "644c116af51028d0ca857751",
+    "title": "Edogawa Conan's figure",
+    "images": [
+      "https://live.staticflickr.com/65535/52736451230_0c33889646_c.png"
+    ],
+    "price": 33,
+    "category": "figures",
+    "series": "Detective Conan",
+    "description": "Hero of anime Detective Conan, best and smarter Detective in the world and dose't have haters",
+    "amount": 9,
+    "sold": 31,
+    "earnings": 1011.45
+  },
+  {
+    "_id": "644c1271f51028d0ca857752",
+    "title": "T-shirt with Naruto's mark",
+    "images": [
+      "https://live.staticflickr.com/65535/52736451205_508af53f4b_c.png"
+    ],
+    "price": 16,
+    "category": "clothes",
+    "series": "Naruto",
+    "description": "T-shirt with Naruto's mark with several colors and sizes",
+    "amount": 6,
+    "sold": 31,
+    "earnings": 489.6
+  }
+]

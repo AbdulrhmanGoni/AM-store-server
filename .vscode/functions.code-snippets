@@ -38,10 +38,10 @@
       "    await mongoose.disconnect()",
       "    server.close()",
       "})\n",
-      "const route = \"/api/\"\n",
-      "descripe(\"Test '${TM_FILENAME_BASE}' route handler\", () => {",
+      "const routePath = \"/api/\"\n",
+      "describe(\"Test '${TM_FILENAME_BASE}' route handler\", () => {",
       "    it(\"Should returns \", async () => {",
-      "        const response = await request(server).GET(\"/api/\")",
+      "        const response = await request(server).get(`${${routePath}}/`)",
       "        expect(response.statusCode).toBe(200)",
       "    })",
       "})"

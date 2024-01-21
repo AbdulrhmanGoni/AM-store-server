@@ -9,6 +9,11 @@
     "test": "nodemon --legacy-watch src/server.js",
     "jest": "SET \"NODE_ENV=jest-testing\" && node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "__tests__/fackes"
+    ]
+  },
   "keywords": [
     "AM",
     "AM-Store",

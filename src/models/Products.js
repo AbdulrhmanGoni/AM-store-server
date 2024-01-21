@@ -13,7 +13,7 @@ const RatingSchema = new Schema({
 })
 
 const ProductSchema = new Schema({
-    title: RequiredString({ minLingth: 6 }),
+    title: RequiredString({ minLength: 6 }),
     price: RequiredNumber(),
     images: {
         type: [String],
@@ -21,7 +21,7 @@ const ProductSchema = new Schema({
     },
     category: RequiredString(),
     series: RequiredString(),
-    description: RequiredString({ minLingth: 12, maxLingth: 300 }),
+    description: RequiredString({ minLength: 12, maxLength: 300 }),
     amount: RequiredNumber(),
     count: Number,
     earnings: ANumber(),
