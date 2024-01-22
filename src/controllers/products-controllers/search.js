@@ -8,11 +8,13 @@ export default async function search({ queries, projection }) {
             titleReg = new RegExp(title, "i"),
             seriesReg = new RegExp(series, "i");
 
-        return await ProductsModel.find({
+        const filter = {
             category: category ?? matchAll,
             title: titleReg,
             series: seriesReg
-        }, projection, { limit });
+        }
+
+        return await ProductsModel.find(filter, projection, { limit });
     } catch (error) {
         console.log(error)
         return null;

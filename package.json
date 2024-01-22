@@ -11,7 +11,7 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "__tests__/fackes"
+      "__tests__/fakes"
     ]
   },
   "keywords": [
