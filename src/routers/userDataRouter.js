@@ -1,5 +1,4 @@
 import { Router } from "express";
-import authenticate from "../auth/authenticate.js";
 import user_get from "../routes/users_routes/user_get.js";
 import user_uploadAvatar_put from "../routes/users_routes/user_uploadAvatar_put.js";
 import user_checkPassword_post from "../routes/users_routes/user_checkPassword_post.js";
@@ -9,8 +8,6 @@ import checkingUserPasswordLimit from "../middlewares/checkingUserPasswordLimit.
 
 
 const router = Router();
-
-router.use("/:userId", authenticate);
 
 router.route("/:userId")
     .get(user_get)

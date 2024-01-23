@@ -36,10 +36,10 @@ export default async function searchByIds(productsIds, projection, options) {
             }
         }
 
-        if (withCount) addFieldsStage.count = getValueAt(1);
-        if (withPrice) addFieldsStage.price = getValueAt(2);
+        if (Boolean(withCount)) addFieldsStage.count = getValueAt(1);
+        if (Boolean(withPrice)) addFieldsStage.price = getValueAt(2);
 
-        withCount || withPrice && pipeline.push({ $addFields: addFieldsStage });
+        (withCount || withPrice) && pipeline.push({ $addFields: addFieldsStage });
 
         const products = await ProductsModel.aggregate(pipeline);
         return products;
