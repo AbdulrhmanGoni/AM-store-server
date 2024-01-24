@@ -20,7 +20,7 @@ export default async function getProductRating(productId, userId) {
                     threeStars: mongoQueryCondition("$rating", 3),
                     fuorStars: mongoQueryCondition("$rating", 4),
                     fiveStars: mongoQueryCondition("$rating", 5),
-                    currentUserRateing: mongoQueryCondition("$raterId", userId, "$rating")
+                    currentUserRating: mongoQueryCondition("$raterId", userId, "$rating")
                 }
             },
             {
@@ -31,7 +31,7 @@ export default async function getProductRating(productId, userId) {
                     threeStars: mongoQueryPercentage("$threeStars"),
                     fuorStars: mongoQueryPercentage("$fuorStars"),
                     fiveStars: mongoQueryPercentage("$fiveStars"),
-                    currentUserRateing: true,
+                    currentUserRating: true,
                     reviews: true,
                     _id: false
                 }
@@ -47,7 +47,7 @@ export default async function getProductRating(productId, userId) {
                 threeStars: { count: 0, percentage: 0 },
                 fuorStars: { count: 0, percentage: 0 },
                 fiveStars: { count: 0, percentage: 0 },
-                currentUserRateing: 0,
+                currentUserRating: 0,
                 ratingAverage: 0
             }
         }
