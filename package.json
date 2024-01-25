@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "dev": "nodemon --legacy-watch src/server.js",
     "test": "nodemon --legacy-watch src/server.js",
-    "jest": "SET \"NODE_ENV=jest-testing\" && node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles"
+    "jest": "SET \"NODE_ENV=jest-testing\" && env-cmd -f .env.secret node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles"
   },
   "jest": {
     "testPathIgnorePatterns": [
@@ -38,6 +38,7 @@
     "nodemailer": "^6.9.2"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "jest": "^29.7.0",
     "nodemon": "^3.0.3",
     "supertest": "^6.3.4"
