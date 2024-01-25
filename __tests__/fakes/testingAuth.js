@@ -1,16 +1,15 @@
 import { generateJWT } from "../../src/utilities/jwtUtilities.js";
 
-const userAccessToken = generateJWT({
-    userId: "6442ea0558a819df70390175",
-    role: "user"
-})
+const userId = "64440dec163292936d0f94a7"
+const adminId = "64e0f875c2d61623ef30c3a2"
 
-const adminAccessToken = generateJWT({
-    adminId: "64e0f875c2d61623ef30c3a2",
-    role: "admin"
-})
+const userAccessToken = generateJWT({ userId, role: "user" })
+
+const adminAccessToken = generateJWT({ adminId, role: "admin" })
 
 export {
     userAccessToken,
-    adminAccessToken
+    userId,
+    adminAccessToken,
+    adminId
 }

@@ -34,7 +34,7 @@ router.route("/:productId")
     .get(product_get)
 
 router.route("/:productId/are-user-bought-the-product-before")
-    .get([authenticate, product_areUserBoughtAProductsBefore_get])
+    .get(product_areUserBoughtAProductsBefore_get)
 
 router.route("/:productId/rating")
     .get(product_getProductRating_get)
