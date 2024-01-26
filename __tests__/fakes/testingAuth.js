@@ -3,13 +3,16 @@ import { generateJWT } from "../../src/utilities/jwtUtilities.js";
 const userId = "64440dec163292936d0f94a7"
 const adminId = "64e0f875c2d61623ef30c3a2"
 
-const userAccessToken = generateJWT({ userId, role: "user" })
+function adminAuth(id = adminId) {
+    return { authorization: `Bearer ${generateJWT({ adminId: id, role: "admin" })}` }
+}
 
-const adminAccessToken = generateJWT({ adminId, role: "admin" })
-
+function userAuth(id = userId) {
+    return { authorization: `Bearer ${generateJWT({ userId: id, role: "user" })}` }
+}
 export {
-    userAccessToken,
+    adminAuth,
     userId,
-    adminAccessToken,
+    userAuth,
     adminId
 }

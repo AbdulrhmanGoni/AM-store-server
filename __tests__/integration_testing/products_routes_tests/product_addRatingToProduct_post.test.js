@@ -3,7 +3,7 @@ import mongoose, { Types } from "mongoose"
 import server from "../../../src/server.js"
 import ProductsModel from "../../../src/models/Products.js"
 import { getRandomProduct } from "../../fakes/fakesProducts.js"
-import { userAccessToken } from "../../fakes/testingAuth.js"
+import { userAuth, userId } from "../../fakes/testingAuth.js"
 
 afterAll(async () => {
     await mongoose.disconnect()
@@ -15,7 +15,6 @@ afterEach(async () => {
 })
 
 const product = getRandomProduct();
-const userId = "6442ea0558a819df70390175"
 const routePath = `/api/products/${product._id}/rating`
 
 describe("Test 'product_addRatingToProduct_post' route handler", () => {
@@ -37,7 +36,7 @@ describe("Test 'product_addRatingToProduct_post' route handler", () => {
         const response = await request(server)
             .post(routePath)
             .send({ userId, rate: 5 })
-            .set({ authorization: `Bearer ${userAccessToken}` })
+            .set(userAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body).toBe(true)
@@ -50,7 +49,7 @@ describe("Test 'product_addRatingToProduct_post' route handler", () => {
         const response = await request(server)
             .post(routePath)
             .send({ userId, rate: 3 })
-            .set({ authorization: `Bearer ${userAccessToken}` })
+            .set(userAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body).toBe(true)

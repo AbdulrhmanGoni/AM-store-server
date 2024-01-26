@@ -8,7 +8,7 @@ export default asyncRouteHandler(
             id = req.params.userId,
             projection = userDataTypes[req.query.type ?? "basic"]
 
-        const userData = UsersController.getUserData(id, projection);
+        const userData = await UsersController.getUserData(id, projection);
         res.status(200).json(userData);
     }
 )

@@ -11,12 +11,10 @@ const router = Router();
 
 router.route("/:userId")
     .get(user_get)
+    .patch(user_updateUserName_patch)
 
 router.route("/:userId/upload-avatar")
     .put(user_uploadAvatar_put)
-
-router.route("/:userId/update-user-name")
-    .patch(user_updateUserName_patch)
 
 router.route("/:userId/check-password")
     .post([checkingUserPasswordLimit(), user_checkPassword_post])

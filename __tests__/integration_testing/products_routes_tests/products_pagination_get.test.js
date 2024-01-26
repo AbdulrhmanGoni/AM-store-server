@@ -1,7 +1,7 @@
 import request from "supertest"
 import mongoose from "mongoose"
 import server from "../../../src/server.js"
-import { adminAccessToken } from "../../fakes/testingAuth.js"
+import { adminAuth } from "../../fakes/testingAuth.js"
 import { getArrayOfProducts } from "../../fakes/fakesProducts.js"
 import ProductsModel from "../../../src/models/Products.js"
 
@@ -25,7 +25,7 @@ describe("Test 'products_pagination_get' route handler", () => {
         const page = 1, pageSize = 4
         const response = await request(server)
             .get(routePath(page, pageSize))
-            .set({ authorization: `Bearer ${adminAccessToken}` })
+            .set(adminAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(pageSize)
@@ -42,7 +42,7 @@ describe("Test 'products_pagination_get' route handler", () => {
         const page = 5, pageSize = 10
         const response = await request(server)
             .get(routePath(page, pageSize))
-            .set({ authorization: `Bearer ${adminAccessToken}` })
+            .set(adminAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(0)
@@ -52,7 +52,7 @@ describe("Test 'products_pagination_get' route handler", () => {
         const page = 2, pageSize = 3
         const response = await request(server)
             .get(routePath(page, pageSize))
-            .set({ authorization: `Bearer ${adminAccessToken}` })
+            .set(adminAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(pageSize)
@@ -78,7 +78,7 @@ describe("Test 'products_pagination_get' route handler", () => {
 
         const response = await request(server)
             .get(routePath(page, pageSize, returnType))
-            .set({ authorization: `Bearer ${adminAccessToken}` })
+            .set(adminAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(pageSize)
@@ -99,7 +99,7 @@ describe("Test 'products_pagination_get' route handler", () => {
 
         const response = await request(server)
             .get(routePath(page, pageSize, returnType))
-            .set({ authorization: `Bearer ${adminAccessToken}` })
+            .set(adminAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(pageSize)
@@ -122,7 +122,7 @@ describe("Test 'products_pagination_get' route handler", () => {
 
         const response = await request(server)
             .get(routePath(page, pageSize, returnType))
-            .set({ authorization: `Bearer ${adminAccessToken}` })
+            .set(adminAuth())
 
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(1)
