@@ -6,7 +6,6 @@ import shoppingCartRouter from "./shoppingCartRouter.js";
 import favoritesRouter from "./favoritesRouter.js";
 import locationsRouter from "./locationsRouter.js";
 import paymentMethodsRouter from "./paymentMethodsRouter.js";
-import usersOrdersRoute from "./usersOrdersRoute.js";
 import ordersRouter from "./ordersRouter.js";
 import settingsRouter from "./settingsRouter.js";
 import rootRouter from "./rootRouter.js";
@@ -28,7 +27,6 @@ mainRouter.use("/users", authenticate, [
     userDataRouter,
     shoppingCartRouter,
     favoritesRouter,
-    usersOrdersRoute,
     locationsRouter,
     paymentMethodsRouter
 ]);

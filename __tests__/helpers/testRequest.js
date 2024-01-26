@@ -1,5 +1,6 @@
 import request from "supertest"
 import server from "../../src/server.js"
+import mongoose from "mongoose"
 import { adminAuth, userAuth } from "../fakes/testingAuth.js"
 
 /**
@@ -33,8 +34,14 @@ function anyRequest(url, method, body) {
     return request(server)[method](url).send(body)
 }
 
+async function closeTestServer() {
+    await mongoose.disconnect()
+    server.close()
+}
+
 export {
     userRequest,
     adminRequest,
-    anyRequest
+    anyRequest,
+    closeTestServer
 }

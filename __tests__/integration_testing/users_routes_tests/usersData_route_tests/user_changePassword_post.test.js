@@ -1,8 +1,8 @@
 import mongoose from "mongoose"
-import server from "../../../src/server.js"
-import { user } from "../../fakes/fakeUsers.js"
-import UsersModel from "../../../src/models/Users.js"
-import { userRequest } from "../../helpers/testRequest.js"
+import server from "../../../../src/server.js"
+import { fakeUser } from "../../../fakes/fakeUsers.js"
+import UsersModel from "../../../../src/models/Users.js"
+import { userRequest } from "../../../helpers/testRequest.js"
 import { hashSync, compareSync } from "bcrypt"
 
 afterAll(async () => {
@@ -30,8 +30,8 @@ describe("Test 'user_changePassword_post' route handler", () => {
 
 async function changingUserPasswordTest(userPassword, newPassword) {
     const hashedPassword = hashSync(userPassword, +process.env.HASHING_SALT_ROUNDS);
-    user.userPassword = hashedPassword;
-    const { _id: userId } = await UsersModel.create(user);
+    fakeUser.userPassword = hashedPassword;
+    const { _id: userId } = await UsersModel.create(fakeUser);
     const requestBody = { currentPassword: userPassword, newPassword }
     const response = await userRequest(routePath(userId), "post", { body: requestBody, userId });
     expect(response.statusCode).toBe(200);

@@ -1,8 +1,8 @@
 import mongoose from "mongoose"
-import server from "../../../src/server.js"
-import { user } from "../../fakes/fakeUsers.js"
-import UsersModel from "../../../src/models/Users.js"
-import { userRequest } from "../../helpers/testRequest.js"
+import server from "../../../../src/server.js"
+import { fakeUser } from "../../../fakes/fakeUsers.js"
+import UsersModel from "../../../../src/models/Users.js"
+import { userRequest } from "../../../helpers/testRequest.js"
 
 afterAll(async () => {
     await mongoose.disconnect()
@@ -18,7 +18,7 @@ const routePath = (userId) => `/api/users/${userId}`
 describe("Test 'user_updateUserName_patch' route handler", () => {
 
     it("Should updates user's name to \"Mohammed\" and returns `true`", async () => {
-        const { _id } = await UsersModel.create(user);
+        const { _id } = await UsersModel.create(fakeUser);
         const requestBody = { newName: "Mohammed" }
         const response = await userRequest(routePath(_id), "patch", { body: requestBody, userId: _id });
         expect(response.statusCode).toBe(200);
