@@ -6,7 +6,6 @@ import user_changePassword_post from "../routes/users_routes/user_changePassword
 import user_updateUserName_patch from "../routes/users_routes/user_updateUserName_patch.js";
 import checkingUserPasswordLimit from "../middlewares/checkingUserPasswordLimit.js";
 
-
 const router = Router();
 
 router.route("/:userId")

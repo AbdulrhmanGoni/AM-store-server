@@ -18,7 +18,7 @@ export default async function passwordChecker(userId, password) {
             }
             else return { status: false, message: "You didn't signed up using (Email & Password) method" };
         }
-        else return { status: false, message: "Error while getting user data !" }
+        else return { status: false, message: "Error !" }
     } catch (error) {
         console.log(error)
         return { status: false, message: "Unexpected Error !" }
