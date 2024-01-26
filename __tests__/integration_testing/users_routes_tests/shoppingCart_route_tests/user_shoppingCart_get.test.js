@@ -17,7 +17,7 @@ const routePath = (userId) => `/api/users/${userId}/shopping-cart`
 
 describe("Test 'user_shoppingCart_get' route handler", () => {
 
-    it("Should returns an array of products from user's shopping cart", async () => {
+    it("Should returns an array of one product from user's shopping cart", async () => {
         const product = getRandomProduct();
         const user = { ...fakeUser, userShoppingCart: [`${product._id}-1`] };
         await ProductsModel.create(product);

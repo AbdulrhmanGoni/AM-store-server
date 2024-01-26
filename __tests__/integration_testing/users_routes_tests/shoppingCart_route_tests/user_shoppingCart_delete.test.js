@@ -21,7 +21,6 @@ describe("Test 'user_shoppingCart_delete' route handler", () => {
         expect(response.body).toBe(true)
         const { userShoppingCart } = await UsersModel.findById(userId, { userShoppingCart: true });
         expect(userShoppingCart.length).toBe(productsIds.length - 1)
-        console.log(userShoppingCart)
     })
 
     it("Should clears user's shopping cart and returns `true`", async () => {
@@ -33,7 +32,6 @@ describe("Test 'user_shoppingCart_delete' route handler", () => {
         expect(response.body).toBe(true)
         const { userShoppingCart } = await UsersModel.findById(userId, { userShoppingCart: true });
         expect(userShoppingCart.length).toBe(0)
-        console.log(userShoppingCart)
     })
 
 })

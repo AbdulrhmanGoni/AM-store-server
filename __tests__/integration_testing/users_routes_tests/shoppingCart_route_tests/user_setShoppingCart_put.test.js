@@ -25,4 +25,15 @@ describe("Test 'user_setShoppingCart_put' route handler", () => {
         )
     })
 
+    it("Should replace user's shopping cart with an empty array and returns `true`", async () => {
+        const products = getArrayOfProducts(3);
+        const productsIds = products.map((product) => `${product._id}-1`);
+        const { _id: userId } = await UsersModel.create({ ...fakeUser, userShoppingCart: productsIds });
+        const response = await userRequest(routePath(userId), "put", { userId, body: { productsIds: [] } })
+        expect(response.statusCode).toBe(200)
+        expect(response.body).toBe(true)
+        const { userShoppingCart } = await UsersModel.findById(userId, { userShoppingCart: true });
+        expect(userShoppingCart.length).toBe(0)
+    })
+
 })
