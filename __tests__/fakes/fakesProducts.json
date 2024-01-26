@@ -12,10 +12,7 @@
     "category": "figures",
     "series": "Naruto",
     "description": "Figure of Uzumaki Naruto wears the cloak of his father Minato (4th hokage), from anime Naruto, 7th hokage, hero of the anime, the stronger character in the anime and one of the most popelur characters in the world.",
-    "sold": 71,
-    "amount": 20,
-    "earnings": 3018.7994999999955,
-    "discount": 0.2
+    "amount": 20
   },
   {
     "_id": "6447bb5c1429dbe9a674ef22",
@@ -30,10 +27,7 @@
     "category": "figures",
     "series": "One Piece",
     "description": "Monkey D. Luffy from anime One piece, 5th yonku, hero of the anime and the most popelur character",
-    "sold": 67,
-    "amount": 12,
-    "earnings": 2789.0999999999967,
-    "discount": 0.19
+    "amount": 12
   },
   {
     "_id": "6448df88eb113c2a5e7bb638",
@@ -48,10 +42,7 @@
     "category": "figures",
     "series": "Attack On Titan",
     "description": "Levi Akarman Attack on Titan, best character in the anime, any girl lovs hem, the stronger character in the anime and one of the most popelur character in the world",
-    "sold": 53,
-    "amount": 15,
-    "earnings": 1854.6499999999992,
-    "discount": 0.21
+    "amount": 15
   },
   {
     "_id": "64494154eb113c2a5e7bb63d",
@@ -66,10 +57,7 @@
     "category": "figures",
     "series": "Attack On Titan",
     "description": "Two figures for Levi Akarman and Mikasa Akarman from anime Attack on Titan with fight clothes, the stronger characters in the anime and one of the most popelur characters in the world",
-    "amount": 23,
-    "sold": 63,
-    "earnings": 3865,
-    "discount": 0.35
+    "amount": 23
   },
   {
     "_id": "64495134eb113c2a5e7bb63e",
@@ -81,10 +69,7 @@
     "category": "clothes",
     "series": "One Piece",
     "description": "T-shirt with One piece's logo with several colors and sizes",
-    "amount": 5,
-    "sold": 31,
-    "earnings": 433.19999999999993,
-    "discount": 0.22
+    "amount": 5
   },
   {
     "_id": "644952d3eb113c2a5e7bb63f",
@@ -96,10 +81,7 @@
     "category": "figures",
     "series": "Detective Conan",
     "description": "Hero of anime Detective Conan, best and smarter Detective in the world and dose't have haters",
-    "amount": 7,
-    "sold": 36,
-    "earnings": 1615.1400000000003,
-    "discount": 0.22
+    "amount": 7
   },
   {
     "_id": "644c116af51028d0ca857751",
@@ -111,9 +93,7 @@
     "category": "figures",
     "series": "Detective Conan",
     "description": "Hero of anime Detective Conan, best and smarter Detective in the world and dose't have haters",
-    "amount": 9,
-    "sold": 31,
-    "earnings": 1011.45
+    "amount": 9
   },
   {
     "_id": "644c1271f51028d0ca857752",
@@ -125,8 +105,6 @@
     "category": "clothes",
     "series": "Naruto",
     "description": "T-shirt with Naruto's mark with several colors and sizes",
-    "amount": 6,
-    "sold": 31,
-    "earnings": 489.6
+    "amount": 6
   }
 ]

@@ -8,10 +8,10 @@ export default asyncRouteHandler(
         const { productId, actionType } = req.body;
 
         if (actionType === "clear") {
-            const respons = await clearShoppingCart(req.params.userId);
+            const respons = await clearShoppingCart(req.userId);
             res.status(200).json(respons);
         } else {
-            const respons = await removeFromShoppingCart(req.params.userId, productId);
+            const respons = await removeFromShoppingCart(req.userId, productId);
             res.status(200).json(respons);
         }
     }
