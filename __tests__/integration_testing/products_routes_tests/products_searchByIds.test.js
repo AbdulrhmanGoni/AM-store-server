@@ -1,15 +1,12 @@
-import request from "supertest"
-import mongoose from "mongoose"
-import server from "../../../src/server.js"
 import ProductsModel from "../../../src/models/Products.js"
 import { getArrayOfProducts } from "../../fakes/fakesProducts.js"
+import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
 
 const products = getArrayOfProducts()
 
 afterAll(async () => {
     await ProductsModel.deleteMany({});
-    await mongoose.disconnect()
-    server.close()
+    await closeTestingServer()
 })
 
 beforeAll(async () => {
@@ -24,10 +21,7 @@ describe("Test 'products_searchByIds' route handler", () => {
         const productsIds = products.slice(0, 5)
             .map(({ _id, price }, i) => `${_id}-${i + 1}-${price}`)
 
-        const response = await request(server)
-            .post(routePath)
-            .send({ productsIds })
-
+        const response = await userRequest(routePath, "post", { body: { productsIds } })
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(productsIds.length)
         productsIds.forEach((id) => {
@@ -41,10 +35,8 @@ describe("Test 'products_searchByIds' route handler", () => {
         const productsIds = products.slice(0, 3)
             .map(({ _id, price }, i) => `${_id}-${i + 1}-${price}`)
 
-        const response = await request(server)
-            .post(routePath)
-            .send({ productsIds, withCount: true })
-
+        const requestBody = { productsIds, withCount: true }
+        const response = await userRequest(routePath, "post", { body: requestBody })
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(productsIds.length)
         productsIds.forEach((id) => {
@@ -59,10 +51,8 @@ describe("Test 'products_searchByIds' route handler", () => {
         const productsIds = products.slice(0, 3)
             .map(({ _id, price }, i) => `${_id}-${i + 1}-${price * .1}`)
 
-        const response = await request(server)
-            .post(routePath)
-            .send({ productsIds, withPrice: true })
-
+        const requestBody = { productsIds, withPrice: true }
+        const response = await userRequest(routePath, "post", { body: requestBody })
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(productsIds.length)
         productsIds.forEach((id) => {
@@ -77,10 +67,8 @@ describe("Test 'products_searchByIds' route handler", () => {
         const productsIds = products.slice(0, 3)
             .map(({ _id, price }, i) => `${_id}-${i + 1}-${price * .1}`)
 
-        const response = await request(server)
-            .post(routePath)
-            .send({ productsIds, withCount: true, withPrice: true })
-
+        const requestBody = { productsIds, withCount: true, withPrice: true }
+        const response = await userRequest(routePath, "post", { body: requestBody })
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(productsIds.length)
         productsIds.forEach((id) => {

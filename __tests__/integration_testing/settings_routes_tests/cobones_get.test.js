@@ -4,7 +4,7 @@ import { anyRequest, closeTestingServer } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
     await SettingsModel.deleteMany({})
-    closeTestingServer();
+    await closeTestingServer();
 })
 beforeAll(async () => {
     await SettingsModel.deleteMany({})

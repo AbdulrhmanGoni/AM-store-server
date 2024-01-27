@@ -4,7 +4,7 @@ import { arrayOfFakesDiscountCobones } from "../../fakes/fakeDiscountCobones.js"
 
 afterAll(async () => {
     await SettingsModel.deleteMany({})
-    closeTestingServer();
+    await closeTestingServer();
 })
 
 const routePath = "/api/settings/cobones"

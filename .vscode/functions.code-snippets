@@ -33,12 +33,12 @@
     "body": [
       "import { userRequest, closeTestingServer } from \"../../../../helpers/testRequest.js\"\n",
       "afterAll(async () => {",
-      "    closeTestingServer()",
+      "  await closeTestingServer()",
       "})\n",
       "const routePath = \"/api/\"\n",
       "describe(\"Test '${TM_FILENAME_BASE}' route handler\", () => {",
       "    it(\"Should returns \", async () => {",
-      "        const response = await userRequest(routePath)",
+      "        const response = await userRequest(routePath, \"\")",
       "        expect(response.statusCode).toBe(200)",
       "    })",
       "})"
