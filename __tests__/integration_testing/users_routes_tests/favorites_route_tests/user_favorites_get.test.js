@@ -2,10 +2,10 @@ import ProductsModel from "../../../../src/models/Products.js"
 import UsersModel from "../../../../src/models/Users.js"
 import { fakeUser } from "../../../fakes/fakeUsers.js"
 import { getArrayOfProducts, getRandomProduct } from "../../../fakes/fakesProducts.js"
-import { closeTestServer, userRequest } from "../../../helpers/testRequest.js"
+import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 
 afterAll(async () => {
-    await closeTestServer()
+    await closeTestingServer()
 })
 
 afterEach(async () => {

@@ -1,11 +1,11 @@
 import UsersModel from "../../../../src/models/Users.js"
 import { fakeUser } from "../../../fakes/fakeUsers.js"
 import { getRandomPaymentMethods, fakePaymentMethods } from "../../../fakes/fakesPaymentMethods.js"
-import { closeTestServer, userRequest } from "../../../helpers/testRequest.js"
+import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 
 afterAll(async () => {
     await UsersModel.deleteMany({});
-    await closeTestServer()
+    await closeTestingServer()
 })
 
 const routePath = (userId) => `/api/users/${userId}/payment-methods`

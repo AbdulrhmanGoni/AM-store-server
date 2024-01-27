@@ -1,10 +1,10 @@
 import UsersModel from "../../../../src/models/Users.js"
 import { fakePaymentMethods } from "../../../fakes/fakesPaymentMethods.js"
 import { fakeUser } from "../../../fakes/fakeUsers.js"
-import { closeTestServer, userRequest } from "../../../helpers/testRequest.js"
+import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 
 afterAll(async () => {
-    await closeTestServer()
+    await closeTestingServer()
 })
 
 afterEach(async () => {

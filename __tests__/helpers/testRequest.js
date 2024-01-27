@@ -34,7 +34,7 @@ function anyRequest(url, method, body) {
     return request(server)[method](url).send(body)
 }
 
-async function closeTestServer() {
+async function closeTestingServer() {
     await mongoose.disconnect()
     server.close()
 }
@@ -43,5 +43,5 @@ export {
     userRequest,
     adminRequest,
     anyRequest,
-    closeTestServer
+    closeTestingServer
 }

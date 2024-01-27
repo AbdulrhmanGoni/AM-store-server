@@ -31,9 +31,9 @@
     "scope": "javascript,typescript",
     "prefix": "jtf",
     "body": [
-      "import { userRequest, closeServer } from \"../../../../helpers/testRequest.js\"\n",
+      "import { userRequest, closeTestingServer } from \"../../../../helpers/testRequest.js\"\n",
       "afterAll(async () => {",
-      "    closeTestServer()",
+      "    closeTestingServer()",
       "})\n",
       "const routePath = \"/api/\"\n",
       "describe(\"Test '${TM_FILENAME_BASE}' route handler\", () => {",
