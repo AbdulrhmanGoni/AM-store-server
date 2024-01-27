@@ -1,12 +1,9 @@
-import request from "supertest"
-import mongoose from "mongoose"
-import server from "../../../src/server.js"
 import ProductsModel from "../../../src/models/Products.js"
 import { getArrayOfProducts } from "../../fakes/fakesProducts.js"
+import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
-    await mongoose.disconnect()
-    server.close()
+    closeTestingServer()
 })
 
 afterEach(async () => {
@@ -19,7 +16,7 @@ describe("Test 'products_topProducts_get' route handler", () => {
 
     it("Should returns an empty array", async () => {
         await ProductsModel.insertMany(getArrayOfProducts(0))
-        const response = await request(server).get(`${routePath}?sortBy=earnings&limit=0`)
+        const response = await userRequest(`${routePath}?sortBy=earnings&limit=0`, "get")
         expect(response.statusCode).toBe(200)
         expect(response.body).toBeSortedProductsBy("earnings")
         expect(response.body.length).toBe(0)
@@ -28,7 +25,7 @@ describe("Test 'products_topProducts_get' route handler", () => {
     it("Should returns an array of 5 products sorted by their earnings", async () => {
         const productsCount = 5
         await ProductsModel.insertMany(getArrayOfProducts(productsCount))
-        const response = await request(server).get(`${routePath}?sortBy=earnings&limit=${productsCount}`)
+        const response = await userRequest(`${routePath}?sortBy=earnings&limit=${productsCount}`, "get")
         expect(response.statusCode).toBe(200)
         expect(response.body).toBeSortedProductsBy("earnings")
         expect(response.body.length).toBe(productsCount)
@@ -37,7 +34,7 @@ describe("Test 'products_topProducts_get' route handler", () => {
     it("Should returns an array of 7 products sorted by how many times they sold", async () => {
         const productsCount = 7
         await ProductsModel.insertMany(getArrayOfProducts(productsCount))
-        const response = await request(server).get(`${routePath}?sortBy=sold&limit=${productsCount}`)
+        const response = await userRequest(`${routePath}?sortBy=sold&limit=${productsCount}`, "get")
         expect(response.statusCode).toBe(200)
         expect(response.body).toBeSortedProductsBy("sold")
         expect(response.body.length).toBe(productsCount)

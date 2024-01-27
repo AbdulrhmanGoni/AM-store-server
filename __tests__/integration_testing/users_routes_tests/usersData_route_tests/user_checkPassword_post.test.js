@@ -1,13 +1,10 @@
-import mongoose from "mongoose"
-import server from "../../../../src/server.js"
 import { fakeUser } from "../../../fakes/fakeUsers.js"
 import UsersModel from "../../../../src/models/Users.js"
-import { userRequest } from "../../../helpers/testRequest.js"
+import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 import { hashSync } from "bcrypt"
 
 afterAll(async () => {
-    await mongoose.disconnect()
-    server.close()
+    closeTestingServer()
 })
 
 afterEach(async () => {

@@ -1,14 +1,11 @@
-import request from "supertest"
-import mongoose from "mongoose"
-import server from "../../../src/server.js"
 import ProductsCommentsModel from "../../../src/models/ProductsComments.js"
 import { getRandomProduct } from "../../fakes/fakesProducts.js"
 import comments from "../../fakes/fakeProductComments.js"
+import { closeTestingServer, anyRequest } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
     await ProductsCommentsModel.deleteMany({});
-    await mongoose.disconnect()
-    server.close()
+    closeTestingServer()
 })
 
 const product = getRandomProduct();
@@ -26,7 +23,7 @@ describe("Test 'product_comments_get.test' route handler", () => {
     it("Should returns an array of three comments with `thereIsMore: true`", async () => {
         const sliceNumber = 1
         const sliceSize = 3
-        const response = await request(server).get(routePath(product._id, sliceNumber, sliceSize))
+        const response = await anyRequest(routePath(product._id, sliceNumber, sliceSize), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body.thereIsMore).toBe(true)
         expect(response.body.comments.length).toBe(sliceSize)
@@ -38,7 +35,7 @@ describe("Test 'product_comments_get.test' route handler", () => {
     it("Should returns an array of nine comments with `thereIsMore: false`", async () => {
         const sliceNumber = 1
         const sliceSize = 15
-        const response = await request(server).get(routePath(product._id, sliceNumber, sliceSize))
+        const response = await anyRequest(routePath(product._id, sliceNumber, sliceSize), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body.thereIsMore).toBe(false)
         expect(response.body.comments.length).toBe(9)
@@ -50,7 +47,7 @@ describe("Test 'product_comments_get.test' route handler", () => {
     it("Should returns an array of three comments with `thereIsMore: false`", async () => {
         const sliceNumber = 3
         const sliceSize = 3
-        const response = await request(server).get(routePath(product._id, sliceNumber, sliceSize))
+        const response = await anyRequest(routePath(product._id, sliceNumber, sliceSize), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body.thereIsMore).toBe(false)
         expect(response.body.comments.length).toBe(sliceSize)
@@ -62,7 +59,7 @@ describe("Test 'product_comments_get.test' route handler", () => {
     it("Should returns an array of two comments with `thereIsMore: false`", async () => {
         const sliceNumber = 2
         const sliceSize = 7
-        const response = await request(server).get(routePath(product._id, sliceNumber, sliceSize))
+        const response = await anyRequest(routePath(product._id, sliceNumber, sliceSize), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body.thereIsMore).toBe(false)
         expect(response.body.comments.length).toBe(2)
@@ -74,7 +71,7 @@ describe("Test 'product_comments_get.test' route handler", () => {
     it("Should returns an array of four comments with `thereIsMore: true`", async () => {
         const sliceNumber = 2
         const sliceSize = 4
-        const response = await request(server).get(routePath(product._id, sliceNumber, sliceSize))
+        const response = await anyRequest(routePath(product._id, sliceNumber, sliceSize), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body.thereIsMore).toBe(true)
         expect(response.body.comments.length).toBe(4)
@@ -86,7 +83,7 @@ describe("Test 'product_comments_get.test' route handler", () => {
     it("Should returns an ampty comments array with `thereIsMore: false`", async () => {
         const sliceNumber = 3
         const sliceSize = 5
-        const response = await request(server).get(routePath(product._id, sliceNumber, sliceSize))
+        const response = await anyRequest(routePath(product._id, sliceNumber, sliceSize), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body.thereIsMore).toBe(false)
         expect(response.body.comments.length).toBe(0)
@@ -94,7 +91,7 @@ describe("Test 'product_comments_get.test' route handler", () => {
 
     it("Should returns an ampty comments array with `thereIsMore: false`", async () => {
         await ProductsCommentsModel.deleteMany({});
-        const response = await request(server).get(routePath(product._id, 1, 1))
+        const response = await anyRequest(routePath(product._id, 1, 1), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body.thereIsMore).toBe(false)
         expect(response.body.comments.length).toBe(0)
