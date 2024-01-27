@@ -1,17 +1,9 @@
+import { getRandomLocation } from "./fakesLocations";
 
 export function createFakeOrder({ userId, products }) {
     return {
         userId,
-        location: {
-            theName: "Abdulrhman Mohammed",
-            phone: "0503219567",
-            country: "Saudi Arabia",
-            city: "macca",
-            street: "Mansor Street",
-            moreDetails: "Behind Abo Mohamed Resturent",
-            type: "Home",
-            id: "BpgkpDvPLWVeZPr17bcylocation"
-        },
+        location: getRandomLocation(),
         totalPrice: 314.98,
         products,
         paymentMethod: {
