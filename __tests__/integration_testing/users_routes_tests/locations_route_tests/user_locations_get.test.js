@@ -15,7 +15,7 @@ const routePath = (userId) => `/api/users/${userId}/locations`
 
 describe("Test 'user_locations_get' route handler", () => {
 
-    it("Should returns an empty user's locations", async () => {
+    it("Should returns an empty user's locations object", async () => {
         const { _id: userId } = await UsersModel.create(fakeUser);
         const response = await userRequest(routePath(userId), "get", { userId });
         expect(response.statusCode).toBe(200);
@@ -23,7 +23,7 @@ describe("Test 'user_locations_get' route handler", () => {
         expect(response.body.selectedLocation).toBeUndefined();
     })
 
-    it("Should returns user's locations", async () => {
+    it("Should returns user's locations object", async () => {
         const user = {
             ...fakeUser,
             userAddress: {

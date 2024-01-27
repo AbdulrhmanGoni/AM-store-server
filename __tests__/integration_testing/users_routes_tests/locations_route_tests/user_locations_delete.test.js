@@ -11,7 +11,7 @@ const routePath = (userId) => `/api/users/${userId}/locations`
 
 describe("Test 'user_locations_delete' route handler", () => {
 
-    it("Should deletes a location from user's userAddress and returns `true`", async () => {
+    it("Should deletes a location from user's Address list and returns `true`", async () => {
         const locationToDelete = fakeLocations[1].id
         const user = {
             ...fakeUser,
@@ -32,7 +32,7 @@ describe("Test 'user_locations_delete' route handler", () => {
         );
     })
 
-    it("Should deletes a location from user's userAddress and returns `true`", async () => {
+    it("Should deletes the selected location from user's Address list and returns `true`", async () => {
         const locationToDelete = fakeLocations[0].id
         const user = {
             ...fakeUser,
