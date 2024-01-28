@@ -1,6 +1,7 @@
 import ProductsModel from "../../../src/models/Products.js"
 import { getArrayOfProducts } from "../../fakes/fakesProducts.js"
 import { anyRequest, closeTestingServer } from "../../helpers/testRequest.js"
+import { anyRequest, closeTestingServer } from "../../helpers/testRequest.js"
 
 beforeAll(async () => {
     await ProductsModel.insertMany(getArrayOfProducts())
@@ -16,6 +17,7 @@ const routePath = "/api/products"
 describe("Test 'products_userSearch_get' route handler", () => {
 
     it("Should returns an array of products with titles match 'l'", async () => {
+        const response = await anyRequest(`${routePath}?title=l`, "get")
         const response = await anyRequest(`${routePath}?title=l`, "get")
         expect(response.statusCode).toBe(200)
         response.body.forEach(product => {
