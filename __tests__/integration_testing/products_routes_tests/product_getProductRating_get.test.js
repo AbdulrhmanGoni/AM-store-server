@@ -1,9 +1,5 @@
-import request from "supertest"
-import mongoose from "mongoose"
-import server from "../../../src/server.js"
 import ProductsModel from "../../../src/models/Products.js"
 import { getArrayOfProducts } from "../../fakes/fakesProducts.js"
-import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
 import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
@@ -25,7 +21,6 @@ describe("Test 'product_getProductRating_get' route handler", () => {
             { raterId: "6456b6b1274b16a9f2f2b529", rating: 5 }
         ]
         const { _id } = await ProductsModel.create(product)
-        const response = await userRequest(routePath(_id), "get")
         const response = await userRequest(routePath(_id), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body).toMatchObject({
@@ -51,7 +46,6 @@ describe("Test 'product_getProductRating_get' route handler", () => {
         ]
         const { _id } = await ProductsModel.create(product)
         const response = await userRequest(routePath(_id), "get")
-        const response = await userRequest(routePath(_id), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body).toMatchObject({
             reviews: 5,
@@ -73,7 +67,6 @@ describe("Test 'product_getProductRating_get' route handler", () => {
         ]
         const { _id } = await ProductsModel.create(product)
         const response = await userRequest(routePath(_id), "get")
-        const response = await userRequest(routePath(_id), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body).toMatchObject({
             reviews: 2,
@@ -90,7 +83,6 @@ describe("Test 'product_getProductRating_get' route handler", () => {
     it("Should returns products's rating object status code 200", async () => {
         const product = products[3]
         const { _id } = await ProductsModel.create(product)
-        const response = await userRequest(routePath(_id), "get")
         const response = await userRequest(routePath(_id), "get")
         expect(response.statusCode).toBe(200)
         expect(response.body).toMatchObject({

@@ -1,7 +1,6 @@
 import { fakeUser } from "../../../fakes/fakeUsers.js"
 import UsersModel from "../../../../src/models/Users.js"
 import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
-import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 import { hashSync, compareSync } from "bcrypt"
 
 afterAll(async () => {

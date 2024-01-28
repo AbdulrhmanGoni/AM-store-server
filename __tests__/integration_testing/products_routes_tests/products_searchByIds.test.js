@@ -1,7 +1,6 @@
 import ProductsModel from "../../../src/models/Products.js"
 import { getArrayOfProducts } from "../../fakes/fakesProducts.js"
 import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
-import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
 
 const products = getArrayOfProducts()
 
@@ -23,7 +22,6 @@ describe("Test 'products_searchByIds' route handler", () => {
             .map(({ _id, price }, i) => `${_id}-${i + 1}-${price}`)
 
         const response = await userRequest(routePath, "post", { body: { productsIds } })
-        const response = await userRequest(routePath, "post", { body: { productsIds } })
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(productsIds.length)
         productsIds.forEach((id) => {
@@ -37,8 +35,6 @@ describe("Test 'products_searchByIds' route handler", () => {
         const productsIds = products.slice(0, 3)
             .map(({ _id, price }, i) => `${_id}-${i + 1}-${price}`)
 
-        const requestBody = { productsIds, withCount: true }
-        const response = await userRequest(routePath, "post", { body: requestBody })
         const requestBody = { productsIds, withCount: true }
         const response = await userRequest(routePath, "post", { body: requestBody })
         expect(response.statusCode).toBe(200)
@@ -57,8 +53,6 @@ describe("Test 'products_searchByIds' route handler", () => {
 
         const requestBody = { productsIds, withPrice: true }
         const response = await userRequest(routePath, "post", { body: requestBody })
-        const requestBody = { productsIds, withPrice: true }
-        const response = await userRequest(routePath, "post", { body: requestBody })
         expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(productsIds.length)
         productsIds.forEach((id) => {
@@ -73,8 +67,6 @@ describe("Test 'products_searchByIds' route handler", () => {
         const productsIds = products.slice(0, 3)
             .map(({ _id, price }, i) => `${_id}-${i + 1}-${price * .1}`)
 
-        const requestBody = { productsIds, withCount: true, withPrice: true }
-        const response = await userRequest(routePath, "post", { body: requestBody })
         const requestBody = { productsIds, withCount: true, withPrice: true }
         const response = await userRequest(routePath, "post", { body: requestBody })
         expect(response.statusCode).toBe(200)

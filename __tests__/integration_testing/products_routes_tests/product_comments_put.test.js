@@ -2,7 +2,6 @@ import ProductsCommentsModel from "../../../src/models/ProductsComments.js"
 import fakeComments from "../../fakes/fakeProductComments.js"
 import { getRandomProduct } from "../../fakes/fakesProducts.js"
 import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
-import { closeTestingServer, userRequest } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
     await closeTestingServer()
@@ -29,14 +28,6 @@ describe("Test 'product_comments_put' route handler (Putting likes or dislikes o
             undo: false
         }
         const response = await userRequest(routePath, "put", { body: requestBody })
-        const requestBody = {
-            productId,
-            commentId: comment.id,
-            userId,
-            actionType: "like",
-            undo: false
-        }
-        const response = await userRequest(routePath, "put", { body: requestBody })
         expect(response.statusCode).toBe(200)
         expect(response.body).toBe(true)
         const { comments } = await ProductsCommentsModel.findOne({ productId })
@@ -46,14 +37,6 @@ describe("Test 'product_comments_put' route handler (Putting likes or dislikes o
     it("Should puts dislike on the added comment and returns `true`", async () => {
         const comment = fakeComments[0];
         await ProductsCommentsModel.create({ productId, comments: [comment] })
-        const requestBody = {
-            productId,
-            commentId: comment.id,
-            userId,
-            actionType: "dislike",
-            undo: false
-        }
-        const response = await userRequest(routePath, "put", { body: requestBody })
         const requestBody = {
             productId,
             commentId: comment.id,
@@ -79,14 +62,6 @@ describe("Test 'product_comments_put' route handler (Putting likes or dislikes o
             undo: true
         }
         const response = await userRequest(routePath, "put", { body: requestBody })
-        const requestBody = {
-            productId,
-            commentId: comment.id,
-            userId,
-            actionType: "like",
-            undo: true
-        }
-        const response = await userRequest(routePath, "put", { body: requestBody })
         expect(response.statusCode).toBe(200)
         expect(response.body).toBe(true)
         const { comments } = await ProductsCommentsModel.findOne({ productId })
@@ -96,14 +71,6 @@ describe("Test 'product_comments_put' route handler (Putting likes or dislikes o
     it("Should removes the putted dislike on the added comment and returns `true`", async () => {
         const comment = fakeComments[0];
         await ProductsCommentsModel.create({ productId, comments: [{ ...comment, dislikes: [userId] }] })
-        const requestBody = {
-            productId,
-            commentId: comment.id,
-            userId,
-            actionType: "dislike",
-            undo: true
-        }
-        const response = await userRequest(routePath, "put", { body: requestBody })
         const requestBody = {
             productId,
             commentId: comment.id,
