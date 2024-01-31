@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  api-app:
+    container_name: am-store-server-testing-mode
+    build:
+      context: .
+      args:
+        - NODE_ENV=testing
+    command: npm run test
+    volumes:
+      - ./src:/am-store-server/src:ro
+    env_file:
+      - .env.secret
+      - .env.db.secret.test
+    ports:
+      - "7000:7000"

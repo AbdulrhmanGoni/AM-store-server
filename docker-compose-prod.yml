@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  api-app:
+    container_name: am-store-server-production-mode
+    build: 
+      context: .
+      args:
+        - NODE_ENV=production
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env.secret
+      - .env.db.secret.prod
+    command: npm start
+    ports:
+      - "7000:7000"

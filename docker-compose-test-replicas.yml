@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  mongodb1:
+    container_name: mongodb1
+    image: mongo
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - ./scripts/mongodb-replicas-init.sh:/scripts/mongodb-replicas-init.sh:ro
+    links:
+      - mongodb2
+      - mongodb3
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
+    networks:
+      - am-store-network
+
+  mongodb2:
+    container_name: mongodb2
+    image: mongo
+    ports:
+      - 27018:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
+    networks:
+      - am-store-network
+
+  mongodb3:
+    container_name: mongodb3
+    image: mongo
+    ports:
+      - 27019:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
+    networks:
+      - am-store-network
+
+networks:
+  am-store-network:
+    driver: bridge
