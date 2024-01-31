@@ -1,335 +1,256 @@
-[{
-  "_id": "64aa8f9abe3904dda45864b6",
-  "userId": "64440dec163292936d0f94a7",
-  "location": {
-    "theName": "Abdulrhman Mohammed",
-    "phone": "0503219567",
-    "country": "Saudi Arabia",
-    "city": "macca",
-    "street": "Mansor Street",
-    "moreDetails": "Behind Abo Mohamed Resturent",
-    "type": "Home",
-    "id": "BpgkpDvPLWVeZPr17bcylocation"
+[
+  {
+    "_id": "64aa8f9abe3904dda45864b6",
+    "userId": "64440dec163292936d0f94a7",
+    "location": {
+      "theName": "Abdulrhman Mohammed",
+      "phone": "0503219567",
+      "country": "Saudi Arabia",
+      "city": "macca",
+      "street": "Mansor Street",
+      "moreDetails": "Behind Abo Mohamed Resturent",
+      "type": "Home",
+      "id": "BpgkpDvPLWVeZPr17bcylocation"
+    },
+    "totalPrice": 314.98,
+    "products": [
+      "645ab8406c274348e31c4cf2-1-29.99-panels",
+      "645ab77da46e889d1b711578-1-29.99-panels",
+      "6447bb5c1429dbe9a674ef22-3-45-figures",
+      "64468f99b5701d2948e81c72-3-40-figures"
+    ],
+    "paymentMethod": {
+      "theName": "Abdulrhman Mohammed",
+      "number": "789876543341",
+      "expired": "2025-11-04"
+    },
+    "deliveryPrice": 0
   },
-  "totalPrice": 314.98,
-  "products": [
-    "645ab8406c274348e31c4cf2-1-29.99-panels",
-    "645ab77da46e889d1b711578-1-29.99-panels",
-    "6447bb5c1429dbe9a674ef22-3-45-figures",
-    "64468f99b5701d2948e81c72-3-40-figures"
-  ],
-  "paymentMethod": {
-    "theName": "Abdulrhman Mohammed",
-    "number": "789876543341",
-    "expired": "2025-11-04"
+  {
+    "_id": "64aa9517be3904dda45864fb",
+    "userId": "6442ea0558a819df70390175",
+    "location": {
+      "theName": "Yasashi Dhme",
+      "phone": "96523459973",
+      "country": "Japan",
+      "city": "Osaka",
+      "street": "Pouar Street",
+      "moreDetails": "Behind Detective Conan Store",
+      "type": "Home",
+      "id": "dDe1jb2lHGqwyy0loH39location"
+    },
+    "totalPrice": 191,
+    "products": [
+      "64494154eb113c2a5e7bb63d-2-55-figures",
+      "6448df88eb113c2a5e7bb638-2-38-figures"
+    ],
+    "paymentMethod": {
+      "theName": "King Dhme",
+      "number": "919872243348",
+      "expired": "2030-02-25"
+    },
+    "deliveryPrice": 5
   },
-  "state": "Completed",
-  "deliveryPrice": 0,
-  "discountCobone": {
-    "name": null
+  {
+    "_id": "64aa9adcbe3904dda458654d",
+    "userId": "64623473d53b9c22eca9990d",
+    "location": {
+      "theName": "Naruto",
+      "phone": "3486802802",
+      "country": "Fire Land",
+      "city": "Kunoha",
+      "street": "Hokagi House",
+      "moreDetails": "Behind Air Land",
+      "type": "Home",
+      "id": "7B4OuRXWbsBiFcDimcSMlocation"
+    },
+    "totalPrice": 37,
+    "products": [
+      "64468f99b5701d2948e81c72-1-32-figures"
+    ],
+    "paymentMethod": {
+      "theName": "Uzomaki Naruto",
+      "number": "609876911342",
+      "expired": "2024-12-31"
+    },
+    "deliveryPrice": 5
   },
-  "createdAt": {
-    "$date": "2023-07-09T10:44:42.017Z"
+  {
+    "_id": "64abc08f66bd0c84f5660c1a",
+    "userId": "6456b6b1274b16a9f2f2b529",
+    "location": {
+      "theName": "Yasashi Dhme",
+      "phone": "573734768585",
+      "country": "Japan",
+      "city": "Osaka",
+      "street": "Pouar Street",
+      "moreDetails": "Behind Detective Conan Store",
+      "type": "Home",
+      "id": "iaMPgSutiXIbeHluoCfmlocation"
+    },
+    "totalPrice": 37,
+    "products": [
+      "6450efdb5bb20a9e29052e0d-1-18-clothes",
+      "6451433a5bb20a9e29052e10-1-14-panels"
+    ],
+    "paymentMethod": {
+      "theName": "Yasashi Dhme",
+      "number": "636492217890",
+      "expired": "2025-07-05"
+    },
+    "deliveryPrice": 5
   },
-  "expectedDeliveryDate": "July 16, 2023"
-},
-{
-  "_id": "64aa9517be3904dda45864fb",
-  "userId": "6442ea0558a819df70390175",
-  "location": {
-    "theName": "Yasashi Dhme",
-    "phone": "96523459973",
-    "country": "Japan",
-    "city": "Osaka",
-    "street": "Pouar Street",
-    "moreDetails": "Behind Detective Conan Store",
-    "type": "Home",
-    "id": "dDe1jb2lHGqwyy0loH39location"
+  {
+    "_id": "64abc13f66bd0c84f5660c72",
+    "userId": "6456b6b1274b16a9f2f2b529",
+    "location": {
+      "theName": "Yasashi Dhme",
+      "phone": "573734768585",
+      "country": "Japan",
+      "city": "Osaka",
+      "street": "Pouar Street",
+      "moreDetails": "Behind Detective Conan Store",
+      "type": "Home",
+      "id": "iaMPgSutiXIbeHluoCfmlocation"
+    },
+    "totalPrice": 45,
+    "products": [
+      "64468f99b5701d2948e81c72-1-40-figures"
+    ],
+    "paymentMethod": {
+      "theName": "Yasashi Dhme",
+      "number": "636492217890",
+      "expired": "2025-07-05"
+    },
+    "deliveryPrice": 5
   },
-  "totalPrice": 191,
-  "products": [
-    "64494154eb113c2a5e7bb63d-2-55-figures",
-    "6448df88eb113c2a5e7bb638-2-38-figures"
-  ],
-  "paymentMethod": {
-    "theName": "King Dhme",
-    "number": "919872243348",
-    "expired": "2030-02-25"
+  {
+    "_id": "64abe25259b56be63c37b235",
+    "userId": "64440dec163292936d0f94a7",
+    "location": {
+      "theName": "Abdulrhman Mohammed",
+      "phone": "0503219567",
+      "country": "Saudi Arabia",
+      "city": "macca",
+      "street": "Mansor Street",
+      "moreDetails": "Behind Abo Mohamed Resturent",
+      "type": "Home",
+      "id": "BpgkpDvPLWVeZPr17bcylocation"
+    },
+    "totalPrice": 98,
+    "products": [
+      "6448df88eb113c2a5e7bb638-1-38-figures",
+      "64494154eb113c2a5e7bb63d-1-55-figures"
+    ],
+    "paymentMethod": {
+      "theName": " Abdulrhman Mohammed",
+      "number": "789876543341",
+      "expired": "2025-11-04"
+    },
+    "deliveryPrice": 5
   },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
+  {
+    "_id": "64ae6fdddc3ee17b71f7b464",
+    "userId": "64623473d53b9c22eca9990d",
+    "location": {
+      "theName": "Naruto",
+      "phone": "3486802802",
+      "country": "Fire Land",
+      "city": "Kunoha",
+      "street": "Hokagi House",
+      "moreDetails": "Behind Air Land",
+      "type": "Home",
+      "id": "7B4OuRXWbsBiFcDimcSMlocation"
+    },
+    "totalPrice": 121.5,
+    "products": [
+      "645b80aa5f08b39ed15df524-1-44.5-clothes",
+      "645b81a45f08b39ed15df526-1-52-clothes",
+      "6463dccc69180385bb0015f9-1-20-clothes"
+    ],
+    "paymentMethod": {
+      "theName": "Uzomaki Naruto",
+      "number": "609876911342",
+      "expired": "2024-12-31"
+    },
+    "deliveryPrice": 5
   },
-  "createdAt": {
-    "$date": "2023-07-09T11:08:07.271Z"
+  {
+    "_id": "64ae7096dc3ee17b71f7b4c1",
+    "userId": "64440dec163292936d0f94a7",
+    "location": {
+      "theName": "Abdulrhman Mohammed",
+      "phone": "0503219567",
+      "country": "Saudi Arabia",
+      "city": "macca",
+      "street": "Mansor Street",
+      "moreDetails": "Behind Abo Mohamed Resturent",
+      "type": "Home",
+      "id": "BpgkpDvPLWVeZPr17bcylocation"
+    },
+    "totalPrice": 69.4,
+    "products": [
+      "645b7f925f08b39ed15df522-1-10-panels",
+      "6463db5869180385bb0015f4-1-14.5-panels",
+      "6463e4f469180385bb0015ff-1-15.9-panels",
+      "6451719bac3c2ad812daa045-1-12-panels",
+      "645145265bb20a9e29052e11-1-12-panels"
+    ],
+    "paymentMethod": "Cash",
+    "deliveryPrice": 5
   },
-  "expectedDeliveryDate": "July 16, 2023"
-},
-{
-  "_id": "64aa9adcbe3904dda458654d",
-  "userId": "64623473d53b9c22eca9990d",
-  "location": {
-    "theName": "Naruto",
-    "phone": "3486802802",
-    "country": "Fire Land",
-    "city": "Kunoha",
-    "street": "Hokagi House",
-    "moreDetails": "Behind Air Land",
-    "type": "Home",
-    "id": "7B4OuRXWbsBiFcDimcSMlocation"
+  {
+    "_id": "64ae70eddc3ee17b71f7b507",
+    "userId": "6442ea0558a819df70390175",
+    "location": {
+      "theName": "Yasashi Dhme",
+      "phone": "96523459973",
+      "country": "Japan",
+      "city": "Osaka",
+      "street": "Pouar Street",
+      "moreDetails": "Behind Detective Conan Store",
+      "type": "Home",
+      "id": "dDe1jb2lHGqwyy0loH39location"
+    },
+    "totalPrice": 54,
+    "products": [
+      "64495134eb113c2a5e7bb63e-1-15-clothes",
+      "644c1271f51028d0ca857752-1-16-clothes",
+      "6450efdb5bb20a9e29052e0d-1-18-clothes"
+    ],
+    "paymentMethod": {
+      "theName": "King Dhme",
+      "number": "919872243348",
+      "expired": "2030-02-25"
+    },
+    "deliveryPrice": 5
   },
-  "totalPrice": 37,
-  "products": [
-    "64468f99b5701d2948e81c72-1-32-figures"
-  ],
-  "paymentMethod": {
-    "theName": "Uzomaki Naruto",
-    "number": "609876911342",
-    "expired": "2024-12-31"
-  },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": "king",
-    "value": 0.2
-  },
-  "createdAt": {
-    "$date": "2023-07-09T11:32:44.504Z"
-  },
-  "expectedDeliveryDate": "July 16, 2023"
-},
-{
-  "_id": "64abc08f66bd0c84f5660c1a",
-  "userId": "6456b6b1274b16a9f2f2b529",
-  "location": {
-    "theName": "Yasashi Dhme",
-    "phone": "573734768585",
-    "country": "Japan",
-    "city": "Osaka",
-    "street": "Pouar Street",
-    "moreDetails": "Behind Detective Conan Store",
-    "type": "Home",
-    "id": "iaMPgSutiXIbeHluoCfmlocation"
-  },
-  "totalPrice": 37,
-  "products": [
-    "6450efdb5bb20a9e29052e0d-1-18-clothes",
-    "6451433a5bb20a9e29052e10-1-14-panels"
-  ],
-  "paymentMethod": {
-    "theName": "Yasashi Dhme",
-    "number": "636492217890",
-    "expired": "2025-07-05"
-  },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
-  },
-  "createdAt": {
-    "$date": "2023-07-10T08:25:51.540Z"
-  },
-  "expectedDeliveryDate": "July 17, 2023"
-},
-{
-  "_id": "64abc13f66bd0c84f5660c72",
-  "userId": "6456b6b1274b16a9f2f2b529",
-  "location": {
-    "theName": "Yasashi Dhme",
-    "phone": "573734768585",
-    "country": "Japan",
-    "city": "Osaka",
-    "street": "Pouar Street",
-    "moreDetails": "Behind Detective Conan Store",
-    "type": "Home",
-    "id": "iaMPgSutiXIbeHluoCfmlocation"
-  },
-  "totalPrice": 45,
-  "products": [
-    "64468f99b5701d2948e81c72-1-40-figures"
-  ],
-  "paymentMethod": {
-    "theName": "Yasashi Dhme",
-    "number": "636492217890",
-    "expired": "2025-07-05"
-  },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
-  },
-  "createdAt": {
-    "$date": "2023-07-10T08:28:47.817Z"
-  },
-  "expectedDeliveryDate": "July 17, 2023"
-},
-{
-  "_id": "64abe25259b56be63c37b235",
-  "userId": "64440dec163292936d0f94a7",
-  "location": {
-    "theName": "Abdulrhman Mohammed",
-    "phone": "0503219567",
-    "country": "Saudi Arabia",
-    "city": "macca",
-    "street": "Mansor Street",
-    "moreDetails": "Behind Abo Mohamed Resturent",
-    "type": "Home",
-    "id": "BpgkpDvPLWVeZPr17bcylocation"
-  },
-  "totalPrice": 98,
-  "products": [
-    "6448df88eb113c2a5e7bb638-1-38-figures",
-    "64494154eb113c2a5e7bb63d-1-55-figures"
-  ],
-  "paymentMethod": {
-    "theName": " Abdulrhman Mohammed",
-    "number": "789876543341",
-    "expired": "2025-11-04"
-  },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
-  },
-  "createdAt": {
-    "$date": "2023-07-10T10:49:54.764Z"
-  },
-  "expectedDeliveryDate": "July 17, 2023"
-},
-{
-  "_id": "64ae6fdddc3ee17b71f7b464",
-  "userId": "64623473d53b9c22eca9990d",
-  "location": {
-    "theName": "Naruto",
-    "phone": "3486802802",
-    "country": "Fire Land",
-    "city": "Kunoha",
-    "street": "Hokagi House",
-    "moreDetails": "Behind Air Land",
-    "type": "Home",
-    "id": "7B4OuRXWbsBiFcDimcSMlocation"
-  },
-  "totalPrice": 121.5,
-  "products": [
-    "645b80aa5f08b39ed15df524-1-44.5-clothes",
-    "645b81a45f08b39ed15df526-1-52-clothes",
-    "6463dccc69180385bb0015f9-1-20-clothes"
-  ],
-  "paymentMethod": {
-    "theName": "Uzomaki Naruto",
-    "number": "609876911342",
-    "expired": "2024-12-31"
-  },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
-  },
-  "createdAt": {
-    "$date": "2023-07-12T09:18:21.205Z"
-  },
-  "expectedDeliveryDate": "July 19, 2023"
-},
-{
-  "_id": "64ae7096dc3ee17b71f7b4c1",
-  "userId": "64440dec163292936d0f94a7",
-  "location": {
-    "theName": "Abdulrhman Mohammed",
-    "phone": "0503219567",
-    "country": "Saudi Arabia",
-    "city": "macca",
-    "street": "Mansor Street",
-    "moreDetails": "Behind Abo Mohamed Resturent",
-    "type": "Home",
-    "id": "BpgkpDvPLWVeZPr17bcylocation"
-  },
-  "totalPrice": 69.4,
-  "products": [
-    "645b7f925f08b39ed15df522-1-10-panels",
-    "6463db5869180385bb0015f4-1-14.5-panels",
-    "6463e4f469180385bb0015ff-1-15.9-panels",
-    "6451719bac3c2ad812daa045-1-12-panels",
-    "645145265bb20a9e29052e11-1-12-panels"
-  ],
-  "paymentMethod": "Cash",
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
-  },
-  "createdAt": {
-    "$date": "2023-07-12T09:21:26.431Z"
-  },
-  "expectedDeliveryDate": "July 19, 2023"
-},
-{
-  "_id": "64ae70eddc3ee17b71f7b507",
-  "userId": "6442ea0558a819df70390175",
-  "location": {
-    "theName": "Yasashi Dhme",
-    "phone": "96523459973",
-    "country": "Japan",
-    "city": "Osaka",
-    "street": "Pouar Street",
-    "moreDetails": "Behind Detective Conan Store",
-    "type": "Home",
-    "id": "dDe1jb2lHGqwyy0loH39location"
-  },
-  "totalPrice": 54,
-  "products": [
-    "64495134eb113c2a5e7bb63e-1-15-clothes",
-    "644c1271f51028d0ca857752-1-16-clothes",
-    "6450efdb5bb20a9e29052e0d-1-18-clothes"
-  ],
-  "paymentMethod": {
-    "theName": "King Dhme",
-    "number": "919872243348",
-    "expired": "2030-02-25"
-  },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
-  },
-  "createdAt": {
-    "$date": "2023-07-12T09:22:53.449Z"
-  },
-  "expectedDeliveryDate": "July 19, 2023"
-},
-{
-  "_id": "64ae71a6dc3ee17b71f7b622",
-  "userId": "6456b6b1274b16a9f2f2b529",
-  "location": {
-    "theName": "Yasashi Dhme",
-    "phone": "573734768585",
-    "country": "Japan",
-    "city": "Osaka",
-    "street": "Pouar Street",
-    "moreDetails": "Behind Detective Conan Store",
-    "type": "Home",
-    "id": "iaMPgSutiXIbeHluoCfmlocation"
-  },
-  "totalPrice": 114.39,
-  "products": [
-    "6463e4f469180385bb0015ff-1-15.9-panels",
-    "6463de6d69180385bb0015fb-1-14.5-panels",
-    "6463e43069180385bb0015fd-1-10-figures",
-    "645aba630588cab9dcd7ce2c-1-49.99-figures",
-    "645b82cf5f08b39ed15df528-1-19-clothes"
-  ],
-  "paymentMethod": {
-    "theName": "Yasashi Dhme",
-    "number": "636492217890",
-    "expired": "2025-07-05"
-  },
-  "state": "Completed",
-  "deliveryPrice": 5,
-  "discountCobone": {
-    "name": null
-  },
-  "createdAt": {
-    "$date": "2023-07-12T09:25:58.294Z"
-  },
-  "expectedDeliveryDate": "July 19, 2023"
-}]
+  {
+    "_id": "64ae71a6dc3ee17b71f7b622",
+    "userId": "6456b6b1274b16a9f2f2b529",
+    "location": {
+      "theName": "Yasashi Dhme",
+      "phone": "573734768585",
+      "country": "Japan",
+      "city": "Osaka",
+      "street": "Pouar Street",
+      "moreDetails": "Behind Detective Conan Store",
+      "type": "Home",
+      "id": "iaMPgSutiXIbeHluoCfmlocation"
+    },
+    "totalPrice": 114.39,
+    "products": [
+      "6463e4f469180385bb0015ff-1-15.9-panels",
+      "6463de6d69180385bb0015fb-1-14.5-panels",
+      "6463e43069180385bb0015fd-1-10-figures",
+      "645aba630588cab9dcd7ce2c-1-49.99-figures",
+      "645b82cf5f08b39ed15df528-1-19-clothes"
+    ],
+    "paymentMethod": {
+      "theName": "Yasashi Dhme",
+      "number": "636492217890",
+      "expired": "2025-07-05"
+    },
+    "deliveryPrice": 5
+  }
+]

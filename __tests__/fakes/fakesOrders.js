@@ -1,22 +1,29 @@
-import { getRandomLocation } from "./fakesLocations";
+import { readFileSync } from "fs";
+import { getRandomLocation } from "./fakesLocations.js";
 
-export function createFakeOrder({ userId, products }) {
+const path = "./__tests__/fakes/fakesOrders.json"
+const fakesOrders = JSON.parse(readFileSync(path, { encoding: "utf8" }))
+
+export function createFakeOrder({ userId, products, discountCobone }) {
     return {
         userId,
         location: getRandomLocation(),
-        totalPrice: 314.98,
+        totalPrice: 214.98,
         products,
         paymentMethod: {
             theName: "Abdulrhman Mohammed",
             number: "789876543341",
             expired: "2025-11-04"
         },
-        state: "Completed",
         deliveryPrice: 0,
-        discountCobone: {
-            name: null
-        },
-        createdAt: "2023-07-09T10:44:42.017Z",
-        expectedDeliveryDate: "July 16, 2023"
+        discountCobone
     }
+}
+
+export function createArrayOfFakeOrders({ userId, products, length } = {}) {
+    return fakesOrders.slice(0, length ?? fakesOrders.length).map((order) => {
+        if (userId) order.userId = userId;
+        if (products) order.products = products;
+        return order;
+    })
 }

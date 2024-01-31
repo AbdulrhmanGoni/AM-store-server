@@ -6,6 +6,8 @@ import toObjectId from "../../utilities/toObjectId.js";
 
 export default async function getOrders({ orderId, userId }, query = {}) {
 
+    if (!userId && !orderId) return null
+
     const {
         productsReturnType: type,
         ordersReturnType,
