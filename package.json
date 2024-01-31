@@ -12,7 +12,8 @@
   "jest": {
     "testPathIgnorePatterns": [
       "__tests__/fakes"
-    ]
+    ],
+    "transform": {}
   },
   "keywords": [
     "AM",

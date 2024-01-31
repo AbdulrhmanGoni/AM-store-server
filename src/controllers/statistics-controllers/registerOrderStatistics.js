@@ -1,5 +1,5 @@
 import idParser from "../../utilities/idParser.js";
-import getCurrentDate from "../../utilities/getCurrentDate.js";
+import { getCurrentDate } from "../../utilities/dateMaker";
 
 export default function registerOrderStatistics({ products, totalPrice }, currentYearStatistics) {
     try {

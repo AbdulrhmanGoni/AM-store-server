@@ -11,7 +11,7 @@ import authenticate from "../auth/authenticate.js";
 
 const router = Router();
 
-router.route("/")
+router.route("/users")
     .get([authenticate, orders_getUserOrders_get])
     .post([authenticate, orders_addNewOrder_post])
 

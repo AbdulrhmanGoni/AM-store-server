@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 import { LocationSchema, PaymentMethodSchema } from "./Users.js";
 import { RequiredNumber, ObjectId, RequiredObjectId, ANumber } from "../utilities/schemaTypesOptions.js";
+import { getDateAfterN } from "../utilities/dateMaker.js";
 
 const OrderSchema = new Schema(
     {
@@ -17,17 +18,25 @@ const OrderSchema = new Schema(
             type: [String],
             required: true
         },
-        paymentMethod: { type: PaymentMethodSchema },
+        paymentMethod: {
+            type: Schema.Types.Mixed,
+            enum: ["Cash", PaymentMethodSchema]
+        },
         state: {
             type: String,
             enum: ["Completed", "Pending", "Canceled"],
-            default: "Pending"
+            default: "Completed"
         },
-        expectedDeliveryDate: String,
+        expectedDeliveryDate: {
+            type: String,
+            default: getDateAfterN(7),
+        },
         deliveryPrice: ANumber(),
         discountCobone: {
-            name: String,
-            value: ANumber({ min: 0, max: 1 })
+            type: {
+                name: String,
+                value: Number
+            }
         }
     },
     { timestamps: true }
