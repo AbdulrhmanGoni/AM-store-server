@@ -6,6 +6,6 @@ const
 
 const mongodbLink = `mongodb+srv://${userName}:${password}@${atlas_cluster}.mongodb.net/${databaseName}?retryWrites=true&w=majority`;
 
-const localMongodbLink = "mongodb://abdulrhman:testing10@localhost:27017"
+const localMongodbLink = "mongodb://localhost:27017?directConnection=true&retryWrites=true&w=majority"
 
 export default process.env.NODE_ENV === "jest-testing" ? localMongodbLink : mongodbLink;

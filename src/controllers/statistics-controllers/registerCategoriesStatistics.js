@@ -1,4 +1,4 @@
-import { getCurrentDate } from "../../utilities/dateMaker";
+import { getCurrentDate } from "../../utilities/dateMaker.js";
 
 export default function registerCategoriesStatistics(categories, currentYearStatistics) {
     try {
