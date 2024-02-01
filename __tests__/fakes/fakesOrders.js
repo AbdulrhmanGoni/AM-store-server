@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { getRandomLocation } from "./fakesLocations.js";
+import { getRandomPaymentMethods } from "./fakesPaymentMethods.js";
 
 const path = "./__tests__/fakes/fakesOrders.json"
 const fakesOrders = JSON.parse(readFileSync(path, { encoding: "utf8" }))
@@ -10,11 +11,7 @@ export function createFakeOrder({ userId, products, discountCobone }) {
         location: getRandomLocation(),
         totalPrice: 214.98,
         products,
-        paymentMethod: {
-            theName: "Abdulrhman Mohammed",
-            number: "789876543341",
-            expired: "2025-11-04"
-        },
+        paymentMethod: getRandomPaymentMethods(),
         deliveryPrice: 0,
         discountCobone
     }
