@@ -21,7 +21,7 @@ router.route("/latest-orders")
 router.route("/watch-new-orders")
     .get([adnminAuth, orders_watchNewOrders_get]);
 
-router.route("/pagenation")
+router.route("/pagination")
     .get([adnminAuth, orders_pagination_get]);
 
 router.route("/:orderId")

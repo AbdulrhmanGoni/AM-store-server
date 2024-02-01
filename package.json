@@ -9,12 +9,6 @@
     "test": "nodemon --legacy-watch src/server.js",
     "jest": "SET \"NODE_ENV=jest-testing\" && env-cmd -f .env.secret node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "__tests__/fakes"
-    ],
-    "transform": {}
-  },
   "keywords": [
     "AM",
     "AM-Store",
@@ -40,6 +34,7 @@
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
+    "eventsource": "^2.0.2",
     "jest": "^29.7.0",
     "nodemon": "^3.0.3",
     "supertest": "^6.3.4"

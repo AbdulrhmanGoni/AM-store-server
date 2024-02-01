@@ -1,0 +1,8 @@
+{
+    "verbose": true,
+    "testPathIgnorePatterns": [
+        "__tests__/fakes"
+    ],
+    "transform": {},
+    "testTimeout": 10000
+}
