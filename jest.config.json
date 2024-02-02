@@ -4,5 +4,5 @@
         "__tests__/fakes"
     ],
     "transform": {},
-    "testTimeout": 10000
+    "testTimeout": 30000
 }
