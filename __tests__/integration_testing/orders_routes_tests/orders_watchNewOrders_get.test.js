@@ -4,6 +4,7 @@ import { createArrayOfFakeOrders, createFakeOrder } from "../../fakes/fakesOrder
 import { fakeUser } from "../../fakes/fakeUsers.js"
 import { fakeUserId } from '../../fakes/testingAuth.js';
 import sendNewOrderEvent from '../../../src/utilities/sendNewOrderEvent.js';
+import waitFor from "../../helpers/waitFor.js";
 
 afterAll(async () => {
     await OrdersModel.deleteMany({})
@@ -14,7 +15,7 @@ const routePath = `/api/orders/watch-new-orders`;
 
 describe("Test 'orders_watchNewOrders_get' route handler", () => {
 
-    it('Should returns the added order immediately throgh `eventSource.onmessage` event', async () => {
+    it('Should returns the added order immediately through `eventSource.onmessage` event', async () => {
         const eventSource = createEventSource(routePath);
         eventSource.onmessage = (event) => {
             expect(JSON.parse(event.data)).toMatchObject({
@@ -45,14 +46,8 @@ describe("Test 'orders_watchNewOrders_get' route handler", () => {
                 sendNewOrderEvent(order, userData)
             })
 
-        const promise = new Promise((resolve) => {
-            setTimeout(() => {
-                eventSource.close()
-                resolve(true)
-            }, 5000);
-        })
+        await waitFor(2.5, () => { eventSource.close() })
 
-        await promise
     });
 
     it("Should returns an error with status code 401 and \"You are not admin\" message", async () => {

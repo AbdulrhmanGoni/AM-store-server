@@ -18,7 +18,7 @@ import feedbacks_get from "../routes/root_routes/feedbacks_get.js";
 import feedbacks_post from "../routes/root_routes/feedbacks_post.js";
 import feedbacks_delete from "../routes/root_routes/feedbacks_delete.js";
 import forgetPassword_post from "../routes/root_routes/forgetPassword_post.js";
-import notifications_post from "../routes/root_routes/notifications_post.js";
+import notifications_setAsRead_post from "../routes/root_routes/notifications_setAsRead_post.js";
 
 const router = Router();
 
@@ -35,7 +35,7 @@ router.route("/admin-log-in").post(logIn_admin_post);
 
 router.route("/notifications")
     .get([adminAuth, notifications_get])
-    .post([adminAuth, notifications_post])
+    .post([adminAuth, notifications_setAsRead_post])
 
 router.route("/feedbacks/receive-sse")
     .get([adminAuth, feedbacks_SSE_get])

@@ -1,9 +1,9 @@
 import { generateJWT } from "../../src/utilities/jwtUtilities.js";
 
 const fakeUserId = "64440dec163292936d0f94a7"
-const adminId = "64e0f875c2d61623ef30c3a2"
+const fakeAdminId = "64e0f875c2d61623ef30c3a2"
 
-function adminAuth(id = adminId) {
+function adminAuth(id = fakeAdminId) {
     return { authorization: `Bearer ${generateJWT({ adminId: id, role: "admin" })}` }
 }
 
@@ -12,7 +12,7 @@ function userAuth(id = fakeUserId) {
 }
 export {
     adminAuth,
-    fakeUserId,
+    fakeAdminId,
     userAuth,
-    adminId
+    fakeUserId
 }
