@@ -34,6 +34,7 @@ const ProductSchema = new Schema({
 },
     {
         timestamps: true,
+        versionKey: false,
         virtuals: {
             rating: {
                 get() {

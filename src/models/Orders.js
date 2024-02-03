@@ -39,7 +39,7 @@ const OrderSchema = new Schema(
             }
         }
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 )
 
 const OrdersModel = model("orders", OrderSchema);

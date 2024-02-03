@@ -19,7 +19,7 @@ export default async function logInAdmin({ adminEmail, adminPassword }) {
                 else return messageResponse("There is issue in email or password, Try again with more verify");
             }
         }
-        else return messageResponse("You didn't have registered with us before");
+        else return messageResponse("Unauthorized Email", 401);
     } catch (error) {
         console.log(error)
         return messageResponse("Unexpected Error");

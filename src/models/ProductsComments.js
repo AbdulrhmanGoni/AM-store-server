@@ -18,13 +18,16 @@ const CommentsSchema = new Schema(
     { timestamps: true }
 );
 
-const ProductCommentSchema = new Schema({
-    productId: RequiredObjectId(),
-    comments: {
-        type: [CommentsSchema],
-        default: []
-    }
-});
+const ProductCommentSchema = new Schema(
+    {
+        productId: RequiredObjectId(),
+        comments: {
+            type: [CommentsSchema],
+            default: []
+        }
+    },
+    { versionKey: false }
+);
 
 const ProductsCommentsModel = model("products-comments", ProductCommentSchema);
 

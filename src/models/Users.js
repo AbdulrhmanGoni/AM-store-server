@@ -24,45 +24,46 @@ export const PaymentMethodSchema = new Schema({
     _id: false
 });
 
-const UserSchema = new Schema({
-    userName: PersonName(),
-    userEmail: Email(),
-    userPassword: Password(),
-    avatar: String,
-    userShoppingCart: {
-        type: [String],
-        default: []
-    },
-    userAddress: {
-        selectedLocation: LocationSchema,
-        locationsList: {
-            type: [LocationSchema],
+const UserSchema = new Schema(
+    {
+        userName: PersonName(),
+        userEmail: Email(),
+        userPassword: Password(),
+        avatar: String,
+        userShoppingCart: {
+            type: [String],
             default: []
         },
-    },
-    userPaymentMethodes: {
-        cardsList: {
-            type: [PaymentMethodSchema],
-            default: []
+        userAddress: {
+            selectedLocation: LocationSchema,
+            locationsList: {
+                type: [LocationSchema],
+                default: []
+            },
         },
-        choosedMethod: PaymentMethodSchema,
+        userPaymentMethodes: {
+            cardsList: {
+                type: [PaymentMethodSchema],
+                default: []
+            },
+            choosedMethod: PaymentMethodSchema,
+        },
+        userFavorites: ArrayOfObjectIds(),
+        userOrders: ArrayOfObjectIds(),
+        hisEmailVerified: {
+            type: Boolean,
+            default: false
+        },
+        lastPasswordChange: {
+            type: Date,
+            default: null
+        },
+        signingMethod: {
+            type: String,
+            default: "Email & Password"
+        }
     },
-    userFavorites: ArrayOfObjectIds(),
-    userOrders: ArrayOfObjectIds(),
-    hisEmailVerified: {
-        type: Boolean,
-        default: false
-    },
-    lastPasswordChange: {
-        type: Date,
-        default: null
-    },
-    signingMethod: {
-        type: String,
-        default: "Email & Password"
-    }
-},
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 );
 
 const UsersModel = model("users", UserSchema);

@@ -14,7 +14,7 @@ const routePath = "/api/sign-up"
 
 describe("Test 'register_user_post' route handler", () => {
 
-    it("Should returns signs the user and returns its data with access token", async () => {
+    it("Should signs the user and returns its data with access token", async () => {
         const requestBody = {
             userName: fakeUser.userName,
             userEmail: fakeUser.userEmail,

@@ -21,7 +21,7 @@ const NotificationsSchema = new Schema(
             expires: 1296000 // expires after 15 days
         }
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 )
 
 const NotificationsModel = model("notifications", NotificationsSchema);
