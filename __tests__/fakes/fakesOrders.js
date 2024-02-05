@@ -5,15 +5,14 @@ import { getRandomPaymentMethods } from "./fakesPaymentMethods.js";
 const path = "./__tests__/fakes/fakesOrders.json"
 const fakesOrders = JSON.parse(readFileSync(path, { encoding: "utf8" }))
 
-export function createFakeOrder({ userId, products, discountCobone }) {
+export function createFakeOrder({ userId, products }) {
     return {
         userId,
         location: getRandomLocation(),
         totalPrice: 214.98,
         products,
         paymentMethod: getRandomPaymentMethods(),
-        deliveryPrice: 0,
-        discountCobone
+        deliveryPrice: 0
     }
 }
 

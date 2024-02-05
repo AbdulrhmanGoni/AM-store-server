@@ -5,7 +5,7 @@ export default async function forgetPassword_changePassword_post(req, res) {
     try {
         const { userEmail, changePasswordToken, newPassword } = req.body;
         const result = verifyJWT(changePasswordToken)
-        if (result && result?.userEmail === userEmail) {
+        if (result && result.userEmail === userEmail && result.job === "changing user password") {
             const response = await SystemController.changeUserPassword({ userEmail }, newPassword)
             res.status(200).json(response);
         } else {

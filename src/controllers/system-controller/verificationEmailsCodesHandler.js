@@ -2,23 +2,23 @@ import { emailsToVerify } from "../../controllers/system-controller/sendVerifica
 
 export default async function verificationEmailsCodesHandler({ verificationCode, userEmail }, { maxTrise = 3 } = {}) {
     try {
-        const EVConfig = emailsToVerify[userEmail];
+        const userEmailConfig = emailsToVerify[userEmail];
 
-        if (!EVConfig) {
+        if (!userEmailConfig) {
             return { status: 408, response: { message: "Verification Code expired" } }
         }
-        else if (verificationCode === EVConfig.code) {
-            clearImmediate(EVConfig.timeoutId);
+        else if (verificationCode === userEmailConfig.code) {
+            clearTimeout(userEmailConfig.timeoutId);
             delete emailsToVerify[userEmail];
             return { status: 200, response: { ok: true } }
         }
-        else if (EVConfig.tries >= maxTrise) {
+        else if (userEmailConfig.tries >= maxTrise) {
             delete emailsToVerify[userEmail];
-            clearImmediate(EVConfig.timeoutId);
+            clearTimeout(userEmailConfig.timeoutId);
             return { status: 400, response: { message: "Verification failed, You entered too invalid codes" } }
         }
         else {
-            ++EVConfig.tries
+            ++userEmailConfig.tries
             return { status: 200, response: { ok: false, message: "Invalid verification code !" } }
         }
 
