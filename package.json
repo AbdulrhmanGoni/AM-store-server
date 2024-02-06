@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "dev": "nodemon --legacy-watch src/server.js",
     "test": "nodemon --legacy-watch src/server.js",
-    "jest": "SET \"NODE_ENV=jest-testing\" && env-cmd -f .env.secret node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles"
+    "jest": "node ./scripts/jest-runner-script.js"
   },
   "keywords": [
     "AM",

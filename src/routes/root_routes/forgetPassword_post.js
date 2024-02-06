@@ -14,7 +14,7 @@ export default asyncRouteHandler(
                 forgetPassword_receiveVerificationCode_post(req, res);
                 break;
             }
-            case "changing-the-password": {
+            case "complete-changing-password": {
                 forgetPassword_changePassword_post(req, res);
                 break;
             }
