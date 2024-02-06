@@ -1,21 +1,29 @@
 import OrdersModel from "../../../src/models/Orders.js"
 import { createFakeOrder } from "../../fakes/fakesOrders.js"
-import { userRequest, closeTestingServer } from "../../helpers/testRequest.js"
 import { fakeUser } from "../../fakes/fakeUsers.js"
 import UsersModel from "../../../src/models/Users.js"
 import { getRandomProduct } from "../../fakes/fakesProducts.js"
 import SettingsModel from "../../../src/models/Settings.js"
 import YearlyStatisticsModel from "../../../src/models/YearlyStatistics.js"
+import { jest } from "@jest/globals"
+
+jest.unstable_mockModule("../../../src/utilities/sendEmail.js", () => ({
+    __esModule: true,
+    default: jest.fn(() => true)
+}));
+
+const { userRequest, closeTestingServer } = (await import("../../helpers/testRequest.js"))
+const { default: sendEmail } = (await import("../../../src/utilities/sendEmail.js"));
 
 beforeAll(async () => {
     await SettingsModel.create({ productsCategories: ["figures", "panels", "clothes"] })
 })
 
 afterAll(async () => {
-    await OrdersModel.deleteMany({});
     await SettingsModel.deleteMany({});
     await UsersModel.deleteMany({});
     await YearlyStatisticsModel.deleteMany({});
+    sendEmail.mockRestore();
     await closeTestingServer();
 })
 
@@ -25,7 +33,7 @@ afterEach(async () => {
 
 const routePath = '/api/orders/users'
 
-import.meta.jest.setTimeout(20_000)
+jest.setTimeout(20_000)
 
 describe("Test 'orders_addNewOrder_post' route handler", () => {
 
@@ -43,6 +51,7 @@ describe("Test 'orders_addNewOrder_post' route handler", () => {
         const response = await userRequest(routePath, "post", requestOptions);
         expect(response.statusCode).toBe(200);
         expect(response.body.ok).toBe(true);
+        doesEmailMessageSent(1)
         const order = await OrdersModel.findOne({ userId });
         expect(order).toMatchObject(theOrder)
     })
@@ -62,8 +71,21 @@ describe("Test 'orders_addNewOrder_post' route handler", () => {
         const response = await userRequest(routePath, "post", requestOptions);
         expect(response.statusCode).toBe(200);
         expect(response.body.ok).toBe(true);
+        doesEmailMessageSent(2)
         const order = await OrdersModel.findOne({ userId });
         expect(order).toMatchObject(theOrder)
     })
 
 })
+
+function doesEmailMessageSent(caseNumber) {
+    expect(sendEmail).toHaveBeenCalledTimes(caseNumber);
+    expect(sendEmail.mock.calls[caseNumber - 1]).toEqual(
+        expect.arrayContaining([
+            fakeUser.userEmail,
+            "Your order has created successfully",
+            expect.stringMatching(`Hi ${fakeUser.userName}`),
+            expect.stringMatching("We received your order")
+        ])
+    );
+}

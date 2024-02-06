@@ -16,11 +16,7 @@ export const LocationSchema = new Schema({
 export const PaymentMethodSchema = new Schema({
     theName: PersonName(),
     number: RequiredNumber(),
-    expired: {
-        type: Date,
-        required: true,
-        min: new Date().toISOString()
-    },
+    expired: RequiredString(),
     _id: false
 });
 

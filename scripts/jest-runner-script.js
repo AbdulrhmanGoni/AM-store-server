@@ -15,6 +15,6 @@ const command = `\
 try {
     execSync(command, { stdio: 'inherit', shell: 'bash' });
 } catch (error) {
-    console.error('Error executing Jest tests:', error);
+    console.error('Error executing Jest tests:');
     process.exit(1);
 }

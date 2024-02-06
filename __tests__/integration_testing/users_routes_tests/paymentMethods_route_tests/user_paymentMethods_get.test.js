@@ -36,18 +36,10 @@ describe("Test 'user_paymentMethods_get' route handler", () => {
         expect(response.statusCode).toBe(200);
         expect(response.body.cardsList.length).toBe(fakePaymentMethods.length);
 
-        expect(fakePaymentMethods[0]).toMatchObject({
-            theName: response.body.choosedMethod.theName,
-            number: response.body.choosedMethod.number,
-            expired: new Date(response.body.choosedMethod.expired)
-        });
+        expect(response.body.choosedMethod).toMatchObject(fakePaymentMethods[0]);
 
         response.body.cardsList.forEach((card, index) => {
-            expect(fakePaymentMethods[index]).toMatchObject({
-                theName: card.theName,
-                number: card.number,
-                expired: new Date(card.expired)
-            });
+            expect(fakePaymentMethods[index]).toMatchObject(card);
         });
     })
 
