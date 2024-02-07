@@ -5,7 +5,7 @@ export default async function checkEmailExistance(email) {
         const url = `https://api.hunter.io/v2/email-verifier${query}`;
         const response = await fetch(url)
             .then(res => res.json())
-            .then(response => { return response.data.status === "valid"; })
+            .then(response => response.data.status === "valid")
             .catch(() => false)
 
         return response

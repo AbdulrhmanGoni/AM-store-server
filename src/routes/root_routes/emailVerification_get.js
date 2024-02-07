@@ -16,9 +16,9 @@ export default asyncRouteHandler(
             } else {
                 const verificationCode = genRandomNumber(6);
                 const subject = "AM Store Email Verification";
-                const body = `\
-                Wellcome to AM Store ${userName}, Here is your verification code '${verificationCode}', \
-                copy it and go back to verification page on AM Store and paste the code there`;
+                const body =
+                    `Wellcome to AM Store ${userName}, Here is your verification code '${verificationCode}', `
+                    + "copy it and go back to verification page on AM Store and paste the code there"
                 const htmlTemplate = emailVerificationHtmlTemplate({ userName }, verificationCode);
                 const mailContent = { userEmail, subject, body, htmlTemplate, verificationCode }
 

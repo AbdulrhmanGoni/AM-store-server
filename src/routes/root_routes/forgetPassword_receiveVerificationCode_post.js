@@ -6,7 +6,7 @@ export default asyncRouteHandler(
     async function forgetPassword_receiveVerificationCode_post(req, res) {
         const { verificationEmailsCodesHandler } = SystemController;
         const { verificationCode, userEmail } = req.body
-        const { status, response } = await verificationEmailsCodesHandler({ verificationCode, userEmail });
+        const { status, response } = verificationEmailsCodesHandler({ verificationCode, userEmail });
         if (response.ok) {
             const changePasswordToken = generateJWT({ userEmail, job: "changing user password" }, "4m")
             response.changePasswordToken = changePasswordToken;

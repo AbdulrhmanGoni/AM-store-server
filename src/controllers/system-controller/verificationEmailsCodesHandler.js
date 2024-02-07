@@ -1,6 +1,6 @@
 import { emailsToVerify } from "../../controllers/system-controller/sendVerificationCodeToEmail.js";
 
-export default async function verificationEmailsCodesHandler({ verificationCode, userEmail }, { maxTrise = 3 } = {}) {
+export default function verificationEmailsCodesHandler({ verificationCode, userEmail }, { maxTrise = 3 } = {}) {
     try {
         const userEmailConfig = emailsToVerify[userEmail];
 
@@ -21,7 +21,6 @@ export default async function verificationEmailsCodesHandler({ verificationCode,
             ++userEmailConfig.tries
             return { status: 200, response: { ok: false, message: "Invalid verification code !" } }
         }
-
     } catch (error) {
         console.log(error)
         return { status: 400, response: { message: "Processing verification code failed for unexpected error!" } }
