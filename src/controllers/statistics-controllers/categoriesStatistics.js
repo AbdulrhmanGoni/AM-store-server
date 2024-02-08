@@ -11,10 +11,12 @@ export default async function categoriesStatistics() {
                     totalEarnings: { $sum: "$earnings" },
                     productsSold: { $sum: "$sold" }
                 }
-            }
+            },
+            { $unset: ["_id"] }
         ])
         return categories;
     } catch (error) {
+        console.log(error)
         return null;
     }
 }

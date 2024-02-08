@@ -1,9 +1,8 @@
 import ProductsModel from "../../models/Products.js";
 
-
 export default async function productsStatistics() {
     try {
-        const [productsStatistics] = await ProductsModel.aggregate([
+        const result = await ProductsModel.aggregate([
             {
                 $group: {
                     _id: "products",
@@ -28,9 +27,10 @@ export default async function productsStatistics() {
                     categoriesCount: { $size: "$categories" },
                     seriesesCount: { $size: "$serieses" }
                 }
-            }
+            },
+            { $unset: ["_id", "categories", "serieses"] }
         ])
-        return productsStatistics;
+        return result[0] || []
     } catch (error) {
         return null;
     }

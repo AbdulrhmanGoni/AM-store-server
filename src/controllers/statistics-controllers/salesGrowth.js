@@ -3,8 +3,10 @@ import YearlyStatisticsModel from "../../models/YearlyStatistics.js";
 
 export default async function salesGrowth() {
     try {
-        const lastMonth = new Date(new Date().setMonth(-1))
-        const beforeLastMonth = new Date(new Date().setMonth(-2))
+        const currentMonthIndex = new Date().getMonth();
+
+        const lastMonth = new Date(new Date().setMonth(currentMonthIndex - 1));
+        const beforeLastMonth = new Date(new Date().setMonth(currentMonthIndex - 2));
 
         const lastMonthYear = lastMonth.getFullYear();
         const beforeLastMonthYear = beforeLastMonth.getFullYear();
@@ -21,41 +23,42 @@ export default async function salesGrowth() {
                         $cond: {
                             if: { $eq: ["$year", lastMonthYear] },
                             then: { $arrayElemAt: ["$monthes", lastMonthIndex] },
-                            else: {},
+                            else: {}
                         }
                     },
                     beforeLastMonthEarnings: {
                         $cond: {
                             if: { $eq: ["$year", beforeLastMonthYear] },
                             then: { $arrayElemAt: ["$monthes", beforeLastMonthIndex] },
-                            else: {},
+                            else: {}
                         }
                     },
                     _id: false
                 }
             },
             {
-                $project: {
-                    lastMonth: {
-                        month: MONTHES[lastMonthIndex],
-                        earnings: "$lastMonthEarnings.totalEarnings",
-                    },
-                    beforeLastMonth: {
-                        month: MONTHES[beforeLastMonthIndex],
-                        earnings: "$beforeLastMonthEarnings.totalEarnings"
-                    }
+                $group: {
+                    _id: "monthes earnings",
+                    lastMonthEarnings: { $sum: "$lastMonthEarnings.totalEarnings" },
+                    beforeLastMonthEarnings: { $sum: "$beforeLastMonthEarnings.totalEarnings" }
                 }
             }
         ]);
 
         if (salesGrowthData) {
-            const { lastMonth, beforeLastMonth } = salesGrowthData
-            lastMonth.year = lastMonthYear
-            beforeLastMonth.year = beforeLastMonthYear
-            const growthRete = (lastMonth?.earnings - beforeLastMonth?.earnings) / beforeLastMonth?.earnings * 100
+            const { lastMonthEarnings, beforeLastMonthEarnings } = salesGrowthData
+            const growthRete = (lastMonthEarnings - beforeLastMonthEarnings) / beforeLastMonthEarnings * 100
             return {
-                lastMonth,
-                beforeLastMonth,
+                lastMonth: {
+                    year: lastMonthYear,
+                    month: MONTHES[lastMonthIndex],
+                    earnings: lastMonthEarnings
+                },
+                beforeLastMonth: {
+                    year: beforeLastMonthYear,
+                    month: MONTHES[beforeLastMonthIndex],
+                    earnings: beforeLastMonthEarnings
+                },
                 growthRete: +(growthRete.toFixed(2))
             }
         } else {

@@ -1,0 +1,38 @@
+import ProductsModel from "../../../src/models/Products.js"
+import { fakeCategoriesArray, getArrayOfProducts, totalProducts } from "../../fakes/fakesProducts.js";
+import { closeTestingServer, adminRequest } from "../../helpers/testRequest.js"
+
+afterAll(async () => {
+    await closeTestingServer();
+})
+
+afterEach(async () => {
+    await ProductsModel.deleteMany({});
+})
+
+const queryKey = "products-statistics"
+const routePath = `/api/statistics?queryKey=${queryKey}`
+
+describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () => {
+
+    it("Should returns an empty array because there nothing in the database ", async () => {
+        const response = await adminRequest(routePath, "get");
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toHaveLength(0);
+    })
+
+    it("Should returns products statistics", async () => {
+        await ProductsModel.insertMany(getArrayOfProducts())
+        const response = await adminRequest(routePath, "get");
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toMatchObject({
+            totalProducts: totalProducts,
+            totalProductsSold: expect.any(Number),
+            totalInStock: expect.any(Number),
+            productsOutOfStock: expect.any(Number),
+            categoriesCount: fakeCategoriesArray.length,
+            seriesesCount: expect.any(Number)
+        })
+    })
+
+})

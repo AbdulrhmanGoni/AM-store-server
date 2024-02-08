@@ -6,7 +6,7 @@ import { getRandomProduct } from "../../fakes/fakesProducts.js"
 import SettingsModel from "../../../src/models/Settings.js"
 import YearlyStatisticsModel from "../../../src/models/YearlyStatistics.js"
 import { jest } from "@jest/globals"
-import { createFakeCategoriesArray } from "../../fakes/fakeCategoriesArray.js"
+import { createFakeCategoriesArray } from "../../fakes/fakesProducts.js"
 
 jest.unstable_mockModule("../../../src/utilities/sendEmail.js", () => ({
     __esModule: true,

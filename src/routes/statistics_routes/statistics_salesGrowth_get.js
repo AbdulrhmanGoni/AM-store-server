@@ -4,6 +4,6 @@ import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 export default asyncRouteHandler(
     async function statistics_salesGrowth_get(_req, res) {
         const response = await StatisticsController.salesGrowth();
-        res.status(response ? 200 : 400).json(response);
+        res.status(response !== undefined ? 200 : 400).json(response);
     }
 )

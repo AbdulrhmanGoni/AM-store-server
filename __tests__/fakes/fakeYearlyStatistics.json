@@ -2,45 +2,45 @@
   "monthes": [
     {
       "month": "Jan",
-      "totalEarnings": 0,
-      "productsSold": 0,
-      "totalOrders": 0,
-      "earningsTarget": 0
+      "totalEarnings": 3578.62,
+      "totalOrders": 25,
+      "productsSold": 134,
+      "earningsTarget": 3000
     },
     {
       "month": "Feb",
-      "totalEarnings": 0,
-      "productsSold": 0,
-      "totalOrders": 0,
-      "earningsTarget": 0
+      "totalEarnings": 3878.62,
+      "totalOrders": 23,
+      "productsSold": 144,
+      "earningsTarget": 3000
     },
     {
       "month": "Mar",
-      "totalEarnings": 0,
-      "productsSold": 0,
-      "totalOrders": 0,
-      "earningsTarget": 0
+      "totalEarnings": 4078.62,
+      "totalOrders": 30,
+      "productsSold": 154,
+      "earningsTarget": 4000
     },
     {
       "month": "Apr",
-      "totalEarnings": 0,
-      "productsSold": 0,
-      "totalOrders": 0,
-      "earningsTarget": 0
+      "totalEarnings": 4478.62,
+      "totalOrders": 29,
+      "productsSold": 184,
+      "earningsTarget": 4300
     },
     {
       "month": "May",
-      "totalEarnings": 0,
-      "productsSold": 0,
-      "totalOrders": 0,
-      "earningsTarget": 0
+      "totalEarnings": 4578.62,
+      "totalOrders": 27,
+      "productsSold": 194,
+      "earningsTarget": 4500
     },
     {
       "month": "Jun",
-      "totalEarnings": 0,
-      "productsSold": 0,
-      "totalOrders": 0,
-      "earningsTarget": 0
+      "totalEarnings": 4878.62,
+      "totalOrders": 33,
+      "productsSold": 164,
+      "earningsTarget": 4500
     },
     {
       "month": "Jul",
