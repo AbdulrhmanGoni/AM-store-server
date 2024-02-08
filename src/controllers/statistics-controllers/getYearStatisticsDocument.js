@@ -1,13 +1,13 @@
 import { MONTHES } from "../../CONSTANT/MONTHES.js"
-import SettingsModel from "../../models/Settings.js"
 import YearlyStatisticsModel from "../../models/YearlyStatistics.js";
+import getProductsCategoriesList from "../settings-controllers/getProductsCategoriesList.js";
 
 export default async function getYearStatisticsDocument(year = new Date().getFullYear(), { createDirectly, save } = {}) {
 
     const yearStatistics = !createDirectly && await YearlyStatisticsModel.findOne({ year });
     if (yearStatistics) return yearStatistics;
     else {
-        const [{ productsCategories }] = await SettingsModel.find();
+        const productsCategories = await getProductsCategoriesList();
         const newYearStatisticsDocument = new YearlyStatisticsModel({
             year,
             categories: productsCategories.map((category) => {

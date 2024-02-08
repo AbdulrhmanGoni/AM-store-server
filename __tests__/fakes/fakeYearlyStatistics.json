@@ -1,0 +1,285 @@
+{
+  "monthes": [
+    {
+      "month": "Jan",
+      "totalEarnings": 0,
+      "productsSold": 0,
+      "totalOrders": 0,
+      "earningsTarget": 0
+    },
+    {
+      "month": "Feb",
+      "totalEarnings": 0,
+      "productsSold": 0,
+      "totalOrders": 0,
+      "earningsTarget": 0
+    },
+    {
+      "month": "Mar",
+      "totalEarnings": 0,
+      "productsSold": 0,
+      "totalOrders": 0,
+      "earningsTarget": 0
+    },
+    {
+      "month": "Apr",
+      "totalEarnings": 0,
+      "productsSold": 0,
+      "totalOrders": 0,
+      "earningsTarget": 0
+    },
+    {
+      "month": "May",
+      "totalEarnings": 0,
+      "productsSold": 0,
+      "totalOrders": 0,
+      "earningsTarget": 0
+    },
+    {
+      "month": "Jun",
+      "totalEarnings": 0,
+      "productsSold": 0,
+      "totalOrders": 0,
+      "earningsTarget": 0
+    },
+    {
+      "month": "Jul",
+      "totalEarnings": 4904.163500000001,
+      "totalOrders": 35,
+      "productsSold": 143,
+      "earningsTarget": 4000
+    },
+    {
+      "month": "Aug",
+      "totalEarnings": 4878.62,
+      "totalOrders": 33,
+      "productsSold": 164,
+      "earningsTarget": 4500
+    },
+    {
+      "month": "Sep",
+      "totalEarnings": 5788,
+      "totalOrders": 48,
+      "productsSold": 184,
+      "earningsTarget": 5000
+    },
+    {
+      "month": "Oct",
+      "productsSold": 241,
+      "totalEarnings": 7099.482499999999,
+      "totalOrders": 38,
+      "earningsTarget": 6000
+    },
+    {
+      "month": "Nov",
+      "earningsTarget": 6000,
+      "productsSold": 159,
+      "totalEarnings": 5442.137499999999,
+      "totalOrders": 52
+    },
+    {
+      "month": "Dec",
+      "earningsTarget": 6000,
+      "productsSold": 349,
+      "totalEarnings": 10647.769650000002,
+      "totalOrders": 66
+    }
+  ],
+  "categories": [
+    {
+      "category": "panels",
+      "monthlyStatistics": [
+        {
+          "month": "Jan",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Feb",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Mar",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Apr",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "May",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Jun",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Jul",
+          "productsSold": 38,
+          "totalEarnings": 818.5919999999996
+        },
+        {
+          "month": "Aug",
+          "productsSold": 74,
+          "totalEarnings": 1591.525
+        },
+        {
+          "month": "Sep",
+          "productsSold": 66,
+          "totalEarnings": 1359.58
+        },
+        {
+          "month": "Oct",
+          "productsSold": 93,
+          "totalEarnings": 1751.275
+        },
+        {
+          "month": "Nov",
+          "productsSold": 49,
+          "totalEarnings": 992.19
+        },
+        {
+          "month": "Dec",
+          "productsSold": 90,
+          "totalEarnings": 1502.2600000000004
+        }
+      ]
+    },
+    {
+      "category": "figures",
+      "monthlyStatistics": [
+        {
+          "month": "Jan",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Feb",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Mar",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Apr",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "May",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Jun",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Jul",
+          "productsSold": 66,
+          "totalEarnings": 2682.9215
+        },
+        {
+          "month": "Aug",
+          "productsSold": 46,
+          "totalEarnings": 1896.22
+        },
+        {
+          "month": "Sep",
+          "productsSold": 75,
+          "totalEarnings": 2982.9199999999996
+        },
+        {
+          "month": "Oct",
+          "productsSold": 88,
+          "totalEarnings": 3656.8324999999986
+        },
+        {
+          "month": "Nov",
+          "productsSold": 76,
+          "totalEarnings": 3225.8224999999998
+        },
+        {
+          "month": "Dec",
+          "productsSold": 190,
+          "totalEarnings": 7146.126999999999
+        }
+      ]
+    },
+    {
+      "category": "clothes",
+      "monthlyStatistics": [
+        {
+          "month": "Jan",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Feb",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Mar",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Apr",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "May",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Jun",
+          "totalEarnings": 0,
+          "productsSold": 0
+        },
+        {
+          "month": "Jul",
+          "productsSold": 39,
+          "totalEarnings": 1242.65
+        },
+        {
+          "month": "Aug",
+          "productsSold": 44,
+          "totalEarnings": 1235.875
+        },
+        {
+          "month": "Sep",
+          "productsSold": 43,
+          "totalEarnings": 1215.5
+        },
+        {
+          "month": "Oct",
+          "productsSold": 60,
+          "totalEarnings": 1566.375
+        },
+        {
+          "month": "Nov",
+          "productsSold": 34,
+          "totalEarnings": 1029.125
+        },
+        {
+          "month": "Dec",
+          "productsSold": 69,
+          "totalEarnings": 1904.3700000000001
+        }
+      ]
+    }
+  ]
+}

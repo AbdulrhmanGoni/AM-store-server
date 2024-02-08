@@ -6,6 +6,7 @@ import { getRandomProduct } from "../../fakes/fakesProducts.js"
 import SettingsModel from "../../../src/models/Settings.js"
 import YearlyStatisticsModel from "../../../src/models/YearlyStatistics.js"
 import { jest } from "@jest/globals"
+import { createFakeCategoriesArray } from "../../fakes/fakeCategoriesArray.js"
 
 jest.unstable_mockModule("../../../src/utilities/sendEmail.js", () => ({
     __esModule: true,
@@ -16,7 +17,7 @@ const { userRequest, closeTestingServer } = (await import("../../helpers/testReq
 const { default: sendEmail } = (await import("../../../src/utilities/sendEmail.js"));
 
 beforeAll(async () => {
-    await SettingsModel.create({ productsCategories: ["figures", "panels", "clothes"] })
+    await createFakeCategoriesArray();
 })
 
 afterAll(async () => {

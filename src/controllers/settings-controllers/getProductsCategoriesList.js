@@ -12,7 +12,7 @@ export default async function getProductsCategoriesList() {
             if (data?.productsCategories) {
                 writeFile(cachePath, JSON.stringify(data.productsCategories), () => { })
                 return data.productsCategories
-            } else null
+            } else return []
         }
     } catch (error) {
         console.log(error)
