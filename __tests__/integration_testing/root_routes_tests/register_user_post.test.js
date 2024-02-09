@@ -63,7 +63,6 @@ describe("Test 'register_user_post' route handler", () => {
         expect(response.statusCode).toBe(200)
         expect(checkEmailExistance).toHaveBeenCalledTimes(2)
         expect(checkEmailExistance).toHaveBeenNthCalledWith(2, requestBody.userEmail);
-        console.log(response.body)
         expect(response.body).toMatchObject({
             ok: false,
             message: expect.stringContaining("email is not active")

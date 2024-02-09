@@ -17,7 +17,6 @@ describe("Test 'logIn_loggedAdmin_get' route handler", () => {
     it("Should returns admin's initial data", async () => {
         const { _id } = await AdminModel.create(fakeAdmin)
         const response = await adminRequest(routePath(_id), "get", { adminId: _id });
-        console.log(response.body)
         expect(response.statusCode).toBe(200);
         expect(response.body).toMatchObject({
             _id: _id.toString(),

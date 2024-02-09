@@ -4,6 +4,7 @@ import { getArrayOfProducts } from "../../../fakes/fakesProducts.js"
 import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 
 afterAll(async () => {
+    await UsersModel.deleteMany({});
     await closeTestingServer()
 })
 

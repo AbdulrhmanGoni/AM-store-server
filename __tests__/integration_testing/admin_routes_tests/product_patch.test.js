@@ -3,8 +3,11 @@ import { getRandomProduct } from "../../fakes/fakesProducts.js"
 import { adminRequest, closeTestingServer } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
-    await ProductsModel.deleteMany({})
     await closeTestingServer()
+})
+
+afterEach(async () => {
+    await ProductsModel.deleteMany({})
 })
 
 const routePath = (productId) => `/api/admin/products/${productId}`

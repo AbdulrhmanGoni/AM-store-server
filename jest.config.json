@@ -2,7 +2,8 @@
     "testEnvironment": "node",
     "verbose": true,
     "testPathIgnorePatterns": [
-        "__tests__/fakes"
+        "__tests__/fakes",
+        "__tests__/helpers"
     ],
     "transform": {},
     "testTimeout": 30000

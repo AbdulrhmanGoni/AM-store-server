@@ -4,6 +4,7 @@ import { fakeLocations } from "../../../fakes/fakesLocations.js"
 import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 
 afterAll(async () => {
+    await UsersModel.deleteMany({});
     await closeTestingServer()
 })
 

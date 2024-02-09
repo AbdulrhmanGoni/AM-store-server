@@ -62,7 +62,7 @@ describe("Test user's email verification process", () => {
         const response2 = await request("post", requestOptions)
         expect(response2.statusCode).toBe(200);
         expect(response2.body.ok).toBe(true);
-        const { hisEmailVerified } = await UsersModel.findOne({ userEmail }, { hisEmailVerified: 1 })
+        const { hisEmailVerified } = await UsersModel.findOne({ _id: userId }, { hisEmailVerified: 1 })
         expect(hisEmailVerified).toBe(true);
 
     })

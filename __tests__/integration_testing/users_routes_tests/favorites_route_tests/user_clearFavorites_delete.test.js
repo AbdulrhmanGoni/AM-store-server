@@ -4,7 +4,8 @@ import { getArrayOfProducts } from "../../../fakes/fakesProducts.js"
 import { closeTestingServer, userRequest } from "../../../helpers/testRequest.js"
 
 afterAll(async () => {
-    await closeTestingServer()
+    await UsersModel.deleteMany({});
+    await closeTestingServer();
 })
 
 const routePath = (userId) => `/api/users/${userId}/favorites`
