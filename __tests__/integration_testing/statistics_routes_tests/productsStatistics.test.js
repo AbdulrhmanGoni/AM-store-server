@@ -15,10 +15,10 @@ const routePath = `/api/statistics?queryKey=${queryKey}`
 
 describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () => {
 
-    it("Should returns an empty array because there nothing in the database ", async () => {
+    it("Should returns an empty object because there no products in the database", async () => {
         const response = await adminRequest(routePath, "get");
         expect(response.statusCode).toBe(200);
-        expect(response.body).toHaveLength(0);
+        expect(Object.keys(response.body)).toHaveLength(0);
     })
 
     it("Should returns products statistics", async () => {

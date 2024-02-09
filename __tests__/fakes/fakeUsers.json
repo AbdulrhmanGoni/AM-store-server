@@ -1,0 +1,38 @@
+[
+    {
+        "userEmail": "abdulrhmangoni@gmail.com",
+        "userPassword": "$8b$99$r.nrunxtrxkhckhck7w4574gw48845r57v7543g7",
+        "avatar": "https://live.staticflickr.com/65535/52744310757_47d117d90a_o.png",
+        "userName": "Abdulrhman Goni"
+    },
+    {
+        "userEmail": "dhmealbrnawe10@gmail.com",
+        "avatar": "https://live.staticflickr.com/65535/52744827196_af1b82af94_o.png",
+        "userName": "Abdulrhman Mohammad Goni",
+        "userPassword": "Signed up with Google"
+    },
+    {
+        "userEmail": "otakudhme10@gmail.com",
+        "userPassword": "$1b$10$f.1vFBbgk./63nbma5rnhkxkxn.a5n354sn56m88",
+        "avatar": "https://i.ibb.co/WkkJg4T/One-Piece.jpg",
+        "userName": "Yasashi dhme"
+    },
+    {
+        "userEmail": "uzumaki@gmail.com",
+        "userPassword": "$9b$10$b745j75mru57s57k.opdm73b32.QnWHHHkcukZZiOM0SGLS",
+        "avatar": "https://i.ibb.co/KbphRFX/Naruto.png",
+        "userName": "Uzumaki Naruto"
+    },
+    {
+        "userEmail": "aishownakama@gmail.com",
+        "userPassword": "$2a$10$574b75dmnutxtjnbrtvtevxet.zr.WVpwqavryry",
+        "userName": "Ai Show",
+        "avatar": "https://i.ibb.co/3Yjkgh7/aj-Muy-Dk2-400x400.jpg"
+    },
+    {
+        "userName": "One Piece Big Fan",
+        "userEmail": "onepiecefan1@gmail.com",
+        "userPassword": "$2a$10$Anmu,ljAebnyJEtetjObupuycjtdhfbcfbfhdh",
+        "avatar": "https://i.ibb.co/J2KXXKS/Odacchi.jpg"
+    }
+]

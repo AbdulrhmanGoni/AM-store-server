@@ -26,7 +26,7 @@ export default async function ordersStatistics(year = new Date().getFullYear()) 
         }
     } catch (error) {
         console.log(error)
-        return []
+        return;
     }
 }
 

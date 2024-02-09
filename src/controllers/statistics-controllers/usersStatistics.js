@@ -2,7 +2,7 @@ import UsersModel from "../../models/Users.js";
 
 export default async function usersStatistics() {
     try {
-        const [statistics] = await UsersModel.aggregate([
+        const result = await UsersModel.aggregate([
             {
                 $group: {
                     _id: "users",
@@ -26,9 +26,10 @@ export default async function usersStatistics() {
                         }
                     }
                 }
-            }
+            },
+            { $unset: ["_id"] }
         ])
-        return statistics;
+        return result[0] || {}
     } catch (error) {
         console.log(error)
         return null;

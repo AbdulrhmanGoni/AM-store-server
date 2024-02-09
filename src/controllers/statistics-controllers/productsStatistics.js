@@ -30,7 +30,7 @@ export default async function productsStatistics() {
             },
             { $unset: ["_id", "categories", "serieses"] }
         ])
-        return result[0] || []
+        return result[0] || {}
     } catch (error) {
         return null;
     }
