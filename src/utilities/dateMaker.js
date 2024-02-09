@@ -1,4 +1,5 @@
 import { MONTHES } from "../CONSTANT/MONTHES.js";
+import getTheDateAfterNDays from "./getTheDateAfterNDays.js";
 
 export function getCurrentDate() {
     return {
@@ -8,10 +9,8 @@ export function getCurrentDate() {
     }
 }
 
-export function getDateAfterN(days = 0) {
-    const today = new Date();
-    const nextDate = new Date(today);
-    nextDate.setDate(today.getDate() + days);
+export function getDateAfterN(days = 1) {
+    const nextDate = getTheDateAfterNDays(days)
     const options = { day: "numeric", month: "long", year: "numeric" };
     const formattedDate = nextDate.toLocaleDateString("en-US", options);
     return formattedDate;
