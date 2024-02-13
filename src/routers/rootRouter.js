@@ -19,11 +19,12 @@ import feedbacks_post from "../routes/root_routes/feedbacks_post.js";
 import feedbacks_delete from "../routes/root_routes/feedbacks_delete.js";
 import forgetPassword_post from "../routes/root_routes/forgetPassword_post.js";
 import notifications_setAsRead_post from "../routes/root_routes/notifications_setAsRead_post.js";
+import userIdChecker from "../middlewares/userIdChecker.js";
 
 const router = Router();
 
 router.route("/log-in/google-auth").post(logIn_user_withGoogle_post);
-router.route("/log-in/:userId").get([authenticate, logIn_loggedUser_get]);
+router.route("/log-in/:userId").get([authenticate, userIdChecker, logIn_loggedUser_get]);
 router.route("/log-in").post(logIn_user_post);
 
 router.route("/sign-up/google-auth").post(register_user_withGoogle_post);

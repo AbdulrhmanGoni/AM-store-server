@@ -3,10 +3,12 @@ import user_clearFavorites_delete from "../routes/users_routes/user_clearFavorit
 import user_favorites_get from "../routes/users_routes/user_favorites_get.js";
 import user_favorites_post from "../routes/users_routes/user_favorites_post.js";
 import user_favorites_put from "../routes/users_routes/user_favorites_put.js";
+import userIdChecker from "../middlewares/userIdChecker.js";
 
 const router = Router();
 
 router.route("/:userId/favorites")
+    .all(userIdChecker)
     .get(user_favorites_get)
     .post(user_favorites_post)
     .put(user_favorites_put)
