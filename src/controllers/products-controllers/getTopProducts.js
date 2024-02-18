@@ -1,9 +1,10 @@
+import { productDataTypes } from "../../CONSTANT/projections.js";
 import ProductsModel from "../../models/Products.js"
 
 export default async function getTopProducts(basedOn, limit = 10) {
     try {
         return await ProductsModel
-            .find({}, {}, { limit })
+            .find({}, productDataTypes.basic)
             .sort({ [basedOn]: -1 })
             .limit(limit)
 

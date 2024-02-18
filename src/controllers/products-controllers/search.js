@@ -3,7 +3,7 @@ import ProductsModel from "../../models/Products.js";
 export default async function search({ queries, projection }) {
     try {
         const
-            { category, title, series, limit } = queries,
+            { category, title, series, limit = 8, page } = queries,
             matchAll = new RegExp(/.*/, "i"),
             titleReg = new RegExp(title, "i"),
             seriesReg = new RegExp(series, "i");
@@ -14,7 +14,16 @@ export default async function search({ queries, projection }) {
             series: seriesReg
         }
 
-        return await ProductsModel.find(filter, projection, { limit });
+        if (!isNaN(+page)) {
+            const skip = (+page - 1) * +limit;
+            const products = await ProductsModel.find(filter, projection, { limit: +limit + 1, skip });
+            return {
+                products: products.slice(0, +limit),
+                thereIsMore: !!products[limit]
+            }
+        } else {
+            return await ProductsModel.find(filter, projection);
+        }
     } catch (error) {
         console.log(error)
         return null;
