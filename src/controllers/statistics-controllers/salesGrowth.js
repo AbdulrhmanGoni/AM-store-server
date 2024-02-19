@@ -47,7 +47,7 @@ export default async function salesGrowth() {
 
         if (salesGrowthData) {
             const { lastMonthEarnings, beforeLastMonthEarnings } = salesGrowthData
-            const growthRete = (lastMonthEarnings - beforeLastMonthEarnings) / beforeLastMonthEarnings * 100
+            const growthRate = (lastMonthEarnings - beforeLastMonthEarnings) / beforeLastMonthEarnings * 100
             return {
                 lastMonth: {
                     year: lastMonthYear,
@@ -59,7 +59,7 @@ export default async function salesGrowth() {
                     month: MONTHES[beforeLastMonthIndex],
                     earnings: beforeLastMonthEarnings
                 },
-                growthRete: +(growthRete.toFixed(2))
+                growthRate: +(growthRate.toFixed(2))
             }
         } else {
             return null

@@ -43,12 +43,12 @@ describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () 
                 month: expect.any(String),
                 earnings: expect.any(Number)
             },
-            growthRete: expect.any(Number)
+            growthRate: expect.any(Number)
         });
 
         const { lastMonth, beforeLastMonth } = response.body;
-        const growthRete = (lastMonth.earnings - beforeLastMonth.earnings) / beforeLastMonth.earnings * 100;
-        expect(+(growthRete.toFixed(2))).toBe(response.body.growthRete);
+        const growthRate = (lastMonth.earnings - beforeLastMonth.earnings) / beforeLastMonth.earnings * 100;
+        expect(+(growthRate.toFixed(2))).toBe(response.body.growthRate);
     })
 
 })
