@@ -7,25 +7,24 @@ import signUpUser from "./signUpUser.js";
 export default async function registerUserWithGoogle(googleUserAccessToken) {
     try {
         const response = await googleAccountGetter(googleUserAccessToken);
-        if (response) {
-            const isExist = await UsersModel.findOne({ userEmail: response.email }, userDataTypes.userEmail);
+        const { googleResponse, ok } = response
+        if (ok) {
+            const isExist = await UsersModel.findOne({ userEmail: googleResponse.email }, userDataTypes.userEmail);
             if (isExist) return { ok: false, message: "Your email already signed up, Just log in" };
             else {
                 const userData = {
-                    userName: response.name,
-                    userEmail: response.email,
-                    userPassword: "Signed up with Google",
-                    signingMethod: "Google auth",
-                    hisEmailVerified: response.email_verified
+                    userName: googleResponse.name,
+                    userEmail: googleResponse.email,
+                    userPassword: googleResponse.sub,
+                    signingMethod: "Google",
+                    hisEmailVerified: !!googleResponse.email_verified
                 };
-                const signingUserResponse = await signUpUser(userData, false);
+                const signingUserResponse = await signUpUser(userData);
                 if (signingUserResponse) return { ok: true, payload: signingUserResponse };
                 else return { ok: false, message: "Signing process failed for unknown reason, Try again" };
             }
         } else {
-            return response === null ?
-                { ok: false, message: "Conniction with google failed for unknown reason, Try again" }
-                : undefined;
+            return googleResponse
         }
     } catch (error) {
         console.log(error);

@@ -7,7 +7,7 @@ export default async function logInUser({ userEmail, userPassword }) {
     try {
         const userData = await UsersModel.findOne({ userEmail }, { userPassword: true, signingMethod: 1 });
         if (userData) {
-            if (userData.signingMethod === "Google auth") {
+            if (userData.signingMethod === "Google") {
                 return { message: "This email signed up with another sign up method" }
             } else {
                 const pass = compareSync(userPassword, userData.userPassword);

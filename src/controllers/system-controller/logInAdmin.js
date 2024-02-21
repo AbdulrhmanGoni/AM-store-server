@@ -7,7 +7,7 @@ export default async function logInAdmin({ adminEmail, adminPassword }) {
     try {
         const adminData = await AdminModel.findOne({ adminEmail }, { createdAt: 0, updatedAt: 0 });
         if (adminData) {
-            if (adminData.signingMethod === "Google auth") {
+            if (adminData.signingMethod === "Google") {
                 return messageResponse("Your email registred by another signing up method", 200);
             } else {
                 const pass = bcrypt.compareSync(adminPassword, adminData.adminPassword);
