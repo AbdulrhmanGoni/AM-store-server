@@ -1,9 +1,9 @@
-import { userDataTypes } from '../../CONSTANT/projections.js';
 import UsersModel from '../../models/Users.js';
 
 export default async function getLocations(userId) {
     try {
-        const { userAddress } = await UsersModel.findById(userId, userDataTypes.addresses);
+        const projection = { userAddress: 1, _id: 0 }
+        const { userAddress } = await UsersModel.findById(userId, projection);
         return userAddress;
     } catch (error) {
         return null;

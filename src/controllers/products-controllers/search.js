@@ -22,7 +22,7 @@ export default async function search({ queries, projection }) {
                 thereIsMore: !!products[limit]
             }
         } else {
-            return await ProductsModel.find(filter, projection);
+            return await ProductsModel.find(filter, projection, { limit });
         }
     } catch (error) {
         console.log(error)

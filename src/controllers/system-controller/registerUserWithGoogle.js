@@ -1,4 +1,3 @@
-import { userDataTypes } from "../../CONSTANT/projections.js";
 import UsersModel from "../../models/Users.js";
 import googleAccountGetter from "../../utilities/googleAccountGetter.js";
 import signUpUser from "./signUpUser.js";
@@ -9,7 +8,7 @@ export default async function registerUserWithGoogle(googleUserAccessToken) {
         const response = await googleAccountGetter(googleUserAccessToken);
         const { googleResponse, ok } = response
         if (ok) {
-            const isExist = await UsersModel.findOne({ userEmail: googleResponse.email }, userDataTypes.userEmail);
+            const isExist = await UsersModel.findOne({ userEmail: googleResponse.email }, { userEmail: 1, _id: 0 });
             if (isExist) return { ok: false, message: "Your email already signed up, Just log in" };
             else {
                 const userData = {

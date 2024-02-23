@@ -1,4 +1,3 @@
-import { userDataTypes } from "../../CONSTANT/projections.js";
 import UsersModel from "../../models/Users.js";
 
 export default async function uploadNewAvatar(userId, avatarUrl) {
@@ -6,7 +5,7 @@ export default async function uploadNewAvatar(userId, avatarUrl) {
         const { avatar } = await UsersModel.findByIdAndUpdate(
             userId,
             { $set: { avatar: avatarUrl } },
-            { new: true, projection: userDataTypes.avatar }
+            { new: true, projection: { avatar: 1, _id: 0 } }
         );
         return avatar;
     } catch (error) {

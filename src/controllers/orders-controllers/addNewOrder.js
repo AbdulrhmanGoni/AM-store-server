@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import OrdersModel from "../../models/Orders.js";
 import UsersModel from "../../models/Users.js";
-import { userDataTypes } from "../../CONSTANT/projections.js";
+import { userDefaultProjection } from "../../CONSTANT/projections.js";
 import sendOrderCreatedSuccessfully from "../../utilities/sendOrderCreatedSuccessfully.js";
 import getYearStatisticsDocument from "../statistics-controllers/getYearStatisticsDocument.js";
 import registerProductsStatistics from "../statistics-controllers/registerProductsStatistics.js";
@@ -21,7 +21,7 @@ export default async function addNewOrder(theOrder) {
         const userData = await UsersModel.findOneAndUpdate(
             { _id: theOrder.userId },
             { $set: { userShoppingCart: [] }, $push: { userOrders: newOrder._id } },
-            { session, projection: userDataTypes.basic }
+            { session, projection: userDefaultProjection }
         );
 
         // Bring the document that contains the statistics of current year

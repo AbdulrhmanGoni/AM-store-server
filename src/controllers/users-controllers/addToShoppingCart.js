@@ -1,5 +1,4 @@
 import UsersModel from '../../models/Users.js';
-import { userDataTypes } from '../../CONSTANT/projections.js';
 
 export default async function addToShoppingCart(userId, { productId, count }) {
     try {
@@ -8,7 +7,7 @@ export default async function addToShoppingCart(userId, { productId, count }) {
         const { modifiedCount } = await UsersModel.updateOne(
             { ...filter, userShoppingCart: new RegExp(productId) },
             { $set: { "userShoppingCart.$": `${productId}-${count}` } },
-            { projection: userDataTypes._id }
+            { projection: { _id: 1 } }
         );
         addedSuccessfully = !!modifiedCount;
         if (!modifiedCount) {

@@ -9,7 +9,7 @@ export default async function getOrders({ orderId, userId }, query = {}) {
     if (!userId && !orderId) return null
 
     const {
-        productsReturnType: type,
+        productsReturnType,
         ordersReturnType,
         state,
         sliceNumber,
@@ -17,7 +17,7 @@ export default async function getOrders({ orderId, userId }, query = {}) {
     } = query;
 
     const thereIsPaginationOptions = !!(sliceSize && sliceNumber);
-    const productsProjection = type ? productDataTypes[type] ?? createProjection(type) : productDataTypes.basic;
+    const productsProjection = productDataTypes[productsReturnType] || productDataTypes.basic
     const ordersProjection = ordersReturnType ? createProjection(ordersReturnType) : { __v: 0 };
     const filter = {};
 

@@ -1,4 +1,4 @@
-import { userDataTypes } from "../../CONSTANT/projections.js";
+import { userDefaultProjection } from "../../CONSTANT/projections.js";
 import OrdersModel from "../../models/Orders.js";
 
 
@@ -20,7 +20,7 @@ export default async function topCustomers(limit = 5) {
                     localField: "_id",
                     foreignField: "_id",
                     as: "userData",
-                    pipeline: [{ $project: { ...userDataTypes.basic, _id: 0 } }]
+                    pipeline: [{ $project: { ...userDefaultProjection, _id: 0 } }]
                 }
             },
             {
