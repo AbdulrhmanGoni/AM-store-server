@@ -5,13 +5,12 @@ export default asyncRouteHandler(
     async function user_shoppingCart_delete(req, res) {
 
         const { clearShoppingCart, removeFromShoppingCart } = UsersController;
-        const { productId, actionType } = req.body;
 
-        if (actionType === "clear") {
+        if (req.query.clear === "true") {
             const respons = await clearShoppingCart(req.userId);
             res.status(200).json(respons);
         } else {
-            const respons = await removeFromShoppingCart(req.userId, productId);
+            const respons = await removeFromShoppingCart(req.userId, req.body.productId);
             res.status(200).json(respons);
         }
     }

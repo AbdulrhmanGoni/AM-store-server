@@ -8,7 +8,6 @@ export const LocationSchema = new Schema({
     city: RequiredString(),
     street: RequiredString(),
     moreDetails: { type: String, maxLength: 400 },
-    type: RequiredString({ default: "Home" }),
     id: RequiredString(),
     _id: false
 });

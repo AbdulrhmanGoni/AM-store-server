@@ -4,7 +4,7 @@ import statistics_categories_get from "./statistics_categories_get.js";
 import statistics_products_get from "./statistics_products_get.js";
 import statistics_salesGrowth_get from "./statistics_salesGrowth_get.js";
 import statistics_topProducts_get from "./statistics_topProducts_get.js";
-import statistics_topSerieses_get from "./statistics_topSerieses_get.js";
+import statistics_topSeries_get from "./statistics_topSeries_get.js";
 import statistics_users_get from "./statistics_users_get.js";
 import statistics_topCustomers_get from "./statistics_topCustomers_get.js";
 import statistics_orders_get from "./statistics_orders_get.js";
@@ -18,7 +18,7 @@ const handlers = {
     "products-statistics": statistics_products_get,
     "sales-growth": statistics_salesGrowth_get,
     "top-products": statistics_topProducts_get,
-    "top-serieses": statistics_topSerieses_get,
+    "top-series": statistics_topSeries_get,
     "users-statistics": statistics_users_get,
     "top-customers": statistics_topCustomers_get,
     "orders-statistics": statistics_orders_get,
