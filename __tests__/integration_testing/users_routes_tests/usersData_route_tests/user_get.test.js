@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}`
 
-describe("Test 'user_get' route handler", () => {
+describe("GET /api/users/:userId", () => {
 
     it("Should returns user's data", async () => {
         const { _id: userId } = await UsersModel.create(fakeUser);

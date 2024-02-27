@@ -11,7 +11,7 @@ afterAll(async () => {
 const { _id: productId } = getRandomProduct();
 const routePath = `/api/products/${productId}/comments`
 
-describe("Test 'product_comments_delete' route handler", () => {
+describe("DELETE /api/products/:productId/comments", () => {
 
     it("Should deletes the added comment and returns `true`", async () => {
         const comment = fakeComments[0];

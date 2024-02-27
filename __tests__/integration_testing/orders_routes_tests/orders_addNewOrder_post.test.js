@@ -36,7 +36,7 @@ const routePath = '/api/orders/users'
 
 jest.setTimeout(20_000)
 
-describe("Test 'orders_addNewOrder_post' route handler", () => {
+describe("POST /api/orders/users", () => {
 
     const product = getRandomProduct()
 

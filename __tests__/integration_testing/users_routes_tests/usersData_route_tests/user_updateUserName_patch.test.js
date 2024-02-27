@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}`
 
-describe("Test 'user_updateUserName_patch' route handler", () => {
+describe("PATCH /api/users/:userId", () => {
 
     it("Should updates user's name to \"Mohammed\" and returns `true`", async () => {
         const { _id } = await UsersModel.create(fakeUser);

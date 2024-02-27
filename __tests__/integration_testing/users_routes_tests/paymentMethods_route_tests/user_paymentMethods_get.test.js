@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/payment-methods`
 
-describe("Test 'user_paymentMethods_get' route handler", () => {
+describe("GET /api/users/:userId/payment-methods", () => {
 
     it("Should returns an empty user's Payment Methods object", async () => {
         const { _id: userId } = await UsersModel.create(fakeUser);

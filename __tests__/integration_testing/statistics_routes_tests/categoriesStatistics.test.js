@@ -13,7 +13,7 @@ afterEach(async () => {
 const queryKey = "categories-statistics"
 const routePath = `/api/statistics?queryKey=${queryKey}`
 
-describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () => {
+describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
     it("Should returns an empty array because there nothing in the database ", async () => {
         const response = await adminRequest(routePath, "get");

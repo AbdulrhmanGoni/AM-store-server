@@ -15,7 +15,7 @@ afterEach(async () => {
 const product = getRandomProduct();
 const routePath = `/api/products/${product._id}/rating`
 
-describe("Test 'product_addRatingToProduct_post' route handler", () => {
+describe("POST /api/products/:productId/rating", () => {
 
     it("Should returns unauthorized message with status code 401 because authorization token not included", async () => {
         await ProductsModel.create(product)

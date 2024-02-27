@@ -9,7 +9,7 @@ afterAll(async () => {
 
 const routePath = "/api/feedbacks"
 
-describe("Test 'feedbacks_delete' route handler", () => {
+describe("DELETE /api/feedbacks", () => {
 
     it("Should returns ", async () => {
         const feedbacks = await FeedbacksModel.insertMany(fakesFeedbacks);

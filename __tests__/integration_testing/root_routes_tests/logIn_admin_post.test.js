@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = "/api/admin-log-in"
 
-describe("Test 'logIn_admin_post' route handler", () => {
+describe("POST /api/admin-log-in", () => {
 
     it("Should logs in the admin and returns admin's id with his access token", async () => {
         const adminPassword = "testing.password.999"

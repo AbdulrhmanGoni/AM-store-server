@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/locations`
 
-describe("Test 'user_locations_delete' route handler", () => {
+describe("DELETE /api/users/:userId/locations", () => {
 
     it("Should deletes a location from user's Address list and returns `true`", async () => {
         const locationToDelete = fakeLocations[1].id

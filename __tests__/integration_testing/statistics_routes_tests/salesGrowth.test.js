@@ -18,7 +18,7 @@ afterEach(async () => {
 const queryKey = "sales-growth"
 const routePath = `/api/statistics?queryKey=${queryKey}`
 
-describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () => {
+describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
     it("Should returns `null` because there no sales", async () => {
         const response = await adminRequest(routePath, "get");

@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/change-password`
 
-describe("Test 'user_changePassword_post' route handler", () => {
+describe("POST /api/users/:userId/change-password", () => {
 
     it("Should changes user's password to \"new_testing_password_123\" and returns `true`", async () => {
         await changingUserPasswordTest("testing_password_123", "new_testing_password_123")

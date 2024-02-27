@@ -15,7 +15,7 @@ beforeAll(async () => {
 const routePath = (page, pageSize, returnType = "") =>
     `/api/products/pagination?page=${page}&pageSize=${pageSize}&returnType=${returnType}`
 
-describe("Test 'products_pagination_get' route handler", () => {
+describe("GET /api/products/pagination?page&pageSize&returnType", () => {
 
     it("Should returns an array of four products", async () => {
         const page = 1, pageSize = 4

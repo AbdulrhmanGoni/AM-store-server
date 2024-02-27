@@ -13,7 +13,7 @@ afterAll(async () => {
 
 const routePath = `/api/orders/watch-new-orders`;
 
-describe("Test 'orders_watchNewOrders_get' route handler", () => {
+describe("GET /api/orders/watch-new-orders", () => {
 
     it('Should returns the added order immediately through `eventSource.onmessage` event', async () => {
         const eventSource = createEventSource(routePath);

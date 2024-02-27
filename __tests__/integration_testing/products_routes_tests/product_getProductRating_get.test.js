@@ -9,7 +9,7 @@ afterAll(async () => {
 
 const routePath = (id) => `/api/products/${id}/rating`
 
-describe("Test 'product_getProductRating_get' route handler", () => {
+describe("GET /api/products/:productId/rating", () => {
 
     const products = getArrayOfProducts(4)
 

@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/favorites`
 
-describe("Test 'user_clearFavorites_delete' route handler", () => {
+describe("DELETE /api/users/:userId/favorites", () => {
 
     it("Should clears user's favorites and returns `true`", async () => {
         const products = getArrayOfProducts(3);

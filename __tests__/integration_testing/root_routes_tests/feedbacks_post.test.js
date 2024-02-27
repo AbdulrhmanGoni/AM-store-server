@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = `/api/feedbacks`
 
-describe("Test 'feedbacks_post' route handler", () => {
+describe("POST /api/feedbacks", () => {
 
     it("Should adds user's feedback and returns \"We received your feedback,...\" message", async () => {
         const fakeFeedback = fakesFeedbacks[0]

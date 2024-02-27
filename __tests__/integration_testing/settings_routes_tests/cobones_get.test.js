@@ -13,7 +13,7 @@ beforeAll(async () => {
 const routePath = "/api/settings/cobones"
 
 
-describe("Test 'cobones_get' route handler", () => {
+describe("GET /api/settings/cobones", () => {
 
 
     it("Should returns an empty object (for users)", async () => {

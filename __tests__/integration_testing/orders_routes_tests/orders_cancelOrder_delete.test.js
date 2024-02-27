@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = (orderId) => `/api/orders/${orderId}?type=cancel`;
 
-describe("Test 'orders_cancelOrder_delete' route handler", () => {
+describe("DELETE /api/orders/:orderId?type=cancel", () => {
 
     it("Should returns one order by its id", async () => {
         const [anOrder] = await OrdersModel.insertMany(createArrayOfFakeOrders({ userId: fakeUserId, length: 3 }));

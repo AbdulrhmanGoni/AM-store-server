@@ -15,7 +15,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/shopping-cart`
 
-describe("Test 'user_shoppingCart_get' route handler", () => {
+describe("GET /api/users/:userId/shopping-cart", () => {
 
     it("Should returns an array of one product from user's shopping cart", async () => {
         const product = getRandomProduct();

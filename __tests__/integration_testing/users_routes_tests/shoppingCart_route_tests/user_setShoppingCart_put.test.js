@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/shopping-cart`
 
-describe("Test 'user_setShoppingCart_put' route handler", () => {
+describe("PUT /api/users/:userId/shopping-cart", () => {
 
     it("Should replace user's shopping cart with another one and returns `true`", async () => {
         const { _id: userId } = await UsersModel.create(fakeUser);

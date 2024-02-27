@@ -28,7 +28,7 @@ afterAll(async () => {
 
 const routePath = (type) => `/api/forget-password?type=${type}`
 
-describe("Test 'forgetPassword_post' route handler", () => {
+describe("POST /api/forget-password?type", () => {
 
     it("Should changes user's password through \"/forget-password\" route by three steps", async () => {
 

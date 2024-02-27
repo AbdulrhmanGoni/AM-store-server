@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = "/api/products/length"
 
-describe("Test 'products_length_get' route handler", () => {
+describe("GET /api/products/:productId}/rating", () => {
 
     it("Should returns number 0 with status code 200", async () => {
         const response = await userRequest(routePath, "get")

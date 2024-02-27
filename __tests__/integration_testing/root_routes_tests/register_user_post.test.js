@@ -21,7 +21,7 @@ afterEach(async () => {
 
 const routePath = "/api/sign-up"
 
-describe("Test 'register_user_post' route handler", () => {
+describe("POST /api/sign-up", () => {
 
     const { userEmail, userName } = fakeUser
 

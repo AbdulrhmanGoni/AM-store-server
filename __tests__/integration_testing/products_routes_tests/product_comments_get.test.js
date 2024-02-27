@@ -18,7 +18,7 @@ beforeAll(async () => {
 const routePath = (id, sliceNumber, sliceSize) =>
     `/api/products/${id}/comments?sliceNumber=${sliceNumber}&sliceSize=${sliceSize}`
 
-describe("Test 'product_comments_get.test' route handler", () => {
+describe("GET /api/products/:productId/comments?sliceNumber&sliceSize", () => {
 
     it("Should returns an array of three comments with `thereIsMore: true`", async () => {
         const sliceNumber = 1

@@ -27,7 +27,7 @@ afterAll(async () => {
 
 const routePath = "/api/email-verification"
 
-describe("Test user's email verification process", () => {
+describe("GET + POST /api/email-verification", () => {
 
     it("Should sets user's `hisEmailVerified` field to `true`", async () => {
         const { _id: userId, userEmail, userName } = await UsersModel.create(fakeUser);

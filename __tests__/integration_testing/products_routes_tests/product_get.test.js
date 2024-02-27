@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = "/api/products"
 
-describe("Test 'product_get' route handler", () => {
+describe("GET /api/products", () => {
 
     it("Should returns null with status code 404", async () => {
         const randomId = "65ac120ee8acb26ee9dcd95b"

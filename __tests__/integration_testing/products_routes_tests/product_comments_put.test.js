@@ -15,7 +15,7 @@ const { _id: productId } = getRandomProduct();
 const userId = "6442ea0558a819df70390175"
 const routePath = `/api/products/${productId}/comments`
 
-describe("Test 'product_comments_put' route handler (Putting likes or dislikes on products comments)", () => {
+describe("PUT /api/products/:productId/comments", () => {
 
     it("Should puts like on the added comment and returns `true`", async () => {
         const comment = fakeComments[0];

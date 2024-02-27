@@ -14,7 +14,7 @@ beforeAll(async () => {
 
 const routePath = (sliceNumber, sliceSize) => `/api/feedbacks?sliceNumber=${sliceNumber}&sliceSize=${sliceSize}`
 
-describe("Test 'feedbacks_get' route handler", () => {
+describe("GET /api/feedbacks?sliceNumber&sliceSize", () => {
 
     it("Should returns an array of three feedbacks with `thereIsMore: false`", async () => {
         const reesponse = await adminRequest(routePath(1, 3), "get");

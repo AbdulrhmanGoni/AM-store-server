@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/check-password`
 
-describe("Test 'user_checkPassword_post' route handler", () => {
+describe("POST /api/users/:userId/check-password ", () => {
 
     const userPassword = "testing_password_123"
     const hashedPassword = hashSync(userPassword, +process.env.HASHING_SALT_ROUNDS);

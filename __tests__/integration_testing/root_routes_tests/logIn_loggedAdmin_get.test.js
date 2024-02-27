@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = (adminId) => `/api/admin-log-in/${adminId}`
 
-describe("Test 'logIn_loggedAdmin_get' route handler", () => {
+describe("GET /api/admin-log-in/:adminId", () => {
 
     it("Should returns admin's initial data", async () => {
         const { _id } = await AdminModel.create(fakeAdmin)

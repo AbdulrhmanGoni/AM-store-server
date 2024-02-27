@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = `/api/admin/products/discounts`
 
-describe("Test 'products_addDiscount_post' route handler", () => {
+describe("POST /api/admin/products/discounts", () => {
 
     it("Should adds a discount 20% to a product and returns `true`", async () => {
         const product = getRandomProduct()

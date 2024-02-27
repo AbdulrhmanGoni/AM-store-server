@@ -3,7 +3,7 @@ import adminAuth from "../auth/adminAuth.js";
 import products_topProducts_get from "../routes/products_routes/products_topProducts_get.js";
 import products_length_get from "../routes/products_routes/products_length_get.js";
 import products_pagination_get from "../routes/products_routes/products_pagination_get.js";
-import products_searchByIds from "../routes/admin_routes/products_searchByIds.js";
+import products_searchByIds_post from "../routes/admin_routes/products_searchByIds_post.js";
 import product_get from "../routes/products_routes/product_get.js";
 import products_userSearch_get from "../routes/products_routes/products_userSearch_get.js";
 import product_addRatingToProduct_post from "../routes/products_routes/product_addRatingToProduct_post.js";
@@ -19,7 +19,7 @@ const router = Router();
 
 router.route("/")
     .get(products_userSearch_get)
-    .post(products_searchByIds)
+    .post(products_searchByIds_post)
 
 router.route("/top-products")
     .get(products_topProducts_get)

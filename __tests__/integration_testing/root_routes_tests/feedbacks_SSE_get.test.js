@@ -11,7 +11,7 @@ afterAll(async () => {
 
 const routePath = "/api/feedbacks/receive-sse"
 
-describe("Test 'feedbacks_SSE_get' route handler", () => {
+describe("GET /api/feedbacks/receive-sse", () => {
 
     it("Should returns the new added feedback through `eventSource.onmessage`", async () => {
         const fakeFeedback = fakesFeedbacks[0];

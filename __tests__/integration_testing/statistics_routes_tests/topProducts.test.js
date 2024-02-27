@@ -14,7 +14,7 @@ beforeAll(async () => {
 const queryKey = "top-products"
 const routePath = (limit) => `/api/statistics?queryKey=${queryKey}&limit=${limit}`
 
-describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () => {
+describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
     it("Should returns an array of top 5 products", async () => {
         const response = await adminRequest(routePath(5), "get");

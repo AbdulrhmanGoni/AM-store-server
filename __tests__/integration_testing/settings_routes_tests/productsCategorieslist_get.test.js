@@ -6,7 +6,7 @@ afterAll(async () => {
 
 const routePath = "/api/settings/variables"
 
-describe("Test 'productsCategorieslist_get' route handler", () => {
+describe("GET /api/settings/variables", () => {
 
     it("Should returns an array of products categories", async () => {
         const response = await userRequest(routePath, "get")

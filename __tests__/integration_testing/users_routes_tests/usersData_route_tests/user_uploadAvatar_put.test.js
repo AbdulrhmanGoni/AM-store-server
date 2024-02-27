@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/upload-avatar`
 
-describe("Test 'user_uploadAvatar_put' route handler", () => {
+describe("PUT /api/users/:userId", () => {
 
     it("Should replace user's avatar with a new avatar and returns the new url", async () => {
         const { _id } = await UsersModel.create(fakeUser);

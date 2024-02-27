@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = (sliceNumber, sliceSize) => `/api/orders/users?sliceNumber=${sliceNumber}&sliceSize=${sliceSize}`
 
-describe("Test 'orders_getUserOrders_get' route handler", () => {
+describe("GET /api/orders/users?sliceNumber&sliceSize", () => {
 
     it("Should returns an array of 4 orders", async () => {
         await OrdersModel.insertMany(createArrayOfFakeOrders({ userId: fakeUserId }));

@@ -13,7 +13,7 @@ afterAll(async () => {
 
 const routePath = "/api/admin/products"
 
-describe("Test 'products_search_get' route handler", () => {
+describe("GET /api/admin/products", () => {
 
     it("Should returns an array of products with titles match 'u' and other three properties", async () => {
         const response = await adminRequest(`${routePath}?title=u&returnType=title,earnings,sold`, "get")

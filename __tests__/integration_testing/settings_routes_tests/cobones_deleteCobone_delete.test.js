@@ -9,7 +9,7 @@ afterAll(async () => {
 
 const routePath = "/api/settings/cobones"
 
-describe("Test 'cobones_deleteCobone_delete' route handler", () => {
+describe("DELETE /api/settings/cobones", () => {
 
     it("Should deletes a discount cobone from discounts cobones list in settings collection and returns `true`", async () => {
         await SettingsModel.create({ discountCobones: arrayOfFakesDiscountCobones })

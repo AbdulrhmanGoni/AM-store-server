@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = "/api/admin/products"
 
-describe("Test 'products_delete' route handler", () => {
+describe("DELETE /api/admin/products", () => {
 
     it("Should deletes a product from the database and returns `true`", async () => {
         const product = getRandomProduct()

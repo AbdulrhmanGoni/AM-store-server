@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = (limit) => `/api/orders/latest-orders?limit=${limit}`;
 
-describe("Test 'orders_latestOrders_get' route handler", () => {
+describe("GET /api/orders/latest-orders?limit", () => {
 
     it("Should returns an array of last 3 orders", async () => {
         await OrdersModel.insertMany(createArrayOfFakeOrders({ userId: fakeUserId }));

@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/payment-methods`
 
-describe("Test 'user_paymentMethods_delete' route handler", () => {
+describe("DELETE /api/users/:userId/payment-methods", () => {
 
     it("Should deletes a payment method from user's Payment Methods list and returns `true`", async () => {
         const paymentMethodToDelete = fakePaymentMethods[1].number

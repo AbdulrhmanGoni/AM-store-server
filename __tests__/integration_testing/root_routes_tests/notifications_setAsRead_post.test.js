@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = "/api/notifications"
 
-describe("Test 'notifications_setAsRead_post' route handler", () => {
+describe("POST /api/notifications", () => {
 
     it("Should sets one notificatios as read", async () => {
         const notifications = await NotificationsModel.insertMany(fakesNotifications);

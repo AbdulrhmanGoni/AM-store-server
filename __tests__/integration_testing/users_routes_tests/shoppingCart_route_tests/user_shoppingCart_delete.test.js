@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/shopping-cart`
 
-describe("Test 'user_shoppingCart_delete' route handler", () => {
+describe("DELETE /api/users/:userId/shopping-cart", () => {
 
     it("Should removes a specific product from user's shopping cart and returns `true`", async () => {
         const products = getArrayOfProducts(3);

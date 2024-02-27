@@ -11,7 +11,7 @@ afterAll(async () => {
 const { _id: productId } = getRandomProduct();
 const routePath = `/api/products/${productId}/comments`
 
-describe("Test 'product_comments_post' route handler", () => {
+describe("POST /api/products/:productId/comments", () => {
 
 
     it("Should returns the id of the added comment", async () => {

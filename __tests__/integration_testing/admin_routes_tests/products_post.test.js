@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = "/api/admin/products"
 
-describe("Test 'products_post' route handler", () => {
+describe("POST /api/admin/products", () => {
 
     it("Should adds a product to the database and returns `true`", async () => {
         const product = getRandomProduct()

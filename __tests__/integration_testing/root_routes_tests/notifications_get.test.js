@@ -14,7 +14,7 @@ afterEach(async () => {
 
 const routePath = "/api/notifications"
 
-describe("Test 'notifications_get' route handler", () => {
+describe("GET /api/notifications", () => {
 
     const fakeNotification = {
         type: "info",

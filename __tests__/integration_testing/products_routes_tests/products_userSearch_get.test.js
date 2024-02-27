@@ -13,7 +13,7 @@ afterAll(async () => {
 
 const routePath = "/api/products"
 
-describe("Test 'products_userSearch_get' route handler", () => {
+describe("GET /api/products", () => {
 
     it("Should returns an array of products with titles match 'l'", async () => {
         const response = await anyRequest(`${routePath}?title=l`, "get")

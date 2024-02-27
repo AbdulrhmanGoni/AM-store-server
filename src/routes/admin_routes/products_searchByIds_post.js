@@ -3,7 +3,7 @@ import ProductsController from "../../controllers/products-controllers/ProductsC
 import asyncRouteHandler from "../../utilities/asyncRouteHandler.js";
 
 export default asyncRouteHandler(
-    async function products_searchByIds(req, res) {
+    async function products_searchByIds_post(req, res) {
         const { productsIds, withCount, withPrice } = req.body;
         const { type } = req.query;
         const projection = productDataTypes[type ?? "basic"];

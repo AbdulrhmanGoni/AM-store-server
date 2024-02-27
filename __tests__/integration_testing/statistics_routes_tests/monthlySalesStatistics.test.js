@@ -16,7 +16,7 @@ afterEach(async () => {
 const queryKey = "monthly-sales-statistics"
 const routePath = (year) => `/api/statistics?queryKey=${queryKey}&year=${year}`
 
-describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () => {
+describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
     it("Should returns the initial monthly sales statistics", async () => {
         const year = new Date().getFullYear();

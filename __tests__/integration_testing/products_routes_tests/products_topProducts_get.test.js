@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = "/api/products/top-products"
 
-describe("Test 'products_topProducts_get' route handler", () => {
+describe("GET /api/products/top-products", () => {
 
     it("Should returns an empty array", async () => {
         await ProductsModel.insertMany(getArrayOfProducts(0))

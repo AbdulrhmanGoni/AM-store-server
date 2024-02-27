@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/payment-methods`
 
-describe("Test 'user_paymentMethods_post' route handler", () => {
+describe("POST /api/users/:userId/payment-methods", () => {
 
     it("Should adds a payment method into user's Payment Methodes and returns `true`", async () => {
         const fakePaymentMethods = getRandomPaymentMethods()

@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/locations`
 
-describe("Test 'user_locations_post' route handler", () => {
+describe("POST /api/users/:userId/locations", () => {
 
     it("Should adds a location into user's address and returns `true`", async () => {
         const fakeLocation = { ...getRandomLocation() }

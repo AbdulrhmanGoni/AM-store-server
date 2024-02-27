@@ -14,7 +14,7 @@ afterAll(async () => {
 const queryKey = "top-customers"
 const routePath = (limit) => `/api/statistics?queryKey=${queryKey}&limit=${limit}`
 
-describe(`Test 'statistics_get' route handler with queryKey: "${queryKey}"`, () => {
+describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
     it("Should returns an empty array because there is no users yet", async () => {
         const response = await adminRequest(routePath(3), "get");

@@ -14,7 +14,7 @@ afterAll(async () => {
 
 const routePath = "/api/settings/cobones"
 
-describe("Test 'cobones_addCobone_post' route handler", () => {
+describe("POST /api/settings/cobones", () => {
 
     it("Should adds a discount cobone and returns the id of the added cobone", async () => {
         const newCobone = { name: "TEST", value: .25 }

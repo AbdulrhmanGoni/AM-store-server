@@ -15,7 +15,7 @@ afterEach(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/favorites`
 
-describe("Test 'user_favorites_get' route handler", () => {
+describe("GET /api/users/:userId/favorites", () => {
 
     it("Should returns an array of one product id from user's favorites", async () => {
         const product = getRandomProduct();

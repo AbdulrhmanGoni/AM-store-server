@@ -15,7 +15,7 @@ beforeAll(async () => {
 
 const routePath = "/api/products"
 
-describe("Test 'products_searchByIds' route handler", () => {
+describe("POST /api/products", () => {
 
     it("Should returns an array of products", async () => {
         const productsIds = products.slice(0, 5)

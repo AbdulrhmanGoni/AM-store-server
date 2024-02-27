@@ -10,7 +10,7 @@ afterAll(async () => {
 
 const routePath = (userId) => `/api/users/${userId}/favorites`
 
-describe("Test 'user_favorites_put' route handler", () => {
+describe("PUT /api/users/:userId/favorites", () => {
 
     it("Should replace user's favorites with another one and returns `true`", async () => {
         const { _id: userId } = await UsersModel.create(fakeUser);

@@ -13,7 +13,7 @@ afterEach(async () => {
 
 const routePath = (orderId) => `/api/orders/${orderId}`;
 
-describe("Test 'orders_getOrderById_get' route handler", () => {
+describe("GET /api/orders/:orderId", () => {
 
     it("Should returns one order by its id", async () => {
         const [anOrder] = await OrdersModel.insertMany(createArrayOfFakeOrders({ userId: fakeUserId, length: 3 }));

@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = (productId) => `/api/admin/products/${productId}`
 
-describe("Test 'product_patch' route handler", () => {
+describe("PATCH /api/admin/products/:productId", () => {
 
     it("Should changes the title of the product and returns `true`", async () => {
         const product = getRandomProduct()

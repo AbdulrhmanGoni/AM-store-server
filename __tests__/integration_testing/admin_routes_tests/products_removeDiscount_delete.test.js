@@ -12,7 +12,7 @@ afterEach(async () => {
 
 const routePath = `/api/admin/products/discounts`
 
-describe("Test 'products_removeDiscount_delete' route handler", () => {
+describe("DELETE /api/admin/products/discounts", () => {
 
     it("Should removes the discount from the product and returns `true`", async () => {
         const product = getRandomProduct()
