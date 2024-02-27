@@ -8,7 +8,6 @@ export const fakeLocations = [
         city: "macca",
         street: "Mansor Street",
         moreDetails: "Behind Abo Mohamed Resturent",
-        type: "Home",
         id: crypto.randomUUID()
     },
     {
@@ -18,7 +17,6 @@ export const fakeLocations = [
         city: "Osaka",
         street: "Pouar Street",
         moreDetails: "Behind Detective Conan Store",
-        type: "Home",
         id: crypto.randomUUID()
     }
 ]

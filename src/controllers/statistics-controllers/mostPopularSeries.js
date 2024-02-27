@@ -1,7 +1,7 @@
 import ProductsModel from "../../models/Products.js";
 
 
-export default async function mostPopularSerieses(limit = 5) {
+export default async function mostPopularSeries(limit = 5) {
     try {
         const [products] = await ProductsModel.aggregate([
             {

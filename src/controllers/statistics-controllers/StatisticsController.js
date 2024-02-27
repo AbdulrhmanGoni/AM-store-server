@@ -3,7 +3,7 @@ import getYearStatisticsDocument from "./getYearStatisticsDocument.js"
 import monthlyCategoriesStatistics from "./monthlyCategoriesStatistics.js"
 import monthlySalesStatistics from "./monthlySalesStatistics.js"
 import salesGrowth from "./salesGrowth.js"
-import mostPopularSerieses from "./mostPopularSerieses.js"
+import mostPopularSeries from "./mostPopularSeries.js"
 import ordersStatistics from "./ordersStatistics.js"
 import productsStatistics from "./productsStatistics.js"
 import topProducts from "./topProducts.js"
@@ -25,7 +25,7 @@ export default Object.assign(StatisticsController.prototype, {
     monthlyCategoriesStatistics,
     monthlySalesStatistics,
     salesGrowth,
-    mostPopularSerieses,
+    mostPopularSeries,
     ordersStatistics,
     productsStatistics,
     topProducts,

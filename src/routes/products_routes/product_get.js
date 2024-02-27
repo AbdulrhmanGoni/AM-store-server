@@ -1,3 +1,4 @@
+import { productDataTypes } from '../../CONSTANT/projections.js';
 import ProductsController from '../../controllers/products-controllers/ProductsController.js';
 import asyncRouteHandler from '../../utilities/asyncRouteHandler.js';
 

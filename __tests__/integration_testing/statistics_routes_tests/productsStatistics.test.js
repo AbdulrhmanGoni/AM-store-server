@@ -31,7 +31,7 @@ describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
             totalInStock: expect.any(Number),
             productsOutOfStock: expect.any(Number),
             categoriesCount: fakeCategoriesArray.length,
-            seriesesCount: expect.any(Number)
+            seriesCount: expect.any(Number)
         })
     })
 

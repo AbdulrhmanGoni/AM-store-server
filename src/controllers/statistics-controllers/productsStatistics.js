@@ -19,16 +19,16 @@ export default async function productsStatistics() {
                         }
                     },
                     categories: { $addToSet: "$category" },
-                    serieses: { $addToSet: "$series" }
+                    series: { $addToSet: "$series" }
                 }
             },
             {
                 $set: {
                     categoriesCount: { $size: "$categories" },
-                    seriesesCount: { $size: "$serieses" }
+                    seriesCount: { $size: "$series" }
                 }
             },
-            { $unset: ["_id", "categories", "serieses"] }
+            { $unset: ["_id", "categories", "series"] }
         ])
         return result[0] || {}
     } catch (error) {

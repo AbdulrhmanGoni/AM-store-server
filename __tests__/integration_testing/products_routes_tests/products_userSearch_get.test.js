@@ -47,15 +47,15 @@ describe("GET /api/products", () => {
         });
     })
 
-    it("Should returns an empty array with status code 404", async () => {
+    it("Should returns an empty array", async () => {
         const response = await anyRequest(`${routePath}?title=luffy&category=soccer`, "get")
-        expect(response.statusCode).toBe(404)
+        expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(0)
     })
 
-    it("Should returns an empty array with status code 404", async () => {
+    it("Should returns an empty array", async () => {
         const response = await anyRequest(`${routePath}?title=ftnjgdjtmd`, "get")
-        expect(response.statusCode).toBe(404)
+        expect(response.statusCode).toBe(200)
         expect(response.body.length).toBe(0)
     })
 
