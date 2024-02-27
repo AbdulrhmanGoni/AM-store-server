@@ -31,7 +31,7 @@ You can browse the **Endpoints** and the **documentation** of the **API** on **P
 
 ## Authentication
 
-This API utilizes **JSON Web Tokens (JWT)** for users authentication. <br>
+This API utilizes **JSON Web Tokens ( JWT <img src="./icons_readme/jwt.svg" alt="JWT Icon" style="width: 15px; height: 15px; transform: translateY(3px)"> )** for users authentication. <br>
 Users can log in or sign up with their credentials (e.g., email and password or google authentication)
 to obtain a **JWT token**.
 This token is then included in subsequent requests to authenticate the user and authorize him to access
