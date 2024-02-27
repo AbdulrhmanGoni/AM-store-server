@@ -3,7 +3,7 @@ import { Router } from "express";
 import products_post from "../routes/admin_routes/products_post.js";
 import products_delete from "../routes/admin_routes/products_delete.js";
 import product_patch from "../routes/admin_routes/product_patch.js";
-import product_get from "../routes/products_routes/product_get.js";
+import product_get from "../routes/admin_routes/product_get.js";
 import products_search_get from "../routes/admin_routes/products_search_get.js";
 import products_addDiscount_post from "../routes/admin_routes/products_addDiscount_post.js";
 import products_removeDiscount_delete from "../routes/admin_routes/products_removeDiscount_delete.js";

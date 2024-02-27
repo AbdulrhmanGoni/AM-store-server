@@ -1,10 +1,8 @@
 import ProductsModel from "../../models/Products.js";
-import { productDataTypes } from "../../CONSTANT/projections.js";
 
-export default async function getProductById(productId, query) {
-    const { type } = query;
+export default async function getProductById(productId, projection) {
     try {
-        return await ProductsModel.findById(productId, productDataTypes[type || "basic"]);
+        return await ProductsModel.findById(productId, projection);
     }
     catch (err) {
         console.log(err)
