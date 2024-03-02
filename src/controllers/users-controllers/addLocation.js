@@ -8,7 +8,8 @@ const {
 
 export default async function addLocation(userId, theLocation) {
     try {
-        theLocation.id = crypto.randomUUID();
+        const locationId = crypto.randomUUID();
+        theLocation.id = locationId
         const { modifiedCount } = await UsersModel.updateOne(
             { _id: userId },
             {
@@ -16,7 +17,7 @@ export default async function addLocation(userId, theLocation) {
                 $set: { [selectedLocation]: theLocation }
             }
         );
-        return !!modifiedCount;
+        return !!modifiedCount ? locationId : false;
     } catch (error) {
         console.log(error)
         return null;
