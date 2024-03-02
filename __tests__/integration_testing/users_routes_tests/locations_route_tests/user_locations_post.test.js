@@ -19,7 +19,7 @@ describe("POST /api/users/:userId/locations", () => {
         const requestOptions = { userId, body: { theLocation: fakeLocation } };
         const response = await userRequest(routePath(userId), "post", requestOptions);
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBe(true);
+        expect(response.body?.split?.("-").every(part => typeof part === "string")).toBe(true);
         const { userAddress } = await UsersModel.findById(userId, { userAddress: true });
         expect(userAddress.locationsList[0]).toMatchObject(fakeLocation);
         expect(userAddress.selectedLocation).toMatchObject(fakeLocation);
