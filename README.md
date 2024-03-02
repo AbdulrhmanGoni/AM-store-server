@@ -36,3 +36,13 @@ Users can log in or sign up with their credentials (e.g., email and password or 
 to obtain a **JWT token**.
 This token is then included in subsequent requests to authenticate the user and authorize him to access
 the protected resources (like his data, orders, shopping cart, favorites, etc. ).
+
+## Feedbacks
+
+I welcome any feedback or suggestions you might have! <br>
+if you faced any problem in the project or you have any suggestion improves it,
+or even you have some advices to improve me and my skils, <br>
+Please feel free to open an issue and discuss it with me or contact me directly on [my LinkedIn account](https://www.linkedin.com/in/abdulrhman-goni-857a36275/)
+or throuth my email abdulrhmangoni@gmail.com
+
+Thank you for stopping by! 🌟
