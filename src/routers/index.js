@@ -12,16 +12,9 @@ import rootRouter from "./rootRouter.js";
 import adminRouter from "./adminRouter.js";
 import statisticsRouter from "./statisticsRouter.js";
 import adminAuth from "../auth/adminAuth.js";
-import testLab from "../testLab.js";
 import authenticate from "../auth/authenticate.js";
 
 const mainRouter = Router()
-
-// testing using postman
-mainRouter.get("/test", testLab);
-mainRouter.post("/test", testLab);
-mainRouter.put("/test", testLab);
-mainRouter.patch("/test", testLab);
 
 mainRouter.use("/users", authenticate, [
     userDataRouter,

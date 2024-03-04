@@ -5,10 +5,11 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon --legacy-watch src/server.js",
-    "test": "nodemon --legacy-watch src/server.js",
-    "test-db": "bash './scripts/mongodb-replicas-start.sh",
-    "jest": "node ./scripts/jest-runner-script.js"
+    "docker-dev": "docker-compose -f docker-compose-dev.yml up -d",
+    "docker-prod": "docker-compose -f docker-compose-prod.yml up -d",
+    "testing-db": "bash './scripts/mongodb-replicas-start.sh",
+    "jest": "node ./scripts/jest-runner-script.js",
+    "test": "npm run testing-db && npm run jest"
   },
   "keywords": [
     "AM",
