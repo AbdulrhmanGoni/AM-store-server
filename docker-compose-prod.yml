@@ -1,7 +1,8 @@
 version: '3.8'
 services:
-  api-app:
+  am-store-api:
     container_name: am-store-server-production-mode
+    image: abdulrahmangoni/am-store-server
     build: 
       context: .
       args:

@@ -1,12 +1,12 @@
 version: '3.8'
 services:
-  api-app:
+  am-store-api:
     container_name: am-store-server-testing-mode
     build:
       context: .
       args:
         - NODE_ENV=testing
-    command: npm run test
+    command: npm run start
     volumes:
       - ./src:/am-store-server/src:ro
     env_file:

@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  api-app:
+  am-store-api:
     container_name: am-store-server-development-mode
     build: 
       context: .
@@ -11,7 +11,7 @@ services:
     env_file:
       - .env.secret
       - .env.db.secret.dev
-    command: npm run dev
+    command: npm run start
     volumes:
       - ./src:/am-store-server/src:ro
     ports:
