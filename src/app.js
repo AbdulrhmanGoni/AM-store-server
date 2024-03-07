@@ -15,7 +15,7 @@ const app = express();
 
 // middleware
 app.use([
-    cors({ origin: corsWhitelist, credentials: true }),
+    cors({ origin: corsWhitelist, optionsSuccessStatus: 200 }),
     rateLimit({ limit: 20000, windowMs: genTime("hours", 12) }),
     json({ limit: "5kb" }),
     sanitizer(), // a middleware prevents noSQL injection.
