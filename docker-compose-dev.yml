@@ -11,7 +11,7 @@ services:
     env_file:
       - .env.secret
       - .env.db.secret.dev
-    command: npm run start
+    command: npm run dev
     volumes:
       - ./src:/am-store-server/src:ro
     ports:
