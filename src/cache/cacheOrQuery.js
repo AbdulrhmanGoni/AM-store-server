@@ -6,9 +6,11 @@ export default async function cacheOrQuery(key, query, EX) {
         return JSON.parse(data)
     } else {
         const result = await query;
-        redisClient.set(key, JSON.stringify(result), { EX })
-            .then(() => { })
-            .catch(() => { })
+        if (result) {
+            redisClient.set(key, JSON.stringify(result), { EX })
+                .then(() => { })
+                .catch(() => { })
+        }
         return result;
     }
 }
