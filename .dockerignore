@@ -8,3 +8,6 @@ testLab.js
 __tests__
 icons_readme
 .vscode
+scripts
+jest.config.json
+.vscode
