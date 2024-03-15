@@ -1,6 +1,5 @@
 import app from "./app.js";
 
-// listenig
 const PORT = +process.env.PORT || 7000;
 
 const server = app.listen(PORT, async () => {

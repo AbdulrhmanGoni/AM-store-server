@@ -1,4 +1,3 @@
-
 const corsWhitelist = []
 
 if (process.env.NODE_ENV === "development") {
