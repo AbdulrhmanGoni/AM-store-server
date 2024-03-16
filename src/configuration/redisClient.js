@@ -1,13 +1,19 @@
 import { createClient } from 'redis';
 
-const redisClient = createClient({
-    password: process.env.REDIS_PASSWORD,
-    username: process.env.REDIS_USERNAME,
-    socket: {
-        host: process.env.REDIS_HOST,
-        port: process.env.REDIS_PORT
-    }
-});
+let redisClient;
+
+if (process.env.NODE_ENV === "jest-testing") {
+    redisClient = createClient()
+} else {
+    redisClient = createClient({
+        password: process.env.REDIS_PASSWORD,
+        username: process.env.REDIS_USERNAME,
+        socket: {
+            host: process.env.REDIS_HOST,
+            port: process.env.REDIS_PORT
+        }
+    });
+}
 
 redisClient.connect()
     .then(() => console.log("connected to Redis successfully"))

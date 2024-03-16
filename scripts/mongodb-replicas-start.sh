@@ -6,4 +6,4 @@ sleep 3
 
 chmod +x scripts/mongodb-replicas-init.sh
 
-docker exec mongodb1 ./scripts/mongodb-replicas-init.sh
+docker exec mongodb1 bash ./scripts/mongodb-replicas-init.sh
