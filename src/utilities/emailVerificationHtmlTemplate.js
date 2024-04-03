@@ -27,6 +27,7 @@ export default function emailVerificationHtmlTemplate({ userName }, verification
                                 padding: 12px;
                                 font-size: 28px;
                                 border-radius: 10px;
+                                border: none;
                                 width: fit-content;
                                 background-color: rgb(4, 255, 0);
                                 text-decoration: none;
