@@ -12,15 +12,16 @@ const SettingsSchema = new Schema(
             }
         ],
         productsCategories: [String],
-        allowUsersChangePasswordEveryNDays: Number,
+        allowUsersChangePasswordEveryNDays: {
+            type: Number,
+            default: 30
+        },
         defaultMonthlyTarget: Number,
         deliveryPrice: {
-            type: {
-                value: Number,
-                limit: Number,
-                _id: false
-            }
-        }
+            type: Number,
+            default: 5
+        },
+        minFreeDeliveryEntitlementPrice: Number
     },
     { versionKey: false }
 )

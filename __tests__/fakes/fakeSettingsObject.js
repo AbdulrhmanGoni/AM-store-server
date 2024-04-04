@@ -6,8 +6,6 @@ export const fakeSettingsObject = {
     productsCategories: fakeCategoriesArray,
     allowUsersChangePasswordEveryNDays: 30,
     defaultMonthlyTarget: 5000,
-    deliveryPrice: {
-        value: 5,
-        limit: 80
-    }
+    deliveryPrice: 5,
+    minFreeDeliveryEntitlementPrice: 80
 }
