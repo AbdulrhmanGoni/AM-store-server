@@ -14,6 +14,7 @@ import usersStatistics from "./usersStatistics.js"
 import registerOrderStatistics from "./registerOrderStatistics.js"
 import registerCategoriesStatistics from "./registerCategoriesStatistics.js"
 import registerProductsStatistics from "./registerProductsStatistics.js"
+import setMonthTarget from "./setMonthTarget.js"
 
 class StatisticsController {
     constructor() { }
@@ -36,4 +37,5 @@ export default Object.assign(StatisticsController.prototype, {
     registerOrderStatistics,
     registerCategoriesStatistics,
     registerProductsStatistics,
+    setMonthTarget
 })
