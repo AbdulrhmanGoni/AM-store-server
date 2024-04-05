@@ -1,6 +1,6 @@
 import UsersModel from "../../models/Users.js";
 
-export default async function uploadNewAvatar(userId, avatarUrl) {
+export default async function changeUserAvatar(userId, avatarUrl) {
     try {
         const { avatar } = await UsersModel.findByIdAndUpdate(
             userId,
