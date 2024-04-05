@@ -22,5 +22,30 @@ var config = {
         }
     ]
 };
+
 rs.initiate(config, { force: true });
-rs.status();
+
+function isItReadyMember(member) {
+    if (member.name === "mongodb1:27017") {
+        return member.state === 1
+    } else {
+        return member.state === 2
+    }
+}
+
+function checkMembersStatus(members) {
+    return members.every(isItReadyMember)
+}
+
+async function checkReplicaSetReadiness() {
+    return new Promise((resolve) => {
+        console.log("Wait the database to be ready...")
+        setInterval(() => {
+            if (checkMembersStatus(rs.status().members)) {
+                resolve("The database is ready to recieve queries") 
+            }
+        }, 1000)
+    })
+}
+
+checkReplicaSetReadiness().then((result) => { console.log(result) });

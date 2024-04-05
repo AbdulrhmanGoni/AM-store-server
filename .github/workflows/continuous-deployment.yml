@@ -1,4 +1,4 @@
-name: Build a docker image, push it to docker hub and trigger deploy event
+name: Continuous deployment workflow
 
 on:
   push:
@@ -7,19 +7,28 @@ on:
     branches: [main]
 
 jobs:
-  build-and-push:
+  continuous-deployment:
     runs-on: ubuntu-latest
     steps:
       - name: Fetch the repository
         uses: actions/checkout@v4
 
-      - name: Build the Docker image
+      - name: Install the dependencies
+        run: npm install
+
+      - name: Create `.env.secret` file
+        run: echo "${{ secrets.TESTING_ENV_FILE_CONTENT }}" >> .env.secret
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Build the Docker Image
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/am-store-server .
 
       - name: Log in to Docker hub
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
-      - name: Push the Docker image
+      - name: Push the Docker Image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/am-store-server
 
       - name: Trigger deploy event for the server
