@@ -3,6 +3,7 @@ import { fakeSettingsObject } from "../../fakes/fakeSettingsObject.js";
 import { adminRequest, closeTestingServer } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
+    await SettingsModel.deleteMany();
     await closeTestingServer();
 })
 

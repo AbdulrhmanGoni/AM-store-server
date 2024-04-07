@@ -1,5 +1,4 @@
 import SettingsModel from "../../../src/models/Settings.js";
-// import { arrayOfFakesDiscountCobones } from "../../fakes/fakeDiscountCobones.js";
 import { adminRequest, closeTestingServer } from "../../helpers/testRequest.js"
 import isValidUUID from "../../helpers/isValidUUID.js"
 
@@ -22,7 +21,7 @@ describe("POST /api/settings/cobones", () => {
         const response = await adminRequest(routePath, "post", { body: requestBody })
         expect(response.statusCode).toBe(200)
         expect(isValidUUID(response.body)).toBe(true)
-        const [{ discountCobones }] = await SettingsModel.find({}, { discountCobones: true })
+        const { discountCobones } = await SettingsModel.findOne({}, { discountCobones: true })
         expect(discountCobones[0]).toMatchObject(newCobone)
     })
 
