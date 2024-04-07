@@ -13,6 +13,8 @@ eventEmiter.emit = jest.fn()
 
 afterAll(async () => {
     eventEmiter.emit.mockReset()
+    await UsersModel.deleteMany()
+    await OrdersModel.deleteMany()
     await disconnect()
 })
 

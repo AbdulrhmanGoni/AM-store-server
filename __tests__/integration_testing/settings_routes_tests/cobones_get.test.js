@@ -6,9 +6,6 @@ afterAll(async () => {
     await SettingsModel.deleteMany({})
     await closeTestingServer();
 })
-beforeAll(async () => {
-    await SettingsModel.deleteMany({})
-})
 
 const routePath = "/api/settings/cobones"
 
