@@ -1,3 +1,4 @@
+import redisClient from "../../../src/configuration/redisClient.js";
 import SettingsModel from "../../../src/models/Settings.js"
 import { fakeSettingsObject } from "../../fakes/fakeSettingsObject.js"
 import { userRequest, closeTestingServer } from "../../helpers/testRequest.js"
@@ -7,6 +8,7 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
+    redisClient.flushAll()
     await SettingsModel.deleteMany();
     await closeTestingServer();
 })
