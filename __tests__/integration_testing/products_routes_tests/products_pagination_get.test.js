@@ -12,8 +12,8 @@ beforeAll(async () => {
     await ProductsModel.insertMany(getArrayOfProducts())
 })
 
-const routePath = (page, pageSize, returnType = "") =>
-    `/api/products/pagination?page=${page}&pageSize=${pageSize}&returnType=${returnType}`
+const routePath = (page, pageSize, returnType = "", categoriesFilter = "") =>
+    `/api/products/pagination?page=${page}&pageSize=${pageSize}&returnType=${returnType}&categories=${categoriesFilter}`
 
 describe("GET /api/products/pagination?page&pageSize&returnType", () => {
 
@@ -21,8 +21,8 @@ describe("GET /api/products/pagination?page&pageSize&returnType", () => {
         const page = 1, pageSize = 4
         const response = await adminRequest(routePath(page, pageSize), "get")
         expect(response.statusCode).toBe(200)
-        expect(response.body.length).toBe(pageSize)
-        expect(response.body).toEqual(
+        expect(response.body.products.length).toBe(pageSize)
+        expect(response.body.products).toEqual(
             expect.arrayContaining([expect.objectContaining({
                 _id: expect.any(String),
                 title: expect.any(String),
@@ -35,15 +35,15 @@ describe("GET /api/products/pagination?page&pageSize&returnType", () => {
         const page = 5, pageSize = 10
         const response = await adminRequest(routePath(page, pageSize), "get")
         expect(response.statusCode).toBe(200)
-        expect(response.body.length).toBe(0)
+        expect(response.body.products.length).toBe(0)
     })
 
     it("Should returns an array of two products", async () => {
         const page = 2, pageSize = 3
         const response = await adminRequest(routePath(page, pageSize), "get")
         expect(response.statusCode).toBe(200)
-        expect(response.body.length).toBe(pageSize)
-        expect(response.body).toEqual(
+        expect(response.body.products.length).toBe(pageSize)
+        expect(response.body.products).toEqual(
             expect.arrayContaining([expect.objectContaining({
                 _id: expect.any(String),
                 title: expect.any(String),
@@ -61,8 +61,8 @@ describe("GET /api/products/pagination?page&pageSize&returnType", () => {
         const page = 1, pageSize = 8, returnType = "title"
         const response = await adminRequest(routePath(page, pageSize, returnType), "get")
         expect(response.statusCode).toBe(200)
-        expect(response.body.length).toBe(pageSize)
-        response.body.forEach((product) => {
+        expect(response.body.products.length).toBe(pageSize)
+        response.body.products.forEach((product) => {
             expect(Object.keys(product)).toHaveLength(2)
             expect(product).toMatchObject({
                 _id: expect.any(String),
@@ -75,8 +75,8 @@ describe("GET /api/products/pagination?page&pageSize&returnType", () => {
         const page = 1, pageSize = 5, returnType = "title,price,series"
         const response = await adminRequest(routePath(page, pageSize, returnType), "get")
         expect(response.statusCode).toBe(200)
-        expect(response.body.length).toBe(pageSize)
-        response.body.forEach((product) => {
+        expect(response.body.products.length).toBe(pageSize)
+        response.body.products.forEach((product) => {
             expect(Object.keys(product)).toHaveLength(4)
             expect(product).toMatchObject({
                 _id: expect.any(String),
@@ -91,12 +91,28 @@ describe("GET /api/products/pagination?page&pageSize&returnType", () => {
         const page = 2, pageSize = 7, returnType = "images"
         const response = await adminRequest(routePath(page, pageSize, returnType), "get")
         expect(response.statusCode).toBe(200)
-        expect(response.body.length).toBe(1)
-        expect(Object.keys(response.body[0])).toHaveLength(2)
-        expect(response.body[0]).toMatchObject({
+        expect(response.body.products.length).toBe(1)
+        expect(Object.keys(response.body.products[0])).toHaveLength(2)
+        expect(response.body.products[0]).toMatchObject({
             _id: expect.any(String),
             images: [expect.any(String)]
         })
+    })
+
+    it("Should returns an array of products with only `panels` categories", async () => {
+        const page = 1, pageSize = 5, category = "panels"
+        const response = await adminRequest(routePath(page, pageSize, undefined, category), "get")
+        expect(response.statusCode).toBe(200)
+        console.log(response.body.products)
+        expect(response.body.products.every((product) => product.category === category)).toBe(true)
+    })
+
+    it("Should returns an array of products with only `figures` categories", async () => {
+        const page = 1, pageSize = 5, category = "figures"
+        const response = await adminRequest(routePath(page, pageSize, undefined, category), "get")
+        expect(response.statusCode).toBe(200)
+        console.log(response.body.products)
+        expect(response.body.products.every((product) => product.category === category)).toBe(true)
     })
 
 })
