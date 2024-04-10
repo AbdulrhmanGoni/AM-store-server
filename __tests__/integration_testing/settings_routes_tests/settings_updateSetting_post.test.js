@@ -4,7 +4,7 @@ import { fakeSettingsObject } from "../../fakes/fakeSettingsObject.js";
 import redisClient from "../../../src/configuration/redisClient.js";
 
 afterAll(async () => {
-    redisClient.flushAll()
+    await redisClient.flushAll()
     await SettingsModel.deleteMany({})
     await closeTestingServer();
 })

@@ -8,7 +8,7 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-    redisClient.flushAll()
+    await redisClient.flushAll()
     await SettingsModel.deleteMany();
     await closeTestingServer();
 })
