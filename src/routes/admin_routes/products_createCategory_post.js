@@ -11,6 +11,9 @@ export default asyncRouteHandler(
             const session = await startSession();
             session.startTransaction();
             const dbUpdateResponse = await AdminController.createCategory(category, session);
+            if (dbUpdateResponse === null) {
+                return next(new ErrorGenerator("The category already exist", 400));
+            }
             const cacheUpdateResponse = await updateRedisCache("store-variables", (variablesObject) => {
                 variablesObject?.productsCategories.push(category)
                 return variablesObject
@@ -23,7 +26,7 @@ export default asyncRouteHandler(
                 res.status(400).json(false);
             }
         } else {
-            next(new ErrorGenerator("You didn't provide a valid category name", 400))
+            next(new ErrorGenerator("Ivalid Category Name", 400));
         }
     }
 )

@@ -3,11 +3,15 @@ import SettingsModel from "../../models/Settings.js";
 export default async function createCategory(category, session) {
     try {
         const respond = await SettingsModel.updateOne(
-            {},
-            { $push: { productsCategories: [category] } },
+            { productsCategories: { $nin: [category] } },
+            { $addToSet: { productsCategories: [category] } },
             { session }
         );
-        return !!respond.modifiedCount;
+
+        if (respond.acknowledged && respond.modifiedCount === 0) {
+            return null
+        }
+        return !!respond.modifiedCount
     } catch (error) {
         console.log(error)
         return;
