@@ -13,10 +13,12 @@ import genTime from "./utilities/genTime.js";
 
 const app = express();
 
+app.set("trust proxy", +process.env.NUMBER_OF_PROXIES || 1);
+
 // middleware
 app.use([
     cors({ origin: corsWhitelist, optionsSuccessStatus: 200 }),
-    rateLimit({ limit: 20000, windowMs: genTime("hours", 12) }),
+    rateLimit({ limit: 15000, windowMs: genTime("hours", 4) }),
     json({ limit: "5kb" }),
     sanitizer(), // a middleware prevents noSQL injection.
     hpp(), // a middleware protect against HTTP Parameter Pollution attacks.
