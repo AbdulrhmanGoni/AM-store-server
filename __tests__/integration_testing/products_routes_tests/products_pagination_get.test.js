@@ -103,7 +103,6 @@ describe("GET /api/products/pagination?page&pageSize&returnType", () => {
         const page = 1, pageSize = 5, category = "panels"
         const response = await adminRequest(routePath(page, pageSize, undefined, category), "get")
         expect(response.statusCode).toBe(200)
-        console.log(response.body.products)
         expect(response.body.products.every((product) => product.category === category)).toBe(true)
     })
 
@@ -111,7 +110,6 @@ describe("GET /api/products/pagination?page&pageSize&returnType", () => {
         const page = 1, pageSize = 5, category = "figures"
         const response = await adminRequest(routePath(page, pageSize, undefined, category), "get")
         expect(response.statusCode).toBe(200)
-        console.log(response.body.products)
         expect(response.body.products.every((product) => product.category === category)).toBe(true)
     })
 
