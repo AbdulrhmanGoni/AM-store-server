@@ -7,7 +7,10 @@ if (process.env.NODE_ENV === "development") {
         'http://localhost:3001'
     ])
 } else {
-    corsWhitelist.push(process.env.AM_STORE_CLIENT)
+    corsWhitelist.push(
+        process.env.AM_STORE_CLIENT_SITE_HOST,
+        process.env.AM_STORE_ADMIN_PANEL_HOST
+    )
 }
 
 export default corsWhitelist
