@@ -11,3 +11,4 @@ icons_readme
 scripts
 jest.config.json
 .vscode
+coverage
