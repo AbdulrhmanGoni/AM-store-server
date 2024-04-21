@@ -24,6 +24,19 @@ jobs:
       - name: Run tests
         run: npm run test
 
+      - name: Collect tests code coverage report
+        uses: ./tests-code-coverage-report/
+
+      - name: Deploy tests code coverage report
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN_GITHUB }}
+          folder: deploy-tests-code-coverage-report
+          target-folder: tests-code-coverage-report
+          repository-name: AbdulrhmanGoni/AM-store-server-tests-code-coverage-report
+          branch: main
+          commit-message: "test:(code coverage) update tests code coverage report"
+
       - name: Build the Docker Image
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/am-store-server .
 
