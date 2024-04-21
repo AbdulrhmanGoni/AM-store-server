@@ -1,0 +1,7 @@
+name: "Handling Tests Code Coverage Report"
+description: "This action handles collecting all tests code coverage report files in one folder to deploy them"
+author: "Abdulrhman Goni"
+
+runs:
+  using: "node20"
+  main: "./collecting-tests-code-coverage-report-scripts.js"
