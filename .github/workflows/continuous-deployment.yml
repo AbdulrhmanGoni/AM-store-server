@@ -16,8 +16,10 @@ jobs:
       - name: Install the dependencies
         run: npm install
 
-      - name: Create `.env.secret` file
-        run: echo "${{ secrets.TESTING_ENV_FILE_CONTENT }}" >> .env.secret
+      - name: Create testing environment variables files
+        run: |
+          echo "NODE_ENV=jest-testing" >> .env.jest-testing &&
+          echo "${{ secrets.TESTING_ENV_FILE_CONTENT }}" >> .env.secret
 
       - name: Run tests
         run: npm run test
