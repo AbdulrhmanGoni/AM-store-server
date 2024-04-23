@@ -7,13 +7,13 @@ import orders_watchNewOrders_get from "../routes/orders_routes/orders_watchNewOr
 import adnminAuth from "../auth/adminAuth.js";
 import orders_addNewOrder_post from "../routes/orders_routes/orders_addNewOrder_post.js";
 import orders_getUserOrders_get from "../routes/orders_routes/orders_getUserOrders_get.js";
-import authenticate from "../auth/authenticate.js";
+import userAuth from "../auth/userAuth.js";
 
 const router = Router();
 
 router.route("/users")
-    .get([authenticate, orders_getUserOrders_get])
-    .post([authenticate, orders_addNewOrder_post])
+    .get([userAuth, orders_getUserOrders_get])
+    .post([userAuth, orders_addNewOrder_post])
 
 router.route("/latest-orders")
     .get([adnminAuth, orders_latestOrders_get]);
@@ -25,7 +25,7 @@ router.route("/pagination")
     .get([adnminAuth, orders_pagination_get]);
 
 router.route("/:orderId")
-    .get([authenticate, orders_getOrderById_get])
-    .delete([authenticate, orders_cancelOrder_delete])
+    .get([userAuth, orders_getOrderById_get])
+    .delete([userAuth, orders_cancelOrder_delete])
 
 export default router;

@@ -1,7 +1,7 @@
 import extractAuthFromRequestHeaders from "../utilities/extractAuthFromRequestHeaders.js";
 import { verifyJWT } from "../utilities/jwtUtilities.js";
 
-export default async function authenticate(req, res, next) {
+export default async function userAuth(req, res, next) {
     const unAuthorizedMsg = { message: "You need some credentials first to access this api" }
     const { accessToken } = extractAuthFromRequestHeaders(req)
     if (accessToken) {

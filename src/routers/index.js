@@ -12,11 +12,11 @@ import rootRouter from "./rootRouter.js";
 import adminRouter from "./adminRouter.js";
 import statisticsRouter from "./statisticsRouter.js";
 import adminAuth from "../auth/adminAuth.js";
-import authenticate from "../auth/authenticate.js";
+import userAuth from "../auth/userAuth.js";
 
 const mainRouter = Router()
 
-mainRouter.use("/users", authenticate, [
+mainRouter.use("/users", userAuth, [
     userDataRouter,
     shoppingCartRouter,
     favoritesRouter,

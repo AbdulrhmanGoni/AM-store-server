@@ -12,7 +12,7 @@ import product_comments_get from "../routes/products_routes/product_comments_get
 import product_comments_delete from "../routes/products_routes/product_comments_delete.js";
 import product_comments_post from "../routes/products_routes/product_comments_post.js";
 import product_areUserBoughtAProductsBefore_get from "../routes/products_routes/product_areUserBoughtAProductsBefore_get.js";
-import authenticate from "../auth/authenticate.js";
+import userAuth from "../auth/userAuth.js";
 import product_comments_put from "../routes/products_routes/product_comments_put.js";
 
 const router = Router();
@@ -38,7 +38,7 @@ router.route("/:productId/are-user-bought-the-product-before")
 
 router.route("/:productId/rating")
     .get(product_getProductRating_get)
-    .post([authenticate, product_addRatingToProduct_post])
+    .post([userAuth, product_addRatingToProduct_post])
 
 router.route("/:productId/comments")
     .get(product_comments_get)

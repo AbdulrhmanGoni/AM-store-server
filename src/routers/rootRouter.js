@@ -1,5 +1,5 @@
 import { Router } from "express";
-import authenticate from "../auth/authenticate.js";
+import userAuth from "../auth/userAuth.js";
 import adminAuth from "../auth/adminAuth.js";
 import logIn_user_post from "../routes/root_routes/logIn_user_post.js";
 import logIn_user_withGoogle_post from "../routes/root_routes/logIn_user_withGoogle_post.js";
@@ -24,7 +24,7 @@ import userIdChecker from "../middlewares/userIdChecker.js";
 const router = Router();
 
 router.route("/log-in/google-auth").post(logIn_user_withGoogle_post);
-router.route("/log-in/:userId").get([authenticate, userIdChecker, logIn_loggedUser_get]);
+router.route("/log-in/:userId").get([userAuth, userIdChecker, logIn_loggedUser_get]);
 router.route("/log-in").post(logIn_user_post);
 
 router.route("/sign-up/google-auth").post(register_user_withGoogle_post);
@@ -47,8 +47,8 @@ router.route("/feedbacks")
     .delete(feedbacks_delete)
 
 router.route("/email-verification")
-    .get([emailVerificationLimit(), authenticate, emailVerification_get])
-    .post([authenticate, emailVerification_post]);
+    .get([emailVerificationLimit(), userAuth, emailVerification_get])
+    .post([userAuth, emailVerification_post]);
 
 router.route("/forget-password")
     .post(forgetPassword_post)
