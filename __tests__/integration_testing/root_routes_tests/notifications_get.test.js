@@ -31,9 +31,9 @@ describe("GET /api/notifications", () => {
             }
         })
 
-        await waitFor(1);
+        await waitFor(.01);
         await notificationsSender(fakeNotification);
-        await waitFor(1, () => { eventSource.close() });
+        await waitFor(.01, () => { eventSource.close() });
     })
 
     it("Should returns a list of notifications and then returns the new added notification through `eventSource.onmessage`", async () => {
@@ -50,9 +50,9 @@ describe("GET /api/notifications", () => {
                 expect(data).toMatchObject(fakeNotification);
             }
         })
-        await waitFor(1);
+        await waitFor(.01);
         await notificationsSender(fakeNotification);
-        await waitFor(1, () => { eventSource.close() });
+        await waitFor(.01, () => { eventSource.close() });
     })
 
 })
