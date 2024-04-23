@@ -4,14 +4,14 @@ import extractAuthFromRequestHeaders from "../../utilities/extractAuthFromReques
 import { verifyJWT } from "../../utilities/jwtUtilities.js";
 
 export default asyncRouteHandler(
-    async function product_areUserBoughtAProductsBefore_get(req, res) {
+    async function product_didUserBuyTheProduct_get(req, res) {
         const { accessToken } = extractAuthFromRequestHeaders(req)
         if (accessToken) {
             try {
                 const userId = (verifyJWT(accessToken)).userId
                 if (userId) {
                     const { productId } = req.params;
-                    const response = await ProductsController.areUserBoughtAProductsBefore(productId, userId);
+                    const response = await ProductsController.didUserBuyTheProduct(productId, userId);
                     return res.status(200).json(response);
                 }
             } catch { }

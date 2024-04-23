@@ -4,7 +4,7 @@ import searchByIds from "./searchByIds.js"
 import getTopProducts from "./getTopProducts.js"
 import productsPagination from "./productsPagination.js"
 import productsCount from "./productsCount.js"
-import areUserBoughtAProductsBefore from "./areUserBoughtAProductsBefore.js"
+import didUserBuyTheProduct from "./didUserBuyTheProduct.js"
 import getProductComments from "./getProductComments.js"
 import addCommentToProduct from "./addCommentToProduct.js"
 import deleteCommentFromProduct from "./deleteCommentFromProduct.js"
@@ -24,7 +24,7 @@ export default Object.assign(ProductsController.prototype, {
     searchByIds,
     productsPagination,
     productsCount,
-    areUserBoughtAProductsBefore,
+    didUserBuyTheProduct,
     getProductComments,
     addCommentToProduct,
     likeProductComment,

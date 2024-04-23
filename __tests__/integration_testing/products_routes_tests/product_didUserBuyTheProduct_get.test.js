@@ -13,9 +13,9 @@ afterEach(async () => {
 })
 
 const product = getRandomProduct()
-const routePath = `/api/products/${product._id}/are-user-bought-the-product-before`
+const routePath = `/api/products/${product._id}/did-user-buy-the-product`
 
-describe("GET /api/products/:productId/are-user-bought-the-product-before", () => {
+describe("GET /api/products/:productId/did-user-buy-the-product", () => {
     it("Should returns `true` with status code 200", async () => {
         await OrdersModel.create(createFakeOrder({
             userId: fakeUserId,
