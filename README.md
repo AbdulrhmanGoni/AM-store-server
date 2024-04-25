@@ -191,12 +191,12 @@ npm test
 You can go to [tests code coverage report stie](https://abdulrhmangoni.github.io/AM-store-server-tests-code-coverage-report) to see the full information about tests code coverage report of this project. <br>
 
 > [!NOTE]
-> The tests code coverage report created by [`Jest`](https://jestjs.io) and [`Istanbul`](https://istanbul.js.org/) and
+> The tests code coverage report created by [`Jest`](https://jestjs.io) and [`Istanbul`](https://istanbul.js.org/).
 
 ### Tests in CD pipline:
 
 Tests process is included in `continuous-deployment.yml` workflow to ensure that all tests passed successfully
-and the new changes didn't make any errors.
+and the new changes didn't make any errors before building and deploying the project to production environment.
 
 If all tests in `continuous-deployment.yml` workflow passed successfully, `Jest` using `istanbul` will create
 a new code coverage report for the tests and this new report will be pushed to [`AM-store-server-tests-code-coverage-report`](https://github.com/AbdulrhmanGoni/AM-store-server-tests-code-coverage-report) repository.
