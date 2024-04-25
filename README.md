@@ -13,10 +13,12 @@ Which is the server that handles the business logic of the e-commerce and provid
 - Node.js <img src="./icons_readme/nodejs.svg" style="width: 50px;height: 16px; transform: translate(6px, 3px)">
 - Express.js <img src="./icons_readme/express.jpg" style="width: 50px;height: 15px; transform: translate(6px, 3px)">
 - MongoDB <img src="./icons_readme/mongodb.svg" style="width: 16px;height: 16px; transform: translate(6px, 3px)">
+- Mongoose <img src="./icons_readme/mongoose.png" style="width: 36px;height: 16px; transform: translate(6px, 3px)">
 - Docker <img src="./icons_readme/docker.svg" style="width: 50px;height: 16px; transform: translate(6px, 3px)">
 - Jest <img src="./icons_readme/jest.svg" style="width: 15px;height: 15px; transform: translate(6px, 3px)">
+- Supertest <img src="./icons_readme/supertest.png" style="width: 15px;height: 15px; transform: translate(6px, 3px)">
 
-## Architecture :jigsaw:
+## Architecture :memo:
 
 This **API** is a `RESTful API`, And it follows the `MVC` architectural pattern for separation of concerns and organizing the code to make it more modular, maintainable and easier to test.
 
@@ -162,6 +164,42 @@ This **API** uses **JSON Web Tokens ( JWT <img src="./icons_readme/jwt.svg" alt=
 Users can log in or sign up with their credentials (e.g., email and password or google authentication)
 to obtain a **JWT token**, And then this token will be included in subsequent requests to authenticate the user
 and authorize him to access the protected resources (e.g his data, orders, shopping cart, favorites, etc. ).
+
+## Tests :test_tube:
+
+This project uses a combination of unit and integration tests written with [`Jest`](https://jestjs.io)
+to test the functionality of the API.
+
+### Running The Tests:
+
+> [!WARNING]
+> By defult the mongo database and redis that used in automated tests process with `jest`
+> cunfigured to be up and running only using Docker, that's means you need to install docker engine
+> to be able to run all tests that need connection with testing databases, Or you will be forced to
+> install and run mongo database and redis manualy on your machine for being able to run all tests.
+
+First of all make sure you have all dependencies installed and then run the tests with the following command:
+
+```
+npm test
+```
+
+### Tests Code Coverage Report:
+
+![code coverage badges](https://raw.githubusercontent.com/AbdulrhmanGoni/AM-store-server-tests-code-coverage-report/main/tests-code-coverage-report/badges.svg)
+
+You can go to [tests code coverage report stie](https://abdulrhmangoni.github.io/AM-store-server-tests-code-coverage-report) to see the full information about tests code coverage report of this project. <br>
+
+> [!NOTE]
+> The tests code coverage report created by [`Jest`](https://jestjs.io) and [`Istanbul`](https://istanbul.js.org/) and
+
+### Tests in CD pipline:
+
+Tests process is included in `continuous-deployment.yml` workflow to ensure that all tests passed successfully
+and the new changes didn't make any errors.
+
+If all tests in `continuous-deployment.yml` workflow passed successfully, `Jest` using `istanbul` will create
+a new code coverage report for the tests and this new report will be pushed to [`AM-store-server-tests-code-coverage-report`](https://github.com/AbdulrhmanGoni/AM-store-server-tests-code-coverage-report) repository.
 
 ## Feedbacks :incoming_envelope:
 
