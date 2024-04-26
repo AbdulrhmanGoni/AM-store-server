@@ -24,9 +24,15 @@ This **API** is a `RESTful API`, And it follows the `MVC` architectural pattern 
 
 ## Install and Get Started :rocket:
 
-> [!NOTE]
-> This project built with the Javascript Runtime Environment `Node.js`, So you need to have `Node.js` installed in
-> your machine to be able to install the project and run it.
+### Requirements
+
+This project built with the Javascript Runtime Environment `Node.js` and `Docker`, <br>
+So you need to have `Node.js` and `Docker` installed in your machine to be able to install the project and run it. <br>
+
+- If you don't have `Node.js`, Go to [the official website of Node.js](https://nodejs.org/en/download) and install it. <br>
+- If you don't have `Docker`, Go to [Docker official website](https://docs.docker.com/engine/install/) and install it.
+
+<br>
 
 Follow these steps to install and run AM Store's Server in your machine :point_down::
 
@@ -118,39 +124,13 @@ A quick description of each variable in `.env.db.secret.dev` file:
 
 ### 3. Run the server
 
-#### Run directly using node.js
-
-To run the server directly using `node.js` run the following commands:
-
-1. Install the dependencies
-
-```
-npm install
-```
-
-2. Run the server
-
-```
-npm run node-dev
-```
-
-And congratulations 🎉, Your AM Store Server is up and running on your http://localhost:7000.
-
-#### Run using Docker
-
-if you have `Docker` already installed on your machine and want to run the server using it,
-Run the following command:
+Run the server using the following command:
 
 ```
 npm run docker-dev
 ```
 
 And congratulations 🎉, Your AM Store Server is up and running on your http://localhost:7000.
-
-> [!NOTE]
-> If you don't have `Docker` already installed on your machine and want to run the server using it,
-> Go to [Docker official website](https://docs.docker.com/engine/install/) and install Docker engine
-> and then come back to run the server.
 
 ## Endpoints & Documentation :ledger:
 
@@ -172,16 +152,22 @@ to test the functionality of the API.
 
 ### Running The Tests:
 
-> [!WARNING]
-> By defult the mongo database and redis that used in automated tests process with `jest`
-> cunfigured to be up and running only using Docker, that's means you need to install docker engine
-> to be able to run all tests that need connection with testing databases, Or you will be forced to
-> install and run mongo database and redis manualy on your machine for being able to run all tests.
-
-First of all make sure you have all dependencies installed and then run the tests with the following command:
+To run all tests use the following command:
 
 ```
 npm test
+```
+
+To run specific tests files add an argumant matches files names, For example `orders`
+
+```
+npm test orders
+```
+
+To run a specific tests file add the full name of the file as an argumant, For example `products_addDiscount_post`
+
+```
+npm test products_addDiscount_post
 ```
 
 ### Tests Code Coverage Report:
