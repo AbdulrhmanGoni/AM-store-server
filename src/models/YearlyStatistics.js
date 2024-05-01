@@ -47,4 +47,13 @@ const YearlyStatisticsSchema = new Schema(
 
 const YearlyStatisticsModel = model("yearly-statistics", YearlyStatisticsSchema);
 
+try {
+    YearlyStatisticsModel.count()
+        .then((count) => {
+            if (!count) {
+                new YearlyStatisticsModel({ year: new Date().getFullYear() }).save()
+            }
+        })
+} catch { }
+
 export default YearlyStatisticsModel;
