@@ -74,7 +74,6 @@ JWT_SECRET_KEY=""
 STORE_EMAIL=""
 EMAIL_APP_PASSWORD=""
 VERIFY_EMAIL_API_KEY=""
-GOOGLE_CLIENT_ID=""
 ```
 
 A quick description of each variable in `.env.secret` file:
@@ -85,7 +84,6 @@ A quick description of each variable in `.env.secret` file:
 | STORE_EMAIL | The official email of the store |
 | EMAIL_APP_PASSWORD | the pasword of the app that should be created from Google cloud platform for store's email |
 | VERIFY_EMAIL_API_KEY | The API key of [hunter.io platform](https://hunter.io/) for using **Email Verifier** service to verify users emails existence |
-| GOOGLE_CLIENT_ID | The id of Google OAuth 2.0 client that used to sign up users with Google |
 
   <br>
 

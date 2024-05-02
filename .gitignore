@@ -3,3 +3,4 @@
 node_modules
 testLab.js
 coverage
+mongodb

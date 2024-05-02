@@ -7,17 +7,17 @@ var config = {
     "members": [
         {
             "_id": 1,
-            "host": "mongodb1:27017",
+            "host": "mongodbPrimary:27017",
             "priority": 3
         },
         {
             "_id": 2,
-            "host": "mongodb2:27017",
+            "host": "mongodbSecondary1:27017",
             "priority": 2
         },
         {
             "_id": 3,
-            "host": "mongodb3:27017",
+            "host": "mongodbSecondary2:27017",
             "priority": 1
         }
     ]
@@ -26,7 +26,7 @@ var config = {
 rs.initiate(config, { force: true });
 
 function isItReadyMember(member) {
-    if (member.name === "mongodb1:27017") {
+    if (member.name === "mongodbPrimary:27017") {
         return member.state === 1
     } else {
         return member.state === 2

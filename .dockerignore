@@ -13,3 +13,4 @@ jest.config.json
 .vscode
 coverage
 tests-code-coverage-report
+mongodb

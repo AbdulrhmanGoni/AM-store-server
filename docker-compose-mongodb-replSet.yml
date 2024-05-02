@@ -1,45 +1,40 @@
 services:
-  mongodb1:
-    container_name: mongodb1
+  mongodbPrimary:
+    container_name: mongodbPrimary-container
     image: mongo
     ports:
       - 27017:27017
     restart: always
     volumes:
-      - ./scripts/mongodb-replicas-init.sh:/scripts/mongodb-replicas-init.sh:ro
+      - ./scripts/initialize-mongodb-replSet.sh:/scripts/initialize-mongodb-replSet.sh:ro
+      - ./mongodb:/data/db
     links:
-      - mongodb2
-      - mongodb3
+      - mongodbSecondary1
+      - mongodbSecondary2
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
     networks:
-      - am-store-network
+      - mongodb-replicas-network
 
-  mongodb2:
-    container_name: mongodb2
+  mongodbSecondary1:
+    container_name: mongodbSecondary1-container
     image: mongo
     ports:
       - 27018:27017
     restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
     networks:
-      - am-store-network
+      - mongodb-replicas-network
 
-  mongodb3:
-    container_name: mongodb3
+  mongodbSecondary2:
+    container_name: mongodbSecondary2-container
     image: mongo
     ports:
       - 27019:27017
     restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
     networks:
-      - am-store-network
-
-  redis:
-    container_name: testing-redis
-    image: redis
-    ports:
-      - 6379:6379
+      - mongodb-replicas-network
 
 networks:
-  am-store-network:
+  mongodb-replicas-network:
     driver: bridge
