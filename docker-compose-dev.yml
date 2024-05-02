@@ -8,10 +8,28 @@ services:
     environment:
       - NODE_ENV=development
     env_file:
-      - .env.secret
-      - .env.db.secret.dev
+      - .env.development
     command: npm run dev
     volumes:
       - ./src:/am-store-server/src:ro
     ports:
-      - "7000:7000"
+      - 7000:7000
+    networks:
+      - am-store-dev-network
+      - mongodb-replicas-network
+    depends_on:
+      - redis-dev
+
+  redis-dev:
+    container_name: development-redis
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - am-store-dev-network
+
+networks:
+  am-store-dev-network:
+    driver: bridge
+  mongodb-replicas-network:
+    driver: bridge

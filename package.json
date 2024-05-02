@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon --legacy-watch src/server.js",
-    "docker-dev": "docker-compose -f docker-compose-dev.yml up -d",
+    "docker-dev": "npm run mongodb-replSet && docker-compose -f docker-compose-dev.yml up -d",
     "docker-prod": "docker-compose -f docker-compose-prod.yml up -d",
     "mongodb-replSet": "node ./scripts/run-mongodb-replSet.js",
     "jest": "node ./scripts/run-jest-tests.js",

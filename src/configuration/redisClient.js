@@ -2,9 +2,7 @@ import { createClient } from 'redis';
 
 let redisClient;
 
-if (process.env.NODE_ENV === "jest-testing") {
-    redisClient = createClient()
-} else {
+if (process.env.REDIS_CONNECTION_TYPE === "remote") {
     redisClient = createClient({
         password: process.env.REDIS_PASSWORD,
         username: process.env.REDIS_USERNAME,
@@ -14,9 +12,18 @@ if (process.env.NODE_ENV === "jest-testing") {
         }
     });
 }
+else if (process.env.NODE_ENV === "production") {
+    redisClient = createClient({ url: "redis://redis-prod" });
+}
+else if (process.env.NODE_ENV === "development") {
+    redisClient = createClient({ url: "redis://redis-dev" });
+}
+else {
+    redisClient = createClient();
+}
 
 redisClient.connect()
-    .then(() => console.log("connected to Redis successfully"))
+    .then(() => console.log("Connected to Redis successfully"))
     .catch((e) => console.log("Redis connection error", e.message));
 
 export default redisClient;
