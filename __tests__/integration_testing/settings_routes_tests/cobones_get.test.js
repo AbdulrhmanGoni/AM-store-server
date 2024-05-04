@@ -2,8 +2,11 @@ import SettingsModel from "../../../src/models/Settings.js";
 import { arrayOfFakesDiscountCobones } from "../../fakes/fakeDiscountCobones.js";
 import { anyRequest, closeTestingServer } from "../../helpers/testRequest.js"
 
-afterAll(async () => {
+afterEach(async () => {
     await SettingsModel.deleteMany({})
+})
+
+afterAll(async () => {
     await closeTestingServer();
 })
 
@@ -33,6 +36,7 @@ describe("GET /api/settings/cobones", () => {
     })
 
     it("Should returns an array of objects `{ name: string, value: number }` (for admins)", async () => {
+        await SettingsModel.create({ discountCobones: arrayOfFakesDiscountCobones });
         const response = await anyRequest(routePath, "get");
         expect(response.statusCode).toBe(200);
         expect(response.body).toEqual(

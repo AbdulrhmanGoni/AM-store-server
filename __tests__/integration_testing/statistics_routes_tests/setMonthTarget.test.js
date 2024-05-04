@@ -12,7 +12,6 @@ beforeAll(async () => {
     const year = new Date().getFullYear();
     await YearlyStatisticsModel.insertMany([
         getFakeYearStatistics(year - 1),
-        getFakeYearStatistics(year),
         getFakeYearStatistics(year + 1)
     ]);
 })

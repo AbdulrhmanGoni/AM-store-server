@@ -1,13 +1,9 @@
-import { MONTHES } from "../../../src/CONSTANT/MONTHES.js"
 import SettingsModel from "../../../src/models/Settings.js"
 import YearlyStatisticsModel from "../../../src/models/YearlyStatistics.js"
 import { createFakeCategoriesArray } from "../../fakes/fakesProducts.js"
 import { getFakeYearStatistics } from "../../fakes/fakeYearlyStatistics.js"
 import { closeTestingServer, adminRequest } from "../../helpers/testRequest.js"
 
-beforeAll(async () => {
-    productsCategories = (await createFakeCategoriesArray()).productsCategories
-})
 
 afterEach(async () => {
     await YearlyStatisticsModel.deleteMany({});
@@ -18,31 +14,21 @@ afterAll(async () => {
     await closeTestingServer();
 })
 
-let productsCategories;
 const queryKey = "monthly-categories-statistics"
 const routePath = (year) => `/api/statistics?queryKey=${queryKey}&year=${year}`
 
 describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
-    it("Should returns the initial monthly categories statistics", async () => {
+    it("Should returns the default monthly categories statistics", async () => {
         const year = new Date().getFullYear();
         const response = await adminRequest(routePath(year), "get");
         expect(response.statusCode).toBe(200);
-        expect(response.body.categories).toHaveLength(productsCategories.length);
-        response.body.categories.forEach(({ category, monthlyStatistics }) => {
-            expect(productsCategories).toContain(category)
-            MONTHES.forEach((month, index) => {
-                expect(monthlyStatistics[index]).toMatchObject({
-                    month: month,
-                    totalEarnings: 0,
-                    productsSold: 0
-                })
-            });
-        })
+        expect(response.body.categories).toHaveLength(0);
     })
 
-    it("Should returns the details of monthly categories statistics", async () => {
+    it("Should returns the details of fake monthly categories statistics", async () => {
         const year = new Date().getFullYear();
+        const productsCategories = await createFakeCategoriesArray();
         const { categories: fakeMonthlyCategoriesStatistics } = await YearlyStatisticsModel.create(getFakeYearStatistics(year));
         const response = await adminRequest(routePath(year), "get");
         expect(response.statusCode).toBe(200);

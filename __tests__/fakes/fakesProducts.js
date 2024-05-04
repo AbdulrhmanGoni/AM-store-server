@@ -17,5 +17,6 @@ export function getArrayOfProducts(length = totalProducts) {
 export const fakeCategoriesArray = ["figures", "panels", "clothes"]
 
 export async function createFakeCategoriesArray() {
-    return await SettingsModel.create({ productsCategories: fakeCategoriesArray })
+    await SettingsModel.updateOne({}, { productsCategories: fakeCategoriesArray })
+    return fakeCategoriesArray
 };

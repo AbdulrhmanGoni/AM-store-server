@@ -10,7 +10,7 @@ afterAll(async () => {
 })
 
 beforeAll(async () => {
-    await SettingsModel.create(fakeSettingsObject);
+    await SettingsModel.updateOne({}, fakeSettingsObject);
 })
 
 const routePath = "/api/admin/products/create-category"

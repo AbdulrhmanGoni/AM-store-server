@@ -25,12 +25,12 @@ describe("Test `checkEmailExistance` function that checks if the given email val
         expect(respond).toBe(false)
     })
 
-    it("Should returns `false` for 'nsyu.nmumtucu6.8586.8685nghc@gmail.com' email", async () => {
+    it("Should returns `null` for 'nsyu.nmumtucu6.8586.8685nghc@gmail.com' email", async () => {
         const emailToTest = "nsyu.nmumtucu6.8586.8685nghc@gmail.com"
         global.fetch.mockRejectedValue()
         const respond = await checkEmailExistance(emailToTest)
         expect(global.fetch).toHaveBeenLastCalledWith(expect.stringMatching(emailToTest));
-        expect(respond).toBe(false)
+        expect(respond).toBe(null)
     })
 
 })

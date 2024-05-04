@@ -2,10 +2,6 @@ import SettingsModel from "../../../src/models/Settings.js";
 import { adminRequest, closeTestingServer } from "../../helpers/testRequest.js"
 import isValidUUID from "../../helpers/isValidUUID.js"
 
-beforeAll(async () => {
-    await SettingsModel.create({})
-})
-
 afterAll(async () => {
     await SettingsModel.deleteMany({})
     await closeTestingServer();

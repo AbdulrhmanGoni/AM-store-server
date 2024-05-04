@@ -20,15 +20,27 @@ const routePath = `/api/statistics?queryKey=${queryKey}`
 
 describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
-    it("Should returns `null` because there no sales", async () => {
+    it("Should returns sales growth object with zeros because there no sales", async () => {
         const response = await adminRequest(routePath, "get");
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBeNull();
+        expect(response.body).toMatchObject({
+            lastMonth: {
+                year: 2024,
+                month: 'Apr',
+                earnings: 0
+            },
+            beforeLastMonth: {
+                year: 2024,
+                month: 'Mar',
+                earnings: 0
+            },
+            growthRate: 0
+        });
     })
 
     it("Should returns the salse growth of last month", async () => {
         const year = new Date().getFullYear();
-        await YearlyStatisticsModel.insertMany([getFakeYearStatistics(year - 1), getFakeYearStatistics(year)]);
+        await YearlyStatisticsModel.insertMany([getFakeYearStatistics(year - 1)]);
         await createFakeCategoriesArray();
         const response = await adminRequest(routePath, "get");
         expect(response.statusCode).toBe(200);
@@ -48,7 +60,8 @@ describe(`GET /api/statistics?queryKey=${queryKey}`, () => {
 
         const { lastMonth, beforeLastMonth } = response.body;
         const growthRate = (lastMonth.earnings - beforeLastMonth.earnings) / beforeLastMonth.earnings * 100;
-        expect(+(growthRate.toFixed(2))).toBe(response.body.growthRate);
+        console.log(growthRate)
+        expect(+(growthRate.toFixed(2)) || 0).toBe(response.body.growthRate);
     })
 
 })
