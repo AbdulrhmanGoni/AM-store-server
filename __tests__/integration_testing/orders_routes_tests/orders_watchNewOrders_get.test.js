@@ -16,7 +16,7 @@ const routePath = `/api/orders/watch-new-orders`;
 describe("GET /api/orders/watch-new-orders", () => {
 
     it('Should returns the added order immediately through `eventSource.onmessage` event', async () => {
-        const eventSource = createEventSource(routePath);
+        const eventSource = await createEventSource(routePath);
         eventSource.onmessage = (event) => {
             expect(JSON.parse(event.data)).toMatchObject({
                 _id: expect.any(String),
@@ -46,7 +46,7 @@ describe("GET /api/orders/watch-new-orders", () => {
                 sendNewOrderEvent(order, userData)
             })
 
-        await waitFor(2.5, () => { eventSource.close() })
+        await waitFor(0.1, () => { eventSource.close() })
 
     });
 

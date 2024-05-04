@@ -9,8 +9,8 @@ import EventSource from 'eventsource'
  * @param { "get" | "post" | "delete" | "patch" | "put" } method
  * @param { { body: any adminId: string } } options
  */
-function adminRequest(url, method, options) {
-    return request(server)[method](url)
+async function adminRequest(url, method, options) {
+    return request(await server)[method](url)
         .set(adminAuth(options?.adminId))
         .send(options?.body)
 }
@@ -20,8 +20,8 @@ function adminRequest(url, method, options) {
  * @param { "get" | "post" | "delete" | "patch" | "put" } method
  * @param { { body: any userId: string } } options
 */
-function userRequest(url, method, options) {
-    return request(server)[method](url)
+async function userRequest(url, method, options) {
+    return request(await server)[method](url)
         .set(userAuth(options?.userId))
         .send(options?.body)
 }
@@ -31,17 +31,17 @@ function userRequest(url, method, options) {
  * @param { "get" | "post" | "delete" | "patch" | "put" } method
  * @param { any } body
 */
-function anyRequest(url, method, body) {
-    return request(server)[method](url).send(body)
+async function anyRequest(url, method, body) {
+    return request(await server)[method](url).send(body)
 }
 
-const createEventSource = (routePath) => {
-    return new EventSource(request(server).get(routePath).url, { headers: adminAuth() });
+async function createEventSource(routePath) {
+    return new EventSource(request(await server).get(routePath).url, { headers: adminAuth() });
 };
 
 async function closeTestingServer() {
-    await mongoose.disconnect()
-    server.close()
+    await mongoose.disconnect();
+    (await server).close();
 }
 
 export {

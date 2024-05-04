@@ -15,7 +15,7 @@ describe("GET /api/feedbacks/receive-sse", () => {
 
     it("Should returns the new added feedback through `eventSource.onmessage`", async () => {
         const fakeFeedback = fakesFeedbacks[0];
-        const eventSource = createEventSource(routePath);
+        const eventSource = await createEventSource(routePath);
         eventSource.onmessage = (messageEvent => {
             const data = JSON.parse(messageEvent.data);
             if (!(Array.isArray(data)) && data) {
@@ -23,9 +23,9 @@ describe("GET /api/feedbacks/receive-sse", () => {
             }
         })
 
-        await waitFor(1);
+        await waitFor(.1);
         await addFeedback(fakeFeedback);
-        await waitFor(1, () => { eventSource.close() });
+        await waitFor(.1, () => { eventSource.close() });
     })
 
 })

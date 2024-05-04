@@ -34,7 +34,7 @@ afterEach(async () => {
 
 const routePath = '/api/orders/users'
 
-jest.setTimeout(20_000)
+jest.setTimeout(10_000)
 
 describe("POST /api/orders/users", () => {
 

@@ -23,7 +23,7 @@ describe("GET /api/notifications", () => {
     }
 
     it("Should returns the new added notification through `eventSource.onmessage`", async () => {
-        const eventSource = createEventSource(routePath)
+        const eventSource = await createEventSource(routePath)
         eventSource.onmessage = (messageEvent => {
             const data = JSON.parse(messageEvent.data);
             if (!(Array.isArray(data)) && data) {
@@ -38,7 +38,7 @@ describe("GET /api/notifications", () => {
 
     it("Should returns a list of notifications and then returns the new added notification through `eventSource.onmessage`", async () => {
         await NotificationsModel.insertMany(fakesNotifications);
-        const eventSource = createEventSource(routePath)
+        const eventSource = await createEventSource(routePath)
         eventSource.onmessage = (messageEvent => {
             const data = JSON.parse(messageEvent.data);
             if (Array.isArray(data)) {
