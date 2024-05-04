@@ -36,7 +36,7 @@ So you need to have `Node.js` and `Docker` installed in your machine to be able 
 
 Follow these steps to install and run AM Store's Server in your machine :point_down::
 
-### 1. Clone the repository on your machine
+### Clone the repository on your machine
 
 Open the terminal on your machine whenever you want and run the following command to clone the repository:
 
@@ -44,7 +44,7 @@ Open the terminal on your machine whenever you want and run the following comman
 git clone https://github.com/AbdulrhmanGoni/AM-store-server.git
 ```
 
-### 2. Prepare running environment
+### Prepare running environment
 
 First open `AM-store-server` folder by running this command
 
@@ -52,21 +52,26 @@ First open `AM-store-server` folder by running this command
 cd AM-store-server
 ```
 
-And then create `.env.secret` and `.env.db.secret.dev` files using the following commands:
+And then create `.env.development` files using the following command:
 
 If you use **Linux** or **Mac** operating systems run this command:
 
 ```
-touch .env.secret .env.db.secret.dev
+touch .env.development
 ```
 
 If you use **Windows** operating system run this command:
 
 ```
-ni .env.secret, .env.db.secret.dev
+echo "" > .env.development
 ```
 
-Open `.env.secret` file and add these variables to it:
+Open `.env.development` file and add these variables to it:
+
+> [!NOTE]
+> You can left these variables empty and go to [run the server](#run-the-server) directlty in development mode
+> and it will work, but know that there are some features and functionalites may don't work because the variables
+> that they depend on are missing.
 
 ```
 HASHING_SALT_ROUNDS=
@@ -74,37 +79,26 @@ JWT_SECRET_KEY=""
 STORE_EMAIL=""
 EMAIL_APP_PASSWORD=""
 VERIFY_EMAIL_API_KEY=""
-```
-
-A quick description of each variable in `.env.secret` file:
-| VARIABLE | DESCRIPTION |
-| --- | --- |
-| HASHING_SALT_ROUNDS | Number rounds that hashing algorithm needs to encrypt users paswords |
-| JWT_SECRET_KEY | The secret key of the tokens that will used to generat users access tokens |
-| STORE_EMAIL | The official email of the store |
-| EMAIL_APP_PASSWORD | the pasword of the app that should be created from Google cloud platform for store's email |
-| VERIFY_EMAIL_API_KEY | The API key of [hunter.io platform](https://hunter.io/) for using **Email Verifier** service to verify users emails existence |
-
-  <br>
-
-Also open `.env.db.secret.dev` file and add these variables to it:
-
-```
-NODE_ENV=development
+DATABASE_CONNECTION_TYPE=""
 DB_USERNAME=""
 DB_PASSWORD=""
 DB_NAME=""
-ATLAS_CLUSTER=""
+DB_HOST=""
+REDIS_CONNECTION_TYPE=""
 REDIS_USERNAME=""
 REDIS_PASSWORD=""
 REDIS_HOST=""
 REDIS_PORT=
 ```
 
-A quick description of each variable in `.env.db.secret.dev` file:
+A quick description of these environment variable:
 | VARIABLE | DESCRIPTION |
 | --- | --- |
-| NODE_ENV | Running environment (e.g `development`, `production` ) |
+| HASHING_SALT_ROUNDS | The number rounds that hashing algorithm should take to encrypt users paswords |
+| JWT_SECRET_KEY | The secret key of the tokens that will used to generat users access tokens |
+| STORE_EMAIL | The official email of the store |
+| EMAIL_APP_PASSWORD | The pasword of the app that should be created from Google cloud platform for store's email |
+| VERIFY_EMAIL_API_KEY | The API key of [hunter.io platform](https://hunter.io/) for using **Email Verifier** service to verify users emails existence |
 | DB_USERNAME | The name of the user who has access to the mongo database of the project |
 | DB_PASSWORD | The password of the user who has access to the mongo database of the project |
 | DB_NAME | The name of the mongo database of the project |
@@ -114,13 +108,7 @@ A quick description of each variable in `.env.db.secret.dev` file:
 | REDIS_HOST | The host name of redis database |
 | REDIS_PORT | The port that redis database should listen to |
 
-  <br>
-
-> [!NOTE]
-> This environment that we just created is `development` environment, You can add `.env.db.secret.prod` file for
-> production environment and `.env.db.secret.test` for testing environment.
-
-### 3. Run the server
+### Run the server
 
 Run the server using the following command:
 
@@ -132,7 +120,7 @@ And congratulations 🎉, Your AM Store Server is up and running on your http://
 
 ## Endpoints & Documentation :ledger:
 
-You can browse the **Endpoints** and the **documentation** of the **API** on **Postman** :point_down:
+You can browse the **Endpoints** and the **Documentation** of the **API** on **Postman** :point_down:
 
 [<img src="./icons_readme/postman-button.svg" alt="Run In Postman" style="width: 128px; height: 32px; transform: translateY(4px)">](https://app.getpostman.com/run-collection/27040994-2b37c7cf-3a2d-4022-9dfa-6b850399d269?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D27040994-2b37c7cf-3a2d-4022-9dfa-6b850399d269%26entityType%3Dcollection%26workspaceId%3Db9135996-e8d9-4c02-bc81-d0b278bfc9ff)
 
