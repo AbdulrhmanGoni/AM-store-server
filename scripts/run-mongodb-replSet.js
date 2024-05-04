@@ -1,7 +1,9 @@
 import { execSync } from 'child_process';
 
+const runningTarget = process.argv[2] || "";
+
 const runningContainersCommand = `\
-docker-compose -f docker-compose-mongodb-replSet.yml up -d
+docker-compose -f docker-compose-mongodb-replSet-${runningTarget}.yml up -d
 `;
 const initiateReplicasSetCommand = `\
 docker exec mongodbPrimary-container bash ./scripts/initialize-mongodb-replSet.sh
