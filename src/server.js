@@ -1,9 +1,18 @@
+import initializations from "./configuration/index.js";
 import app from "./app.js";
 
-const PORT = +process.env.PORT || 7000;
+async function startServer() {
+    try {
+        await initializations();
 
-const server = app.listen(PORT, async () => {
-    console.log("Server running on http://localhost:" + PORT);
-});
+        const PORT = +process.env.PORT || 7000;
+        return app.listen(PORT, async () => {
+            console.log("Server running on http://localhost:" + PORT);
+        });
+    } catch (error) {
+        console.log('Unhandled Rejection:', error);
+    }
 
-export default server;
+}
+
+export default startServer();

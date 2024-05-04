@@ -1,5 +1,4 @@
 import express, { json } from "express";
-import "./configuration/index.js";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import mainRouter from "./routers/index.js";
