@@ -59,7 +59,7 @@ export default async function salesGrowth() {
                     month: MONTHES[beforeLastMonthIndex],
                     earnings: beforeLastMonthEarnings
                 },
-                growthRate: +(growthRate.toFixed(2))
+                growthRate: +(growthRate.toFixed(2)) || 0
             }
         } else {
             return null
