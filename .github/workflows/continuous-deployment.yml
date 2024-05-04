@@ -17,7 +17,9 @@ jobs:
         run: npm install
 
       - name: Create testing environment variables files
-        run: echo "${{ secrets.TESTING_ENV_FILE_CONTENT }}" >> .env.testing
+        run: |
+          export NODE_ENV=testing
+          echo "${{ secrets.TESTING_ENV_FILE_CONTENT }}" >> .env.testing
 
       - name: Run tests
         run: npm run test
