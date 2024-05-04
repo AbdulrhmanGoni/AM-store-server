@@ -22,8 +22,13 @@ else {
     redisClient = createClient();
 }
 
-redisClient.connect()
-    .then(() => console.log("Connected to Redis successfully"))
-    .catch((e) => console.log("Redis connection error", e.message));
+export async function redisClientConnection() {
+    try {
+        await redisClient.connect();
+        console.log("Connected to Redis successfully")
+    } catch (e) {
+        console.log("Redis connection error", e.message)
+    }
+}
 
 export default redisClient;

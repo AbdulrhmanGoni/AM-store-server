@@ -28,13 +28,12 @@ const SettingsSchema = new Schema(
 
 const SettingsModel = model("settings", SettingsSchema);
 
-try {
-    SettingsModel.count()
-        .then((count) => {
-            if (!count) {
-                new SettingsModel().save()
-            }
-        })
-} catch { }
+export async function initializeSettingsCollection() {
+    try {
+        if (!(await SettingsModel.count())) {
+            await new SettingsModel().save()
+        }
+    } catch { }
+}
 
 export default SettingsModel
