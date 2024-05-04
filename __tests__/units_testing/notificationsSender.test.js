@@ -1,14 +1,20 @@
-import "../../src/configuration/databaseConnections.js"
+import databaseConnections from "../../src/configuration/databaseConnections.js"
+import NotificationsModel from "../../src/models/Notifications.js"
 import { jest } from "@jest/globals"
 import { disconnect } from "mongoose"
 import notificationsSender from "../../src/utilities/notificationsSender.js"
 import eventEmiter from "../../src/utilities/eventEmiter.js"
 
-eventEmiter.emit = jest.fn()
+eventEmiter.emit = jest.fn();
+
+beforeAll(async () => {
+    await databaseConnections();
+})
 
 afterAll(async () => {
-    eventEmiter.emit.mockReset()
-    await disconnect()
+    eventEmiter.emit.mockReset();
+    await NotificationsModel.deleteMany({});
+    await disconnect();
 })
 
 describe("Test 'notificationsSender' function", () => {

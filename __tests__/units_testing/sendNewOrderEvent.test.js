@@ -1,4 +1,4 @@
-import "../../src/configuration/databaseConnections.js"
+import databaseConnections from "../../src/configuration/databaseConnections.js"
 import { jest } from "@jest/globals"
 import { disconnect } from "mongoose"
 import eventEmiter from "../../src/utilities/eventEmiter.js"
@@ -10,6 +10,10 @@ import UsersModel from "../../src/models/Users.js"
 import OrdersModel from "../../src/models/Orders.js"
 
 eventEmiter.emit = jest.fn()
+
+beforeAll(async () => {
+    await databaseConnections()
+})
 
 afterAll(async () => {
     eventEmiter.emit.mockReset()
