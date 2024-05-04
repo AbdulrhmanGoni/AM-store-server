@@ -12,7 +12,11 @@ export default async function registerUser(userData) {
 
         const isExistEmail = await checkEmailExistance(userEmail);
         if (!isExistEmail) {
-            return { ok: false, message: "This email is not active email" };
+            return {
+                ok: false,
+                message: isExistEmail === false ?
+                    "This email is not active email" : "Error while checking email existance"
+            };
         }
 
         const signingUserResponse = await signUpUser(userData);
