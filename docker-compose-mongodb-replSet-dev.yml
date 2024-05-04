@@ -1,0 +1,23 @@
+services:
+  mongodbPrimary:
+    container_name: mongodbPrimary-container
+    image: mongo
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - ./scripts/initialize-mongodb-replSet.sh:/scripts/initialize-mongodb-replSet.sh:ro
+      - ./mongodb:/data/db
+    links:
+      - mongodbSecondary1
+      - mongodbSecondary2
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
+    networks:
+      - mongodb-replicas-network
+
+include:
+  - docker-compose-mongodb-replSet-secondaries.yml
+
+networks:
+  mongodb-replicas-network:
+    driver: bridge

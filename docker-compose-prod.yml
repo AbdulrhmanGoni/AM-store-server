@@ -1,7 +1,7 @@
 services:
   am-store-api:
     container_name: am-store-server-production-mode
-    image: abdulrahmangoni/am-store-server
+    image: abdulrahmangoni/am-store-server-prod
     build: 
       context: .
       args:
@@ -9,8 +9,7 @@ services:
     environment:
       - NODE_ENV=production
     env_file:
-      - .env.secret
-      - .env.db.secret.prod
+      - .env.production
     command: npm start
     ports:
-      - "7000:7000"
+      - 7000:7000
