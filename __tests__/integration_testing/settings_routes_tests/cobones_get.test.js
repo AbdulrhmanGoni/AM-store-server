@@ -12,9 +12,7 @@ afterAll(async () => {
 
 const routePath = "/api/settings/cobones"
 
-
 describe("GET /api/settings/cobones", () => {
-
 
     it("Should returns an empty object (for users)", async () => {
         const response = await anyRequest(routePath + "?toObject=true", "get")

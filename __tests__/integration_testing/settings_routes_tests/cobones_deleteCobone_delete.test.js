@@ -12,6 +12,7 @@ const routePath = "/api/settings/cobones"
 describe("DELETE /api/settings/cobones", () => {
 
     it("Should deletes a discount cobone from discounts cobones list in settings collection and returns `true`", async () => {
+        await SettingsModel.create({ discountCobones: arrayOfFakesDiscountCobones })
         await SettingsModel.updateOne({}, { discountCobones: arrayOfFakesDiscountCobones })
         const coboneToDelete = arrayOfFakesDiscountCobones[0]
         const requestBody = { coboneId: coboneToDelete.id }

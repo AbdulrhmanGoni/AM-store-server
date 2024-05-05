@@ -4,7 +4,6 @@ import { adminRequest, closeTestingServer } from "../../helpers/testRequest.js"
 
 afterAll(async () => {
     await SettingsModel.deleteMany();
-    await new SettingsModel().save();
     await closeTestingServer();
 })
 

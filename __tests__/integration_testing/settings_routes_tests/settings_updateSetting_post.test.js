@@ -10,7 +10,7 @@ afterAll(async () => {
 })
 
 beforeAll(async () => {
-    await SettingsModel.updateOne({}, fakeSettingsObject)
+    await SettingsModel.create(fakeSettingsObject)
 })
 const routePath = "/api/settings";
 
