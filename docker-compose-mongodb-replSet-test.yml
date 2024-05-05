@@ -1,6 +1,3 @@
-include:
-  - docker-compose-mongodb-replSet-secondaries.yml
-
 services:
   mongodbPrimary:
     container_name: mongodbPrimary-container
@@ -22,6 +19,9 @@ services:
     image: redis
     ports:
       - 6379:6379
+
+include:
+  - docker-compose-mongodb-replSet-secondaries.yml
 
 networks:
   mongodb-replicas-network:

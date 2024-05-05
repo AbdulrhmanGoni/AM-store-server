@@ -1,6 +1,3 @@
-include:
-  - docker-compose-mongodb-replSet-secondaries.yml
-
 services:
   mongodbPrimary:
     container_name: mongodbPrimary-container
@@ -17,6 +14,9 @@ services:
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "am-store-mongo-set" ]
     networks:
       - mongodb-replicas-network
+
+include:
+  - docker-compose-mongodb-replSet-secondaries.yml
 
 networks:
   mongodb-replicas-network:
