@@ -8,6 +8,7 @@ const command = `\
     --runInBand \
     --detectOpenHandles \
     --forceExit \
+    --bail \
     -- ${runningTarget}
 `;
 
