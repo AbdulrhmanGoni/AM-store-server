@@ -79,7 +79,7 @@ JWT_SECRET_KEY=""
 STORE_EMAIL=""
 EMAIL_APP_PASSWORD=""
 VERIFY_EMAIL_API_KEY=""
-DATABASE_CONNECTION_TYPE=""
+DB_CONNECTION_TYPE=""
 DB_USERNAME=""
 DB_PASSWORD=""
 DB_NAME=""
@@ -99,14 +99,16 @@ A quick description of these environment variable:
 | STORE_EMAIL | The official email of the store |
 | EMAIL_APP_PASSWORD | The pasword of the app that should be created from Google cloud platform for store's email |
 | VERIFY_EMAIL_API_KEY | The API key of [hunter.io platform](https://hunter.io/) for using **Email Verifier** service to verify users emails existence |
-| DB_USERNAME | The name of the user who has access to the mongo database of the project |
-| DB_PASSWORD | The password of the user who has access to the mongo database of the project |
-| DB_NAME | The name of the mongo database of the project |
-| ATLAS_CLUSTER | The name of the atlas cluster that hosts the mongo database|
-| REDIS_USERNAME | The name of redis database that used for caching in the project |
-| REDIS_PASSWORD | The password of redis database that used for caching in the project |
-| REDIS_HOST | The host name of redis database |
-| REDIS_PORT | The port that redis database should listen to |
+| DB_CONNECTION_TYPE | Specifies how the server connects to the database (use "remote" or let it empty) |
+| DB_USERNAME | The name of the user who has access to the mongo database of the project (**it used only if `DB_CONNECTION_TYPE` variable is specified to "remote"**) |
+| DB_PASSWORD | The password of the user who has access to the mongo database of the project (**it used only if `DB_CONNECTION_TYPE` variable is specified to "remote"**) |
+| DB_NAME | The name of the mongo database of the project (**it used only if `DB_CONNECTION_TYPE` variable is specified to "remote"**) |
+| DB_HOST | The host name of the database of the project, in other words, where is the database hosted?, (**it used only if `DB_CONNECTION_TYPE` variable is specified to "remote"**) |
+| REDIS_CONNECTION_TYPE | Specifies how the server connects to redis database (use "remote" or let it empty) |
+| REDIS_USERNAME | The name of redis database that used for caching in the project (**it used only if `REDIS_CONNECTION_TYPE` variable is specified to "remote"**) |
+| REDIS_PASSWORD | The password of redis database that used for caching in the project (**it used only if `REDIS_CONNECTION_TYPE` variable is specified to "remote"**) |
+| REDIS_HOST | The host name of redis database, in other words, where is redis database hosted?, (**it used only if `REDIS_CONNECTION_TYPE` variable is specified to "remote"**) |
+| REDIS_PORT | The port that redis database should listen to (**it used only if `REDIS_CONNECTION_TYPE` variable is specified to "remote"**) |
 
 ### Run the server
 
